@@ -36,30 +36,33 @@ documented, and the records are available in this repository.
 
 We tested Mark 1 using *Questions Before Priors*, a formal theory paper written by Michael D. Ryall.
 
-The paper went through two rounds of review in 2026. The first draft was reviewed by two AI reviewers in July,
-followed by a revised draft in August. We processed both versions through Mark 1 in the same order.
+The paper went through two rounds of review in 2026. The first draft was reviewed by two machine reviewers in
+July, and the author revised it over 29 commits into a second draft in August. We processed both versions through
+Mark 1 in the same order.
 
 During this test, Dimitrija Kalanoski acted as the journal editor and also handled corrections to the structured
 claims list on behalf of the author.
 
 ### Round 1: July 2026
 
-The author's initial check identified 55 gaps in the automatically generated list of claims. In these cases, the list
-did not include a statement made in the paper, or included only part of it. These gaps were corrected before
-submission.
+The author's initial check identified 55 problems with the automatically generated list of claims: 44 statements
+made in the paper that the list did not include, and 11 claims whose cited evidence supported only part of what
+they said. These were corrected before submission, and the list grew from 23 to 66 claims.
 
 The journal's check then identified 16 findings. In each case, the evidence supported only part of a claim. None of
 these findings involved the paper's main results.
 
 Under the journal's rules at that time, the paper should have been returned for corrections. However, the editor
-decided to move it forward to review and documented the reason for making an exception. The two AI reviews from July
-were included as the reviewers' reports.
+decided to move it forward to review and documented the reason for making an exception. The two machine reviews
+from July were included as the reviewers' reports, and the editor signed revise and resubmit.
 
 ### Round 2: August 2026
 
-The revised paper was submitted with an expanded list of claims. The list now also stated, in the paper's own words,
-the question that the paper's main contribution answers. This time, the journal's check identified 11 findings, all
-of which had already been identified in the author's own report.
+The revised paper was submitted with a declaration of each use of AI in the 29 commits between the drafts, and with
+the list of claims expanded to 86. The list now also stated, in the paper's own words, the question that the paper's
+main contribution answers. The author's own check found 13 findings. The journal's check identified 11, all of which
+had already been identified in the author's own report, and every numerical result that could be re-run at other
+parameter values held.
 
 The journal's rules had also been updated based on what we learned in round 1. Under the revised rules, the paper
 could proceed to review without an exception. The editor approved that decision.
@@ -74,11 +77,19 @@ This is where the test ends, matching the point reached in the paper's actual re
 
 ## Lessons learned and what still needs work
 
-Our tests also point to two aspects of Mark 1 worth clarifying. First, the system's completeness check, which looks
+Our tests also point to three aspects of Mark 1 worth clarifying. First, the system's completeness check, which looks
 for results mentioned in the paper but missing from the list of claims, did not produce sufficiently consistent
 results to report its findings in this demonstration. Second, the evidence map was based on 45 papers from the venues
-searched, rather than the broader literature. Both points are documented in the appendix to clarify the current scope
-of the system, rather than to raise concerns about the paper used in these tests.
+searched, rather than the broader literature; the paper's home field, *Strategy Science*, is on none of the three
+journal lists the map uses. Third, the two machine reviewers spent their effort on verifying the theorems, which our
+design assigns to the checks, and they found problems in the proofs that the checks did not flag. This is the present
+measure of how much of a reviewer's work the checks take over, and Stage 2 is designed to measure whether it moves.
+All three points are documented in the appendix to clarify the current scope of the system, rather than to raise
+concerns about the paper used in these tests.
+
+Two further tests are in the repository. Seven copies of the package each carry one planted defect, and each was
+found by the check that targets it and by nothing else. Of seven prior works the paper cites in journals the map
+searches, the map reached three.
 
 ## Ten minutes with it
 
@@ -147,7 +158,7 @@ says where the paper stands and what comes next. The details of each way are in
 | Folder | What it holds |
 |---|---|
 | [`Mark 1/`](Mark%201/) | the prototype. What the journal publishes before any paper arrives (protocol, checks, standard, mapping, interest criteria) in `1-journal/`; the code in `machine/`, one Python package and one command, `mark1`; the research package of *Questions Before Priors* with both rounds; the journal's runs and signed decisions; the reviewers' reports; the diff between rounds; the unit tests; and the planted-defect and recall evaluations |
-| [`demo-paper/`](demo-paper/) | the source material: the round-1 draft of July 23, 2026, the two AI reviews of it, the commit log and patches between the drafts, and the round-2 draft of August 15 |
+| [`demo-paper/`](demo-paper/) | the source material: the round-1 draft of July 23, 2026, the two machine reviews of it, the commit log and patches between the drafts, and the round-2 draft of August 15 |
 | [`figures/`](figures/) | the figures of the appendix (legend, Figs. 1 to 4b, PNG and PDF), the deck they are exported from, and the scripts that build and export it |
 
 [`Mark 1/README.md`](Mark%201/README.md) is the full account: the system box by box against the figures, what the
@@ -159,7 +170,7 @@ lists every place where the build departs from the appendix or the design, with 
 The repository contains no working notes, no correspondence, no stored model answers, and no material licensed from
 anyone else. The answers behind the two rounds, the introductions the evidence map read, and the candidates' abstracts
 are left out because they contain text from other people's papers, and `.gitignore` keeps them out of any clone. The
-package is Ryall's own paper, and the round-1 reports are the AI reviews from his repository. There is no simulation
+package is Ryall's own paper, and the round-1 reports are the machine reviews from his repository. There is no simulation
 after round 2. The demonstration stops where the paper's actual history stops, and the test suite takes a copy of the
 package through the remaining steps: "new", interest, and the certificate issued together with the publication.
 
@@ -176,7 +187,7 @@ For the reader who wants every file. Paths are under `Mark 1/`; `P` stands for `
 | Intake | `mark1 intake P <run> --signed-by <editor> --action proceed_to_review --reason <text>` | `.../20261028-233241-journal-047023d/decision.md`: standard action return for corrections (mapping 0.2, rule R3); a signed departure to proceed |
 | "New" deferred | `mark1 defer-new P --signed-by <editor> --reason <text>` | an event in `3-editor/P/history.jsonl`; review proceeds with "new" still owed |
 | The reviewers' packet | `mark1 packet P` | `4-reviewers/P/packet/` |
-| The reports | `mark1 report P --reviewer <name> <file>`, twice | `4-reviewers/P/reports/r1-machine-reviewer-1-chatgpt-july-2026.md` and `...-2-...md`, the two AI reviews of July 2026 |
+| The reports | `mark1 report P --reviewer <name> <file>`, twice | `4-reviewers/P/reports/r1-machine-reviewer-1-chatgpt-july-2026.md` and `...-2-...md`, the two machine reviews of July 2026 |
 | Revise and resubmit | `mark1 revise P --signed-by <editor> --reason <text>` | `3-editor/P/returns/r1-revise_and_resubmit.md` |
 | **Round 2, the August 15 draft** | | |
 | The author's self-check on the corrected package | `mark1 check P`, answered, resumed | `2-author/P/self-check/20261029-041808-author-4909a9e/findings.md` (13); `20261028-234924-author-466a39e` is the author's first run, before the contribution claim stated its question |

@@ -82,8 +82,8 @@ instead of returning the paper.
 - **The record** ([`rounds/r1/record/`](3-editor/questions-before-priors/rounds/r1/record/)), imported from
   `tbv_mdr_Paper01-v02.tex`, with its derivations, its laboratory as code, and an AI-use record confirmed by the
   author on 2026-10-28.
-- **The author's correction**: the claims list grew from 23 to 66 claims, one for each statement the list did not
-  carry, and the evidence pointers of the 11 partly supported claims were widened to the spans that carry them.
+- **The author's correction**: the claims list grew from 23 to 66 claims: 43 added, one per statement the list did
+  not carry, and 15 evidence pointers narrowed or widened to the spans that carry the claims.
 - **The author's run on the corrected record**
   ([`20261028-232034-author-047023d`](2-author/questions-before-priors/self-check/20261028-232034-author-047023d/findings.md)):
   12 findings, all claims whose evidence carries only part of what they say. Completeness published nothing: its
@@ -107,7 +107,7 @@ instead of returning the paper.
 - **The record** ([`2-author/questions-before-priors/`](2-author/questions-before-priors/)), from
   `tbv_mdr_GPTedit-10.tex`; its AI-use record names one entry per AI pass in the 29 commits between the rounds, as
   the author confirmed them on 2026-10-28.
-- **The author's correction**: the claims list grew from 23 to 86 claims; claim C10's evidence pointer, which the
+- **The author's correction**: the claims list grew from 23 to 86 claims, 63 added; claim C10's evidence pointer, which the
   generator had written malformed, now points at the paper's section on nonidentification; and the contribution
   claim C1 states the question it answers, in the paper's words and with a pointer to the lines that state it
   (`paper/paper.md:L14-L15`): how an actor whose causal language has failed comes to possess a new one, the step
