@@ -1,6 +1,6 @@
 {\rtf1\ansi\ansicpg1252\deff0{\fonttbl{\f0\froman\fcharset0 Times New Roman;}{\f1\fmodern\fcharset0 Courier New;}}\f0\fs24
 {\pard\sb360\sa120\keepn\b Mark 1 \u183? the journal after AI, on one formal paper\par}
-{\pard\sa160 The system in the v6dk deck ({\f1 ../figures/}: the deck and the figures exported from it), built for the formal-theory modality and run end to end, with the authors standing in for the journal. A paper arrives as a research record; the machine emits findings and never a verdict; named people take every decision and sign it; the journal issues a certificate and a publication together, or nothing.\par}
+{\pard\sa160 The system in the v7dk deck ({\f1 ../figures/}: the deck and the figures exported from it), built for the formal-theory modality and run end to end, with the authors standing in for the journal. A paper arrives as a research record; the machine emits findings and never a verdict; named people take every decision and sign it; the journal issues a certificate and a publication together, or nothing.\par}
 {\pard\sa160 Everything is a file you can open. Documents are Markdown, and each has an {\f1 .rtf} twin in Times New Roman 12 for anyone who reads in Word; the {\f1 .md} is the source, and {\f1 mark1 rtf} regenerates the twins. The folders follow the paper's path, one per party:\par}
 {\pard\f1\fs20\sa0 1-journal/     what the journal publishes before any paper arrives: protocol, checks, standard,\par}
 {\pard\f1\fs20\sa0                mapping, interest criteria, and the corpus the evidence map searches\par}
@@ -11,7 +11,7 @@
 {\pard\f1\fs20\sa0 4-reviewers/   what reviewers see (the packet) and send back (reports)\par}
 {\pard\f1\fs20\sa0 5-published/   the certificate and the publication, issued together or not at all\par}
 {\pard\f1\fs20\sa0 machine/       the code: one Python package, one command, `mark1`\par}
-{\pard\f1\fs20\sa0 tests/         105 tests; model answers canned in tests/answers/\par}
+{\pard\f1\fs20\sa0 tests/         106 tests; model answers canned in tests/answers/\par}
 {\pard\f1\fs20\sa0 evaluation/    planted defects in copies of the record and their detection; pilot/ for the teaching-note pilot\par}
 {\pard\sa160\par}
 {\pard\sb240\sa120\keepn\b The figure, box by box\par}
@@ -86,10 +86,10 @@
 {\pard\sa160\par}
 {\pard\sa160 After that the commands are the same everywhere. {\f1 mark1 status questions-before-priors} says where the paper stands and what comes next.\par}
 {\pard\sb240\sa120\keepn\b\i 1. Replay, no key\par}
-{\pard\sa160 Re-runs a finished run from the model answers stored with it, calls no AI, and reports every difference from the original run; zero differences means the report is reproduced:\par}
+{\pard\sa160 Re-runs a finished run from the model answers stored with it, calls no AI, and reports every difference from the original run; zero differences means the report is reproduced. If the check code changed after the run, replay says so and gives both hashes; that is not a difference in the findings:\par}
 {\pard\f1\fs20\sa0 mark1 replay 20261029-043822-journal-4909a9e\par}
 {\pard\sa160\par}
-{\pard\sa160 Replay writes its copy beside the original, as {\f1 <run-id>-replay}. {\b From a fresh clone it says the answers are not here and stops.} The stored answers live in each run's {\f1 bundles/} folder and the introduction excerpts in {\f1 sieve/introductions.json}, and neither is in the repository, because the evidence map's prompts carry other people's text; the submission copy leaves the map's candidate list ({\f1 sieve/candidates.json}) out with them. On the machine where the runs were answered, round 2's author and journal runs reproduce exactly (2026-10-29); with only the completeness and resolution answers, replay stops at the evidence map and names the three prompts whose answers are missing; without the excerpts the map's stored answers are refused, because the prompt they answer has changed; and round 1's runs, made under checks 0.6.0, replay to a report that differs in its versions and class names. From a clone, what replays is the test suite's own run ({\f1 tests/test_journey.py}, part of {\f1 python -m pytest -q}).\par}
+{\pard\sa160 Replay writes its copy beside the original, as {\f1 <run-id>-replay}. {\b From a fresh clone it says the answers are not here and stops.} The stored answers live in each run's {\f1 bundles/} folder and the introduction excerpts in {\f1 sieve/introductions.json}, and neither is in the repository, because the evidence map's prompts carry other people's text; the submission copy leaves the map's candidate list ({\f1 sieve/candidates.json}) out with them. On the machine where the runs were answered, round 2's author and journal runs reproduce exactly (2026-10-29, and again on 2026-10-30 under the corrected code, with the code change noted); with only the completeness and resolution answers, replay stops at the evidence map and names the three prompts whose answers are missing; without the excerpts the map's stored answers are refused, because the prompt they answer has changed; and round 1's runs, made under checks 0.6.0, replay to a report that differs in its versions and class names. From a clone, what replays is the test suite's own run ({\f1 tests/test_journey.py}, part of {\f1 python -m pytest -q}).\par}
 {\pard\sb240\sa120\keepn\b\i 2. Deterministic only, no key\par}
 {\pard\sa160 Runs the code-only checks live on the record: form and pointers, the record's code re-executed against its anchors and under perturbation, and the soundness of its stated derivations:\par}
 {\pard\f1\fs20\sa0 mark1 check questions-before-priors --deterministic-only\par}

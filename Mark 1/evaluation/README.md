@@ -1,6 +1,6 @@
 # evaluation/ · evidence that the checks catch what they should
 
-## Planted defects (appendix I.4)
+## Planted defects (appendix F.1)
 
 `mark1 inject <paper>` makes one copy of a record per defect in `defected/<paper>--<defect>/`, each with a
 `defect.yaml` stating the findings it should produce. `mark1 evaluate <paper>` checks every copy and writes
@@ -25,9 +25,9 @@ all seven found.
 
 This runs the deterministic checks only. The Stage-2 evaluation adds the model-judged checks, more papers and
 both modalities, blind runs on more than one model, repeatability against the published tolerance, and the two
-guardrail cases (I.4).
+guardrail cases (appendix H).
 
-## Recall of prior work (appendix I.4)
+## Recall of prior work (appendix F.2)
 
 `mark1 recall <paper> <run-id> --expect DOI [--expect DOI ...]` reads a run's `sieve/candidates.json` and
 evidence map and writes `recall-<paper>.md`: for each prior work a reader knows the map should reach, whether
@@ -42,6 +42,6 @@ snowball, none from the keyword queries. The four it missed are in journals it s
 paper's own references seed the snowball's counts but never become candidates themselves, and that is the fix the
 result points to. (The synthetic record's recall test, 2 of 2 on 2026-10-21, was removed with that record.)
 
-## The teaching-note pilot (appendix C.6)
+## The teaching-note pilot (not in the current appendix)
 
 `pilot/` is empty until the material arrives; its README says what belongs there.

@@ -24,6 +24,7 @@ class Outcome:
     folder: Path
     pending: list[Path] = field(default_factory=list)
     report: FindingsReport | None = None
+    code_changed: tuple[str, str] | None = None  # replay: the original's check-code hash and the replay's, if they differ
 
 
 def start(target: str, actor: str = "author", deterministic_only: bool = False, only: list[str] | None = None) -> Outcome:
@@ -56,7 +57,8 @@ VOLATILE = {"run_id", "started", "finished"}
 
 
 def replay(run_id: str) -> tuple[Outcome, list[str]]:
-    """Re-run a finished run from its stored answers and report every difference from the original."""
+    """Re-run a finished run from its stored answers and report every difference from the original. A change of the
+    check code since the run is reported apart from the differences, as Outcome.code_changed."""
     original = find(run_id)
     meta = load_json(original / "run.json")
     if not (original / "findings.json").exists():
@@ -84,14 +86,21 @@ def replay(run_id: str) -> tuple[Outcome, list[str]]:
     outcome = execute(copy)
     if outcome.pending:
         return outcome, [f"{len(outcome.pending)} answer(s) missing from the stored run"]
-    return outcome, _differences(load_json(original / "findings.json"), load_json(copy / "findings.json"))
+    before, after = load_json(original / "findings.json"), load_json(copy / "findings.json")
+    if before.get("machine_sha") != after.get("machine_sha"):
+        outcome.code_changed = (before.get("machine_sha"), after.get("machine_sha"))
+    return outcome, _differences(before, after)
 
 
 def _differences(a: dict, b: dict) -> list[str]:
+    # the hash of the check code names what ran, the original's code or the replay's; a change there is reported
+    # beside the result (Outcome.code_changed), not counted as a difference in the findings
     def strip(report: dict) -> dict:
-        clean = {k: v for k, v in report.items() if k not in VOLATILE}
+        clean = {k: v for k, v in report.items() if k not in VOLATILE and k != "machine_sha"}
         for key in ("findings", "below_tolerance"):
-            clean[key] = [{k: v for k, v in f.items() if k != "run_id"} for f in report.get(key, [])]
+            clean[key] = [{k: v for k, v in f.items()
+                           if k != "run_id" and not (k == "model_version" and f.get("model") == "deterministic")}
+                          for f in report.get(key, [])]
         return clean
     a, b = strip(a), strip(b)
     return [f"{key}: {a.get(key)!r} -> {b.get(key)!r}" for key in sorted(a.keys() | b.keys()) if a.get(key) != b.get(key)]

@@ -1,4 +1,4 @@
-"""The corpus behind the evidence map: the prior work the map is allowed to cite (appendix D.6).
+"""The corpus behind the evidence map: the prior work the map is allowed to cite (appendix C.6).
 
 Two sources, both published in advance under 1-journal/corpus/: the journal's venues, searched per paper
 through OpenAlex (venues.yaml; the procedure is retrieval.py), and a hand-named list (corpus.yaml) enriched

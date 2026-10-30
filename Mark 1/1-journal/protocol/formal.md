@@ -1,6 +1,6 @@
 # Record protocol · formal theory · version formal-0.4
 
-Published object 1 (appendix H). What a research record in the formal-theory modality contains, how its
+Published object 1 (appendix D.1). What a research record in the formal-theory modality contains, how its
 parts point at each other, and what the Level 2 checks mean for it. The protocol is a field specification:
 it belongs to the field, not to one journal. Findings cite its clauses as `protocol/formal.md#P<n>`.
 
@@ -97,7 +97,7 @@ materials, how AI was used (tools and roles), and whether the working history is
 (a pointer into the record), the date, and the human direction behind it. Every tool the declarations name
 has an entry. When the generator produced the AI appendix, the record names that run, and it must match the
 stamp's run; whether the files still match the stamp is a fact on the report (P3). The record cannot prove human direction; like an authorship statement, it rests on good
-faith and reputation (appendix E.5).
+faith and reputation (appendix B.6).
 
 ## P8. Submission {#P8}
 

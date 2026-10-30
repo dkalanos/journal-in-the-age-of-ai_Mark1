@@ -122,7 +122,7 @@ account, and after the one-time install they need no network. You need Python 3.
 2. **The deterministic checks, live.** `mark1 check questions-before-priors --deterministic-only` runs the code-only
    checks on the package: form and pointers, the package's code re-executed against its stated results and under
    perturbation, and the soundness of its stated derivations. It prints the path of the report it writes. The whole
-   test suite runs the same way on a copy of the package: `python -m pytest -q`, 105 tests, about a quarter of an
+   test suite runs the same way on a copy of the package: `python -m pytest -q`, 106 tests, about a quarter of an
    hour.
 3. **The model-judged checks, from your own chat session.** `mark1 check questions-before-priors` writes one prompt
    per judgment, three per check, and stops. Answer each one in a new chat of your own, following

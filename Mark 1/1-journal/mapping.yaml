@@ -1,4 +1,4 @@
-# Object 4: the mapping from finding classes to standard actions (appendix F.1).
+# Object 4: the mapping from finding classes to standard actions (appendix D.3).
 # Each finding takes the first rule it matches. The standard action at intake is the most severe
 # action across all findings. A pass is one prior "return for corrections" on this paper.
 version: "0.3"  # 0.3 (2026-10-29): evidence that carries part of a claim (class evidence_partial) proceeds to review with the finding carried (R9): the author submitted with it on their own report, and reviewers see it; return for corrections stays for a pointer that does not resolve or evidence that says nothing. 0.2 (2026-10-27): class `derivation` removed with check (d)

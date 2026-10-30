@@ -1,6 +1,6 @@
 # Mark 1 · the journal after AI, on one formal paper
 
-The system in the v6dk deck ([`../figures/`](../figures/): the deck and the figures exported from it), built for
+The system in the v7dk deck ([`../figures/`](../figures/): the deck and the figures exported from it), built for
 the formal-theory modality and run end to end, with the authors standing in for the journal. A paper arrives as a
 research
 record; the machine emits findings and never a verdict; named people take every decision and sign it; the
@@ -20,7 +20,7 @@ follow the paper's path, one per party:
 4-reviewers/   what reviewers see (the packet) and send back (reports)
 5-published/   the certificate and the publication, issued together or not at all
 machine/       the code: one Python package, one command, `mark1`
-tests/         105 tests; model answers canned in tests/answers/
+tests/         106 tests; model answers canned in tests/answers/
 evaluation/    planted defects in copies of the record and their detection; pilot/ for the teaching-note pilot
 ```
 
@@ -227,7 +227,8 @@ stands and what comes next.
 ### 1. Replay, no key
 
 Re-runs a finished run from the model answers stored with it, calls no AI, and reports every difference from the
-original run; zero differences means the report is reproduced:
+original run; zero differences means the report is reproduced. If the check code changed after the run, replay says
+so and gives both hashes; that is not a difference in the findings:
 
 ```
 mark1 replay 20261029-043822-journal-4909a9e
@@ -237,9 +238,10 @@ Replay writes its copy beside the original, as `<run-id>-replay`. **From a fresh
 here and stops.** The stored answers live in each run's `bundles/` folder and the introduction excerpts in
 `sieve/introductions.json`, and neither is in the repository, because the evidence map's prompts carry other
 people's text; the submission copy leaves the map's candidate list (`sieve/candidates.json`) out with them. On the
-machine where the runs were answered, round 2's author and journal runs reproduce exactly (2026-10-29); with only
-the completeness and resolution answers, replay stops at the evidence map and names the three prompts whose answers
-are missing; without the excerpts the map's stored answers are refused, because the prompt they answer has changed;
+machine where the runs were answered, round 2's author and journal runs reproduce exactly (2026-10-29, and again
+on 2026-10-30 under the corrected code, with the code change noted); with only the completeness and resolution
+answers, replay stops at the evidence map and names the three prompts whose answers are missing; without the
+excerpts the map's stored answers are refused, because the prompt they answer has changed;
 and round 1's runs, made under checks 0.6.0, replay to a report that differs in its versions and class names. From a
 clone, what replays is the test suite's own run (`tests/test_journey.py`, part of `python -m pytest -q`).
 

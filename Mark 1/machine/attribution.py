@@ -1,6 +1,6 @@
 """J2 · Who changed what between two submitted rounds, as far as the record says.
 
-The record cannot prove who wrote what (appendix E.5). What it does say, it says in two places: the AI-use record
+The record cannot prove who wrote what (appendix B.6). What it does say, it says in two places: the AI-use record
 declares each use of AI and the part of the record it touched, and the generator stamp fingerprints every file the
 published generator wrote. Each changed file is attributed from those two, and every attribution names its basis,
 so a reader can tell a declaration from an inference. A file of the AI appendix that no longer matches its

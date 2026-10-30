@@ -66,7 +66,7 @@ def intake(paper_id: str, run_id: str, signed_by: str, action: str | None = None
     findings = FindingsReport.load(report_path).findings
     standard = mapping.standard_action(findings, s.passes_used, rules)
     # a finding the author's own report already lists was acknowledged at submission: the author saw it and
-    # submitted; it travels with the paper (appendix D.8, mapping 0.3)
+    # submitted; it travels with the paper (appendix D.2, mapping 0.3)
     acknowledged = sorted(f.id for f in findings if f.absent_from_author is False)
     for r in standard.fired:
         r["acknowledged"] = r["finding"] in acknowledged

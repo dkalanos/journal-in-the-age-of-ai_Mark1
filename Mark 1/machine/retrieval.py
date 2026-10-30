@@ -1,4 +1,4 @@
-"""Retrieval for the evidence map: the journal's venues, searched through OpenAlex (appendix D.6).
+"""Retrieval for the evidence map: the journal's venues, searched through OpenAlex (appendix C.6).
 
 The venues and the procedure are published in advance (1-journal/corpus/venues.yaml); what each run retrieved
 is kept in its sieve/candidates.json, so a miss can be traced to a query. Keyword search favours work with an

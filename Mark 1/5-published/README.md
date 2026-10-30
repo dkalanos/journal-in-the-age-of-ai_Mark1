@@ -7,7 +7,7 @@ leaves nothing here.
 **The certificate** (`certificate/certificate.yaml`, `.md`) states the record's hash; the standard, protocol,
 check and generator versions; the journal run and its models; the data tier; the kind of newness, with the
 evidence map beside it; the interest judgment with the criteria version; the AI-use declaration; and the names
-of the three people who signed (appendix G.1).
+of the three people who signed (appendix D.5).
 
 **The publication** (`publication/`) is the version of record: the paper and appendix as certified, and
 `manifest.yaml` with the DOI, the record's hash, the files, a pointer to the certificate, and a link to the

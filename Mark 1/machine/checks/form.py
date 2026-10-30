@@ -1,4 +1,4 @@
-"""Level 1 · Form: does the record conform to the published protocol for its modality? (appendix D.2)"""
+"""Level 1 · Form: does the record conform to the published protocol for its modality? (appendix C.2)"""
 import re
 
 import yaml

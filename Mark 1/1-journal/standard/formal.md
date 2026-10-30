@@ -1,6 +1,6 @@
 # Standard · formal theory · version formal-0.5
 
-Published object 3 (appendix H). What the Level 3 checks judge a formal paper against. It is the journal's
+Published object 3 (appendix D.1). What the Level 3 checks judge a formal paper against. It is the journal's
 own, versioned, and cited by findings as `standard/formal.md#S<n>`. Demonstration text: a journal writes its
 own standard.
 

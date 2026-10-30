@@ -1,6 +1,6 @@
 # 1-journal/ · J1, what the journal publishes before any paper arrives
 
-The five published objects (appendix H), each versioned in `checks/versions.yaml`, and the corpus the evidence
+The five published objects (appendix D.1), each versioned in `checks/versions.yaml`, and the corpus the evidence
 map searches. Every findings report and certificate carries these versions.
 
 | Object | Where | Version |

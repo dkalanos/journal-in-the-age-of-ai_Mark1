@@ -16,4 +16,4 @@ field already uses, and the modality router selects which apply.
 | Construct validity | specified | Measures matched to the constructs the claims name. |
 | External validity | specified | Claims generalized no further than the sample and setting support. |
 
-The specified modules apply to the empirical modality, which is Stage 2 (appendix I.5).
+The specified modules apply to the empirical modality, which is Stage 2 (appendix H).

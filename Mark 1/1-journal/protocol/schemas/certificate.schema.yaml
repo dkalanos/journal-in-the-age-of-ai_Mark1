@@ -1,4 +1,4 @@
-title: Certificate (J3, appendix G.1), one or nothing, never partial
+title: Certificate (J3, appendix D.5), one or nothing, never partial
 type: object
 required: [paper_id, title, record_sha, versions, journal_run, data, new, interest, ai_use, signed_by, publication, issued_at]
 properties:

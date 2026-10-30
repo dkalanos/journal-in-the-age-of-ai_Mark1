@@ -1,4 +1,4 @@
-"""The recall test for the evidence map (appendix I.4): did retrieval reach prior work a reader knows should
+"""The recall test for the evidence map (appendix F.2): did retrieval reach prior work a reader knows should
 be there, and what did the map make of it?"""
 from pathlib import Path
 

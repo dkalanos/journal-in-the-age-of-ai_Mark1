@@ -1,7 +1,7 @@
 # 3-editor/ · what the editor gets, and signs
 
 One folder per paper: the journal's file on it, from the first submission to the certificate or the return. It
-stays with the journal and travels to another journal only at the author's request (appendix G.3).
+stays with the journal and travels to another journal only at the author's request (appendix D.7).
 `statistics/` sits beside the papers.
 
 ## The journal's runs: `<paper>/intake/<run-id>/`
@@ -14,7 +14,7 @@ this order:
 |---|---|
 | `findings.md`, `findings.json` | The findings report (M5): findings only, each with a pointer into the record and into the standard, the versions and the models. Findings the author's own run lacks are marked. |
 | `sieve/` | The SIEVE analysis: `evidence-map.md` and `.json` (M6), and `warrant.md`, the Level 3 findings on their own. |
-| `diff-vs-author.md` | The journal's run against the author's, in both directions (appendix D.8). |
+| `diff-vs-author.md` | The journal's run against the author's, in both directions (appendix D.2). |
 | `decision.yaml`, `decision.md` | The intake decision: the standard action under the published mapping, the rules that fired, the action taken, any departure with its reason, and the editor's signature. |
 | `bundles/` | Every model-judged question as it was asked and answered: prompt, answer, reasoning, for each of the k repetitions. The audit trail; not needed to decide. |
 | `ai-appendix/` | Present only when the submission had none and the journal generated it (M0). |

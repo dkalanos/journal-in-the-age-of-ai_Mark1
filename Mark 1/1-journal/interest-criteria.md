@@ -1,6 +1,6 @@
 # Interest criteria · version 0.1
 
-Published object 5 (appendix H). The criteria by which this community judges whether what is new in a paper is
+Published object 5 (appendix D.1). The criteria by which this community judges whether what is new in a paper is
 of interest. The editor and two named reviewers sign this judgment; it is the one judgment no machine input
 decides. Demonstration text: each journal writes its own, in its own words, and this is where journals differ.
 

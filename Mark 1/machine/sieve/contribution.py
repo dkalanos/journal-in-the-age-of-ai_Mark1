@@ -1,5 +1,5 @@
 """Level 3 · Contribution warrant (SIEVE): does the contribution claim survive comparison with the
-nearest prior work? Produces the evidence map (appendix D.6). A model judgment on a retrieved candidate set."""
+nearest prior work? Produces the evidence map (appendix C.6). A model judgment on a retrieved candidate set."""
 from collections import Counter
 
 import yaml

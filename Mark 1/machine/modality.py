@@ -1,4 +1,4 @@
-"""M2 · The modality router: which checks apply to the declared kind of research (appendix D.4).
+"""M2 · The modality router: which checks apply to the declared kind of research (appendix A and C.2 to C.4).
 Applying hypothesis-testing standards to interpretive work would itself be a warrant error."""
 from dataclasses import dataclass
 

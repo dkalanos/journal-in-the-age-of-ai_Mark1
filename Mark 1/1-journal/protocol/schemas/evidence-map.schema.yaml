@@ -1,4 +1,4 @@
-title: Evidence map (appendix D.6), the contribution claim placed against the corpus
+title: Evidence map (appendix C.6), the contribution claim placed against the corpus
 type: object
 required: [paper_id, run_id, corpus, claims, coverage]
 properties:

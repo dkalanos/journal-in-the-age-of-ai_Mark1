@@ -1,9 +1,9 @@
 # Export each slide of the system-diagram deck as PNG and PDF into this folder.
 # Needs PowerPoint (COM). Run from anywhere:
-#   powershell -NoProfile -File export_figures.ps1                       # v6dk, the current deck
-#   powershell -NoProfile -File export_figures.ps1 -Deck "system_diagrams v5dk.pptx" -Out "v5"
+#   powershell -NoProfile -File export_figures.ps1                       # v7dk, the current deck
+#   powershell -NoProfile -File export_figures.ps1 -Deck "system_diagrams v6dk.pptx" -Out "v6"
 param(
-    [string]$Deck = "system_diagrams v6dk.pptx",
+    [string]$Deck = "system_diagrams v7dk.pptx",
     [string]$Out = "."
 )
 $here = Split-Path -Parent $MyInvocation.MyCommand.Path

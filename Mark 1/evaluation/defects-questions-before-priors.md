@@ -1,6 +1,6 @@
 # Defect detection · questions-before-priors
 
-Each defected copy carries one planted error. Deterministic checks only (Levels 1, 2c, 2d stamp, soundness, perturbation, injection scan); the model-judged checks are evaluated in Stage 2 (appendix I.4).
+Each defected copy carries one planted error. Deterministic checks only (Levels 1, 2c, 2d stamp, soundness, perturbation, injection scan); the model-judged checks are evaluated in Stage 2 (appendix H).
 
 The unaltered record has findings of its own, so each copy is judged against them: nonconformance at claims:C10; pointer_missing at claims:C10.
 

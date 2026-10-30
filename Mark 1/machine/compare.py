@@ -2,7 +2,7 @@ from .findings import Finding, FindingsReport
 
 
 def mark_absent(journal: FindingsReport, author: FindingsReport) -> tuple[list[Finding], list[Finding]]:
-    """Mark each journal finding the author's own run did not produce (appendix D.8); also list the reverse."""
+    """Mark each journal finding the author's own run did not produce (appendix D.2); also list the reverse."""
     author_keys = {f.key for f in author.findings}
     journal_keys = {f.key for f in journal.findings}
     for f in journal.findings:

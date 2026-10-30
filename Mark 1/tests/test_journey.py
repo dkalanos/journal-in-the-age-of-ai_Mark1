@@ -3,7 +3,7 @@ import shutil
 
 import pytest
 
-from machine import generator, history, run, schemas, stats, workflow
+from machine import generator, history, run, schemas, stats, versions, workflow
 from machine.record import Record
 from machine.state import StateError, state
 from machine.util import dump_yaml, load_json, load_yaml
@@ -58,8 +58,15 @@ def test_issue_refuses_before_interest_and_writes_nothing(at_intake, workspace):
 
 
 def test_replay_reproduces_the_journal_run(at_intake):
-    _, differences = run.replay(at_intake.run_id)
+    outcome, differences = run.replay(at_intake.run_id)
+    assert differences == [] and outcome.code_changed is None
+
+
+def test_replay_notes_a_change_of_the_check_code_and_still_reproduces(at_intake, monkeypatch):
+    monkeypatch.setattr(versions, "machine_sha", lambda: "0" * 12)
+    outcome, differences = run.replay(at_intake.run_id)
     assert differences == []
+    assert outcome.code_changed == (load_json(at_intake.folder / "findings.json")["machine_sha"], "0" * 12)
 
 
 def test_replay_without_the_stored_answers_says_so_and_writes_nothing(at_intake):

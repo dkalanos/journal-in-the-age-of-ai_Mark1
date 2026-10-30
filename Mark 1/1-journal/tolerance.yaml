@@ -1,4 +1,4 @@
-# Repeatability of the model-judged checks (appendix D.1). Each runs k times. A finding enters the
+# Repeatability of the model-judged checks (appendix C.7). Each runs k times. A finding enters the
 # report when at least `quorum` runs agree on it. A check whose agreement falls below its minimum is
 # reported as not publishable at this tolerance, and its findings move to `below_tolerance`.
 k: 3

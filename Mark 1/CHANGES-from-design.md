@@ -261,3 +261,17 @@ v4dk deck. Items marked **v4** followed Kalanoski's 2026-10-20 proposals; Ryall 
     waiting prompts are, and the findings are not compared. Deterministic-only runs replay as before. The early stop
     also keeps a clone without `sieve/candidates.json` from building the map's candidate list anew, which would have
     gone to the network before the missing answers were noticed.
+
+## After the figure check (2026-10-30)
+
+46. **Replay reports a change of the check code apart from the findings** (`machine/run.py`, `machine/cli.py`). Every
+    report carries the hash of the code that produced it, and a replay's copy carries the hash of the code that
+    replayed it. After the corrections of 2026-10-29 (items 44 and 45) the replay of round 2's two runs reported
+    "differs from the original in 1 field(s): machine_sha", with every finding reproduced. The code hash, and the
+    version a deterministic finding carries, which is the same hash, are now left out of the comparison; when they
+    differ, replay says so beside the result and gives both hashes. Round 2's two runs again reproduce exactly, with
+    the note. One test added (106).
+47. **Section numbers follow the appendix of 2026-10-30.** The cross-references in the code's docstrings and in the
+    journal's documents named sections of an earlier draft of the appendix (the five published objects as "H", the
+    planted defects as "I.4"); they now name the sections as the appendix numbers them. The teaching-note pilot the
+    evaluation folder was waiting for is not in the current appendix, and its README says so.

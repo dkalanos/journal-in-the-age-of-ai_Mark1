@@ -1,4 +1,4 @@
-"""Departure statistics (appendix F.4): how often each editor departs from the standard action, and which way."""
+"""Departure statistics (appendix D.4): how often each editor departs from the standard action, and which way."""
 import csv
 from collections import defaultdict
 from pathlib import Path

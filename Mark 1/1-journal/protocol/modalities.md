@@ -1,7 +1,7 @@
 # The other modalities · specified, not built
 
 The record's parts are common to every modality; provenance, the Level 2 definitions and the standard differ
-(appendix C.1, D.3). Mark 1 builds formal theory. The rest are specified here at the level the protocol needs,
+(appendix B.1, C.3 and C.4). Mark 1 builds formal theory. The rest are specified here at the level the protocol needs,
 and the modality router refuses them with this file as its reason (Stage 2).
 
 | Modality | Provenance means | A claim is | A pointer names | An anchor holds when |

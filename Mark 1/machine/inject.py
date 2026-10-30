@@ -1,4 +1,4 @@
-"""Defect injection for the evaluation (appendix I.4).
+"""Defect injection for the evaluation (appendix F.1).
 
 Each defect makes a copy of a record with one planted error and states the findings it should produce. The edits
 below are written against the text of Questions Before Priors; another paper gets its own defects, against its own
@@ -157,7 +157,7 @@ def _matches(expected: dict, found: tuple[str, str]) -> bool:
 def _render(paper_id: str, rows: list, baseline: list) -> str:
     out = [f"# Defect detection · {paper_id}", "",
            "Each defected copy carries one planted error. Deterministic checks only (Levels 1, 2c, 2d stamp, soundness, "
-           "perturbation, injection scan); the model-judged checks are evaluated in Stage 2 (appendix I.4).", ""]
+           "perturbation, injection scan); the model-judged checks are evaluated in Stage 2 (appendix H).", ""]
     if baseline:
         out += ["The unaltered record has findings of its own, so each copy is judged against them: "
                 + "; ".join(f"{c} at {p}" for c, p in baseline) + ".", ""]

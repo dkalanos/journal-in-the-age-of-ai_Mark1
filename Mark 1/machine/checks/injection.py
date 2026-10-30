@@ -1,4 +1,4 @@
-"""Injection screen: text in the record addressed to an evaluator is itself a finding (appendix C.4).
+"""Injection screen: text in the record addressed to an evaluator is itself a finding (appendix C.1).
 
 A deterministic scan of every text file in the record, plus anything a quorum of the answering
 models reported under `injection_observed` while doing another check.

@@ -1,4 +1,4 @@
-"""Object 4 · The published mapping from findings to the standard action at intake (appendix F.1)."""
+"""Object 4 · The published mapping from findings to the standard action at intake (appendix D.3)."""
 from dataclasses import dataclass
 
 from . import paths

@@ -67,13 +67,17 @@ def replay(args) -> int:
               f"the run, so the findings were not compared (the waiting prompts: "
               f"{paths.relative(outcome.folder / 'PENDING.md')})")
         return 3
+    code = ""
+    if outcome.code_changed:
+        old, new = outcome.code_changed
+        code = f"; the check code has changed since the run ({old} -> {new}), so the copy names the newer code"
     if differences:
-        print(f"replay of {args.run_id} differs from the original in {len(differences)} field(s):")
+        print(f"replay of {args.run_id} differs from the original in {len(differences)} field(s){code}:")
         for d in differences:
             print(f"  {d}")
         return 1
     print(f"replay of {args.run_id} reproduces the original findings report exactly "
-          f"({paths.relative(outcome.folder / 'findings.json')})")
+          f"({paths.relative(outcome.folder / 'findings.json')}){code}")
     return 0
 
 

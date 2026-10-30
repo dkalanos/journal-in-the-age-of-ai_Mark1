@@ -1,7 +1,7 @@
 # 1-journal/corpus/ · what the evidence map is allowed to see
 
-The corpus is the journal's own object, published in advance (appendix D.6: "the corpus the journal has access
-to"). It has two parts, and the map states its coverage as exactly what was searched, never as "the literature".
+The corpus is the journal's own object, published in advance (appendix C.6: "the corpus is the journal's"). It has
+two parts, and the map states its coverage as exactly what was searched, never as "the literature".
 
 ## The venues: `venues.yaml`
 

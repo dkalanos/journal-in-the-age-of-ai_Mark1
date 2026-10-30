@@ -260,7 +260,7 @@ def round_diff(paper_id: str, a: int, b: int, claim_changes: list[str], files: l
         out += ["## Who made it" if first else "## Who changed it", "",
                 "As the record declares it: the AI-use record names each use of AI and what it touched, and the "
                 "generator stamp fingerprints what the published generator wrote. The record cannot prove who wrote "
-                "what (appendix E.5); this table reads it, it does not verify it.", "",
+                "what (appendix B.6); this table reads it, it does not verify it.", "",
                 f"| File | {'Made' if first else 'Changed'} by | On what basis |", "|---|---|---|"]
         out += [f"| `{c['file']}` | {attribution.LABELS[c['by']]} | {c['basis'].replace('|', '/')} |"
                 for c in who["changes"]] or ["| _no file changed_ | | |"]
