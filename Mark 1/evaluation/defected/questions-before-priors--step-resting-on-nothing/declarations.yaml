@@ -1,0 +1,7 @@
+modality: formal
+standard_version: formal-0.2
+materials_tier: public
+ai_use_summary:
+  tools: [ChatGPT, Codex, Claude Code]
+  roles: [editing, code, record_keeping]
+working_history_submitted: false

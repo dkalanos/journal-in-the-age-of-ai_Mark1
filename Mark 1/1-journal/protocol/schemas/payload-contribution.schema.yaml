@@ -1,0 +1,28 @@
+title: Level 3 contribution warrant payload, one placement per claim
+type: object
+required: [claims]
+additionalProperties: false
+properties:
+  claims:
+    type: array
+    items:
+      type: object
+      required: [claim_id, nearest, newness_kind, rationale]
+      properties:
+        claim_id: {type: string}
+        nearest:
+          type: array
+          maxItems: 5
+          items:
+            type: object
+            required: [corpus_id, establishes, relation, basis, poses_question, states_claim]
+            properties:
+              corpus_id: {type: string}
+              establishes: {type: string}
+              relation: {enum: [anticipates, overlaps, extends, background]}
+              basis: {enum: [introduction, abstract, summary, title_and_known_work]}
+              poses_question: {type: boolean}
+              states_claim: {type: boolean}
+        newness_kind: {enum: [answer, question, reading, evidence, none, uncovered]}
+        rationale: {type: string}
+        question_as_read: {type: [string, "null"]}  # null when the claims list states the question and the answer judged on it as stated

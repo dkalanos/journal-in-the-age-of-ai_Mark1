@@ -1,0 +1,11 @@
+title: Generator stamp (ai-appendix/generated.yaml), what produced the AI appendix and from which inputs
+type: object
+required: [generator_version, run_id, models, inputs, outputs, agreement, generated_at]
+properties:
+  generator_version: {type: string}
+  run_id: {type: string}
+  models: {type: array, items: {type: string}}
+  inputs: {type: object, additionalProperties: {type: string}}
+  outputs: {type: object, additionalProperties: {type: string}}
+  agreement: {type: number}
+  generated_at: {type: string}

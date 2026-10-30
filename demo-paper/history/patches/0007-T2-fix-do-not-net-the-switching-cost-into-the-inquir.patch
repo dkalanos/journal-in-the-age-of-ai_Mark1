@@ -1,0 +1,76 @@
+From 30c5de82762ee8116238f0a2be9eb14d46adbde2 Mon Sep 17 00:00:00 2001
+From: MDR Git <mdr@mikeryall.com>
+Date: Sat, 25 Jul 2026 06:21:30 -0400
+Subject: [PATCH 07/27] T2 fix: do not net the switching cost into the inquiry
+ decision
+
+Per author: netting kappa into participation is inconsistent with unawareness --
+kappa prices a switch to a policy on the refined partition, which is unrepresentable
+pre-insight, so the agent cannot price it when deciding to inquire.
+
+- Participation reverted to lambda_i * B_i >= gamma_i (prices the question, not the
+  answer). kappa now enters only the post-insight (S,s) switch (ass:commitment).
+- rem:stickiness rewritten: enlightened-inertia decoupling is structural (price the
+  question now, decide the switch later), holds deterministically, not opacity-only;
+  the agent cannot anticipate declining to act because it cannot anticipate what it
+  will learn.
+- Design note 4.4 and memory updated with the general principle: pre-insight
+  deliberation quantifies only over currently-represented objects.
+
+Compiles, 41pp.
+
+Co-Authored-By: Claude Opus 4.8 <noreply@anthropic.com>
+---
+ paper/tbv_mdr_Paper01-v04.tex | 17 +++++++++--------
+ 1 file changed, 9 insertions(+), 8 deletions(-)
+
+diff --git a/paper/tbv_mdr_Paper01-v04.tex b/paper/tbv_mdr_Paper01-v04.tex
+index 1830ae9..b761637 100644
+--- a/paper/tbv_mdr_Paper01-v04.tex
++++ b/paper/tbv_mdr_Paper01-v04.tex
+@@ -816,9 +816,9 @@ The outside option $0$ represents declining to attribute actionable value to any
+ \begin{proposition}[Participation]
+ \label{prop:participation}
+ $\widehat B_i(r_i)$ is well defined, nonnegative, bounded by $T(\max \pi_i-\min \pi_i)$, and computable from the deliberative record, the carried-forward policy, and the known structure $(\Theta,\pi_i)$.
+-At a dissonant record, electing inquiry has represented value $\lambda_i^{(k_i)}\bigl(\widehat B_i(r_i)-\kappa_i\bigr)_{+}-\gamma_i$---the achievability-weighted horizon gain, net of the switching hurdle acting on the distinction would trigger, less the inquiry cost---so agent $i$ elects if and only if
++At a dissonant record, electing inquiry has represented value $\lambda_i^{(k_i)}\widehat B_i(r_i)-\gamma_i$, so agent $i$ elects if and only if
+ \[
+-\lambda_i^{(k_i)}\bigl(\widehat B_i(r_i)-\kappa_i\bigr)_{+}\geq\gamma_i.
++\lambda_i^{(k_i)}\widehat B_i(r_i)\geq\gamma_i.
+ \]
+ Moreover, at a dissonant record, $\widehat B_i(r_i)>0$ if and only if some coherent grouping has positive aggregate robust gain:
+ \[
+@@ -836,11 +836,12 @@ The set whose maximum appears in \cref{eq:leverage} always contains $0$, includi
+ Writing $\Delta \pi_i=\max \pi_i-\min \pi_i$, each $\Delta_i(t,a_i)\leq\Delta \pi_i$.
+ Every grouping contains exactly $\lvert r_i\rvert$ tokens, so $L_i(G;r_i)\leq\lvert r_i\rvert\Delta \pi_i$ and therefore $\widehat B_i(r_i)\leq T\Delta \pi_i$.
+ Computability follows by finite enumeration using only $r_i$, the carried-forward policy, $\Theta$, and $\pi_i$.
+-The election rule is the achievability-weighted horizon gain, net of the switching hurdle, compared with the inquiry cost.
++The election rule is the achievability-weighted represented gain net of the inquiry cost.
+ Finally, because the outside option is zero, the maximum in \cref{eq:leverage} is strictly positive exactly when some coherent grouping has strictly positive aggregate robust gain.
+ \end{proof}
+ 
+ The participation rule is a coherent non-Bayesian criterion operating precisely where Bayes is undefined, and it respects every discipline of \cref{sec:commitments}: $\widehat B_i$ quantifies over the agent's own remembered tokens and the groupings it can articulate---``situations like the ones I lost will recur, and a distinction that sorted them would let me act on them''---never over named future representations.
++This is also why the switching hurdle of \cref{ass:commitment} cannot enter the inquiry decision: the policy it would buy lives on a partition the agent does not yet possess, so it cannot be priced before insight---the agent values the question, not the answer.
+ The estimate can be wrong, and honestly so: the agent does not know whether a distinction realizing its best grouping exists, which is why $\lambda_i^{(k)}$ prices achievability.
+ Two comparative properties organize the applications.
+ \emph{Action separation, not information}: the value of a question tracks whether resolving it could change behavior, not how much residual uncertainty remains; an agent for whom no coherent grouping yields positive aggregate robust gain declines to inquire.
+@@ -848,11 +849,11 @@ Two comparative properties organize the applications.
+ 
+ \begin{remark}[Enlightened inertia]
+ \label{rem:stickiness}
+-Because switching is itself costly, acquiring a distinction and acting on it are separate decisions.
+-An agent elects inquiry only when the achievability-weighted horizon gain, net of the switching hurdle, covers the inquiry cost (\cref{prop:participation}); but the deliberative leverage $\widehat B_i$ is an estimate, and the refinement that actually arrives may recommend a policy change whose realized horizon gain falls below $\kappa_i$.
+-The agent then refines its awareness and updates its model while carrying its old policy forward: it knows the world is not what it thought, yet the change this implies is not worth its cost.
+-This is a second source of persistence, distinct from an unpriced question---the model moves and behavior does not---and it feeds the performance differences of \cref{sec:dynamics}.
+-Under the pointwise-transparency condition of \cref{rem:certification} the estimate is exact and the two decisions align, so enlightened inertia is a feature of opacity: the very gap the achievability weight prices.
++Acquiring a distinction and acting on it are separate decisions, and they must be, because the policy one would switch to lives on a partition the agent cannot yet represent.
++Pre-insight the agent therefore prices only its question---the stakes $\widehat B_i$ of its present, mis-served record---and cannot fold in the switching hurdle of a refined policy it has no way to name (\cref{prop:participation}).
++Once inquiry delivers a concrete refinement, the switch becomes a well-defined $(S,s)$ decision (\cref{ass:commitment}): the agent may find the realized horizon gain below $\kappa_i$ and carry its old policy forward.
++It then knows the world is not what it thought yet does not act---a second source of persistence, distinct from an unpriced question, and one the agent could not have anticipated, because it could not have anticipated what it would learn.
++This holds whether or not mechanisms are deterministic, and it feeds the performance differences of \cref{sec:dynamics}.
+ \end{remark}
+ 
+ \begin{remark}[What determinism certifies---and what it does not]
+-- 
+2.43.0
+

@@ -1,0 +1,1040 @@
+claims:
+- id: C1
+  kind: contribution
+  main: true
+  text: 'Existing work explains learning and action once theories, vocabularies, or awareness advantages
+    exist; this paper supplies the pre-Bayesian passage from represented-class failure to a question,
+    a fallible new representation, formulation, and renewed Bayesian judgment. Its distinctive economic
+    and epistemic results are that an agent can value a finer actionable distinction before representing
+    its answers, and that evidence generating a truth-blind representation cannot be counted again as
+    independent validation. Embedding that passage in strategic interaction provides a mechanism by which
+    play exposes or conceals coarse languages and establishes the existence of absorbing configurations
+    with heterogeneous terminal languages and payoffs. The contribution is therefore upstream: question
+    histories and rational stopping points can generate strategic heterogeneity before priors over the
+    resulting theories are available. The paper endogenizes the strategically consequential transition
+    into a new hypothesis space while leaving the semantic act that produces it primitive.'
+  question: 'How an actor whose causal language has failed comes to possess a new one: the step before a
+    theory, or at least a hypothesis space, exists.'
+  question_pointer: paper/paper.md:L14-L15
+  condition: null
+  pointer: paper/paper.md#statement-of-contribution
+  evidence_pointer: paper/paper.md:L1171-L1200
+  derivation_id: null
+- id: C2
+  kind: result
+  form: proposition
+  main: true
+  text: 'Proposition 5.1 (No Bayesian emergence): Any well-defined judged or ordinary conditioning of
+    a prior mu in Delta(M(P_i)) on an observation in the agent''s observation algebra yields a posterior
+    mu'' in Delta(M(P_i)). No sequence of such updates makes a theory outside M(P_i) expressible or a
+    distinction finer than P_i usable in a policy.'
+  condition: []
+  pointer: paper/paper.md#prop-no-emergence
+  evidence_pointer: paper/paper.md#proof-prop-no-emergence
+  derivation_id: D7
+- id: C3
+  kind: result
+  form: example
+  main: false
+  text: 'Example 1 (continued, Section 5): Under the coarse partition, firm i''s expressible theories
+    are the constant assignments m^0, m^1, m^n. The row law tau(s_rc) = theta^r is inexpressible: no reweighting
+    of {m^0, m^1, m^n}, on any evidence, produces it. After successive deterministic observations eliminate
+    the expressible theories one by one, the observation that eliminates the last theory with positive
+    posterior mass produces a zero Bayesian normalizer, so ordinary conditioning itself is undefined.
+    With stochastic full-support mechanisms the Bayesian normalizer remains positive and no such announcement
+    occurs.'
+  condition: null
+  pointer: paper/paper.md#example-1-continued
+  evidence_pointer: paper/paper.md:L370-L394
+  derivation_id: null
+- id: C4
+  kind: result
+  form: lemma
+  main: false
+  text: 'Lemma D.1 (Test consistency), as stated in the paper: sequential testing is consistent. A theory
+    strictly inadequate at a recurrent pair is almost surely rejected, an adequate theory is falsely rejected
+    with conditional probability at most E_i^m(t_0)*exp(-b_i), and the active set is monotone and eventually
+    constant.'
+  condition:
+  - TV(p_i*(.|C,a), marg_i m(C)(a)) != eta
+  pointer: paper/paper.md#def-test
+  evidence_pointer: appendix/appendix.md#lem-test-consistency
+  derivation_id: D16
+- id: C5
+  kind: result
+  form: proposition
+  main: true
+  text: 'Proposition 6.5 (Exposure and dissonance): Fix a standing profile and suppose no theory sits
+    exactly at the adequacy boundary. If every theory that is eta-adequate under the fixed profile remains
+    active when that profile begins at t_0, then P_i is exposed if and only if eventual dissonance occurs
+    almost surely. If the profile is not exposed and m is an active eta-adequate theory at entry, then,
+    conditional on the entry history, dissonance is avoided forever with probability at least 1 - E_i^m(t_0)*exp(-b_i).
+    If some such m satisfies E_i^m(t_0) <= 1, this bound is at least 1 - exp(-b_i).'
+  condition:
+  - TV(p_i*(.|C,a), marg_i m(C)(a)) != eta
+  - E_i^m(t_0) <= 1
+  pointer: paper/paper.md#prop-exposure
+  evidence_pointer: paper/paper.md:L461-L476
+  derivation_id: D8
+- id: C6
+  kind: result
+  form: example
+  main: false
+  text: 'Example 1 (continued, Section 6): Let beta = 1, with heterogeneous priors (firm 1 considers theta^0
+    more likely than theta^1, firm 2 the reverse). Against any conjecture, offering architecture 0 is
+    subjectively strictly dominant for firm 1, and architecture 1 for firm 2, whenever mu_i(m^a) > (2
+    - beta)*mu_i(m^a''); at beta = 1 this is simple belief asymmetry, so the firms adopt differentiated
+    constant policies. With T = 2 and two periods serving s_00 and s_11 under differentiated play, firm
+    1 wins at s_00 (payoffs 1, 0) and loses at s_11 (payoffs 0, 1). No constant assignment is consistent
+    with both observations (m^0 fails at s_11, m^1 at s_00, and m^n predicts 1/2 at both), so each firm''s
+    active set empties: causal dissonance in its exact deterministic form. Had the firms pooled on the
+    same architecture at both states, each would have received 1/2 every period, consistent with all three
+    constant theories; the pooled profile is concealing. Belief heterogeneity, by inducing differentiated
+    play, is what made the shared language''s failure visible.'
+  condition: null
+  pointer: paper/paper.md#example-1-continued-2
+  evidence_pointer: paper/paper.md:L461-L493
+  derivation_id: D1
+- id: C7
+  kind: result
+  form: proposition
+  main: false
+  text: 'Proposition D.2 (Cellwise coherence), as stated in the paper: restoration factorizes cell by
+    cell, so finding a repair is a coloring problem. For a candidate refinement P'', M_hat_i^R(P'', r_bar_i)
+    = product over C'' in P'' of Theta_i^R(C''|r_bar_i), and P'' is restorative if and only if every cell
+    of P'' is repair-coherent (Theta_i^R(C''|r_bar_i) nonempty).'
+  condition: []
+  pointer: paper/paper.md#def-restorative
+  evidence_pointer: appendix/appendix.md#prop-coherence
+  derivation_id: D17
+- id: C8
+  kind: result
+  form: proposition
+  main: true
+  text: 'Theorem 7.4 (Observational nonidentification): Fix common initial epistemic states, common record-measurable
+    behavioral and tie-breaking rules, common truth-blind inquiry-and-formulation rules, and a finite
+    horizon of H periods. Let tau != tau'' be objective assignments whose joint consequence laws agree,
+    tau(s)(a) = tau''(s)(a), at every state-profile pair reachable through H under either world. The two
+    worlds admit a coupling under which, through H, their state draws, full consequence profiles, analyst
+    and deliberative records, partition paths, beliefs, conjectures, standing policies, and production-and-formulation
+    outputs coincide pathwise; if the equality holds at every pair reachable at any finite horizon, the
+    coupling extends to the entire process. Consequently, no truth-blind inquiry-and-formulation rule
+    can produce an objectively correct formulation with probability one in both worlds. More generally,
+    the same conclusion holds for any success criterion whose sets of realizable outputs are disjoint
+    across the two worlds.'
+  condition:
+  - tau != tau'
+  pointer: paper/paper.md#thm-nonidentification
+  evidence_pointer: paper/paper.md#proof-thm-nonidentification
+  derivation_id: D9
+- id: C9
+  kind: result
+  form: proposition
+  main: true
+  text: 'Proposition 7.5 (Robust sufficiency): A partition sufficient for every assignment in a candidate
+    set calT must refine join_{tau'' in calT} P^tau'', the coarsest partition that refines every candidate
+    causal-equivalence partition. A representation guaranteed to accommodate all observationally equivalent
+    worlds is accordingly finer than any single world requires; a technology that economizes on distinctions
+    must accept fallibility.'
+  condition: []
+  pointer: paper/paper.md#prop-robust-sufficiency
+  evidence_pointer: paper/paper.md#nonidentification-and-the-price-of-robustness
+  derivation_id: D10
+- id: C10
+  kind: result
+  form: example
+  main: false
+  text: 'Example 1 (continued, Section 7): After discovery the record labels architecture 0 as preferred
+    at s_00 and architecture 1 at s_11. Of the 15 partitions of the four states, exactly 4 are minimally
+    restorative, each separating s_00 from s_11: the row partition {{s_00,s_01},{s_10,s_11}}, the column
+    partition {{s_00,s_10},{s_01,s_11}}, and the two partitions isolating one labeled state. The record
+    directs inquiry (11 partitions are excluded) without determining it (4 remain). A factor-seeking technology
+    produces the row or the column refinement. The column world tau''(s_rc) = theta^c agrees with the
+    row world on the full joint mechanism at both visited states, so no truth-blind rule can formulate
+    correctly in both: a randomized rule succeeds in the worst case with probability at most 1/2. By Proposition
+    7.5 a partition sufficient for both worlds must be the full partition into singletons. Whichever factor
+    refinement arrives, its unique consistent theory extrapolates the wrong prediction to the two unlabeled
+    states in one of the two worlds.'
+  condition: null
+  pointer: paper/paper.md#example-1-continued-3
+  evidence_pointer: paper/paper.md#nonidentification-and-the-price-of-robustness
+  derivation_id: null
+- id: C11
+  kind: result
+  form: proposition
+  main: true
+  text: 'Proposition 8.4 (Participation): B_hat_i(r_i) is well defined, nonnegative, bounded by T*(max
+    pi_i - min pi_i), and computable from the deliberative record, the standing policy, and the agent-known
+    model primitives and test calibration. At a dissonant record, electing inquiry has represented value
+    lambda_i^(k_i)*B_hat_i(r_i) - gamma_i, so agent i elects if and only if lambda_i^(k_i)*B_hat_i(r_i)
+    >= gamma_i. Moreover, at a dissonant record, B_hat_i(r_i) > 0 if and only if J_i(G; r_i) > 0 for some
+    G in G_i(r_i). Thus a question is priced positively only when some coherent reading of the record
+    supports action variation within at least one current awareness cell that robustly outperforms the
+    best action kept uniform on that cell under the same coherent reading.'
+  condition: []
+  pointer: paper/paper.md#prop-participation
+  evidence_pointer: paper/paper.md#proof-prop-participation
+  derivation_id: D11
+- id: C12
+  kind: result
+  form: example
+  main: false
+  text: 'Example 1 (continued, Section 8): At the discovery record (T = 2, diagonal states served), deterministic
+    conflicting payoffs certify the two tokens as distinct states, and the best coherent grouping splits
+    them. The fine optimal gain is 0 on the winning token and 1/2 on the losing token, so L_i^fine = 1/2,
+    L_i^cur = 0, J_i = 1/2 and B_hat_i = (2/2)*(1/2) = 1/2 for both firms. Each elects iff lambda_i^(0)*B_hat_i
+    >= gamma_i, i.e. lambda_i^(0)/2 >= gamma_i. After the row refinement, the post-refinement horizon
+    gain is exactly 1/2, so the firm re-differentiates when kappa_i < 1/2 and holds its old policy (enlightened
+    inertia) when kappa_i >= 1/2. In a later stretch serving the two off-diagonal states, firm 1 holds
+    the row refinement and firm 2 the column refinement. Then L_1^fine = L_1^cur = J_1 = B_hat_1 = 0 (the
+    firm holding the truth never inquires again), while L_2^fine = 1, L_2^cur = 0, J_2 = 1 and B_hat_2
+    = (2/4)*1 = 1/2. The winner/loser asymmetry B_hat_1 = 0 < B_hat_2 is the durable point.'
+  condition: null
+  pointer: paper/paper.md#example-1-continued-4
+  evidence_pointer: paper/paper.md:L842-L870
+  derivation_id: D2
+- id: C13
+  kind: result
+  form: proposition
+  main: true
+  text: 'Theorem 9.2 (No additional evidence beyond the generating record): Conditional on the analyst
+    record r_bar_i and the pre-production inquiry history h_i, a record-measurable, truth-blind production,
+    formulation, and bridge-prior-selection rule makes the complete output O_i = (P_i'', m'', mu_i^+)
+    conditionally independent of the candidate objective assignment. Consequently, under the reflective
+    joint law, for K_i(.|r_bar_i, h_i)-almost every realized output o and every tau'' in calT, nu(tau''
+    | r_bar_i, h_i, O_i = o) = nu(tau'' | r_bar_i, h_i), and therefore W(o) = nu(A_o | r_bar_i, h_i).
+    Passing the repair test adds no information beyond the record. If candidates assign equal likelihood
+    to (r_bar_i, h_i), their posterior odds remain their reflective prior odds.'
+  condition: []
+  pointer: paper/paper.md#thm-uninformative
+  evidence_pointer: paper/paper.md#proof-thm-uninformative
+  derivation_id: D12
+- id: C14
+  kind: result
+  form: proposition
+  main: true
+  text: 'Corollary 9.3 (Self-audit requires sufficiency for the candidates): The assessment (calT, nu)
+    is expressible by agent i only if its current post-refinement partition P_i'' is sufficient for every
+    tau'' in calT, hence only if P_i'' refines the join of Proposition 7.5. This is necessary but not
+    sufficient for complete computation of warrant. An agent holding a minimal restoration therefore generally
+    cannot formulate the cross-representation comparison required to determine the sign or magnitude of
+    its signed warrant gap; a broader-awareness assessor may be able to.'
+  condition: []
+  pointer: paper/paper.md#cor-self-audit
+  evidence_pointer: paper/paper.md:L964-L990
+  derivation_id: D13
+- id: C15
+  kind: result
+  form: example
+  main: false
+  text: 'Example 1 (continued, Section 9): If firm i''s technology produces the column refinement, the
+    recoded record pins the unique consistent theory (architecture 0 on the first column, 1 on the second),
+    and representation-relative coherence assigns it probability 1. With calT = {row world, column world}
+    and a symmetric prior, the two worlds assign the realized diagonal-only record equal probability and
+    the technology is truth-blind. So by Theorem 9.2, W(O_i) = 1/2 and the signed warrant gap is 1 - 1/2
+    = +1/2. The same gap applies to a firm that acquires the row refinement (coherence 1, warrant 1/2):
+    confidence exceeds warrant even when the formulated theory is objectively correct. By Corollary 9.3
+    neither firm can conduct this assessment itself. One fresh differentiated observation at an off-diagonal
+    state resolves the row/column identification problem completely; at beta = 1, any number of pooled
+    observations remains nondiagnostic.'
+  condition: null
+  pointer: paper/paper.md#example-1-continued-5
+  evidence_pointer: paper/paper.md:L941-L990
+  derivation_id: D3
+- id: C16
+  kind: result
+  form: proposition
+  main: true
+  text: 'Theorem 10.4 (Epistemic absorption): Under Assumption 10.3, almost surely: (a) at most n*(|S|
+    - 1) refinements occur, and every agent''s awareness partition is eventually constant; (b) only finitely
+    many inquiry elections occur, because each agent stops electing once its achievability weight has
+    decayed enough that lambda_i^(k)*T*(max pi_i - min pi_i) < gamma_i, which happens after finitely many
+    consecutive failures because B_hat_i is bounded and gamma_i > 0; (c) there is an almost surely finite
+    period after which no agent''s language changes and no agent pays an inquiry cost, and every agent''s
+    epistemic life thereafter is judged-Bayesian updating within a fixed language. Moreover, on the event
+    that the standing profile is eventually constant: (d) every agent''s active set is eventually constant;
+    every retained theory is eta-adequate at every recurrent pair under terminal play; every theory eta-inadequate
+    at a recurrent pair is eventually absent; and each agent is eventually either never dissonant or in
+    dissonant stasis.'
+  condition:
+  - TV(p_i*(.|C,a), marg_i m(C)(a)) != eta
+  - pi_underbar > 0
+  - gamma_i > 0
+  pointer: paper/paper.md#thm-absorption
+  evidence_pointer: appendix/appendix.md:L55-L97
+  derivation_id: D14
+- id: C17
+  kind: result
+  form: proposition
+  main: false
+  text: 'Proposition D.5 (Rest points and persistence), as stated in the paper: converging non-stasis
+    configurations limit to a partial SCUE. A SCUE configuration with strict optimality margins and zero
+    leverage persists, exactly with deterministic mechanisms and with probability at least 1 - sum_i exp(-b_i)
+    in the stochastic case, so capacity governs the robustness of a rest point.'
+  condition:
+  - E_i^m(t_0) <= 1
+  - 'partial-SCUE limit: awareness partitions and standing policies eventually constant a.s., conjectures and
+    reference posteriors converge, and each non-stasis agent''s standing policy is a strict no-switch point at
+    the limit'
+  - 'persistence: the configuration satisfies the SCUE conditions, its play generates only records with B_hat_i
+    = 0, and each standing action is strictly optimal under every conjecture and every theory in the active set'
+  - 'stochastic persistence bound: at entry every active set is nonempty, every theory in it is eta-adequate
+    under the configuration''s play with E_i^m <= 1, and each standing action is strictly optimal under every
+    conjecture and every eta-adequate theory'
+  pointer: paper/paper.md#thm-absorption
+  evidence_pointer: appendix/appendix.md#prop-rest-points
+  derivation_id: D18
+- id: C18
+  kind: result
+  form: proposition
+  main: false
+  text: 'Proposition D.6 (On-path adequacy, and where error lives), as stated in the paper: in a SCUE,
+    surviving error lives only in what play never exposes. Acting-belief mass on every eta-inadequate
+    theory vanishes, and all retained falsity is confined to pooled mechanism assignments within tolerance
+    at visited profiles and to counterfactual claims at unvisited profiles.'
+  condition:
+  - TV(p_i*(.|C,a), marg_i m(C)(a)) != eta
+  pointer: paper/paper.md#rem-anomaly
+  evidence_pointer: appendix/appendix.md#prop-adequacy
+  derivation_id: D19
+- id: C19
+  kind: result
+  form: comparative_static
+  main: false
+  text: 'Proposition D.7 (Capacity: detection speed and robustness), as stated in the paper: in stochastic
+    environments capacity is a single cognitive-style dial. Expected detection time under an exposed profile
+    is O(b_i/D_i) (and Omega(b_i)), while spurious dissonance at a non-exposed rest point has probability
+    at most exp(-b_i). A larger b_i lowers false-alarm risk but requires more accumulated evidence to
+    detect a broken language, and capacity plays no role in the exact deterministic case.'
+  condition:
+  - marg_i theta(a)(x_i) > 0
+  - D_i > 0
+  - 'detection bound: an exposed standing profile whose evidence processes are freshly initialized when that
+    profile begins'
+  - 'robustness bound: a non-exposed stochastic rest point entered under the hypotheses of Proposition D.5(ii-b)'
+  pointer: paper/paper.md#rem-anomaly
+  evidence_pointer: appendix/appendix.md#prop-capacity
+  derivation_id: D20
+- id: C20
+  kind: result
+  form: proposition
+  main: true
+  text: 'Proposition 10.5 (Persistent performance differences): There exist primitives and absorbing configurations
+    in which agents hold different terminal partitions and theories, and expected per-period payoffs differ
+    strictly and permanently, with no disadvantaged agent closing the gap. This is because, for each,
+    the corrective process has died economically at one of its two stages: either its question is unpriced
+    (dissonant stasis, lambda_i^(k_i)*B_hat_i(r_i) < gamma_i from some period on), or, having asked and
+    refined, the policy change its new model recommends is priced below the switching hurdle (enlightened
+    inertia, T-horizon gain <= kappa_i).'
+  condition: []
+  pointer: paper/paper.md#prop-persistence
+  evidence_pointer: paper/paper.md:L1091-L1160
+  derivation_id: D15
+- id: C21
+  kind: result
+  form: proposition
+  main: false
+  text: 'Proposition D.9 (No payoff-relevant policy error in diagnostic environments), as stated in the
+    paper: in environments whose primitives are diagnostic (payoff-relevant policy errors always expose
+    the erring agent''s awareness under confirmed stationary play), no SCUE contains a payoff-relevant
+    policy error.'
+  condition: []
+  pointer: paper/paper.md#rem-two-sources
+  evidence_pointer: appendix/appendix.md#prop-diagnostic
+  derivation_id: D21
+- id: C22
+  kind: result
+  form: proposition
+  main: false
+  text: 'Proposition D.10 (Strict punishment implies diagnosticity), as stated in the paper: strictly
+    punishing primitives, whose on-path conditionals at every payoff-relevant policy error separate from
+    every expressible prediction by more than eta, are diagnostic. Consequently every SCUE under strictly
+    punishing primitives is free of payoff-relevant policy error.'
+  condition:
+  - min_{m in M(P_i)} TV(p_i*(.|C_{P_i}(s), a^sigma(s)), marg_i m(C_{P_i}(s))(a^sigma(s))) > eta
+  pointer: paper/paper.md#concealment-is-necessary-not-sufficient
+  evidence_pointer: appendix/appendix.md#prop-punishing
+  derivation_id: D22
+- id: C23
+  kind: result
+  form: example
+  main: false
+  text: 'Example 1 (continued, Section 10). The trap: at beta = 1, if both firms acquired the column refinement
+    and became certain of the false column assignment, they pool at every state and every payoff is 1/2,
+    exactly what the column theory predicts. The configuration is a SCUE with payoff-relevant error, and
+    the positive signed warrant gap is permanent: each firm remains exactly half-warranted. The knife
+    edge: for beta < 1, the first period serving an off-diagonal state pays beta/2 where the theory predicts
+    1/2, so dissonance returns, B_hat turns positive and the reflective posterior becomes degenerate;
+    payoff-relevant self-confirmation is a knife-edge property of perfectly forgiving demand. Persistence:
+    at beta < 1, firm 1 holds the row refinement and the true assignment while firm 2 stays coarse and
+    is dissonant from t_0. If gamma_2 > lambda_2^(k_{2,t_0})*B_hat_2(r_{2,t}) for every subsequent record
+    (for which gamma_2 > lambda_2^(k_{2,t_0})*T*(max pi_2 - min pi_2) suffices), firm 2 never elects and
+    is in dissonant stasis. Its balanced four-token record with T = 2 gives L_2^fine = 1, L_2^cur = 0,
+    J_2 = 1 and B_hat_2 = 1/2, and under uniform rho the firms earn 3/4 and 1/4 per period, permanently.
+    At beta = 1 the continuation is either a one-switch path into renewed dissonance or a stable policy-inertia
+    path, not an indefinite oscillation.'
+  condition: null
+  pointer: paper/paper.md#example-1-continued-6
+  evidence_pointer: appendix/appendix.md:L190-L236
+  derivation_id: D6
+- id: C24
+  kind: result
+  main: false
+  text: 'Confidence can grow even as every expressible theory fails: updating does not sound an alarm
+    when the space itself is broken, because posterior mass always sums to one, so a manager whose every
+    expressible theory is false can grow steadily more confident in the least false among them.'
+  condition:
+  - 'every expressible theory is false'
+  pointer: paper/paper.md:L16-L16
+  evidence_pointer: paper/paper.md#rem-self-sealing
+  derivation_id: null
+- id: C25
+  kind: result
+  main: false
+  text: 'Experience directs repair without determining it (without selecting its answer), so insight,
+    economical representation change, is necessarily fallible: the requirement that a successful repair
+    reconcile the retained record directs inquiry without determining its output.'
+  condition: null
+  pointer: paper/paper.md:L19-L19
+  evidence_pointer: paper/paper.md#nonidentification-and-the-price-of-robustness
+  derivation_id: null
+- id: C26
+  kind: result
+  main: false
+  text: 'Discovering that one''s causal language has failed, and repairing it, are different cognitive
+    operations from ranking the answers the language allows, and only the ranking is Bayesian: ranking
+    the answers one can express and judging whether any expressible answer is adequate are different
+    cognitive operations, and only the first is Bayesian.'
+  condition: null
+  pointer: paper/paper.md:L46-L46
+  evidence_pointer: paper/paper.md:L370-L388
+  derivation_id: null
+- id: C27
+  kind: result
+  main: false
+  text: 'Leverage prices action separation, not uncertainty reduction, and the difference shows in who
+    inquires: after a later stretch of play, the firm holding the true theory faces no unresolved action
+    margin and values its question at zero, while its defeated rival values the same question at one
+    half. Success, not ignorance, is what extinguishes the demand for new theories.'
+  condition: null
+  pointer: paper/paper.md:L74-L75
+  evidence_pointer: paper/paper.md#example-1-continued-4
+  derivation_id: null
+- id: C28
+  kind: result
+  main: false
+  text: 'Validation must come from new evidence that discriminates: it requires evidence whose
+    likelihood differs across relevant candidate worlds, and fresh evidence changes reflective warrant
+    only when its likelihood differs across the represented candidate worlds; otherwise further
+    awareness expansion may be required before the agent can use the evidence for that comparison.
+    Because the agent may lack the awareness needed to formulate that comparison, this gives boards,
+    investors, and other broader-awareness outsiders a precise epistemic role that retrospective
+    coherence cannot play.'
+  condition: null
+  pointer: paper/paper.md:L82-L82
+  evidence_pointer: paper/paper.md:L964-L990
+  derivation_id: null
+- id: C29
+  kind: result
+  main: false
+  text: 'Inquiry is an economic process, and it can die in every way an economic process dies: the
+    question is answered, it is priced below its cost, it is abandoned after repeated failure, or it was
+    never answerable.'
+  condition: null
+  pointer: paper/paper.md:L85-L85
+  evidence_pointer: paper/paper.md:L1016-L1030
+  derivation_id: null
+- id: C30
+  kind: result
+  main: false
+  text: 'Identical firms facing identical environments can end with different languages, different
+    theories, and permanently different payoffs, for reasons that precede any prior.'
+  condition: null
+  pointer: paper/paper.md:L91-L91
+  evidence_pointer: paper/paper.md:L1091-L1104
+  derivation_id: null
+- id: C31
+  kind: result
+  main: false
+  text: 'Where unawareness has been linked to value capture (Bryan et al. 2022), the present model
+    explains a possible origin of the awareness advantage.'
+  condition: null
+  pointer: paper/paper.md:L124-L124
+  evidence_pointer: paper/paper.md:L1091-L1104
+  derivation_id: null
+- id: C32
+  kind: result
+  main: false
+  text: 'The terminal analysis adds two epistemic possibilities to the fixed-hypothesis-space models:
+    self-confirming unawareness equilibrium requires a surviving represented class and no worthwhile
+    question, while dissonant stasis permits rational cessation outside a Bayesian world; enlightened
+    inertia adds a policy condition: even after an improved policy becomes representable, its
+    finite-horizon gain may not clear the switching hurdle. Together these conditions show how
+    restoration of a viable represented class, termination of inquiry, and continuation of play can
+    diverge.'
+  condition: null
+  pointer: paper/paper.md:L140-L142
+  evidence_pointer: paper/paper.md:L1016-L1030
+  derivation_id: null
+- id: C33
+  kind: result
+  main: false
+  text: 'Every dissonant record is repairable under the exact calibration but not in general. With
+    deterministic mechanisms every dissonant record is repairable, and finiteness of $\Pi(S)$ ensures a
+    minimally restorative refinement exists; existence is guaranteed only in the deterministic case.
+    With stochastic mechanisms, multiple observations at a single state may yield empirical conditionals
+    for which no one mechanism satisfies equation (6) across the observed profiles; because no
+    refinement can split a state, such a record has $\mathcal R(\mathcal P_i,\bar r_i)=\emptysetset$ and
+    is irreparable: dissonance names a defect that no expressible refinement can repair.'
+  condition: null
+  pointer: paper/paper.md:L203-L203
+  evidence_pointer: appendix/appendix.md#rem-irreparable
+  derivation_id: null
+- id: C34
+  kind: result
+  main: false
+  text: 'If no agent''s awareness ever changes, the model is a repeated interaction among subjectively
+    rational Bayesian learners in the sense of Kalai and Lehrer (1993) and Ryall (2003), and its stable
+    configurations are self-confirming equilibria (Fudenberg and Levine 1993).'
+  condition:
+  - 'no agent''s awareness ever changes'
+  pointer: paper/paper.md:L367-L367
+  evidence_pointer: paper/paper.md:L999-L1014
+  derivation_id: null
+- id: C35
+  kind: result
+  main: false
+  text: 'Under exact deterministic testing, dissonance implies that the current partition is
+    insufficient for the objective assignment: an expressible true deterministic theory could not be
+    rejected.'
+  condition:
+  - 'exact deterministic testing (the exact calibration)'
+  pointer: paper/paper.md:L457-L457
+  evidence_pointer: appendix/appendix.md:L41-L44
+  derivation_id: null
+- id: C36
+  kind: causal
+  main: false
+  text: 'Two recurring mechanisms generate exposure: heterogeneity inside a cell surfaces either because
+    other agents play differently across the pooled states (strategic differentiation inside one''s
+    categories, which changes the visited profiles and the induced mixtures) or because the environment
+    punishes uniform play across causally different states in an observable way.'
+  condition: null
+  pointer: paper/paper.md:L480-L481
+  evidence_pointer: paper/paper.md:L1108-L1160
+  derivation_id: null
+- id: C37
+  kind: result
+  main: false
+  text: 'Token sets are mutually incoherent when no single mechanism accommodates their union, and every
+    restorative refinement must separate mutually incoherent sets. In the deterministic running example
+    incoherence is a binary relation between labeled periods and restoration is a graph-coloring
+    problem; in general, a mixture of three mechanisms may defeat every single mechanism even though
+    each pair of tokens is individually accommodatable, so restoration is a hypergraph coloring.'
+  condition: null
+  pointer: paper/paper.md:L547-L548
+  evidence_pointer: appendix/appendix.md:L272-L350
+  derivation_id: null
+- id: C38
+  kind: result
+  main: false
+  text: 'Minimal restorations, when they exist, are typically multiple, as the running example shows
+    vividly.'
+  condition: null
+  pointer: paper/paper.md:L550-L550
+  evidence_pointer: paper/paper.md#example-1-continued-3
+  derivation_id: null
+- id: C39
+  kind: result
+  main: false
+  text: 'Irreparability is an analyst-level property: it is a fact about $\bar r_i$, and the agent,
+    lacking the state labels, cannot in general tell an irreparable record from a repairable one; this
+    is precisely the agent''s inability to distinguish causal heterogeneity from mechanism noise.'
+  condition: null
+  pointer: paper/paper.md:L557-L557
+  evidence_pointer: appendix/appendix.md:L309-L347
+  derivation_id: null
+- id: C40
+  kind: result
+  main: false
+  text: 'At an irreparable record, if the deliberative record still admits a positive-leverage coherent
+    grouping, the agent may elect a doomed inquiry until its achievability weight decays; if no coherent
+    grouping prices the question, it declines immediately.'
+  condition:
+  - 'the record is irreparable'
+  pointer: paper/paper.md:L559-L559
+  evidence_pointer: appendix/appendix.md#rem-irreparable
+  derivation_id: null
+- id: C41
+  kind: result
+  main: false
+  text: 'Under recurring visitation irreparability is typically transient, but a record whose critical
+    pairs stop being visited can remain irreparable forever, a possibility classified within dissonant
+    stasis.'
+  condition: null
+  pointer: paper/paper.md:L561-L561
+  evidence_pointer: appendix/appendix.md#rem-irreparable
+  derivation_id: null
+- id: C42
+  kind: result
+  main: false
+  text: 'Rational cessation: an agent for whose record no coherent grouping yields positive
+    representational increment has $\widehat B_i=0$, so sustained success can extinguish inquiry even
+    though awareness stays incomplete; and, by the decay of $\lambda_i^{(k)}$, so can sustained failure:
+    a true, valuable, repairable question can be rationally abandoned.'
+  condition: null
+  pointer: paper/paper.md:L840-L840
+  evidence_pointer: paper/paper.md#prop-participation
+  derivation_id: null
+- id: C43
+  kind: result
+  main: false
+  text: 'Away from pointwise transparency, enlightened inertia can be unanticipated because pre-insight
+    leverage is only an estimate and the realized refinement may deliver a different gain. Under
+    pointwise transparency, by contrast, exact and repair-invariant leverage can make later enlightened
+    inertia foreseeable; the model nevertheless preserves the two-stage timing as a deliberate
+    simplification.'
+  condition: null
+  pointer: paper/paper.md:L848-L849
+  evidence_pointer: paper/paper.md#rem-stickiness
+  derivation_id: null
+- id: C44
+  kind: result
+  main: false
+  text: 'Determinism certifies that two tokens sharing an observed pair but differing in consequence are
+    distinct states, and under the stronger record-level condition of pointwise transparency the
+    deliberative leverage estimate becomes exact and repair-invariant.'
+  condition: null
+  pointer: paper/paper.md:L852-L852
+  evidence_pointer: appendix/appendix.md#rem-certification
+  derivation_id: null
+- id: C45
+  kind: result
+  main: false
+  text: 'In the running example at the discovery record, under the model''s two-stage timing a firm may
+    still elect inquiry when the participation condition holds; in this transparent case, a hurdle at or
+    above the exact gain makes later enlightened inertia foreseeable, a consequence of the deliberate
+    timing convention rather than of unawareness.'
+  condition: null
+  pointer: paper/paper.md:L863-L863
+  evidence_pointer: paper/paper.md:L842-L862
+  derivation_id: null
+- id: C46
+  kind: result
+  main: false
+  text: 'In the running example the discovery-record valuation used no conjecture about the rival and no
+    reference to which refinement might arrive; transparency (winner-take-all) makes each $\Theta_i(g)$
+    a singleton, so the deliberative estimate is exact.'
+  condition: null
+  pointer: paper/paper.md:L864-L864
+  evidence_pointer: paper/paper.md:L852-L870
+  derivation_id: null
+- id: C47
+  kind: result
+  main: false
+  text: 'In the running example, in a later stretch that serves the two off-diagonal states, by which
+    point firm 1 has acquired the row refinement (certain of the true assignment) while firm 2 has
+    acquired the column refinement (certain of the false one), their policies differ at those states,
+    firm 1 wins both, and the labels revealed there falsify firm 2''s column theory.'
+  condition: null
+  pointer: paper/paper.md:L865-L865
+  evidence_pointer: paper/paper.md#example-1-continued-4
+  derivation_id: null
+- id: C48
+  kind: result
+  main: false
+  text: 'In the running example''s later stretch, the losing firm 2, holding the column refinement, upon
+    success reaches complete awareness in one step: both column cells must split.'
+  condition: null
+  pointer: paper/paper.md:L869-L869
+  evidence_pointer: paper/paper.md#example-1-continued-4
+  derivation_id: null
+- id: C49
+  kind: result
+  main: false
+  text: 'Nothing in Bayesian coherence determines the bridge prior $\mu_i^{+}$ from the pre-dissonance
+    belief (the domains differ), and this nonuniqueness is not a defect to be repaired but the boundary
+    between insight and judgment.'
+  condition: null
+  pointer: paper/paper.md:L875-L875
+  evidence_pointer: paper/paper.md:L872-L891
+  derivation_id: null
+- id: C50
+  kind: result
+  main: false
+  text: 'An agent or outside observer who does not possess the complete analyst record may genuinely
+    learn from a truth-blind output because it conveys information about the hidden particulars on which
+    production operated.'
+  condition: null
+  pointer: paper/paper.md:L960-L960
+  evidence_pointer: paper/paper.md#thm-uninformative
+  derivation_id: null
+- id: C51
+  kind: result
+  main: false
+  text: 'Truth blindness is the polar case; if production, formulation, or bridge-prior selection
+    remains correlated with the objective assignment after conditioning on the record and history (as
+    with transmission from an informed source), the output can supply a genuine Bayes factor, and the
+    adjustment can move warrant in either direction.'
+  condition: null
+  pointer: paper/paper.md:L962-L962
+  evidence_pointer: paper/paper.md#thm-uninformative
+  derivation_id: null
+- id: C52
+  kind: result
+  main: false
+  text: 'In the running example, one fresh differentiated observation at an off-diagonal state resolves
+    the row/column identification problem completely because the two worlds predict opposite labels
+    there: if the formulated theory is correct, $W(O_i)$ rises to one and the positive signed gap
+    closes; if it is false, it is rejected, the singleton active set empties, and the acting belief
+    becomes undefined.'
+  condition: null
+  pointer: paper/paper.md:L988-L988
+  evidence_pointer: paper/paper.md:L941-L990
+  derivation_id: null
+- id: C53
+  kind: result
+  main: false
+  text: 'Successful refinement restores a nonempty represented model class consistent with the retained
+    record. It does not by itself establish objective correctness or future on-path adequacy; subsequent
+    experience determines whether the restored language survives.'
+  condition: null
+  pointer: paper/paper.md:L1037-L1038
+  evidence_pointer: paper/paper.md:L563-L650
+  derivation_id: null
+- id: C54
+  kind: causal
+  main: false
+  text: 'Switching costs temper the cycling of standing policies within a Bayesian world: the inaction
+    band absorbs belief fluctuations too small to be worth acting on, so only swings whose horizon-$T$
+    gain exceeds $\kappa_i$ move play, a stabilizing force, though not one that rules out
+    large-amplitude cycles.'
+  condition: null
+  pointer: paper/paper.md:L1074-L1074
+  evidence_pointer: paper/paper.md#rem-scope
+  derivation_id: null
+- id: C55
+  kind: result
+  main: false
+  text: 'Abandoned questions are a substantive absorbing outcome, not an artifact: inquiry ceases
+    because it is answered, because it is unpriced, or because it is given up.'
+  condition: null
+  pointer: paper/paper.md:L1076-L1076
+  evidence_pointer: paper/paper.md:L1016-L1030
+  derivation_id: null
+- id: C56
+  kind: result
+  main: false
+  text: 'Were $\lambda_i^{(k)}$ held fixed instead of decaying, an agent could elect a doomed inquiry
+    forever, paying $\gamma_i$ each period for a repair that never arrives; the decay rules this out and
+    is the model''s account of when a rational inquirer stops.'
+  condition: null
+  pointer: paper/paper.md:L1077-L1077
+  evidence_pointer: paper/paper.md#rem-scope
+  derivation_id: null
+- id: C57
+  kind: result
+  main: false
+  text: 'Zero-leverage dissonant stasis is a recognizable condition: the agent registers that no
+    admitted theory survives its test, yet its deliberative valuation finds no coherent grouping with
+    positive representational increment, so repairing the account is worth nothing to it; anomaly
+    tolerance is rational precisely when the agent''s coherent groupings carry no gross representational
+    leverage.'
+  condition: null
+  pointer: paper/paper.md:L1081-L1082
+  evidence_pointer: paper/paper.md#prop-participation
+  derivation_id: null
+- id: C58
+  kind: result
+  main: false
+  text: 'At an irreparable record no expressible repair exists at any price (the anomaly is not merely
+    unprofitable but impossible to fix within the current grammar), though the agent, unable to certify
+    irreparability under noise, may keep electing while its deliberative record supports positive
+    leverage and until the achievability weight decays.'
+  condition: null
+  pointer: paper/paper.md:L1084-L1084
+  evidence_pointer: appendix/appendix.md#rem-irreparable
+  derivation_id: null
+- id: C59
+  kind: result
+  main: false
+  text: 'Terminal heterogeneity in awareness is path dependence in the strong sense: agents with
+    identical preferences and identical Bayesian competence, facing the same objective system, end at
+    different languages and different payoffs because their histories posed different questions.'
+  condition: null
+  pointer: paper/paper.md:L1097-L1097
+  evidence_pointer: paper/paper.md:L1091-L1104
+  derivation_id: null
+- id: C60
+  kind: result
+  main: false
+  text: 'Agents identical in preferences, competence, capacity, and cost can still end at different
+    languages and payoffs, because their histories posed different questions and their truth-blind
+    technologies produced different repairs: path dependence that begins before probability.'
+  condition: null
+  pointer: paper/paper.md:L1102-L1102
+  evidence_pointer: paper/paper.md:L1091-L1104
+  derivation_id: null
+- id: C61
+  kind: result
+  main: false
+  text: 'Agents identical in everything but their dissonance capacity $b_i$ and switching hurdle
+    $\kappa_i$ also diverge: in stochastic environments capacity affects detection speed and the
+    robustness of rest points, while the hurdle sets the propensity to enlightened inertia; the capacity
+    channel disappears under exact deterministic contradiction.'
+  condition: null
+  pointer: paper/paper.md:L1103-L1103
+  evidence_pointer: paper/paper.md:L1089-L1104
+  derivation_id: null
+- id: C62
+  kind: result
+  main: false
+  text: 'Of the two origins of terminal heterogeneity, the first (different question histories and
+    repairs) is the awareness-path microfoundation and the second (differences in dissonance capacity
+    and switching hurdle) a parametric cognitive-style one, and neither is available in the
+    fixed-language tradition.'
+  condition: null
+  pointer: paper/paper.md:L1104-L1104
+  evidence_pointer: paper/paper.md:L1099-L1107
+  derivation_id: null
+- id: C63
+  kind: result
+  main: false
+  text: 'Concealment is necessary, not sufficient: an objectively false theory that retains nonvanishing
+    acting-belief mass in a stable SCUE must be $\eta$-adequate on path, so the induced profile is
+    concealing for that theory; shared false theories can remain viable when play pools states that a
+    coarse language treats alike, but concealment alone does not guarantee survival.'
+  condition: null
+  pointer: paper/paper.md:L1110-L1111
+  evidence_pointer: paper/paper.md:L1108-L1125
+  derivation_id: null
+- id: C64
+  kind: result
+  main: false
+  text: 'Strict payoff and separation margins at a fixed profile survive small perturbations of the
+    primitives, though this is a local stability property rather than openness of global diagnosticity.'
+  condition: null
+  pointer: paper/paper.md:L1117-L1117
+  evidence_pointer: appendix/appendix.md#rem-local-robustness
+  derivation_id: null
+- id: C65
+  kind: result
+  main: false
+  text: 'In the persistence configuration of the running example, for realized record compositions other
+    than the balanced four-token record, the coarse firm''s gross representational leverage remains
+    positive when some coherent grouping supplies a positive increment and is bounded as in Proposition
+    8.4.'
+  condition: null
+  pointer: paper/paper.md:L1159-L1159
+  evidence_pointer: paper/paper.md#prop-participation
+  derivation_id: null
+- id: C66
+  kind: result
+  main: false
+  text: 'The running example illustrates several routes out of the trap and of dissonant stasis:
+    strategic variety, demand harshness, and cheaper or more hopeful inquiry.'
+  condition: null
+  pointer: paper/paper.md:L1167-L1167
+  evidence_pointer: paper/paper.md:L1121-L1166
+  derivation_id: null
+- id: C67
+  kind: causal
+  main: false
+  text: 'The order of experience matters because it changes which defects become visible and which
+    refinements become available before Bayesian judgment resumes.'
+  condition: null
+  pointer: paper/paper.md:L1175-L1175
+  evidence_pointer: paper/paper.md:L478-L494
+  derivation_id: null
+- id: C68
+  kind: result
+  main: false
+  text: 'The question-history channel of strategic heterogeneity does not require heterogeneity to begin
+    with different priors; the model also permits cognitive-style differences in detection capacity and
+    switching hurdles, but question-dependent representation change is the distinctive source.'
+  condition: null
+  pointer: paper/paper.md:L1176-L1176
+  evidence_pointer: paper/paper.md:L1091-L1104
+  derivation_id: null
+- id: C69
+  kind: result
+  main: false
+  text: 'Two firms facing the same opportunity may not disagree over common theories at all: one may
+    possess an actionable distinction the other has never formulated, so comparing priors starts too
+    late.'
+  condition: null
+  pointer: paper/paper.md:L1178-L1178
+  evidence_pointer: paper/paper.md:L1132-L1160
+  derivation_id: null
+- id: C70
+  kind: result
+  main: false
+  text: 'The same logic integrates anomaly tolerance and cessation: a firm may rationally leave a
+    question unasked when leverage is zero, stop after its achievability weight decays, or abandon a
+    record no admissible refinement can repair.'
+  condition: null
+  pointer: paper/paper.md:L1183-L1183
+  evidence_pointer: paper/paper.md#rem-anomaly
+  derivation_id: null
+- id: C71
+  kind: result
+  main: false
+  text: 'Success can remove action-separating leverage, repeated production failure can reduce the
+    assessed chance of resolution, and a genuine anomaly can remain economically dormant when no
+    feasible refinement changes robust action. Questions can therefore die through success,
+    discouragement, or irreparability even though the underlying causal structure remains unresolved.'
+  condition: null
+  pointer: paper/paper.md:L1185-L1186
+  evidence_pointer: paper/paper.md:L1016-L1030
+  derivation_id: null
+- id: C72
+  kind: result
+  main: false
+  text: 'The relevant contribution of an outside warrant assessor is diagnostic variation separating
+    worlds the focal agent cannot jointly represent, so governance is epistemically useful only when the
+    outsider''s broader language and evidence support that discrimination.'
+  condition: null
+  pointer: paper/paper.md:L1192-L1192
+  evidence_pointer: paper/paper.md:L964-L990
+  derivation_id: null
+- id: C73
+  kind: result
+  main: false
+  text: 'A strategically deviant actor functions as epistemic infrastructure only when its variation
+    exposes the coarse language; strong customer outside options can instead discipline a consensus,
+    while forgiving demand can protect it.'
+  condition: null
+  pointer: paper/paper.md:L1198-L1198
+  evidence_pointer: paper/paper.md:L1119-L1160
+  derivation_id: null
+- id: C74
+  kind: causal
+  main: false
+  text: 'A false theory may predict well along the path it induces because its policy suppresses the
+    contrast that would refute it, yet the same theory can fail after a rival differentiates or
+    customers visibly punish misservice. Concealment is only protection: changes in play or subsequent
+    inquiry can still unsettle the represented class.'
+  condition: null
+  pointer: paper/paper.md:L1199-L1200
+  evidence_pointer: paper/paper.md:L1119-L1160
+  derivation_id: null
+- id: C75
+  kind: result
+  main: false
+  text: 'Once refinement and formulation create a new represented class, conventional interventions and
+    Bayesian discrimination can again operate among its members.'
+  condition: null
+  pointer: paper/paper.md:L133-L133
+  evidence_pointer: paper/paper.md:L872-L891
+  derivation_id: null
+- id: C76
+  kind: result
+  main: false
+  text: 'In the deterministic case judged updating coincides with ordinary Bayesian conditioning while
+    the Bayesian normalizer is positive; a zero-likelihood contradiction can instead make ordinary
+    conditioning itself undefined.'
+  condition: null
+  pointer: paper/paper.md:L440-L440
+  evidence_pointer: paper/paper.md#judged-updating
+  derivation_id: null
+- id: C77
+  kind: result
+  main: false
+  text: 'In the stochastic model, false rejection and irreparable finite records mean that dissonance is
+    an operational diagnosis, not by itself proof of objective representational insufficiency: causal
+    dissonance is the model''s operational signal that no admitted theory survives the current evidence,
+    and in the stochastic setting it is not by itself proof that the objective truth is inexpressible.'
+  condition: null
+  pointer: paper/paper.md:L458-L458
+  evidence_pointer: appendix/appendix.md:L243-L327
+  derivation_id: null
+- id: C78
+  kind: result
+  main: false
+  text: 'Because the repair test applies to every nonempty recoded cell-profile pair, refinement can
+    reconcile observations but cannot delete their constraints.'
+  condition: null
+  pointer: paper/paper.md:L541-L541
+  evidence_pointer: paper/paper.md:L506-L542
+  derivation_id: null
+- id: C79
+  kind: result
+  main: false
+  text: 'When the record is irreparable, neither response (electing a doomed inquiry while the
+    deliberative record admits a positive-leverage coherent grouping, or declining immediately when no
+    coherent grouping prices the question) requires the agent to recognize analyst-level
+    irreparability.'
+  condition: null
+  pointer: paper/paper.md:L560-L560
+  evidence_pointer: appendix/appendix.md#rem-irreparable
+  derivation_id: null
+- id: C80
+  kind: result
+  main: false
+  text: 'The family $\mathcal G_i(r_i)$ of coherent groupings may be empty under stochastic sampling:
+    full support guarantees positive likelihood, not finite-sample passage of the consistency test.'
+  condition: null
+  pointer: paper/paper.md:L700-L700
+  evidence_pointer: paper/paper.md#def-pinned
+  derivation_id: null
+- id: C81
+  kind: result
+  main: false
+  text: 'The participation rule is a coherent non-Bayesian criterion operating precisely where the
+    acting belief is undefined, and it respects every discipline of section 4.6: $\widehat B_i$
+    quantifies over the agent''s own remembered tokens and the groupings it can articulate, never over
+    named future representations.'
+  condition: null
+  pointer: paper/paper.md:L835-L835
+  evidence_pointer: paper/paper.md#prop-participation
+  derivation_id: null
+- id: C82
+  kind: result
+  main: false
+  text: 'Enlightened inertia remains a second source of persistence, distinct from an unpriced question,
+    whether or not mechanisms are deterministic, and it feeds the performance differences of section
+    10.'
+  condition: null
+  pointer: paper/paper.md:L850-L850
+  evidence_pointer: paper/paper.md#rem-stickiness
+  derivation_id: null
+- id: C83
+  kind: result
+  main: false
+  text: 'In the running example, defeat concentrates the evidence, dissonance, and incentive in the
+    losing firm: competitive defeat concentrates diagnostic evidence and produces a winner/loser inquiry
+    asymmetry, which the example exhibits without implying that losers generally have greater inquiry
+    incentives.'
+  condition: null
+  pointer: paper/paper.md:L869-L869
+  evidence_pointer: paper/paper.md#example-1-continued-4
+  derivation_id: null
+- id: C84
+  kind: result
+  main: false
+  text: 'Part (d) of Theorem 10.4 and the rest-point characterization are conditional on play
+    stabilizing, which in every configuration featured in this paper is immediate: their beliefs make
+    one action per cell strictly dominant.'
+  condition: null
+  pointer: paper/paper.md:L1073-L1073
+  evidence_pointer: appendix/appendix.md#dominance-thresholds
+  derivation_id: null
+- id: C85
+  kind: result
+  main: false
+  text: 'The question-history source of strategic heterogeneity complements rather than replaces
+    familiar explanations based on heterogeneous resources, incentives, beliefs, or capabilities.'
+  condition: null
+  pointer: paper/paper.md:L1177-L1177
+  evidence_pointer: paper/paper.md:L1233-L1237
+  derivation_id: null
+- id: C86
+  kind: result
+  main: false
+  text: 'A broader-awareness board, investor, advisor, or other outsider can serve as a warrant assessor
+    if it represents the alternatives and has an appropriate assessment model; outside challenge can
+    therefore play a warrant role under those conditions.'
+  condition: null
+  pointer: paper/paper.md:L1191-L1191
+  evidence_pointer: paper/paper.md#cor-self-audit
+  derivation_id: null

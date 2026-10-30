@@ -1,0 +1,10 @@
+# Repeatability of the model-judged checks (appendix D.1). Each runs k times. A finding enters the
+# report when at least `quorum` runs agree on it. A check whose agreement falls below its minimum is
+# reported as not publishable at this tolerance, and its findings move to `below_tolerance`.
+k: 3
+quorum: 2
+checks:
+  generate:     {metric: claim-set Jaccard, min: 0.67}
+  completeness: {metric: share of unmatched statements found by a quorum, min: 0.5}
+  resolution:   {metric: share of claims judged unanimously, min: 0.8}
+  contribution: {metric: share of claims with a quorum newness kind, min: 0.67}

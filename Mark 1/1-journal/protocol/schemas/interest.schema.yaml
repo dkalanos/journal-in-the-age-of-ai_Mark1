@@ -1,0 +1,13 @@
+title: The interest judgment (H3), the editor and two named reviewers
+type: object
+required: [paper_id, interesting, criteria_version, statement, signatures]
+properties:
+  paper_id: {type: string}
+  interesting: {type: boolean}
+  criteria_version: {type: string}
+  statement: {type: string, minLength: 1}
+  signatures:
+    type: array
+    minItems: 3
+    maxItems: 3
+    items: {$ref: "decision.schema.yaml#/$defs/signature"}

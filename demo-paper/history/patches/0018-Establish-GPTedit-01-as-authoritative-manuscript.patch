@@ -1,0 +1,96 @@
+From f36ac71c19812ddee63977c8614b084e60a74fcb Mon Sep 17 00:00:00 2001
+From: MDR Git <mdr@mikeryall.com>
+Date: Wed, 12 Aug 2026 11:13:02 -0400
+Subject: [PATCH 18/27] Establish GPTedit-01 as authoritative manuscript
+
+---
+ ...Paper01-v04.tex => tbv_mdr_GPTedit-01.tex} | 46 ++++++++++++-------
+ 1 file changed, 30 insertions(+), 16 deletions(-)
+ rename paper/{tbv_mdr_Paper01-v04.tex => tbv_mdr_GPTedit-01.tex} (98%)
+
+diff --git a/paper/tbv_mdr_Paper01-v04.tex b/paper/tbv_mdr_GPTedit-01.tex
+similarity index 98%
+rename from paper/tbv_mdr_Paper01-v04.tex
+rename to paper/tbv_mdr_GPTedit-01.tex
+index 1ded198..43b2319 100644
+--- a/paper/tbv_mdr_Paper01-v04.tex
++++ b/paper/tbv_mdr_GPTedit-01.tex
+@@ -1,4 +1,6 @@
+-% TRUTH VERSION: tbv_mdr_Paper01-v04.tex
++% TRUTH VERSION: tbv_mdr_GPTedit-01.tex
++% FILE ROLE: AUTHORITATIVE SOURCE
++% DOCUMENT: Scholarly Paper TBV
+ 
+ 
+ \documentclass[11pt]{article}
+@@ -214,40 +216,52 @@ Because actions depend on theories, play can either create the contrasts that ge
+ \label{sec:primitives}
+ 
+ There are $n\ge 2$ \textit{agents}, $N=\{1,\dots,n\}$.
+-Time is a single sequence of \textit{periods} $t=1,2,\dots$.
++Time is a sequence of \textit{periods} $t=1,2,\dots$.
+ In each period one state is drawn, every agent acts through a \emph{standing policy} carried over from the previous period, and consequences are realized.
+-Agents update beliefs every period, but revise their policy or their awareness only through the costly, deliberate steps specified below (\cref{ass:commitment}).
+-Stretches of stable play are therefore not imposed but emerge: a policy persists until evidence moves it, so how long play stays fixed is an outcome---governed by agent-level parameters introduced below---rather than a modeling primitive.
++Agents update beliefs every period.
++If evidence mounts that their model of the world is in conflict with reality, they may engage in a process of costly inquiry which may then lead to refined awareness, changes to their held model, and potential revisions of their business strategy.
++
+ 
+ In each period a \textit{state} $s\in S$, with $S$ finite, is drawn independently from a full-support distribution $\rho\in\Delta(S)$.
+-States describe the strategically-relevant features of the environment that agents may face: customer configurations, input conditions, competitive circumstances, available production technologies, and so on.
+-Their status in the agents' own representations is the subject of \cref{sec:awareness-sub}.
++States describe the strategically-relevant features of the environment that evolve or change over time: customer configurations, input conditions, competitive circumstances, available production technologies, and so on.
++(Their status in the agents' own representations is the subject of \cref{sec:awareness-sub}.)
++
++Contingent upon agent \(i\)'s awareness of the consequence-relevant features of his present state, he chooses an \textit{action} $a_i$ from a finite set $A_i$ through the standing policy described below.
++An \textit{action profile} is a list of each agent's action choice, $a=(a_1,\ldots,a_n)$ where $A=\prod_iA_i$ is the set of all action profiles.
+ 
+-Each period, agent \(i\) chooses an \textit{action} $a_i$ from a finite set $A_i$ through the standing policy described below.
+-An \textit{action profile} is a list $a=(a_1,\ldots,a_n)$ where $A=\prod_iA_i$ is the set of all action profiles.
+-Let $X=\prod_iX_i$ be the finite set of performance-related \textit{consequences} with typical element $x=(x_1,\dots,x_n)$.
++Finally, $X=\prod_iX_i$ is the finite set of performance-related \textit{consequences} with typical element $x=(x_1,\dots,x_n)$.
+ Agent $i$'s consequence $x_i$ is everything a period delivers to it---profit, sales, rival behavior, and any other observed events.
+-Then, agent \(i\)'s \textit{payoff function} $\pi_i:X_i\to\mathbb R$ maps her consequences to payoffs.
++Then, agent \(i\)'s \textit{payoff function} $\pi_i:X_i\to\mathbb R$ maps his consequences to payoffs.
+ 
+ 
+ 
+ \subsection{The objective causal system}
+ \label{sec:mechanisms-sub}
+ 
+-We take a very general view of how causality works in the world. 
++Causality is modeled in a general, high-level fashion.
++Each period, the state \(s\) in conjunction with the actions of the agents \(a\) determine the consequences that affect them \(x\).
+ 
+ 
+ \begin{definition}[Elementary mechanisms and the objective system]
+ \label{def:mechanisms}
+-A finite set $\Theta$ of \emph{elementary causal mechanisms} is given, each a map $\theta:A\to\Delta(X)$.
+-The \emph{objective assignment} is a function $\tau:S\to\Theta$; at state $s$ under action profile $a$ the resulting consequence distribution is $\tau(s)(a)\in\Delta(X)$, and this map from state--profile pairs to consequence distributions is the \emph{objective causal system}.
+-Two states are \emph{causally equivalent} if they carry the same mechanism; $\mathcal P^{\tau}$ denotes the partition of $S$ into causal-equivalence classes, and $\marg{i}\theta(a)$ the $X_i$-marginal of $\theta(a)$.
++A finite set $\Theta$ of \emph{elementary causal mechanisms} is given, each element of which is a map $\theta:A\to\Delta(X)$.\footnote
++{
++	Where ``\(\Delta(X)\) indicates the set of probability distributions on \(X\).
++	Deterministic causal effects are a special case.
++}
++The \emph{objective assignment} is a function $\tau:S\to\Theta$.
++Both \(\tau\) is a primitive of the model.
++The \emph{objective causal system} is $\tau(s)(a)\in\Delta(X)$, a distribution over consequences determined by the state and action profile associated with a period.
++Two states \(s\) and \(s^\prime\) are \emph{causally equivalent} if $\tau(s)=\tau(s^\prime)$. 
++Let $\mathcal P^{\tau}$ denote the partition of $S$ into causal-equivalence classes. 
++Finally, $\marg{i}\theta(a)$ denotes the $X_i$-marginal of $\theta(a)$.
+ \end{definition}
+ 
+-This causal reading is maintained throughout and does real work.
+-The objective system is a response function, not a statistical summary: $\tau(s)(a)$ specifies the distribution of consequences that \emph{would} result from every action profile at every state, including profiles never played.
++\section{WORKING HERE}
++Thus, $\tau$ implies a distribution of consequences results for every action profile at every state, including profiles never played and states never occurring.
+ Agents' actions, together with the state, cause their consequences.
+ A mechanism is the reduced form of whatever detailed model---a structural causal model of customer behavior, a market microstructure, a production process---underlies that relation; the paper imposes no structural-causal-model formalism, but examples may exhibit micro-foundations explicitly, as the running example's customer market does.
++
+ Three consequences of the causal reading recur.
+ First, theories, defined next, are interventional objects: they make predictions at unplayed profiles.
+ Second, on-path data constrain $\tau(s)(a)$ only at visited state--profile pairs, so observationally equivalent systems with different counterfactual content are generic; that is the engine of the identification results.
+-- 
+2.43.0
+

@@ -1,0 +1,256 @@
+From 97aae3c6e2dcc091dc226dd0213135e4ea4c744d Mon Sep 17 00:00:00 2001
+From: MDR Git <mdr@mikeryall.com>
+Date: Fri, 24 Jul 2026 21:03:40 -0400
+Subject: [PATCH 05/27] Single-clock overhaul T1 (front end): timing, standing
+ policy, sequential detector
+
+- One clock (periods); drop generations/episodes in the front end.
+- ass:commitment -> standing policy + (S,s) switching rule: belief-optimal
+  sigma*_i (eq:subjective-optimality retained), new value U_i, switch iff
+  per-period gain clears the switching hurdle kappa_i; inertia now emergent.
+- def:test -> sequential e-process adequacy detector with dissonance capacity
+  b_i: reject (permanently) when log E^m >= b_i; Ville gives false-alarm
+  <= e^{-b_i}; deterministic eta=0 recovers the exact test. eta/w/nbar kept as
+  the fixed-sample retrospective criterion for the repair/grouping tests.
+- lem:test-consistency, def:dissonance, def:exposure, prop:exposure recast in
+  periods; permanent rejection makes the active set monotone (refill clause dropped).
+
+Compiles, 40pp. Remaining: T2 (economics) and T3 (dynamics/appendix/example).
+
+Co-Authored-By: Claude Opus 4.8 <noreply@anthropic.com>
+---
+ paper/tbv_mdr_Paper01-v04.tex | 123 +++++++++++++++++++---------------
+ 1 file changed, 70 insertions(+), 53 deletions(-)
+
+diff --git a/paper/tbv_mdr_Paper01-v04.tex b/paper/tbv_mdr_Paper01-v04.tex
+index d58630f..259fcd9 100644
+--- a/paper/tbv_mdr_Paper01-v04.tex
++++ b/paper/tbv_mdr_Paper01-v04.tex
+@@ -214,17 +214,19 @@ Because actions depend on theories, play can either create the contrasts that ge
+ \label{sec:primitives}
+ 
+ There are $n\ge 2$ \textit{agents}, $N=\{1,\dots,n\}$.
+-Time is divided into \textit{policy generations} $g=1,2,\dots$, each consisting of $T$ \textit{episodes}.
+-The two timescales are deliberate: within a generation each agent holds a committed policy fixed while $T$ states are drawn, and revises beliefs, policy, and awareness only between generations (\cref{ass:commitment}), so that each learning step confronts a stable, replicated sample of play rather than a single draw under an ever-shifting profile---the batch the statistical tests below require.
++Time is a single sequence of \textit{periods} $t=1,2,\dots$.
++In each period one state is drawn, every agent acts through a \emph{standing policy} carried over from the previous period, and consequences are realized.
++Agents update beliefs every period, but revise their policy or their awareness only through the costly, deliberate steps specified below (\cref{ass:commitment}).
++Stretches of stable play are therefore not imposed but emerge: a policy persists until evidence moves it, so how long play stays fixed is an outcome---governed by agent-level parameters introduced below---rather than a modeling primitive.
+ 
+-In each episode a \textit{state} $s\in S$, with $S$ finite, is drawn independently from a full-support distribution $\rho\in\Delta(S)$.
++In each period a \textit{state} $s\in S$, with $S$ finite, is drawn independently from a full-support distribution $\rho\in\Delta(S)$.
+ States describe the strategically-relevant features of the environment that agents may face: customer configurations, input conditions, competitive circumstances, available production technologies, and so on.
+ Their status in the agents' own representations is the subject of \cref{sec:awareness-sub}.
+ 
+-Each episode, agent \(i\) chooses an \textit{action} $a_i$ from a finite set $A_i$ through a committed policy described below.
++Each period, agent \(i\) chooses an \textit{action} $a_i$ from a finite set $A_i$ through the standing policy described below.
+ An \textit{action profile} is a list $a=(a_1,\ldots,a_n)$ where $A=\prod_iA_i$ is the set of all action profiles.
+ Let $X=\prod_iX_i$ be the finite set of performance-related \textit{consequences} with typical element $x=(x_1,\dots,x_n)$.
+-Agent $i$'s consequence $x_i$ is everything an episode delivers to it---profit, sales, rival behavior, and any other observed events.
++Agent $i$'s consequence $x_i$ is everything a period delivers to it---profit, sales, rival behavior, and any other observed events.
+ Then, agent \(i\)'s \textit{payoff function} $\pi_i:X_i\to\mathbb R$ maps her consequences to payoffs.
+ 
+ 
+@@ -281,8 +283,8 @@ The diagnostic apparatus developed below tests theories, not conjectures.
+ 
+ \begin{assumption}[Observation, retention, and the two records]
+ \label{ass:observation}
+-At the start of each episode agent $i$ perceives its current awareness cell $C_{\mathcal P_i}(s)$; at the end it additionally observes the realized action profile $a$ and its own consequence $x_i$.
+-Episodes are retained as tokens.
++At the start of each period agent $i$ perceives its current awareness cell $C_{\mathcal P_i}(s)$; at the end it additionally observes the realized action profile $a$ and its own consequence $x_i$.
++Each period is retained as a token.
+ Two records are distinguished throughout.
+ The \emph{deliberative record} $r_i$ is the multiset of tokens $(C_{\mathcal P_i}(s),a,x_i)$; it is the only record on which the agent's beliefs, tests, and decisions may depend.
+ The \emph{analyst record} $\bar r_i$ additionally carries the underlying state $s$ of each token.
+@@ -297,28 +299,41 @@ This capacity is a modeling idealization: it treats the retained particular as r
+ Retention without recodability-in-advance is the minimal separation between experiencing a particular and possessing a projectible concept for it: the agent can remember ``customers like that one'' without commanding a predicate that distinguishes them, and the technology of \cref{sec:inquiry} operates on exactly this material.
+ The idealization has a cost worth naming: recoding is treated as total and infallible once the predicate is held, whereas real reclassification of remembered particulars is partial and error-prone; \cref{sec:pivot} isolates where this matters.
+ Observability of the full action profile keeps the separation of causal from strategic error clean; a variant folding components of $a$ into $x_i$ changes bookkeeping only.
+-The start-of-episode perception of the current cell is what lets a cell-contingent policy be implemented; the state $s$ itself is never perceived.
++The start-of-period perception of the current cell is what lets a cell-contingent policy be implemented; the state $s$ itself is never perceived.
+ 
+-\begin{assumption}[Commitment and subjective optimality]
++\begin{assumption}[Standing policy, subjective optimality, and costly switching]
+ \label{ass:commitment}
+-At the start of each generation, agent $i$ commits to a policy $\sigma_i:\mathcal P_i\to A_i$ satisfying
++Agent $i$ carries a \emph{standing policy} $\sigma_i:\mathcal P_i\to A_i$ from one period to the next.
++Given its current acting belief $\mu_i$ and conjecture $q_i$, the \emph{belief-optimal} policy $\sigma_i^{\star}$ plays at each cell $C$
+ \begin{equation}
+-\sigma_i(C)\in\arg\max_{a_i\in A_i}
++\sigma_i^{\star}(C)\in\arg\max_{a_i\in A_i}
+ \sum_{m\in M(\mathcal P_i)}\mu_i(m)
+ \sum_{a_{-i}\in A_{-i}}q_i(a_{-i}\mid C)\,
+ \mathbb E_{x\sim m(C)(a_i,a_{-i})}\!\left[\pi_i(x_i)\right],
+ \label{eq:subjective-optimality}
+ \end{equation}
+-holds it for the generation's $T$ episodes, and revises beliefs, conjectures, and policies only between generations.
+-When dissonance (\cref{sec:dissonance}) has made $\mu_i$ undefined and no new representation has been produced, the previously committed policy is carried forward.
+-Agents evaluate one generation ahead; no discounting is imposed.
++with associated subjective per-period value
++\begin{equation}
++U_i(\sigma\mid\mu_i,q_i)=\sum_{C\in\mathcal P_i}\rho(C)\sum_{m\in M(\mathcal P_i)}\mu_i(m)\sum_{a_{-i}\in A_{-i}}q_i(a_{-i}\mid C)\,\mathbb E_{x\sim m(C)(\sigma(C),a_{-i})}\!\left[\pi_i(x_i)\right],
++\label{eq:subjective-value}
++\end{equation}
++where $\rho(C)=\sum_{s\in C}\rho(s)$.
++Revising the standing policy is costly: agent $i$ replaces $\sigma_i$ by $\sigma_i^{\star}$ if and only if the per-period gain clears a \emph{switching hurdle} $\kappa_i\ge0$, measured in per-period payoff units,
++\[
++U_i(\sigma_i^{\star}\mid\mu_i,q_i)-U_i(\sigma_i\mid\mu_i,q_i)>\kappa_i,
++\]
++and otherwise carries $\sigma_i$ unchanged.
++The inaction band $U_i(\sigma_i^{\star})-U_i(\sigma_i)\le\kappa_i$ is the source of policy inertia: beliefs may drift and the belief-optimal action may move, yet the standing policy holds until the gain from switching clears the hurdle.
++When dissonance (\cref{sec:dissonance}) leaves $\mu_i$ undefined, $\sigma_i^{\star}$ is undefined and the standing policy is carried forward unchanged.
++Agents evaluate one period ahead and do not discount.
+ \end{assumption}
+ 
+-Commitment is where statistics and economics meet: what a deterministic model must assume as a batching device is, in the stochastic model, the natural granularity of learning.
++Policy inertia is thus an outcome, not an assumption: a standing policy persists until the belief-optimal action moves far enough to clear the switching hurdle $\kappa_i$, or until the language itself breaks down and must be repaired (\cref{sec:dissonance}).
++How long play stays fixed is therefore governed by agent-level parameters---the switching hurdle here, and the tolerance for misfit introduced with the test of \cref{sec:dissonance}---rather than by a fixed number of episodes.
+ 
+ \subsection{On-path conditionals}
+ 
+-Fix a generation with committed profile $\sigma=(\sigma_1,\dots,\sigma_n)$.
++Fix a stable stretch over which the standing profile $\sigma=(\sigma_1,\dots,\sigma_n)$ is constant.
+ Each state $s$ receives the deterministic profile $a(s)=(\sigma_j(C_{\mathcal P_j}(s)))_{j\in N}$.
+ Agent $i$'s \emph{on-path conditional} at an observation pair $(C,a)$ with $S(C,a)=\{s\in C:a(s)=a\}\neq\emptysetset$ is
+ \begin{equation}
+@@ -395,48 +410,50 @@ With stochastic mechanisms, no announcement would occur at all.
+ 
+ \subsection{Tests and active sets}
+ 
+-\begin{definition}[Consistency test and active set]
++\begin{definition}[Sequential adequacy test, dissonance capacity, and active set]
+ \label{def:test}
+-Fix a tolerance $\eta\geq0$, a minimum count $\bar n\geq1$, and a nonnegative, nonincreasing slack sequence $w(\cdot)\to0$.
+-Given record $r_i$ with counts $n_i(C,a)$ and empirical conditionals $\hat p_i(\cdot\mid C,a)$, theory $m\in M(\mathcal P_i)$ \emph{passes} if
++Fix an adequacy tolerance $\eta\ge0$.
++Theory $m$ is \emph{adequate} at a visited pair $(C,a)$ when $\TV\!\left(p_i^{*}(\cdot\mid C,a),\marg{i}m(C)(a)\right)\le\eta$, where $\TV$ is total-variation distance; under a standing profile call $m$ \emph{$\eta$-adequate} if it is adequate at every visited pair and \emph{$\eta$-inadequate} if it is inadequate at some visited pair.
++The agent monitors adequacy \emph{sequentially}, period by period.
++For each expressible theory $m$ it maintains a nonnegative \emph{evidence process} $E_i^{m}$, equal to $1$ before any play and multiplied each period by a nonnegative factor for the observed token; the factor is built so that $E_i^{m}$ is a supermartingale as long as $m$ is adequate---its evidence against $m$ does not grow in expectation---while at any pair where $m$ is inadequate $\log E_i^{m}$ grows in expectation at a strictly positive rate, the information divergence between the on-path conditional and $m$'s prediction.
++(A standard mixture construction over the adequacy region yields such a process; in the exact deterministic case $\eta=0$ the factor is the likelihood ratio, so $E_i^{m}$ becomes $+\infty$ the first period $m$ assigns probability zero to a realized consequence.)
++Agent $i$ carries a \emph{dissonance capacity} $b_i>0$ and \emph{rejects} $m$, permanently, at the first period in which $\log E_i^{m}\ge b_i$.
++The \emph{active set} $\widehat M_i(\mathcal P_i,r_i)$ collects the not-yet-rejected theories.
++Capacity is the agent's evidence threshold for abandoning a theory: by Ville's inequality the probability that an $\eta$-adequate theory is ever rejected is at most $e^{-b_i}$, so a high-capacity agent tolerates apparent misfit and rarely rejects on noise, while a low-capacity agent rejects on slight evidence and suffers more false alarms.
++Retrospective fits to a \emph{fixed} record---the repair test of \cref{sec:inquiry} and the grouping test of \cref{sec:economics}, which score a candidate against evidence already in hand rather than a stream---instead use the fixed-sample criterion
+ \begin{equation}
+ \TV\bigl(\hat p_i(\cdot\mid C,a),\,\marg{i}m(C)(a)\bigr)
+-\leq
++\le
+ \eta+w\bigl(n_i(C,a)\bigr)
+ \qquad
+-\text{for every }(C,a)\text{ with }n_i(C,a)\geq\bar n,
++\text{for every }(C,a)\text{ with }n_i(C,a)\ge\bar n,
+ \label{eq:test}
+ \end{equation}
+-where $\TV$ is total-variation distance.
+-The \emph{active set} $\widehat M_i(\mathcal P_i,r_i)$ collects the passing theories.
+-Under a committed profile, call $m$ \emph{$\eta$-adequate} if $\TV(p_i^{*}(\cdot\mid C,a),\marg{i}m(C)(a))\leq\eta$ at every visited pair and \emph{$\eta$-inadequate} if the inequality fails strictly at some visited pair.
++for a nonnegative, nonincreasing slack $w(\cdot)\to0$ and minimum count $\bar n\ge1$.
+ \end{definition}
+ 
+ \begin{lemma}[Test consistency]
+ \label{lem:test-consistency}
+-Fix a partition $\mathcal P_i$ and a committed profile, and suppose no theory's distance to an on-path conditional equals $\eta$ exactly.
+-Consider a record consisting of a finite prefix together with observations generated under that profile from some generation on.
+-As generations accumulate, almost surely:
++Fix a partition $\mathcal P_i$ and a standing profile, and suppose every theory is either $\eta$-adequate or strictly inadequate at each visited pair (none sits exactly at the adequacy boundary).
++Consider a record consisting of a finite prefix together with observations generated under that profile from some period on.
++Because rejection is permanent and the theories are finite, the active set is monotone and eventually constant; and almost surely:
+ \begin{enumerate}[label=(\alph*)]
+-  \item at each pair recurrent under the profile, every $\eta$-adequate theory eventually satisfies the pair's constraint and every $\eta$-inadequate theory eventually violates it; and
+-  \item at each pair frozen after the prefix (never revisited under the profile), the constraint is eventually constant, equal to the prefix verdict.
++  \item every theory that is $\eta$-inadequate at a recurrent pair, and every theory carried past $b_i$ by the frozen prefix alone, is eventually rejected; and
++  \item every remaining theory---$\eta$-adequate at every recurrent pair and below $b_i$ on frozen evidence---survives forever, except for a false rejection of probability at most $e^{-b_i}$.
+ \end{enumerate}
+-Consequently the active set is eventually constant, equal to the theories that are $\eta$-adequate at every recurrent pair and satisfy every frozen constraint.
++Consequently dissonance arises almost surely when every expressible theory falls under~(a); when some theory qualifies under~(b), dissonance is avoided with probability at least $1-e^{-b_i}$.
+ \end{lemma}
+ 
+ \begin{proof}
+-A recurrent pair is visited in each episode with a fixed positive probability determined by the i.i.d.\ full-support state draw, so it accumulates observations without bound and, by the strong law of large numbers, $\hat p_i(\cdot\mid C,a)\to p_i^{*}(\cdot\mid C,a)$; the finite prefix contributes a vanishing fraction.
+-The triangle inequality places $\TV(\hat p_i,\marg{i}m(C)(a))$ within any $\epsilon>0$ of $\TV(p_i^{*},\marg{i}m(C)(a))$ from some generation on; the genericity hypothesis converts strict inequalities into eventual acceptance and rejection, and the slack sequence absorbs finite-sample fluctuation.
+-A frozen pair has a fixed count and empirical conditional after the prefix, so its constraint is constant.
+-Intersecting finitely many pairwise constraints gives the eventual active set.
++A recurrent pair is visited each period with a fixed positive probability under the i.i.d.\ full-support draw, hence infinitely often; a frozen pair is visited only in the finite prefix and adds at most a fixed constant to $\log E_i^{m}$.
++If $m$ is inadequate at a recurrent pair, the evidence factor there has strictly positive expected log-growth (the information divergence), so by the strong law $\log E_i^{m}\to+\infty$ almost surely and $m$ is rejected; likewise if the frozen constant alone reaches $b_i$.
++If $m$ is $\eta$-adequate at every recurrent pair and its frozen evidence is below $b_i$, then $E_i^{m}$ is a nonnegative supermartingale, so Ville's inequality gives $\Pr(\sup_t\log E_i^{m}\ge b_i)\le e^{-b_i}$, and off that event $m$ is never rejected.
++Permanence of rejection and finiteness of $M(\mathcal P_i)$ make the active set monotone and eventually constant; collecting the two cases gives the dissonance dichotomy.
+ \end{proof}
+ 
+-The frozen-constraint clause matters: a theory adequate under the current profile can be permanently excluded by a legacy constraint from an earlier regime, so the active set tracks the whole retained record, not the current play alone.
+-The deterministic case is the degenerate instance $\eta=0$, $\bar n=1$, $w\equiv0$.
+-At a recurrent pair, a $0$-adequate theory's degenerate prediction equals the on-path conditional, so every consequence realized at that pair matches its prediction and the theory always passes.
+-A $0$-inadequate theory assigns probability zero to some consequence that occurs with positive on-path probability; repeated visitation almost surely produces such a consequence, after which the theory fails permanently.
+-Frozen constraints remain unchanged.
+-The conclusion of \cref{lem:test-consistency} therefore holds even though the genericity hypothesis does not apply at the boundary value zero.
++The frozen-evidence clause matters: a theory adequate under the current profile can be carried past $b_i$ by legacy evidence from an earlier regime, so the active set tracks the whole retained record, not the current play alone.
++The deterministic case is the exact instance $\eta=0$: an inadequate theory assigns probability zero to some consequence that occurs with positive on-path probability, so $E_i^{m}$ becomes infinite the first time that consequence is realized---rejection is immediate and certain---while an adequate theory predicts every realized consequence with positive probability and is never rejected.
++Capacity plays no role here (any $b_i$ gives the same verdicts) and the false-alarm probability $e^{-b_i}$ is irrelevant, recovering the exact test.
+ 
+ \begin{assumption}[Full-support marginals, stochastic case]
+ \label{ass:full-support}
+@@ -451,8 +468,8 @@ That this occurrence probability is objectively theory-informative---rivals' fin
+ Beliefs carry two tiers.
+ The \emph{reference posterior} $\bar\mu_i$ begins at a full-support prior on $M(\mathcal P_i)$ and updates by the token likelihoods above; it is never conditioned on the test.
+ The \emph{acting belief} $\mu_i$ is the reference posterior restricted and renormalized to the current active set, so that belief never rides on a rejected theory; when the active set is empty, the acting belief is undefined and the carry-forward clause of \cref{ass:commitment} governs.
+-Because restriction always applies to the unrestricted tier, the acting belief is well defined whenever the active set is nonempty---including when a fluctuating test empties the set and later refills it---since \cref{ass:full-support} keeps every likelihood positive and the refilled set positive-mass.
+-In the deterministic case refill cannot occur (rejection is a zero-likelihood event) and judged updating reduces to ordinary Bayesian conditioning.
++Because the sequential test rejects permanently, the active set only shrinks, so the acting belief is well defined at every period until---if ever---the last expressible theory is rejected; \cref{ass:full-support} keeps every reference likelihood positive, so the restriction is always to a positive-mass set.
++In the deterministic case rejection is a zero-likelihood event, so judged updating coincides with ordinary Bayesian conditioning.
+ After a refinement, both tiers restart from the full-support bridge prior on the expanded space, from which judged updating resumes (\cref{sec:pivot}).
+ Judged updating is the formal junction between the test and the posterior---between judgment and understanding (\cref{rem:self-sealing})---and it guarantees, in \cref{sec:dynamics}, that surviving acting beliefs are supported on adequate theories.
+ 
+@@ -460,7 +477,7 @@ Judged updating is the formal junction between the test and the posterior---betw
+ 
+ \begin{definition}[Causal dissonance]
+ \label{def:dissonance}
+-Agent $i$ experiences \emph{causal dissonance} at the end of a generation if $\widehat M_i(\mathcal P_i,r_i)=\emptysetset$: every expressible theory is rejected.
++Agent $i$ experiences \emph{causal dissonance} at any period at which $\widehat M_i(\mathcal P_i,r_i)=\emptysetset$: its sequential test has rejected every expressible theory.
+ The expressible set does not disappear; no element of it accounts for the record.
+ The immediate question has a determinate defect but not a determinate answer: \emph{what unrepresented difference among the pooled states explains the heterogeneity of their consequences?}
+ \end{definition}
+@@ -471,24 +488,24 @@ Whether dissonance ever occurs, however, depends on whether play makes the falsi
+ 
+ \begin{definition}[Exposure and concealment]
+ \label{def:exposure}
+-Under a committed profile, awareness $\mathcal P_i$ is \emph{exposed} if every $m\in M(\mathcal P_i)$ is $\eta$-inadequate.
+-A committed profile is \emph{concealing} for agent $i$ if some expressible theory is $\eta$-adequate under it while false as a claim about $\tau$ at some state its cells cover.
++Under a standing profile, awareness $\mathcal P_i$ is \emph{exposed} if every $m\in M(\mathcal P_i)$ is $\eta$-inadequate.
++A standing profile is \emph{concealing} for agent $i$ if some expressible theory is $\eta$-adequate under it while false as a claim about $\tau$ at some state its cells cover.
+ \end{definition}
+ 
+ \begin{proposition}[Exposure and dissonance]
+ \label{prop:exposure}
+-Fix a committed profile and adopt the genericity hypothesis of \cref{lem:test-consistency}.
+-If the record carries no frozen constraint that already excludes an $\eta$-adequate theory, then agent $i$ experiences dissonance from some generation onward almost surely if and only if $\mathcal P_i$ is exposed.
+-Absent that proviso, a frozen legacy constraint can force dissonance even under a non-exposed profile.
++Fix a standing profile and suppose no theory sits exactly at the adequacy boundary (\cref{lem:test-consistency}).
++If the record carries no frozen evidence that already rejects an $\eta$-adequate theory, then $\mathcal P_i$ is exposed if and only if agent $i$ is dissonant from some period onward almost surely; when $\mathcal P_i$ is not exposed, dissonance is avoided with probability at least $1-e^{-b_i}$.
++Absent that proviso, frozen legacy evidence can force dissonance even under a non-exposed profile.
+ \end{proposition}
+ 
+ \begin{proof}
+-By \cref{lem:test-consistency} the active set is eventually the theories $\eta$-adequate at every recurrent pair and satisfying every frozen constraint.
+-Under the no-legacy proviso the frozen constraints exclude no $\eta$-adequate theory, so the eventual active set is empty iff no theory is $\eta$-adequate at every recurrent pair, which is exposure.
+-If instead a frozen constraint excludes every $\eta$-adequate theory, the eventual active set is empty although the profile is not exposed.
++By \cref{lem:test-consistency} the eventual active set consists of the theories $\eta$-adequate at every recurrent pair that lie below $b_i$ on frozen evidence and escape false rejection.
++Under the no-legacy proviso frozen evidence rejects no $\eta$-adequate theory, so this set is empty almost surely iff no theory is $\eta$-adequate at every recurrent pair---exposure---while if such a theory exists it survives with probability at least $1-e^{-b_i}$.
++If instead frozen evidence rejects every $\eta$-adequate theory, the active set is empty although the profile is not exposed.
+ \end{proof}
+ 
+-The proviso is not cosmetic: the dynamics of \cref{sec:dynamics} generate records whose early generations were played under coarser partitions and different profiles, so the frozen constraints are real, and the characterization of the corrective forces below is stated for the terminal regime where the proviso holds by construction (\cref{thm:absorption}(d)).
++The proviso is not cosmetic: the dynamics of \cref{sec:dynamics} generate records whose early periods were played under coarser partitions and different profiles, so the frozen evidence is real, and the characterization of the corrective forces below is stated for the terminal regime where the proviso holds by construction (\cref{thm:absorption}(d)).
+ 
+ Exposure has two sources, and the distinction organizes much of what follows.
+ Heterogeneity inside a cell surfaces either because \emph{other agents play differently across the pooled states}---strategic differentiation inside one's categories, which changes the visited profiles and the induced mixtures---or because \emph{the environment punishes uniform play across causally different states in an observable way}.
+@@ -547,7 +564,7 @@ Write $\mathcal R(\mathcal P_i,\bar r_i)$ for the set of minimally restorative r
+ \end{definition}
+ 
+ The repair test deliberately applies to every nonempty recoded cell--profile pair.
+-The count floor $\bar n$ governs when the current language carries enough evidence to be declared dissonant; it does not permit a proposed repair to erase retained evidence by splitting a tested cell into fragments below that floor.
++The count floor $\bar n$ governs when a recoded pair carries enough evidence for the repair test to bind; it does not permit a proposed repair to erase retained evidence by splitting a tested cell into fragments below that floor.
+ Every nonempty fragment remains subject to \cref{eq:repair-test}, while the weakly larger finite-sample slack $w(n)$ at small $n$ preserves the intended caution about sparse evidence.
+ Refinement can therefore reconcile observations but cannot delete their constraints.
+ In the exact deterministic case $\eta=0$ and $w\equiv0$, the repair test is exact consistency at every observed pair.
+-- 
+2.43.0
+

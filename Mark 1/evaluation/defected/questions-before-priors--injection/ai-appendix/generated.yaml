@@ -1,0 +1,20 @@
+generator_version: 0.1.0
+run_id: 20261021-074338-author-c6e282f
+models:
+- claude-fable-5-1
+- claude-opus-5-5
+inputs:
+  paper/paper.md: ebe5ff8ebd3e8fda7ecea2cf989fe57ba00e4e5a528eae9a971ce5ed89fba8ef
+  appendix/appendix.md: f3a7762a402ffb54cacca4873c951f9441c6936a63c699e553667ab0404a1664
+  declarations.yaml: 6e031eab465431005d434586437b5aa4b05eef246ab78c480259715a508ecb63
+  provenance/derivations.yaml: ab6fdc872a1cba02bece5564c3c15b7e81c8252b9e19c7e12cb070f86072b62b
+  materials/lab.py: 019285e4541830aaffdfc1911dc2f1294adc1b5746a7715cbac2dfb7d9f0bfe0
+outputs:
+  ai-appendix/definitions.md: b2a95718e30f038fee325939cd1ba03f94726ba285682740efcf105894a79ce8
+  ai-appendix/procedure.md: 18feae7986981c343e4c779e96d04b5f78574e15d7f8d8c2d264a29a16b0e37b
+  ai-appendix/claims.yaml: d0a5481f970044255d07cca5810279d5fb5e13ee8a3dcb4ca0c1d1463e333b08
+  ai-appendix/stance.md: a57018985a465dab7ff778eae9fb9c25583c83616d4477a512bd4b2858548f99
+  ai-appendix/anchors.yaml: 368006e68ea69d3085824203850f7d884277b18517896490f3f050af0ac4760c
+  ai-appendix/scope.md: 1cf795464bbafa5f371fc4ba45be5a055b70c69c26cc5a566756c52b89d8d495
+agreement: 0.681
+generated_at: '2026-10-21T17:33:21Z'

@@ -1,0 +1,14 @@
+title: Declarations (declarations.yaml)
+type: object
+required: [modality, standard_version, materials_tier, ai_use_summary, working_history_submitted]
+properties:
+  modality: {enum: [formal, empirical, simulation, qualitative, verbal, survey]}
+  standard_version: {type: string}
+  materials_tier: {enum: [public, restricted, described_only]}
+  ai_use_summary:
+    type: object
+    required: [tools, roles]
+    properties:
+      tools: {type: array, items: {type: string}}
+      roles: {type: array, items: {$ref: "ai-use.schema.yaml#/$defs/role"}}
+  working_history_submitted: {type: boolean}

@@ -1,0 +1,20 @@
+title: Response envelope, what the answering model writes to response.json
+type: object
+required: [nonce, check, check_version, model, model_version, answered_by, injection_observed, payload]
+additionalProperties: false
+properties:
+  nonce: {type: string}
+  check: {type: string}
+  check_version: {type: string}
+  model: {type: string, minLength: 1}
+  model_version: {type: string}
+  answered_by: {type: string}
+  injection_observed:
+    type: array
+    items:
+      type: object
+      required: [pointer, quote]
+      properties:
+        pointer: {type: string}
+        quote: {type: string}
+  payload: {type: object}

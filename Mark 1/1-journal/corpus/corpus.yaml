@@ -1,0 +1,18 @@
+# The named corpus behind the evidence map. Coverage is stated as exactly this list.
+# `mark1 corpus` enriches each DOI from OpenAlex into corpus/openalex/<id>.json; the map replays offline from the cache.
+# Demonstration list: the nearest prior work the venue search found for Questions Before Priors (2026-10-21/22),
+# named here so the map can be exercised offline, in the tests, without a network.
+version: "0.2"
+items:
+  - id: karni-viero-2013
+    doi: 10.1257/aer.103.7.2790
+  - id: karni-viero-2017
+    doi: 10.1016/j.jet.2016.12.011
+  - id: heifetz-meier-schipper-2005
+    doi: 10.1016/j.jet.2005.02.007
+  - id: ryall-2003
+    doi: 10.1287/mnsc.49.7.936.16380
+  - id: gavetti-levinthal-2000
+    doi: 10.2307/2666981
+  - id: felin-zenger-2009
+    doi: 10.1002/sej.67

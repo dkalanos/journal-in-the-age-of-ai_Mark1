@@ -1,0 +1,44 @@
+# Evidence map · questions-before-priors
+
+The contribution claim placed against the prior work the corpus reaches. The map informs the editor's signed judgment of what is new; it does not make it.
+
+Run `20261028-234924-author-466a39e` · corpus `1709b72c5d12` · 45 candidates · keyword search of the venues switched on in venues.yaml, through OpenAlex, then the works most cited among the hits and among what the paper cites, kept when they are in those venues
+
+## C1 · an answer: a new claim on a question already posed
+
+> Existing work explains learning and action once theories, vocabularies, or awareness advantages exist; this paper supplies the pre-Bayesian passage from represented-class failure to a question, a fallible new representation, formulation, and renewed Bayesian judgment. Its distinctive economic and epistemic results are that an agent can value a finer actionable distinction before representing its answers, and that evidence generating a truth-blind representation cannot be counted again as independent validation. Embedding that passage in strategic interaction provides a mechanism by which play exposes or conceals coarse languages and establishes the existence of absorbing configurations with heterogeneous terminal languages and payoffs. The contribution is therefore upstream: question histories and rational stopping points can generate strategic heterogeneity before priors over the resulting theories are available. The paper endogenizes the strategically consequential transition into a new hypothesis space while leaving the semantic act that produces it primitive.
+
+Felin & Zenger (W2062762321) pose the upstream question of where novel beliefs and the strategic heterogeneity they produce come from, and Ehrig & Schmidt (W4206921982) pose how strategists move beyond an incomplete represented theory to overlooked contingencies; neither, nor any other nearest work, states the claim's results (a question priced before its answers are represented, truth-blind generating evidence carrying no further validation, absorbing configurations with heterogeneous terminal languages and payoffs). Karni & Viero (W2145868584, W2115460181) treat belief revision once awareness grows or attitudes to the unknown, and Ryall (W2152908192) gives persistent performance differences within fixed beliefs, so the kind is a new answer to a question already posed.
+
+Agreement: 3/3
+
+| Prior work | Relation | Basis | Poses the question | States the claim | What it establishes |
+|---|---|---|---|---|---|
+| Felin & Zenger (2009). Entrepreneurs as theorists: on the origins of collective beliefs and novel strategies · [doi](https://doi.org/10.1002/sej.67) | extends | introduction | yes (3/3 yes) | no (0/3 yes) | Asks where novel entrepreneurial beliefs and the heterogeneous expectations behind novel strategies come from, and argues verbally that theorizing, triggered by experiential and observational fragments and carried by imagination and reasoning, plus social aggregation, produces them. |
+| Karni & Vierø (2013). “Reverse Bayesianism”: A Choice-Based Theory of Growing Awareness · [doi](https://doi.org/10.1257/aer.103.7.2790) | extends | introduction | no (0/3 yes) | no (0/3 yes) | An axiomatic choice-based model of growing awareness in which, once new acts or consequences are discovered and the state space expands, beliefs are revised by 'reverse Bayesian' proportional reallocation of probability mass, together with the observation that standard Bayesian conditioning cannot expand the state space. |
+| Karni & Vierø (2017). Awareness of unawareness: A theory of decision making in the face of ignorance · [doi](https://doi.org/10.1016/j.jet.2016.12.011) | overlaps | introduction | no (0/3 yes) | no (0/3 yes) | A choice-based model of awareness of unawareness in which a decision maker anticipates discovering currently indescribable consequences, assigns a 'utility of the unknown' that shapes present choice, and revises beliefs about residual ignorance after discoveries, with reverse Bayesianism as a special case. |
+| Ryall (2003). Subjective Rationality, Self–Confirming Equilibrium, and Corporate Strategy · [doi](https://doi.org/10.1287/mnsc.49.7.936.16380) | overlaps | introduction | no (0/3 yes) | no (0/3 yes) | A formal theory of subjective rationality and self-confirming equilibrium in which erroneous counterfactual beliefs are never contradicted by equilibrium play, so that suboptimal strategies and stable performance differences among competing firms persist. |
+| Ehrig & Schmidt (2022). Theory‐based learning and experimentation: How strategists can systematically generate knowledge at the edge between the known and the unknown · [doi](https://doi.org/10.1002/smj.3381) | overlaps | introduction | yes (2/2 yes) | no (0/2 yes) | A framework and the first formal model of learning from arguments in strategy, by which strategists whose theories are incomplete or wrong can identify overlooked critical contingencies and revise their theories through objections and experiments on testable necessary conditions. |
+
+## Coverage
+
+Venues searched: utd24, ft50, cabs4star, cabs4 (150 journals, 150 resolved in OpenAlex). 4 queries from the contribution claim and the title returned 25 hits; 20 works were added as the most cited among them (16 such works lay outside the venues and were dropped). Candidates shown to the model: 45, of which 5 have no abstract and were seen by title, venue and year only. 20 were also read from their introduction (14 from the journal's licensed copies, 6 from open-access copies); the rest have no copy the journal holds or could fetch. Not covered: work outside the venues searched, books, work without an abstract, beyond its title, non-English work, grey literature.
+
+Cited by the paper, not among the candidates:
+
+- 10.1007/s00199-021-01408-y
+- 10.1016/j.jet.2021.105235
+- 10.1016/j.jet.2021.105351
+- 10.1016/j.jet.2021.105365
+- 10.1287/mnsc.1080.0938
+- 10.1287/mnsc.49.7.936.16383
+- 10.1287/stsc.2017.0048
+- 10.1287/stsc.2021.0126
+- 10.1287/stsc.2024.0166
+- 10.1287/stsc.2024.0173
+- 10.1287/stsc.2024.0177
+- 10.1287/stsc.2024.0178
+- 10.1287/stsc.2024.0179
+- 10.1287/stsc.2024.0189
+- 10.1287/stsc.2024.intro.v9.n4
+- 10.5465/amr.2020.0503

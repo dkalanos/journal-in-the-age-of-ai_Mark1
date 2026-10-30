@@ -1,0 +1,353 @@
+# The derivation behind each result, stated checkably (protocol/formal.md#P6, formal-0.2).
+#
+# D1-D6 are closed forms: the numbers the paper and appendix C state, in symbols the machine can re-evaluate.
+# D7-D22 are proofs: for each theorem, its hypotheses as the paper states them, the steps of the paper's own proof,
+# and for each step what it rests on, as pointers into the record. Written by Claude Code on 2026-10-21 from the
+# proofs; a reading of the author's argument, not the author's statement of it (see ../README.md).
+derivations:
+
+# ----- closed forms --------------------------------------------------------------------------------------------------
+
+  - id: D1
+    states: appendix/appendix.md#dominance-thresholds
+    symbols:
+      p0: {domain: nonnegative, meaning: belief mass on theories assigning theta^0 at the awareness cell}
+      p1: {domain: nonnegative, meaning: belief mass on theories assigning theta^1 at the awareness cell}
+      beta: {domain: nonnegative, meaning: "demand parameter in [0, 1]: the share of unit value a customer pays for the wrong architecture"}
+    assumptions: ["p0 >= 0", "p1 > 0", "beta >= 0", "beta <= 1"]
+    quantities:
+      gain_vs_rival_0: "p0/2 - (1 - beta/2)*p1"
+      gain_vs_rival_1: "(1 - beta/2)*p0 - p1/2"
+      threshold: "p0 - (2 - beta)*p1"
+    comparative_statics:
+      - {of: threshold, wrt: beta, stated_sign: positive}
+    examples:
+      - params: {p0: 0.6, p1: 0.4, beta: 1}
+        expected: {gain_vs_rival_0: 0.1, gain_vs_rival_1: 0.1, threshold: 0.2}
+      - params: {p0: 0.6, p1: 0.4, beta: 0}
+        expected: {threshold: -0.2}
+
+  - id: D2
+    states: appendix/appendix.md#per-token-gain-and-deliberative-leverage
+    symbols:
+      T: {domain: positive, meaning: the common valuation horizon}
+      r: {domain: positive, meaning: "the number of tokens in the deliberative record, |r_i|"}
+      Lfine: {domain: nonnegative, meaning: robust fine-contingent value of the best coherent grouping}
+      Lcur: {domain: nonnegative, meaning: current-language benchmark of the same grouping}
+    assumptions: ["T > 0", "r > 0", "Lfine >= Lcur"]
+    quantities:
+      J: "Lfine - Lcur"
+      B: "(T/r)*(Lfine - Lcur)"
+    examples:
+      - params: {T: 2, r: 2, Lfine: 0.5, Lcur: 0}
+        expected: {J: 0.5, B: 0.5}
+      - params: {T: 2, r: 4, Lfine: 1, Lcur: 0}
+        expected: {J: 1, B: 0.5}
+      - params: {T: 2, r: 4, Lfine: 0, Lcur: 0}
+        expected: {J: 0, B: 0}
+
+  - id: D3
+    states: paper/paper.md#example-1-continued-5
+    symbols:
+      Coh: {domain: nonnegative, meaning: "representation-relative coherence, the acting-belief probability of the formulated theory"}
+      W: {domain: nonnegative, meaning: selection-adjusted warrant of the formulated theory}
+    quantities:
+      gap: "Coh - W"
+    examples:
+      - params: {Coh: 1, W: 0.5}
+        expected: {gap: 0.5}
+
+  - id: D4
+    states: paper/paper.md#def-test
+    symbols:
+      b: {domain: positive, meaning: "dissonance capacity, the log-evidence threshold for rejecting a theory"}
+      b1: {domain: positive, meaning: dissonance capacity of agent 1}
+      b2: {domain: positive, meaning: dissonance capacity of agent 2}
+    assumptions: ["b > 0", "b1 > 0", "b2 > 0"]
+    quantities:
+      false_alarm_bound: "exp(-b)"
+      residual_two_agents: "exp(-b1) + exp(-b2)"
+    comparative_statics:
+      - {of: false_alarm_bound, wrt: b, stated_sign: negative}
+    examples:
+      - params: {b: 3, b1: 3, b2: 3}
+        expected: {false_alarm_bound: 0.049787068367863944, residual_two_agents: 0.09957413673572789}
+
+  - id: D5
+    states: appendix/appendix.md#part-a
+    symbols:
+      n: {domain: positive, meaning: the number of agents}
+      S: {domain: positive, meaning: "the number of states, |S|"}
+    assumptions: ["n >= 2", "S >= 2"]
+    quantities:
+      cells_at_start: "n"
+      cells_at_most: "n*S"
+      refinements_at_most: "n*(S - 1)"
+    examples:
+      - params: {n: 2, S: 4}
+        expected: {cells_at_start: 2, cells_at_most: 8, refinements_at_most: 6}
+
+  - id: D6
+    states: appendix/appendix.md#persistence-payoffs
+    symbols:
+      beta: {domain: nonnegative, meaning: "demand parameter in [0, 1]: the share of unit value a customer pays for the wrong architecture"}
+    assumptions: ["beta >= 0", "beta <= 1"]
+    quantities:
+      pi_row_firm: "(1 + 1 + 1/2 + 1/2)/4"
+      pi_coarse_firm: "(0 + 0 + 1/2 + 1/2)/4"
+      pooled_on_wrong_architecture: "beta/2"
+      pooled_prediction: "1/2"
+    stated:
+      pi_row_firm: "3/4"
+      pi_coarse_firm: "1/4"
+    comparative_statics:
+      - {of: pooled_on_wrong_architecture, wrt: beta, stated_sign: positive}
+    examples:
+      - params: {beta: 0.8}
+        expected: {pi_row_firm: 0.75, pi_coarse_firm: 0.25, pooled_on_wrong_architecture: 0.4, pooled_prediction: 0.5}
+
+# ----- proofs ------------------------------------------------------------------------------------------------------
+
+  - id: D7
+    kind: proof
+    states: paper/paper.md#prop-no-emergence
+    symbols: {}
+    hypotheses: ["an observation in the agent's observation algebra"]
+    steps:
+      - says: Conditioning reweights a distribution on its domain and cannot enlarge the domain.
+        uses: [paper/paper.md#def-awareness]
+      - says: Every element of M(P_i) is cell-constant, so every posterior mixture, and every policy optimal against one, is P_i-measurable.
+        uses: [paper/paper.md#def-awareness, paper/paper.md#ass-commitment]
+    conclusion: No sequence of updates makes a theory outside M(P_i) expressible or a distinction finer than P_i usable in a policy.
+
+  - id: D8
+    kind: proof
+    states: paper/paper.md#prop-exposure
+    symbols: {}
+    hypotheses:
+      - no theory sits exactly at the adequacy boundary
+      - remains active when that profile begins
+    steps:
+      - says: Every entry-active theory strictly inadequate at a recurrent pair is eventually rejected almost surely, and every theory inactive at t_0 remains absent.
+        uses: [appendix/appendix.md#lem-test-consistency]
+      - says: If all profile-adequate theories are active at t_0, the eventual active set is empty almost surely exactly when there is no eta-adequate theory, that is, exactly when the profile is exposed.
+        uses: [paper/paper.md#def-exposure, paper/paper.md#def-dissonance]
+      - says: For a non-exposed profile, conditional Ville's inequality bounds the future rejection probability of an entry-active adequate theory m by E_i^m(t_0) e^{-b_i}, giving the survival and no-dissonance bounds.
+        uses: [appendix/appendix.md#app-eprocess, paper/paper.md#def-test, derivations:D4]
+    conclusion: Exposure holds if and only if eventual dissonance is almost sure; a non-exposed profile with an entry-active adequate theory avoids dissonance with probability at least 1 - E_i^m(t_0) e^{-b_i}.
+
+  - id: D9
+    kind: proof
+    states: paper/paper.md#thm-nonidentification
+    symbols: {}
+    hypotheses:
+      - common initial epistemic states
+      - record-measurable behavioral and tie-breaking rules
+      - truth-blind inquiry-and-formulation rules
+      - consequence laws agree at every
+    steps:
+      - says: Couple the two worlds on common state draws, common independent seeds for production, formulation, bridge-prior selection and tie-breaking, and identical joint consequence draws at every reachable pair.
+        uses: [appendix/appendix.md#probability-framework]
+      - says: "Induction over periods: identical histories give identical partitions and standing policies, hence the same action profile at the common state; the pair is reachable, so both assignments give it the same joint consequence distribution and the coupled consequence profiles coincide; both records stay identical."
+        uses: [paper/paper.md#ass-observation, paper/paper.md#ass-commitment]
+      - says: Record-measurability and truth-blindness give identical belief updates, conjectures, policies, refinements and formulations, closing the induction through H; the all-horizons claim follows by countability.
+        uses: [paper/paper.md#def-technology, paper/paper.md#def-formulation-rule]
+      - says: Every truth-blind rule therefore has the same output distribution in the two worlds; since tau differs from tau', their sets of objectively correct formulations are disjoint, and one distribution cannot assign probability one to both; the same holds for any disjoint pair of success sets.
+        uses: [paper/paper.md#def-technology]
+    conclusion: The two worlds admit a pathwise coupling through H, and no truth-blind rule is correct with probability one in both.
+
+  - id: D10
+    kind: proof
+    states: paper/paper.md#prop-robust-sufficiency
+    symbols: {}
+    hypotheses: ["sufficient for every assignment in a candidate set"]
+    steps:
+      - says: Sufficiency for tau' is refinement of the causal-equivalence partition of tau'.
+        uses: [paper/paper.md#def-awareness, paper/paper.md#def-mechanisms]
+      - says: Refinement of each candidate's partition is refinement of their join, the coarsest partition refining every one of them.
+        uses: ["cited: the lattice of partitions of a finite set"]
+    conclusion: A partition sufficient for every candidate refines the join of the candidates' causal-equivalence partitions.
+
+  - id: D11
+    kind: proof
+    states: paper/paper.md#prop-participation
+    symbols: {}
+    hypotheses: ["at a dissonant record"]
+    steps:
+      - says: The record is finite, so it has finitely many groupings; for every coherent group Theta_i(g) is nonempty and finite, and all action and consequence spaces are finite, so every max-min expression and every L_fine, L_cur and J is well defined.
+        uses: [paper/paper.md#def-pinned, paper/paper.md#def-leverage]
+      - says: The set whose maximum defines the leverage always contains 0, including when there is no coherent grouping, which gives existence and nonnegativity.
+        uses: [paper/paper.md#def-leverage]
+      - says: For fixed C and G, the sum over groups of the maximum of f_{C,g} is at least the maximum of the sum, because the left side permits a separate action per intersection; summing over cells gives L_fine >= L_cur and J >= 0.
+        uses: [paper/paper.md#def-leverage]
+      - says: Each per-token gain is at most Delta pi_i, so L_fine <= |r_i| Delta pi_i; choosing the standing action in each cell gives L_cur >= 0; hence 0 <= J <= |r_i| Delta pi_i and B_i <= T Delta pi_i.
+        uses: [paper/paper.md#def-leverage, paper/paper.md#ass-commitment, derivations:D2]
+      - says: Computability follows by finite enumeration from the deliberative record, the standing policy, the agent-known primitives and the test calibration.
+        uses: [paper/paper.md#ass-observation, paper/paper.md#def-test]
+      - says: The election rule is the achievability-weighted represented gain net of the inquiry cost.
+        uses: [paper/paper.md#ass-elective]
+      - says: Because every J is nonnegative and the outside option is zero, the maximum is strictly positive exactly when some coherent grouping has strictly positive representational increment.
+        uses: [paper/paper.md#def-leverage]
+    conclusion: B_i is well defined, nonnegative, bounded by T Delta pi_i and computable; the agent elects iff lambda^(k) B_i >= gamma_i; B_i > 0 iff some coherent grouping has J > 0.
+
+  - id: D12
+    kind: proof
+    states: paper/paper.md#thm-uninformative
+    symbols: {}
+    hypotheses: ["truth-blind production, formulation, and bridge-prior-selection rule"]
+    steps:
+      - says: Let Z_i be the analyst record and the inquiry history; P_i is h_i-measurable and the complete output rule is record-measurable and truth-blind, so its regular conditional output kernel K_i(.|Z_i) is candidate-independent.
+        uses: [paper/paper.md#def-warrant, paper/paper.md#def-technology, paper/paper.md#def-formulation-rule]
+      - says: The conditional joint law factors as nu(tau'|Z_i) K_i(B|Z_i), since election is determined by the deliberative record and failure history, production and formulation are truth-blind, and randomized bridge-prior selection is record-measurable and truth-blind.
+        uses: [paper/paper.md#ass-elective, paper/paper.md#def-technology]
+      - says: The factorization gives O_i independent of tau' given Z_i, hence the posterior equality for K_i-almost every output; summing over the fixed event A_o gives W(o) = nu(A_o | record, history).
+        uses: [paper/paper.md#def-warrant]
+      - says: Passing the repair test is a deterministic implication of the record and the realized output and so contributes no likelihood factor; equal record-and-history likelihoods leave posterior odds at prior odds.
+        uses: [paper/paper.md#def-restorative]
+    conclusion: Conditional on the analyst record and the inquiry history, the complete output is independent of the candidate objective assignment, and warrant equals the reflective probability of correctness given record and history alone.
+
+  - id: D13
+    kind: proof
+    states: paper/paper.md#cor-self-audit
+    symbols: {}
+    hypotheses: ["the assessment"]
+    steps:
+      - says: Entertaining tau' as a hypothesis requires expressing it, which is sufficiency for tau'.
+        uses: [paper/paper.md#def-awareness, paper/paper.md#def-warrant]
+      - says: Sufficiency for every candidate is refinement of the join.
+        uses: [paper/paper.md#prop-robust-sufficiency]
+    conclusion: The assessment is expressible by the agent only if its post-refinement partition refines the join of the candidates' partitions.
+
+  - id: D14
+    kind: proof
+    states: paper/paper.md#thm-absorption
+    symbols: {}
+    hypotheses: ["Assumption 10.3"]
+    steps:
+      - says: (a) Each successful production strictly refines one agent's partition and no partition ever coarsens; the total cell count is an integer that starts at no less than n, never exceeds n|S| and rises at every success, so at most n(|S| - 1) successes occur and every partition is eventually constant.
+        uses: [paper/paper.md#ass-elective, appendix/appendix.md#part-a, derivations:D5]
+      - says: (b) B_i <= T Delta pi_i; if Delta pi_i = 0 no election occurs since gamma_i > 0; otherwise the election condition fails once lambda^(k) < gamma_i / (T Delta pi_i), which happens at a finite failure count because lambda^(k) is nonincreasing to 0; the counter resets only on a success, of which there are finitely many, so elections are finite on every path.
+        uses: [paper/paper.md#prop-participation, paper/paper.md#ass-elective, appendix/appendix.md#part-b]
+      - says: (c) After the later of the last refinement and the last election, no language changes and no inquiry cost is paid; every later dissonance event fails the participation threshold; all other activity is judged-Bayesian updating in a fixed language.
+        uses: [paper/paper.md#judged-updating, appendix/appendix.md#part-c]
+      - says: (d) On the event that the standing profile is eventually constant, decompose it by (period, profile) and couple the process to an auxiliary one that plays the constant profile; recurrent pairs are visited with fixed positive probability, so empirical conditionals converge by the strong law; under Assumption 10.3(i) the test-consistency lemma makes each active set eventually a survivor set of eta-adequate theories; a nonempty survivor set means the agent is eventually never dissonant, an empty one means dissonant stasis, since no election occurs after G*.
+        uses: [appendix/appendix.md#probability-framework, appendix/appendix.md#lem-test-consistency, paper/paper.md#ass-regularity, paper/paper.md#def-stasis, appendix/appendix.md#part-d]
+    conclusion: Almost surely refinements and elections are finite and every agent's language and inquiry costs stop; on the eventually-constant-profile event each agent is eventually never dissonant or in dissonant stasis.
+
+  - id: D15
+    kind: proof
+    states: paper/paper.md#prop-persistence
+    symbols: {}
+    hypotheses: []
+    steps:
+      - says: "Stasis channel, by instance: take beta < 1, firm 1 on the row law and firm 2 constant on one architecture; expected payoffs are 3/4 and 1/4 under uniform rho; firm 2's record rejects all three constant theories, so it is dissonant; its leverage is 1/2 on the balanced four-token record and positive and bounded in general; permanent stasis holds when gamma_2 exceeds lambda_2^(k) B_2 along the continuation, for which gamma_2 > lambda_2^(k) T Delta pi_2 suffices."
+        uses: [appendix/appendix.md#persistence-payoffs, paper/paper.md#def-stasis, paper/paper.md#prop-participation, derivations:D6, derivations:D2]
+      - says: "Enlightened-inertia channel: a firm that acquires the row law faces a post-refinement horizon gain of exactly 1/2 and holds its old policy when kappa_i >= 1/2."
+        uses: [paper/paper.md#rem-stickiness, paper/paper.md#ass-commitment]
+      - says: The configuration is absorbing, so the difference is permanent.
+        uses: [paper/paper.md#thm-absorption, appendix/appendix.md#prop-rest-points]
+    conclusion: There exist primitives and absorbing configurations with different terminal languages and strictly, permanently different payoffs, the corrective process having died at one of its two stages.
+
+  - id: D16
+    kind: proof
+    states: appendix/appendix.md#lem-test-consistency
+    symbols: {}
+    hypotheses: ["either eta-adequate or strictly inadequate at each visited pair"]
+    steps:
+      - says: A recurrent pair is visited each period with fixed positive probability under the i.i.d. full-support draw, hence infinitely often; a frozen pair only in the finite prefix, affecting only the inherited value E_i^m(t_0).
+        uses: [paper/paper.md#ass-observation, appendix/appendix.md#probability-framework]
+      - says: For a theory strictly inadequate at a recurrent pair, the construction supplies a fixed betting component with strictly positive expected log-growth and positive weight; component domination and the strong law make the evidence process diverge, so log E crosses b_i and the theory is rejected.
+        uses: [appendix/appendix.md#app-eprocess, paper/paper.md#def-test]
+      - says: For a theory adequate at every recurrent post-t_0 pair, the evidence process is a nonnegative supermartingale and conditional Ville's inequality bounds the future rejection probability by E_i^m(t_0) e^{-b_i}.
+        uses: [appendix/appendix.md#app-eprocess, derivations:D4]
+      - says: No re-entry, permanence of rejection and finiteness of M(P_i) make the active set monotone and eventually constant; collecting the two cases gives the dissonance dichotomy.
+        uses: [paper/paper.md#def-test, paper/paper.md#def-dissonance]
+    conclusion: Inadequate active theories are eventually rejected, adequate ones survive with the stated conditional probability, and eventual dissonance is almost sure exactly when every expressible theory falls under the first case.
+
+  - id: D17
+    kind: proof
+    states: appendix/appendix.md#prop-coherence
+    symbols: {}
+    hypotheses: ["a candidate refinement"]
+    steps:
+      - says: M(P') is the set of cell-constant assignments Theta^{P'}, and every constraint of the repair test involves only the mechanism assigned to one cell, so the repair-consistent set is the product over cells of the cellwise consistent sets.
+        uses: [paper/paper.md#def-awareness, paper/paper.md#def-restorative]
+      - says: A product of finite sets is nonempty exactly when every factor is nonempty.
+        uses: []
+    conclusion: P' is restorative if and only if every one of its cells is repair-coherent.
+
+  - id: D18
+    kind: proof
+    states: appendix/appendix.md#prop-rest-points
+    symbols: {}
+    hypotheses:
+      - eventually constant almost surely
+      - strict no-switch point at the limit
+      - satisfy the SCUE conditions
+      - strictly optimal under every conjecture and every theory in its active set
+    steps:
+      - says: (i) Continuity of the finite-dimensional payoff comparison carries the strict no-switch slack to the limit, so the eventually constant policy is stationary under the switching rule; empirical conjectures converge to the induced frequencies; non-stasis agents are eventually never dissonant, with acting beliefs on the eta-adequate survivor set; elections cease. The limit is a partial SCUE.
+        uses: [appendix/appendix.md#proof-of-proposition-i, paper/paper.md#def-scue, paper/paper.md#thm-absorption, paper/paper.md#ass-commitment]
+      - says: (ii-a) With deterministic mechanisms rejection is irreversible; SCUE condition (iii) gives an active 0-adequate theory, which is never rejected, so the active set stays nonempty; dissonance never occurs, B_i = 0 gives no election, and strict optimality fixes the policy as the set shrinks and conjectures converge.
+        uses: [appendix/appendix.md#proof-of-proposition-ii-a, paper/paper.md#def-scue, paper/paper.md#conv-calibration]
+      - says: (ii-b) Condition on the entry history and couple to the fixed-profile auxiliary process; each entry-active eta-adequate theory with E <= 1 is rejected with probability at most e^{-b_i} by Ville's inequality; a union bound over agents leaves probability at least 1 - sum_i e^{-b_i} that no agent is ever dissonant; on that event strict optimality fixes play, B_i = 0 stops elections, and the SCUE conditions hold in every period; in the deterministic case surely.
+        uses: [appendix/appendix.md#proof-of-proposition-ii-b, appendix/appendix.md#app-eprocess, derivations:D4, paper/paper.md#def-scue]
+    conclusion: Converging non-stasis configurations limit to a partial SCUE, and a zero-leverage SCUE with strict optimality margins persists, exactly under deterministic mechanisms and with probability at least 1 - sum_i e^{-b_i} otherwise.
+
+  - id: D19
+    kind: proof
+    states: appendix/appendix.md#prop-adequacy
+    symbols: {}
+    hypotheses: ["In a SCUE"]
+    steps:
+      - says: The first claim is condition (iii) of the SCUE definition.
+        uses: [paper/paper.md#def-scue]
+      - says: Under strict adequacy, or in the exact deterministic case, the test-consistency lemma makes the active set eventually constant and excludes every eta-inadequate theory; judged updating restricts the acting belief to that set.
+        uses: [appendix/appendix.md#lem-test-consistency, paper/paper.md#judged-updating]
+      - says: The residual clause is the complement of the on-path constraints.
+        uses: [paper/paper.md#def-exposure]
+    conclusion: In a SCUE acting-belief mass on inadequate theories vanishes, and surviving falsity is confined to what the configuration does not expose.
+
+  - id: D20
+    kind: proof
+    states: appendix/appendix.md#prop-capacity
+    symbols: {}
+    hypotheses: ["stochastic mechanisms satisfying"]
+    steps:
+      - says: (i) Exposure makes d_i^m > 0 for every expressible theory and finiteness makes D_i > 0; for each theory choose a recurrent inadequate pair and a positive-weight betting component whose per-period expected log-growth is at least d_i^m / 2.
+        uses: [paper/paper.md#def-exposure, appendix/appendix.md#app-eprocess]
+      - says: Component domination bounds the rejection time by the crossing time of that component's log above b_i minus the log of its weights; bounded log-increments and Wald reasoning give E[tau_m] <= 2(b_i + c_m) / d_i^m; the dissonance time is at most the sum over finitely many theories, so E[tau] = O(b_i / D_i).
+        uses: [appendix/appendix.md#app-eprocess, paper/paper.md#def-test, "cited: Wald's identity for stopping times of processes with bounded increments"]
+      - says: Bounded one-period growth of each freshly initialized evidence process means none can cross e^{b_i} before a number of periods proportional to b_i, so E[tau] = Omega(b_i).
+        uses: [appendix/appendix.md#app-eprocess]
+      - says: (ii) is the per-agent bound of the rest-points proposition; neither rate argument applies to the separate exact deterministic detector.
+        uses: [appendix/appendix.md#prop-rest-points, paper/paper.md#conv-calibration]
+    conclusion: Detection time is Theta(b_i) up to the growth rate D_i, and false dissonance at a non-exposed profile has probability at most e^{-b_i}.
+
+  - id: D21
+    kind: proof
+    states: appendix/appendix.md#prop-diagnostic
+    symbols: {}
+    hypotheses: ["diagnostic at tolerance"]
+    steps:
+      - says: Suppose a SCUE contains a payoff-relevant policy error for agent i; every SCUE satisfies conditions (i)-(ii), so diagnosticity makes P_i exposed under the induced standing profile.
+        uses: [paper/paper.md#def-scue, appendix/appendix.md#def-diagnostic]
+      - says: Exposure means every theory active on that language is eta-inadequate at some recurrent on-path pair; by the test-consistency lemma each is eventually rejected and none re-enters; finiteness of M(P_i) empties the active set almost surely.
+        uses: [paper/paper.md#def-exposure, appendix/appendix.md#lem-test-consistency]
+      - says: That contradicts SCUE condition (iii), which requires the active set to be almost surely eventually nonempty.
+        uses: [paper/paper.md#def-scue]
+    conclusion: In a diagnostic environment no SCUE contains a payoff-relevant policy error.
+
+  - id: D22
+    kind: proof
+    states: appendix/appendix.md#prop-punishing
+    symbols: {}
+    hypotheses: ["strictly punishing"]
+    steps:
+      - says: At a payoff-relevantly erroneous state, the displayed inequality places the on-path conditional more than eta from the prediction of every expressible theory at the induced recurrent pair, so every m is eta-inadequate and P_i is exposed.
+        uses: [paper/paper.md#def-exposure, paper/paper.md#def-test]
+      - says: This implication holds for every profile satisfying the strategic stationarity and conjecture-confirmation conditions, so the primitives are diagnostic.
+        uses: [appendix/appendix.md#def-diagnostic]
+      - says: The final claim follows from the no-error proposition for diagnostic environments.
+        uses: [appendix/appendix.md#prop-diagnostic]
+    conclusion: Strictly punishing primitives are diagnostic, so every SCUE under them is free of payoff-relevant policy error.

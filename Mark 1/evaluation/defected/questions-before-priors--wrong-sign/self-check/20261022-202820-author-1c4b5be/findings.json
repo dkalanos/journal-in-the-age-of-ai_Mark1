@@ -1,0 +1,113 @@
+{
+  "run_id": "20261022-202820-author-1c4b5be",
+  "actor": "author",
+  "paper_id": "questions-before-priors",
+  "record_sha": "1c4b5be14c49b88e97fc37f99a67ddadfd1bd974dd3ccfd5015566ce3f8d53a0",
+  "round": null,
+  "versions": {
+    "protocol": "formal-0.2",
+    "checks": "0.4.0",
+    "generator": "0.1.0",
+    "standard": "formal-0.3",
+    "mapping": "0.1",
+    "interest_criteria": "0.1"
+  },
+  "machine_sha": "c2e0745f3318",
+  "models_used": [],
+  "started": "2026-10-22T20:28:20Z",
+  "finished": "2026-10-22T20:28:45Z",
+  "cost": {
+    "bundles": 0,
+    "input_tokens": null,
+    "output_tokens": null,
+    "usd": null,
+    "note": "the bundle backend does not see token counts; an API backend reports them"
+  },
+  "agreement": {},
+  "ai_appendix": "submitted with the record",
+  "checks_run": [
+    "form",
+    "anchors",
+    "soundness",
+    "perturbation"
+  ],
+  "checks_not_run": [
+    {
+      "check": "completeness",
+      "reason": "deterministic-only run: the model-judged part was not run"
+    },
+    {
+      "check": "resolution",
+      "reason": "deterministic-only run: the model-judged part was not run"
+    },
+    {
+      "check": "derivation",
+      "reason": "deterministic-only run: the model-judged part was not run"
+    },
+    {
+      "check": "contribution",
+      "reason": "deterministic-only run: the model-judged part was not run"
+    },
+    {
+      "check": "injection",
+      "reason": "deterministic-only run: the model-judged part was not run"
+    }
+  ],
+  "below_tolerance": [],
+  "findings": [
+    {
+      "id": "F-1-form-01",
+      "level": 1,
+      "check": "form",
+      "check_version": "0.4.0",
+      "standard_version": null,
+      "record_pointer": "claims:C10",
+      "standard_pointer": "protocol/formal.md#P9",
+      "statement": "Claim C10 has a malformed evidence pointer: 'materials/lab.py:repairs'.",
+      "class": "nonconformance",
+      "main": false,
+      "rationale": "",
+      "model": "deterministic",
+      "model_version": "c2e0745f3318",
+      "prompt_id": null,
+      "agreement": null,
+      "run_id": "20261022-202820-author-1c4b5be"
+    },
+    {
+      "id": "F-2-resolution-01",
+      "level": 2,
+      "check": "resolution",
+      "check_version": "0.4.0",
+      "standard_version": null,
+      "record_pointer": "claims:C10",
+      "standard_pointer": "protocol/formal.md#P10",
+      "statement": "Claim C10: its evidence pointer does not resolve in the record.",
+      "class": "pointer_missing",
+      "main": false,
+      "rationale": "malformed pointer 'materials/lab.py:repairs'",
+      "model": "deterministic",
+      "model_version": "c2e0745f3318",
+      "prompt_id": null,
+      "agreement": null,
+      "run_id": "20261022-202820-author-1c4b5be"
+    },
+    {
+      "id": "F-3-soundness-01",
+      "level": 3,
+      "check": "soundness",
+      "check_version": "0.4.0",
+      "standard_version": "formal-0.3",
+      "record_pointer": "derivations:D1",
+      "standard_pointer": "standard/formal.md#S3",
+      "statement": "Comparative static dthreshold/dbeta is stated negative but is positive under the assumptions of derivation D1.",
+      "class": "warrant_gap",
+      "main": false,
+      "rationale": "dthreshold/dbeta = p1; sampled at 54 points satisfying the assumptions",
+      "model": "deterministic",
+      "model_version": "c2e0745f3318",
+      "prompt_id": null,
+      "agreement": null,
+      "run_id": "20261022-202820-author-1c4b5be"
+    }
+  ]
+}

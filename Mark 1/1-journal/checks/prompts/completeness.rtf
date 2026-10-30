@@ -1,0 +1,10 @@
+{\rtf1\ansi\ansicpg1252\deff0{\fonttbl{\f0\froman\fcharset0 Times New Roman;}{\f1\fmodern\fcharset0 Courier New;}}\f0\fs24
+{\pard\sa160 {\b Level 2 (a) \u183? Completeness.} Does every claim the narrative makes that the contribution rests on appear in the claims list? (Protocol P10; appendix C.3.)\par}
+{\pard\sa160 The data channel holds the paper and the claims list ({\f1 ai-appendix/claims.yaml}), with line numbers.\par}
+{\pard\sa160 List every statement in the paper that asserts a result, a comparative static, a numerical value of a result, a causal relation, or what the paper contributes. Skip the question, motivation, definitions, assumptions, the description of the model's setup, and the reference list. For each statement give:\par}
+{\pard\li360\fi-360\sa60 \'95\tab {\f1 pointer}: the lines that state it, as {\f1 paper/<file>:L<a>-L<b>} (or {\f1 :L<a>} for one line);\par}
+{\pard\li360\fi-360\sa60 \'95\tab {\f1 text}: the statement, verbatim, trimmed;\par}
+{\pard\li360\fi-360\sa60 \'95\tab {\f1 matched_claim}: the id of the claim in the claims list that states the same thing, or null.\par}
+{\pard\sa160 A statement matches a claim when the claim states the same result under the same conditions. A claim that states less, or states it under a different condition, does not match. Several statements may match one claim.\par}
+{\pard\sa160 Report statements and matches only. Do not judge whether a claim is true, important or well supported.\par}
+}

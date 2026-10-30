@@ -1,0 +1,119 @@
+{
+  "verdicts": [
+    {
+      "claim_id": "C1",
+      "resolves": "full",
+      "reason": "Canned test answer: the evidence says what the claim says."
+    },
+    {
+      "claim_id": "C2",
+      "resolves": "full",
+      "reason": "Canned test answer: the evidence says what the claim says."
+    },
+    {
+      "claim_id": "C3",
+      "resolves": "full",
+      "reason": "Canned test answer: the evidence says what the claim says."
+    },
+    {
+      "claim_id": "C4",
+      "resolves": "full",
+      "reason": "Canned test answer: the evidence says what the claim says."
+    },
+    {
+      "claim_id": "C5",
+      "resolves": "full",
+      "reason": "Canned test answer: the evidence says what the claim says."
+    },
+    {
+      "claim_id": "C6",
+      "resolves": "full",
+      "reason": "Canned test answer: the evidence says what the claim says."
+    },
+    {
+      "claim_id": "C7",
+      "resolves": "full",
+      "reason": "Canned test answer: the evidence says what the claim says."
+    },
+    {
+      "claim_id": "C8",
+      "resolves": "full",
+      "reason": "Canned test answer: the evidence says what the claim says."
+    },
+    {
+      "claim_id": "C9",
+      "resolves": "full",
+      "reason": "Canned test answer: the evidence says what the claim says."
+    },
+    {
+      "claim_id": "C10",
+      "resolves": "full",
+      "reason": "Canned test answer: the evidence says what the claim says."
+    },
+    {
+      "claim_id": "C11",
+      "resolves": "full",
+      "reason": "Canned test answer: the evidence says what the claim says."
+    },
+    {
+      "claim_id": "C12",
+      "resolves": "full",
+      "reason": "Canned test answer: the evidence says what the claim says."
+    },
+    {
+      "claim_id": "C13",
+      "resolves": "full",
+      "reason": "Canned test answer: the evidence says what the claim says."
+    },
+    {
+      "claim_id": "C14",
+      "resolves": "full",
+      "reason": "Canned test answer: the evidence says what the claim says."
+    },
+    {
+      "claim_id": "C15",
+      "resolves": "full",
+      "reason": "Canned test answer: the evidence says what the claim says."
+    },
+    {
+      "claim_id": "C16",
+      "resolves": "full",
+      "reason": "Canned test answer: the evidence says what the claim says."
+    },
+    {
+      "claim_id": "C17",
+      "resolves": "full",
+      "reason": "Canned test answer: the evidence says what the claim says."
+    },
+    {
+      "claim_id": "C18",
+      "resolves": "full",
+      "reason": "Canned test answer: the evidence says what the claim says."
+    },
+    {
+      "claim_id": "C19",
+      "resolves": "full",
+      "reason": "Canned test answer: the evidence says what the claim says."
+    },
+    {
+      "claim_id": "C20",
+      "resolves": "full",
+      "reason": "Canned test answer: the evidence says what the claim says."
+    },
+    {
+      "claim_id": "C21",
+      "resolves": "full",
+      "reason": "Canned test answer: the evidence says what the claim says."
+    },
+    {
+      "claim_id": "C22",
+      "resolves": "full",
+      "reason": "Canned test answer: the evidence says what the claim says."
+    },
+    {
+      "claim_id": "C23",
+      "resolves": "full",
+      "reason": "Canned test answer: the evidence says what the claim says."
+    }
+  ]
+}

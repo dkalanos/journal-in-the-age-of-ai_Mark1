@@ -1,0 +1,86 @@
+kind: intake
+paper_id: questions-before-priors
+run_id: 20261028-233241-journal-047023d
+report_sha: 327a30d096a93c220309eb25fe69dedc6b971019d91a7984ccff46e4c2989e0c
+standard_action: return_for_corrections
+fired_rules:
+- rule: R3
+  finding: F-2-resolution-01
+  class: pointer_missing
+  action: return_for_corrections
+- rule: R3
+  finding: F-2-resolution-02
+  class: pointer_missing
+  action: return_for_corrections
+- rule: R3
+  finding: F-2-resolution-03
+  class: pointer_missing
+  action: return_for_corrections
+- rule: R3
+  finding: F-2-resolution-04
+  class: pointer_missing
+  action: return_for_corrections
+- rule: R3
+  finding: F-2-resolution-05
+  class: pointer_missing
+  action: return_for_corrections
+- rule: R3
+  finding: F-2-resolution-06
+  class: pointer_missing
+  action: return_for_corrections
+- rule: R3
+  finding: F-2-resolution-07
+  class: pointer_missing
+  action: return_for_corrections
+- rule: R3
+  finding: F-2-resolution-08
+  class: pointer_missing
+  action: return_for_corrections
+- rule: R3
+  finding: F-2-resolution-09
+  class: pointer_missing
+  action: return_for_corrections
+- rule: R3
+  finding: F-2-resolution-10
+  class: pointer_missing
+  action: return_for_corrections
+- rule: R3
+  finding: F-2-resolution-11
+  class: pointer_missing
+  action: return_for_corrections
+- rule: R3
+  finding: F-2-resolution-12
+  class: pointer_missing
+  action: return_for_corrections
+- rule: R3
+  finding: F-2-resolution-13
+  class: pointer_missing
+  action: return_for_corrections
+- rule: R3
+  finding: F-2-resolution-14
+  class: pointer_missing
+  action: return_for_corrections
+- rule: R3
+  finding: F-2-resolution-15
+  class: pointer_missing
+  action: return_for_corrections
+- rule: R3
+  finding: F-2-resolution-16
+  class: pointer_missing
+  action: return_for_corrections
+passes_used: 0
+action: proceed_to_review
+departure:
+  direction: more_lenient
+  reason: 'The sixteen findings are all on supporting claims, none on a main claim: summary statements
+    from the introduction and the discussion whose support the paper spreads over several sections, so
+    that no single evidence span carries all of it. Nothing is found against the paper''s results, its
+    form, or the standard. Following the paper''s actual history: the July 23 draft went to two reviewers
+    and came back for revision. The findings are the author''s to answer in round 2.'
+specialist: null
+signature:
+  name: Dimitrija Kalanoski
+  role: editor
+  at: '2026-10-28T23:48:13Z'
+  signs:
+    3-editor/questions-before-priors/intake/20261028-233241-journal-047023d/findings.json: 327a30d096a93c220309eb25fe69dedc6b971019d91a7984ccff46e4c2989e0c

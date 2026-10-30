@@ -1,0 +1,10 @@
+{
+  "run_id": "20261022-202820-author-1c4b5be",
+  "actor": "author",
+  "record": "evaluation/defected/questions-before-priors--wrong-sign",
+  "record_sha": "1c4b5be14c49b88e97fc37f99a67ddadfd1bd974dd3ccfd5015566ce3f8d53a0",
+  "submission": null,
+  "deterministic_only": true,
+  "only": null,
+  "started": "2026-10-22T20:28:20Z"
+}

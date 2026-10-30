@@ -1,0 +1,374 @@
+From 0babced416e0bc998a201bafef48dbff92d2943d Mon Sep 17 00:00:00 2001
+From: MDR Git <mdr@mikeryall.com>
+Date: Thu, 13 Aug 2026 14:24:52 -0400
+Subject: [PATCH 20/27] Complete B2 formal-hygiene audit and promote GPTedit-03
+
+---
+ ..._GPTedit-02.tex => tbv_mdr_GPTedit-03.tex} | 111 ++++++++++--------
+ 1 file changed, 60 insertions(+), 51 deletions(-)
+ rename paper/{tbv_mdr_GPTedit-02.tex => tbv_mdr_GPTedit-03.tex} (93%)
+
+diff --git a/paper/tbv_mdr_GPTedit-02.tex b/paper/tbv_mdr_GPTedit-03.tex
+similarity index 93%
+rename from paper/tbv_mdr_GPTedit-02.tex
+rename to paper/tbv_mdr_GPTedit-03.tex
+index 1094a47..34aaec4 100644
+--- a/paper/tbv_mdr_GPTedit-02.tex
++++ b/paper/tbv_mdr_GPTedit-03.tex
+@@ -1,4 +1,4 @@
+-% TRUTH VERSION: tbv_mdr_GPTedit-02.tex
++% TRUTH VERSION: tbv_mdr_GPTedit-03.tex
+ % FILE ROLE: AUTHORITATIVE SOURCE
+ % DOCUMENT: Scholarly Paper TBV
+ 
+@@ -147,7 +147,7 @@ Second, dissonance directs inquiry without determining it.
+ The record restricts admissible repairs---every restorative refinement must separate the evidence clusters that no single mechanism can accommodate---but generally many minimal repairs remain, observationally equivalent worlds demand different answers, and no truth-blind technology can be uniformly correct.
+ Fallibility is the price of a representation that economizes on distinctions.
+ Third, an agent can price a question before its answers are conceivable.
+-A leverage statistic built from the agent's own retained experience---its remembered tokens and the coherent groupings it can articulate, never the analyst's list of repairs---estimates the value of inquiry at exactly the moment the posterior is undefined, and it tracks whether an answer could change action, not how much uncertainty remains.
++A leverage statistic built from the agent's own retained experience---its remembered tokens and the coherent groupings it can articulate, never the analyst's list of repairs---estimates the value of inquiry at exactly the moment the acting belief is undefined, and it tracks whether an answer could change action, not how much uncertainty remains.
+ The estimate is honest: under noise the agent cannot tell a causal contrast from sampling accident, and the achievability weight it applies decays as inquiry fails.
+ Questions die rationally: sustained success extinguishes them, defeat concentrates the evidence and the incentive in the loser, and hard questions are eventually abandoned.
+ Fourth, the return to Bayes is disciplined by a warrant account: because any successful repair fits the experience that generated it by construction, retrospective fit carries no information, and---when inquiry is truth-blind---neither does the arrival of the insight itself.
+@@ -228,6 +228,7 @@ States describe the strategically-relevant features of the environment that evol
+ 
+ Contingent upon agent \(i\)'s awareness of the consequence-relevant features of his present state, he chooses an \textit{action} $a_i$ from a finite set $A_i$ through the standing policy described below.
+ An \textit{action profile} is a list of each agent's action choice, $a=(a_1,\ldots,a_n)$ where $A=\prod_iA_i$ is the set of all action profiles.
++Write \(A_{-i}=\prod_{j\neq i}A_j\).
+ 
+ Finally, $X=\prod_iX_i$ is the finite set of performance-related \textit{consequences} with typical element $x=(x_1,\dots,x_n)$.
+ Agent $i$'s consequence $x_i$ is everything a period delivers to it---profit, sales, rival behavior, and any other observed events.
+@@ -239,26 +240,25 @@ Then, agent \(i\)'s \textit{payoff function} $\pi_i:X_i\to\mathbb R$ maps his co
+ \label{sec:mechanisms-sub}
+ 
+ Causality is modeled in a general, high-level fashion.
+-Each period, the state \(s\) in conjunction with the actions of the agents \(a\) determine the consequences that affect them \(x\).
++Each period, the state \(s\), together with the agents' actions \(a\), determines the consequences \(x\).
+ 
+ 
+ \begin{definition}[Elementary mechanisms and the objective system]
+ \label{def:mechanisms}
+ A finite set $\Theta$ of \emph{elementary causal mechanisms} is given, each element of which is a map $\theta:A\to\Delta(X)$.\footnote
+ {
+-	Where ``\(\Delta(X)\) indicates the set of probability distributions on \(X\).
++	Here \(\Delta(X)\) denotes the set of probability distributions on \(X\).
+ 	Deterministic causal effects are a special case.
+ }
+ The \emph{objective assignment} is a function $\tau:S\to\Theta$.
+-Both \(\tau\) is a primitive of the model.
++Both \(\Theta\) and \(\tau\) are primitives of the model.
+ The \emph{objective causal system} is $\tau(s)(a)\in\Delta(X)$, a distribution over consequences determined by the state and action profile associated with a period.
+ Two states \(s\) and \(s^\prime\) are \emph{causally equivalent} if $\tau(s)=\tau(s^\prime)$. 
+ Let $\mathcal P^{\tau}$ denote the partition of $S$ into causal-equivalence classes. 
+ Finally, $\marg{i}\theta(a)$ denotes the $X_i$-marginal of $\theta(a)$.
+ \end{definition}
+ 
+-\section{WORKING HERE}
+-Thus, $\tau$ implies a distribution of consequences results for every action profile at every state, including profiles never played and states never occurring.
++Thus, $\tau$ implies a distribution of consequences for every action profile at every state, including profiles never played and states never occurring.
+ Agents' actions, together with the state, cause their consequences.
+ A mechanism is the reduced form of whatever detailed model---a structural causal model of customer behavior, a market microstructure, a production process---underlies that relation; the paper imposes no structural-causal-model formalism, but examples may exhibit micro-foundations explicitly, as the running example's customer market does.
+ 
+@@ -273,7 +273,7 @@ Third, the on-path distribution of consequences given an agent's category of sta
+ \begin{definition}[Awareness and expressible theories]
+ \label{def:awareness}
+ Agent $i$'s awareness partition is $\mathcal P_i\in\Pi(S)$, the set of partitions of $S$.
+-Every consciously available object---theory, belief, conjecture, policy, question---must be measurable with respect to $\mathcal P_i$.
++The agent's represented causal and decision objects are restricted by \(\mathcal P_i\): theories and policies are defined on its cells, conjectures condition only on its cells, and beliefs range only over theories expressible on it.
+ The \emph{expressible theories} are the cell-constant mechanism assignments
+ \begin{equation}
+ M(\mathcal P_i)=\{m:\mathcal P_i\to\Theta\},
+@@ -291,18 +291,20 @@ The mechanism vocabulary $\Theta$ is known to all agents from the outset; what a
+ Everything the paper calls insight is the production of such a distinction.
+ Expansion of the mechanism vocabulary itself is a deeper dimension of awareness growth deliberately left outside this paper.
+ 
+-Agent $i$ holds a belief $\mu_i\in\Delta(M(\mathcal P_i))$ over expressible theories---formally, the acting tier of a two-tier belief specified in \cref{sec:dissonance}---and a conjecture $q_i:\mathcal P_i\to\Delta(A_{-i})$ about rival play, both $\mathcal P_i$-measurable.
++Agent $i$ holds a belief $\mu_i\in\Delta(M(\mathcal P_i))$ over $M(\mathcal P_i)$---formally, the acting tier of a two-tier belief specified in \cref{sec:dissonance}---and a conjecture $q_i:\mathcal P_i\to\Delta(A_{-i})$ about rival play that conditions on $\mathcal P_i$-cells.
+ Theories and conjectures are different kinds of objects and are deliberately separated: a theory is a causal claim about the objective system; a conjecture is a strategic claim about what other agents will do.
+ The diagnostic apparatus developed below tests theories, not conjectures.
+ 
+ \begin{assumption}[Observation, retention, and the two records]
+ \label{ass:observation}
+-At the start of each period agent $i$ perceives its current awareness cell $C_{\mathcal P_i}(s)$; at the end it additionally observes the realized action profile $a$ and its own consequence $x_i$.
++At the start of each period agent $i$ perceives its current awareness cell $C_{\mathcal P_i}(s)$, the cell of $\mathcal P_i$ containing $s$; at the end it additionally observes the realized action profile $a$ and its own consequence $x_i$.
+ Each period is retained as a token.
+ Two records are distinguished throughout.
+ The \emph{deliberative record} $r_i$ is the multiset of tokens $(C_{\mathcal P_i}(s),a,x_i)$; it is the only record on which the agent's beliefs, tests, and decisions may depend.
+ The \emph{analyst record} $\bar r_i$ additionally carries the underlying state $s$ of each token.
+-Every object the paper attributes to the agent is a function of $r_i$; objects that depend on $\bar r_i$ (in particular the restorative correspondence and the warrant accounting of \cref{sec:pivot}) are the analyst's, and are so marked.
++No object used in the agent's deliberation may depend on the underlying state labels carried only by \(\bar r_i\).
++Analyst-level constructions that require those labels---in particular the restorative correspondence and the warrant accounting of \cref{sec:pivot}---are so marked.
++The non-deliberative representation-producing technology is specified separately in \cref{def:technology}.
+ 
+ \emph{Recodability.}
+ When the agent acquires a new distinction---a refinement $\mathcal P'$ of its partition---it also acquires the capacity to classify each retained token under $\mathcal P'$, producing a recoded deliberative record.
+@@ -326,7 +328,10 @@ Given its current acting belief $\mu_i$ and conjecture $q_i$, the \emph{belief-o
+ \mathbb E_{x\sim m(C)(a_i,a_{-i})}\!\left[\pi_i(x_i)\right],
+ \label{eq:subjective-optimality}
+ \end{equation}
+-with associated subjective per-period value
++For every cell \(C\) of its current awareness partition, agent \(i\) knows the induced cell probability \(\rho(C)\).
++When a refinement is acquired, the probabilities of the newly representable cells become available with that refinement.
++This does not give the agent access to the decomposition of a current cell into states or distinctions it does not yet represent.
++The associated subjective per-period value is
+ \begin{equation}
+ U_i(\sigma\mid\mu_i,q_i)=\sum_{C\in\mathcal P_i}\rho(C)\sum_{m\in M(\mathcal P_i)}\mu_i(m)\sum_{a_{-i}\in A_{-i}}q_i(a_{-i}\mid C)\,\mathbb E_{x\sim m(C)(\sigma(C),a_{-i})}\!\left[\pi_i(x_i)\right],
+ \label{eq:subjective-value}
+@@ -387,14 +392,14 @@ All mechanisms here are deterministic, so every test below operates in its exact
+ \section{Bayesian competence and its boundary}
+ \label{sec:bayesian}
+ 
+-Within fixed awareness, learning is ordinary.
+-Observations representable in the current language update $\mu_i$ by Bayes' rule; conjectures are updated empirically from observed play.
++Within fixed awareness, learning is ordinary: the Bayesian belief tier updates by Bayes' rule, while conjectures are updated empirically from observed play.
++\Cref{sec:dissonance} distinguishes the reference posterior from the acting belief once test-based exclusions are introduced.
+ If no agent's awareness ever changes, the model is a repeated interaction among subjectively rational Bayesian learners in the sense of \citet{KalaiLehrer1993b} and \citet{Ryall2003}, and its stable configurations are self-confirming equilibria \citep{FudenbergLevine1993}.
+ Everything new in this paper happens at the boundary of that layer, which two results locate.
+ 
+ \begin{proposition}[No Bayesian emergence]
+ \label{prop:no-emergence}
+-Judged or ordinary conditioning of a prior $\mu_i\in\Delta(M(\mathcal P_i))$ on any observation $(C_{\mathcal P_i}(s),a,x_i)$ in the agent's observation algebra yields a posterior $\mu_i'\in\Delta(M(\mathcal P_i))$.
++Any well-defined judged or ordinary conditioning of a prior $\mu\in\Delta(M(\mathcal P_i))$ on an observation in the agent's observation algebra yields a posterior $\mu'\in\Delta(M(\mathcal P_i))$.
+ No sequence of such updates makes a theory outside $M(\mathcal P_i)$ expressible or a distinction finer than $\mathcal P_i$ usable in a policy.
+ \end{proposition}
+ 
+@@ -416,8 +421,8 @@ The distinction matters for how the theory-based view should treat ``updating'':
+ \begin{excont}
+ Under the coarse partition, firm $i$'s expressible theories are the constant assignments $m^0$, $m^1$, $m^n$.
+ The row law $\tau$ is inexpressible: no reweighting of $\{m^0,m^1,m^n\}$, on any evidence, produces it (\cref{prop:no-emergence}).
+-A firm that will later observe payoffs irreconcilable with all three theories will find its posterior undefined, not alarmed---the deterministic instance of \cref{rem:self-sealing}, in which misspecification announces itself only because likelihoods hit zero exactly.
+-With stochastic mechanisms, no announcement would occur at all.
++After successive deterministic observations eliminate the expressible theories one by one, the observation that eliminates the last theory with positive posterior mass produces a zero Bayesian normalizer, so ordinary conditioning itself is undefined---the deterministic instance of \cref{rem:self-sealing}, in which misspecification announces itself only because likelihoods hit zero exactly.
++With stochastic full-support mechanisms, the Bayesian normalizer remains positive and no such announcement occurs.
+ \end{excont}
+ \section{Causal dissonance}
+ \label{sec:dissonance}
+@@ -429,11 +434,12 @@ With stochastic mechanisms, no announcement would occur at all.
+ Fix an adequacy tolerance $\eta\ge0$.
+ Theory $m$ is \emph{adequate} at a visited pair $(C,a)$ when $\TV\!\left(p_i^{*}(\cdot\mid C,a),\marg{i}m(C)(a)\right)\le\eta$, where $\TV$ is total-variation distance; under a standing profile call $m$ \emph{$\eta$-adequate} if it is adequate at every visited pair and \emph{$\eta$-inadequate} if it is inadequate at some visited pair.
+ The agent monitors adequacy \emph{sequentially}, period by period.
+-For each expressible theory $m$ it maintains a nonnegative \emph{evidence process} $E_i^{m}$, equal to $1$ before any play; under adequacy, $E_i^{m}$ is a nonnegative supermartingale, while at a recurrent pair where $m$ is strictly inadequate the construction in \cref{app:eprocess} contains a fixed betting component with strictly positive expected log-growth.
++For each theory admitted when the current language is initialized, it maintains a nonnegative \emph{evidence process} $E_i^{m}$, initialized at $1$ with that language; under adequacy, $E_i^{m}$ is a nonnegative supermartingale, while at a recurrent pair where $m$ is strictly inadequate the construction in \cref{app:eprocess} contains a fixed betting component with strictly positive expected log-growth.
+ Because the total evidence process assigns that component positive weight, $E_i^{m}$ diverges almost surely under recurrent strict inadequacy.
+ (The exact deterministic case $\eta=0$ instead uses the separate zero-likelihood detector of \cref{app:eprocess}: a theory is rejected at the first realized consequence to which it assigns probability zero.)
+ Agent $i$ carries a \emph{dissonance capacity} $b_i>0$ and \emph{rejects} $m$, permanently, at the first period in which $\log E_i^{m}\ge b_i$.
+-The \emph{active set} $\widehat M_i(\mathcal P_i,r_i)$ collects the not-yet-rejected theories.
++The \emph{active set} $\widehat M_i(\mathcal P_i,r_i)$ contains the theories admitted when the current language was initialized that have not subsequently been rejected by the sequential test.
++On the initial language all theories in $M(\mathcal P_i)$ are admitted and each begins with $E_i^m=1$; after a refinement, admission is determined by the initial repair screen described in the judged-updating paragraph below.
+ Capacity is the agent's evidence threshold for abandoning a theory: for a theory adequate from initialization, Ville's inequality gives $\Pr(\sup_t E_i^m(t)\ge e^{b_i})\le e^{-b_i}$, so a high-capacity agent tolerates apparent misfit and rarely rejects on noise, while a low-capacity agent rejects on slight evidence and suffers more false alarms.
+ Retrospective fits to a \emph{fixed} record score a candidate against evidence already in hand rather than a stream, using the record's counts $n_i(C,a)$ and empirical conditionals $\hat p_i(\cdot\mid C,a)$ and a nonnegative, nonincreasing slack $w(\cdot)\to0$: theory $m$ \emph{fits} at a pair $(C,a)$ when
+ \begin{equation}
+@@ -449,9 +455,9 @@ The repair test of \cref{sec:inquiry} imposes this at every pair with $n_i(C,a)>
+ \label{lem:test-consistency}
+ Fix a partition $\mathcal P_i$ and a standing profile, and suppose every theory is either $\eta$-adequate or strictly inadequate at each visited pair (none sits exactly at the adequacy boundary).
+ Let $t_0$ denote the beginning of the stable standing-profile regime after a finite prefix, and let $E_i^m(t_0)$ be the inherited evidence value of a theory $m$ active at $t_0$.
+-Because rejection is permanent and the theories are finite, the active set is monotone and eventually constant; and almost surely:
++Because theories inactive at initialization never re-enter, sequential rejection is permanent, and the theories are finite, the active set is monotone and eventually constant; and almost surely:
+ \begin{enumerate}[label=(\alph*)]
+-  \item every theory already rejected by $t_0$, and every theory strictly inadequate at a recurrent post-$t_0$ pair, is eventually absent from the active set; and
++  \item every theory inactive at $t_0$ remains absent, and every theory active at $t_0$ that is strictly inadequate at a recurrent post-$t_0$ pair is eventually rejected and absent from the active set; and
+   \item a theory active at $t_0$ and $\eta$-adequate at every recurrent post-$t_0$ pair has conditional probability of future false rejection at most $E_i^m(t_0)e^{-b_i}$.
+ \end{enumerate}
+ Active status implies $E_i^m(t_0)<e^{b_i}$, so every theory in~(b) has strictly positive conditional probability of surviving forever.
+@@ -460,15 +466,15 @@ Consequently, if every expressible theory falls under~(a), eventual dissonance o
+ 
+ \begin{proof}
+ A recurrent pair is visited each period with a fixed positive probability under the i.i.d.\ full-support draw, hence infinitely often; a frozen pair is visited only in the finite prefix and affects the inherited value $E_i^m(t_0)$.
+-If $m$ is strictly inadequate at a recurrent pair $j^{*}$, \cref{app:eprocess} supplies a fixed betting component $W^{*}$ for that pair with strictly positive expected log-growth.
++If a theory $m$ active at $t_0$ is strictly inadequate at a recurrent pair $j^{*}$, \cref{app:eprocess} supplies a fixed betting component $W^{*}$ for that pair with strictly positive expected log-growth.
+ The pair mixture gives $W^{*}$ positive weight $\pi^{*}$ and the global evidence process gives the pair positive weight $v_{j^{*}}$, so pathwise $E_i^m(t)\ge v_{j^{*}}\pi^{*}W^{*}(t)$.
+-The strong law gives $W^{*}(t)\to\infty$ almost surely, hence $E_i^m(t)\to\infty$ almost surely and $m$ eventually crosses every finite threshold $b_i$.
++The strong law gives $W^{*}(t)\to\infty$ almost surely, hence $E_i^m(t)\to\infty$ almost surely; therefore $\log E_i^m(t)$ eventually crosses $b_i$, and $m$ is rejected.
+ If $m$ is active at $t_0$ and $\eta$-adequate at every recurrent post-$t_0$ pair, then $(E_i^m(t))_{t\ge t_0}$ is a nonnegative supermartingale and conditional Ville's inequality gives
+ \[
+ \Pr\!\left(\sup_{t\ge t_0}E_i^m(t)\ge e^{b_i}\,\middle|\,\mathcal F_{t_0}\right)
+ \le E_i^m(t_0)e^{-b_i}.
+ \]
+-Permanence of rejection and finiteness of $M(\mathcal P_i)$ make the active set monotone and eventually constant; collecting the two cases gives the dissonance dichotomy.
++No re-entry, permanence of sequential rejection, and finiteness of $M(\mathcal P_i)$ make the active set monotone and eventually constant; collecting the two cases gives the dissonance dichotomy.
+ \end{proof}
+ 
+ The inherited-value term matters: a theory adequate under the current profile may carry evidence from an earlier regime, so the active set and its future false-rejection bound track the whole retained process, not current play alone.
+@@ -488,17 +494,19 @@ That this occurrence probability is objectively theory-informative---rivals' fin
+ Beliefs carry two tiers.
+ The \emph{reference posterior} $\bar\mu_i$ begins at a full-support prior on $M(\mathcal P_i)$ and updates by the token likelihoods above; it is never conditioned on the test.
+ The \emph{acting belief} $\mu_i$ is the reference posterior restricted and renormalized to the current active set, so that belief never rides on a rejected theory; when the active set is empty, the acting belief is undefined and the carry-forward clause of \cref{ass:commitment} governs.
+-Because the sequential test rejects permanently, the active set only shrinks, so the acting belief is well defined at every period until---if ever---the last expressible theory is rejected; \cref{ass:full-support} keeps every reference likelihood positive, so the restriction is always to a positive-mass set.
+-In the deterministic case rejection is a zero-likelihood event, so judged updating coincides with ordinary Bayesian conditioning.
+-After a refinement, both tiers restart from the full-support bridge prior on the expanded space, from which judged updating resumes (\cref{sec:pivot}).
+-Judged updating is the formal junction between the test and the posterior---between judgment and understanding (\cref{rem:self-sealing})---and it guarantees, in \cref{sec:dynamics}, that surviving acting beliefs are supported on adequate theories.
++Because the active set only shrinks after the current language is initialized, the acting belief is well defined at every period until---if ever---the last active theory is rejected; \cref{ass:full-support} keeps every reference likelihood positive, so restriction to any nonempty active set is always to a positive-mass set.
++In the deterministic case judged updating coincides with ordinary Bayesian conditioning while the Bayesian normalizer is positive; a zero-likelihood contradiction can instead make ordinary conditioning itself undefined.
++After a refinement to $\mathcal P_i'$, the recoded record supplies an initial repair screen: the new-language active set is initialized as $\widehat M_i^{\,R}(\mathcal P_i',\bar r_i)$, which the agent can compute from its recoded deliberative record, and excluded theories begin inactive without replaying the historical record through the sequential evidence process.
++Each admitted theory begins with $E_i^m=1$; the reference posterior begins at the full-support bridge prior $\mu_i^+\in\Delta(M(\mathcal P_i'))$, and the acting belief is its restriction, renormalized on $\widehat M_i^{\,R}(\mathcal P_i',\bar r_i)$.
++Thereafter the reference posterior and sequential evidence processes update from newly arriving tokens, permanent sequential rejection further shrinks the active set, and the acting belief is the reference posterior restricted and renormalized to the current active set.
++Judged updating is the formal junction between the test and the acting belief---between judgment and understanding (\cref{rem:self-sealing})---and it guarantees, in \cref{sec:dynamics}, that surviving acting beliefs are supported on adequate theories.
+ 
+ \subsection{Dissonance and exposure}
+ 
+ \begin{definition}[Causal dissonance]
+ \label{def:dissonance}
+-Agent $i$ experiences \emph{causal dissonance} at any period at which $\widehat M_i(\mathcal P_i,r_i)=\emptysetset$: its sequential test has rejected every expressible theory.
+-The expressible set does not disappear; no element of it accounts for the record.
++Agent $i$ experiences \emph{causal dissonance} at any period at which $\widehat M_i(\mathcal P_i,r_i)=\emptysetset$: no theory admitted on the current language remains unrejected.
++The expressible set does not disappear; every element is either excluded by the current language's initialization screen or subsequently rejected by the sequential test.
+ The immediate question has a determinate defect but not a determinate answer: \emph{what unrepresented difference among the pooled states explains the heterogeneity of their consequences?}
+ \end{definition}
+ 
+@@ -520,12 +528,12 @@ If the profile is not exposed and $m$ is an active $\eta$-adequate theory at ent
+ \end{proposition}
+ 
+ \begin{proof}
+-By \cref{lem:test-consistency}, every theory strictly inadequate at a recurrent pair is eventually rejected almost surely.
++By \cref{lem:test-consistency}, every entry-active theory strictly inadequate at a recurrent pair is eventually rejected almost surely, while every theory inactive at $t_0$ remains absent.
+ If all profile-adequate theories are active at $t_0$, the eventual active set is therefore empty almost surely exactly when there is no $\eta$-adequate theory---that is, exactly when the profile is exposed.
+ For a non-exposed profile, conditional Ville's inequality bounds the future rejection probability of any entry-active adequate theory $m$ by $E_i^m(t_0)e^{-b_i}$, so the stated survival and no-dissonance bounds follow.
+ \end{proof}
+ 
+-The activity proviso is not cosmetic: the dynamics of \cref{sec:dynamics} generate records whose early periods were played under coarser partitions and different profiles, so a terminally adequate theory may already have been rejected and an active one may inherit an evidence value above one.
++The activity proviso is not cosmetic: the dynamics of \cref{sec:dynamics} generate records whose early periods were played under coarser partitions and different profiles, so a terminally adequate theory may already be absent because it was excluded when the current language was initialized or was subsequently rejected, while an active theory may inherit an evidence value above one.
+ 
+ Exposure has two sources, and the distinction organizes much of what follows.
+ Heterogeneity inside a cell surfaces either because \emph{other agents play differently across the pooled states}---strategic differentiation inside one's categories, which changes the visited profiles and the induced mixtures---or because \emph{the environment punishes uniform play across causally different states in an observable way}.
+@@ -584,8 +592,8 @@ Write $\mathcal R(\mathcal P_i,\bar r_i)$ for the set of minimally restorative r
+ \end{definition}
+ 
+ The repair test deliberately applies to every nonempty recoded cell--profile pair.
+-The count floor $\bar n$ governs when a recoded pair carries enough evidence for the repair test to bind; it does not permit a proposed repair to erase retained evidence by splitting a tested cell into fragments below that floor.
+-Every nonempty fragment remains subject to \cref{eq:repair-test}, while the weakly larger finite-sample slack $w(n)$ at small $n$ preserves the intended caution about sparse evidence.
++The count floor $\bar n$ is not part of the repair test; it applies only to the deliberative grouping test of \cref{sec:economics}.
++Every nonempty recoded fragment remains subject to \cref{eq:repair-test}, while the larger finite-sample slack $w(n)$ at small $n$ preserves the intended caution about sparse evidence.
+ Refinement can therefore reconcile observations but cannot delete their constraints.
+ In the exact deterministic case $\eta=0$ and $w\equiv0$, the repair test is exact consistency at every observed pair.
+ 
+@@ -713,7 +721,7 @@ The same argument applies to any other disjoint pair of success sets.
+ 
+ \begin{proposition}[Robust sufficiency]
+ \label{prop:robust-sufficiency}
+-A partition sufficient for every assignment in a candidate set $\mathcal T$ must refine $\bigvee_{\tau'\in\mathcal T}\mathcal P^{\tau'}$, the join of the candidates' causal-equivalence partitions.
++A partition sufficient for every assignment in a candidate set $\mathcal T$ must refine $\bigvee_{\tau'\in\mathcal T}\mathcal P^{\tau'}$, where $\bigvee$ denotes the coarsest partition that refines every candidate causal-equivalence partition.
+ A representation guaranteed to accommodate all observationally equivalent worlds is accordingly finer than any single world requires; a technology that economizes on distinctions must accept fallibility.
+ \end{proposition}
+ 
+@@ -735,7 +743,7 @@ The example also locates the failure mode of each residual candidate: whichever
+ \section{The economics of inquiry}
+ \label{sec:economics}
+ 
+-Whether to prosecute a question must itself be a decision, and it must be priced at exactly the moment ordinary decision theory is silent: at dissonance the posterior is undefined (\cref{def:dissonance}), and the candidate answers are not represented objects (\cref{def:technology}).
++Whether to prosecute a question must itself be a decision, and it must be priced at exactly the moment the action-guiding Bayesian calculation is disabled: at dissonance the acting belief is undefined (\cref{def:dissonance}), and the candidate answers are not represented objects (\cref{def:technology}).
+ This section builds the valuation from what the agent actually has---its deliberative record---and prices the rest through the success weight.
+ The resulting statistic is a genuine estimate, not a guarantee: the agent guesses at the worth of a distinction it cannot yet name, and the model keeps that epistemic honesty rather than smuggling in the analyst's restorative correspondence.
+ 
+@@ -787,10 +795,10 @@ It is not a partition of $S$, and the agent cannot verify before insight that an
+ 
+ \begin{definition}[Deliberative leverage]
+ \label{def:leverage}
+-Given a coherent grouping $G$, let $g(t)$ be the group of token $t$ and $\sigma_i(t)$ the carried-forward action at $t$'s current awareness cell.
++Given a coherent grouping $G$, let $g(t)$ be the group of token $t$, let $C_i(t)$ denote token $t$'s cell under the current partition, and set $\sigma_i(t):=\sigma_i(C_i(t))$.
+ The \emph{per-token robust gain} of proposing action $a_i$ for a group is
+ \[
+-\Delta_i(t,a_i)
++\Delta_i^G(t,a_i)
+ =
+ \min_{a_{-i}\in A_{-i}}\;
+ \min_{\theta\in\Theta_i(g(t))}
+@@ -807,7 +815,7 @@ L_i(G;r_i)
+ =
+ \sum_{g\in G}\;
+ \max_{a_i\in A_i}\;
+-\sum_{t\in g}\Delta_i(t,a_i).
++\sum_{t\in g}\Delta_i^G(t,a_i).
+ \]
+ The \emph{deliberative leverage} is
+ \begin{equation}
+@@ -835,7 +843,7 @@ The outside option $0$ represents declining to attribute actionable value to any
+ 
+ \begin{proposition}[Participation]
+ \label{prop:participation}
+-$\widehat B_i(r_i)$ is well defined, nonnegative, bounded by $T(\max \pi_i-\min \pi_i)$, and computable from the deliberative record, the carried-forward policy, and the known structure $(\Theta,\pi_i)$.
++$\widehat B_i(r_i)$ is well defined, nonnegative, bounded by $T(\max \pi_i-\min \pi_i)$, and computable from the deliberative record, the carried-forward policy, and the agent-known model primitives and test calibration.
+ At a dissonant record, electing inquiry has represented value $\lambda_i^{(k_i)}\widehat B_i(r_i)-\gamma_i$, so agent $i$ elects if and only if
+ \[
+ \lambda_i^{(k_i)}\widehat B_i(r_i)\geq\gamma_i.
+@@ -853,14 +861,14 @@ The record is finite, so it has finitely many groupings.
+ For every coherent group, $\Theta_i(g)$ is a nonempty finite set, and all action and consequence spaces are finite.
+ Hence every max--min expression and every $L_i(G;r_i)$ is well defined.
+ The set whose maximum appears in \cref{eq:leverage} always contains $0$, including when $\mathcal G_i(r_i)=\emptysetset$, proving existence and nonnegativity.
+-Writing $\Delta \pi_i=\max \pi_i-\min \pi_i$, each $\Delta_i(t,a_i)\leq\Delta \pi_i$.
++Writing $\Delta \pi_i=\max \pi_i-\min \pi_i$, each $\Delta_i^G(t,a_i)\leq\Delta \pi_i$.
+ Every grouping contains exactly $\lvert r_i\rvert$ tokens, so $L_i(G;r_i)\leq\lvert r_i\rvert\Delta \pi_i$ and therefore $\widehat B_i(r_i)\leq T\Delta \pi_i$.
+-Computability follows by finite enumeration using only $r_i$, the carried-forward policy, $\Theta$, and $\pi_i$.
++Computability follows by finite enumeration using only the deliberative record, the carried-forward policy, and the agent-known model primitives and test calibration.
+ The election rule is the achievability-weighted represented gain net of the inquiry cost.
+ Finally, because the outside option is zero, the maximum in \cref{eq:leverage} is strictly positive exactly when some coherent grouping has strictly positive aggregate robust gain.
+ \end{proof}
+ 
+-The participation rule is a coherent non-Bayesian criterion operating precisely where Bayes is undefined, and it respects every discipline of \cref{sec:commitments}: $\widehat B_i$ quantifies over the agent's own remembered tokens and the groupings it can articulate---``situations like the ones I lost will recur, and a distinction that sorted them would let me act on them''---never over named future representations.
++The participation rule is a coherent non-Bayesian criterion operating precisely where the acting belief is undefined, and it respects every discipline of \cref{sec:commitments}: $\widehat B_i$ quantifies over the agent's own remembered tokens and the groupings it can articulate---``situations like the ones I lost will recur, and a distinction that sorted them would let me act on them''---never over named future representations.
+ This is also why the switching hurdle of \cref{ass:commitment} cannot enter the inquiry decision: the policy it would buy lives on a partition the agent does not yet possess, so it cannot be priced before insight---the agent values the question, not the answer.
+ The estimate can be wrong, and honestly so: the agent does not know whether a distinction realizing its best grouping exists, which is why $\lambda_i^{(k)}$ prices achievability.
+ Two comparative properties organize the applications.
+@@ -871,7 +879,7 @@ Two comparative properties organize the applications.
+ \label{rem:stickiness}
+ Acquiring a distinction and acting on it are separate decisions, and they must be, because the policy one would switch to lives on a partition the agent cannot yet represent.
+ Pre-insight the agent therefore prices only its question---the stakes $\widehat B_i$ of its present, mis-served record---and cannot fold in the switching hurdle of a refined policy it has no way to name (\cref{prop:participation}).
+-Once inquiry delivers a concrete refinement, the switch becomes a well-defined $(S,s)$ decision (\cref{ass:commitment}): the agent may find the realized horizon gain below $\kappa_i$ and carry its old policy forward.
++Once inquiry delivers a concrete refinement, the switch becomes a well-defined decision (\cref{ass:commitment}): the agent may find the realized horizon gain below $\kappa_i$ and carry its old policy forward.
+ It then knows the world is not what it thought yet does not act---a second source of persistence, distinct from an unpriced question, and one the agent could not have anticipated, because it could not have anticipated what it would learn.
+ This holds whether or not mechanisms are deterministic, and it feeds the performance differences of \cref{sec:dynamics}.
+ \end{remark}
+@@ -913,7 +921,7 @@ The winner/loser asymmetry---$\widehat B_1=0<\widehat B_2$---is the durable poin
+ 
+ Successful production yields a refinement $\mathcal P_i'$; the truth-blind formulation rule selects $m'\in\widehat M_i^{\,R}(\mathcal P_i',\bar r_i)$ from the repair-consistent theories on the recoded record; and the agent forms a full-support \emph{bridge prior} $\mu_i^{+}\in\Delta(M(\mathcal P_i'))$, from which ordinary updating resumes.
+ Nothing in Bayesian coherence determines $\mu_i^{+}$ from the pre-dissonance belief---the domains differ---and this nonuniqueness is not a defect to be repaired but the boundary between insight and judgment.
+-Renormalizing $\mu_i^{+}$ on the active set yields what we call \emph{representation-relative coherence}: the confidence the new language awards its own theories.
++Restricting and renormalizing $\mu_i^{+}$ on $\widehat M_i^{\,R}(\mathcal P_i',\bar r_i)$ yields the initial acting belief on the refined language, and the resulting probability assigned to the formulated theory is what we call \emph{representation-relative coherence}.
+ The question of this section is how much of that confidence the evidence actually licenses.
+ 
+ The conjecture on the refined partition is initialized from the recoded empirical frequencies of observed rival actions wherever the record contains observations, with a fixed default on previously unvisited cells, and is updated empirically thereafter.
+@@ -1248,7 +1256,7 @@ Nothing in the mathematics represents the conscious act of insight itself; the m
+ \subsection{Limitations and the research program}
+ 
+ Four boundaries of the present model define the program's next steps.
+-First, the mechanism vocabulary $\Theta$ is fixed: agents lack distinctions, never concepts of consequence-generation.
++First, the mechanism vocabulary $\Theta$ is fixed: agents lack distinctions, not concepts of consequence-generation.
+ Expanding the vocabulary itself---deeper unawareness---is the natural second paper in the sequence, and the awareness-transition machinery here is built to receive it.
+ Second, the model prices participation in inquiry but not its intensity or duration, and the technology's success is exogenous; endogenizing the depth of inquiry connects to models of costly deliberation and planning \citep{RyallAction2026}, where cached prior conclusions govern when reconsideration is rational---the theory-to-plan transition.
+ Third, agents are individuals; the theory-bearing \emph{firm}---how insights become shared languages, collective intentions, and organizational commitments---is a separate paper resting on the same primitives \citep{RyallWilkins2018}.
+@@ -1261,7 +1269,7 @@ Within the present model, the flagged analytical items are general conditions fo
+ This paper models the step the theory-based view has described but not formalized: the origin of a strategic theory.
+ The model draws a formal boundary between learning within a causal language and producing a new one, and it prices the crossing.
+ Bayesian updating cannot expand the language and cannot even detect that expansion is needed; detection is statistical dissonance, a faculty distinct from the posterior.
+-Dissonance directs repair without determining it; observational equivalence makes any economical inquiry technology fallible; and the agent estimates the value of a question---from its own record, honestly, without the analyst's list of answers---at exactly the moment the posterior is undefined.
++Dissonance directs repair without determining it; observational equivalence makes any economical inquiry technology fallible; and the agent estimates the value of a question---from its own record, honestly, without the analyst's list of answers---at exactly the moment the acting belief is undefined.
+ The return to Bayesian life is disciplined by a warrant account whose central theorem is easily stated: the insight is not evidence.
+ And because theories cause the actions that cause the evidence, inquiry is almost surely absorbed: eventually every agent either lives in a Bayesian world or rests in a dissonance it has no priced reason to fix---in configurations that preserve false theories, heterogeneous languages, and permanent performance differences.
+ Shared false theories survive exactly when neither strategic variety nor environmental harshness disturbs them; performance gaps persist whenever the laggard's question is priced below the cost of asking.
+@@ -1347,11 +1355,12 @@ Fix $(G_2,\sigma^{*})$ and an agent $i$.
+ Define an \emph{auxiliary} process that plays $\sigma^{*}$ in every period from $G_2$ on, driven by the same i.i.d.\ draws $(s_t,U_t)$; its post-$G_2$ draws are independent of $\mathcal F_{G_2}$, so almost-sure statements about it hold conditional on the (arbitrary) $\mathcal F_{G_2}$-measurable prefix and carry no conditioning bias.
+ On $E_{G_2,\sigma^{*}}$ the actual and auxiliary observations coincide from $G_2$ on, so any almost-sure property of the auxiliary process holds almost surely on $E_{G_2,\sigma^{*}}$.
+ 
+-For the auxiliary process, call a pair $(C,a)$ \emph{recurrent} if $S_{\sigma^{*}}(C,a)\neq\emptysetset$ and \emph{frozen} otherwise.
++For the auxiliary process, let $a_{\sigma^{*}}(s)$ be the action profile induced by $\sigma^{*}$ at state $s$, and define $S_{\sigma^{*}}(C,a)=\{s\in C:a_{\sigma^{*}}(s)=a\}$.
++Call a pair $(C,a)$ \emph{recurrent} if $S_{\sigma^{*}}(C,a)\neq\emptysetset$ and \emph{frozen} otherwise.
+ A frozen pair is visited only in the finite pre-$G_2$ prefix, so its count and constraint are constant.
+ A recurrent pair is visited each period with fixed probability $\rho(S_{\sigma^{*}}(C,a))>0$ independently, so its count diverges and, by the strong law on the finite space $X_i$, its cumulative empirical conditional converges to $p_i^{*}(\cdot\mid C,a)$; the finite prefix contributes a vanishing fraction.
+-By \cref{ass:regularity}(i), \cref{lem:test-consistency} applies to the auxiliary process: every theory strictly inadequate under $\sigma^{*}$ at a recurrent pair is eventually rejected, and the active set eventually becomes a survivor subset $A_i^{*}$ whose retained members are $\eta$-adequate under $\sigma^{*}$ at every recurrent pair.
+-Recurrently adequate theories may nevertheless be absent from $A_i^{*}$ because they were rejected before $G_2$ or are stochastically false-rejected afterward.
++By \cref{ass:regularity}(i), \cref{lem:test-consistency} applies to the auxiliary process: every theory active at $G_2$ and strictly inadequate under $\sigma^{*}$ at a recurrent pair is eventually rejected, every theory inactive at $G_2$ remains absent, and the active set eventually becomes a survivor subset $A_i^{*}$ whose retained members are $\eta$-adequate under $\sigma^{*}$ at every recurrent pair.
++Recurrently adequate theories may nevertheless be absent from $A_i^{*}$ because they were excluded when the current language was initialized, were rejected before $G_2$, or are stochastically false-rejected afterward.
+ If $A_i^{*}\neq\emptysetset$, agent $i$ is eventually never dissonant.
+ If $A_i^{*}=\emptysetset$, it is eventually always dissonant; since no election occurs after $G^{*}$, the mechanical rule gives $\lambda_i^{(k_i)}\widehat B_i<\gamma_i$ at every such period, so agent $i$ is in dissonant stasis (\cref{def:stasis})---including the zero-leverage, abandoned-question, and irreparable cases.
+ Taking the union over the countably many $(G_2,\sigma^{*})$ gives the claim on all of $E$.
+@@ -1373,7 +1382,7 @@ A $0$-adequate theory matches every on-path observation and is therefore never r
+ The active set consequently remains nonempty, although it may shrink as initially active inadequate theories are rejected.
+ 
+ Dissonance never occurs; $\widehat B_i=0$ at every generated record by hypothesis, so no election or refinement occurs; and strict optimality under every conjecture and every theory in the entry active set fixes $\sigma_i$ as that set shrinks and as reference posteriors and empirical conjectures evolve.
+-Empirical conjectures converge to induced play, and any inadequate theory is eventually rejected.
++Empirical conjectures converge to induced play, and any initially active inadequate theory is eventually rejected.
+ The SCUE conditions therefore continue to hold.
+ \hfill$\square$
+ 
+-- 
+2.43.0
+

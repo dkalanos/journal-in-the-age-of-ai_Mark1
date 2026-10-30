@@ -1,0 +1,708 @@
+changes:
+- file: ai-appendix/anchors.yaml
+  by: generator
+  basis: matches the stamp of generator run 20261021-074338-author-c6e282f
+- file: ai-appendix/claims.yaml
+  by: edited_after_generation
+  basis: does not match the stamp of generator run 20261021-074338-author-c6e282f; nothing in the record
+    says who edited it
+- file: ai-appendix/definitions.md
+  by: generator
+  basis: matches the stamp of generator run 20261021-074338-author-c6e282f
+- file: ai-appendix/generated.yaml
+  by: generator
+  basis: the stamp written by generator run 20261021-074338-author-c6e282f
+- file: ai-appendix/procedure.md
+  by: generator
+  basis: matches the stamp of generator run 20261021-074338-author-c6e282f
+- file: ai-appendix/scope.md
+  by: generator
+  basis: matches the stamp of generator run 20261021-074338-author-c6e282f
+- file: ai-appendix/stance.md
+  by: generator
+  basis: matches the stamp of generator run 20261021-074338-author-c6e282f
+- file: appendix/appendix.md
+  by: ai
+  basis: 'Claude Code (Claude Opus 4.8), derivation, 2026-07-25: Commit 1484df3 (2026-07-25), co-authored
+    by Claude Opus 4.8: "Single-clock overhaul T3b: appendix reindexed (g,t) -> single period t". The
+    commit is the author''s. Confirmed by the author on 2026-10-28: the pass was made at the author''s
+    direction, in the role given here.; Claude Code (Claude Opus 4.8), derivation, 2026-07-25: Commit
+    93e3a58 (2026-07-25), co-authored by Claude Opus 4.8: "Formal-core Phase 1: recast rest-points(ii-b)
+    on the e-process; broaden persistence". The commit is the author''s. Confirmed by the author on 2026-10-28:
+    the pass was made at the author''s direction, in the role given here.; Claude Code (Claude Opus 4.8),
+    derivation, 2026-07-25: Commit 1e15cbf (2026-07-25), co-authored by Claude Opus 4.8: "Formal-core
+    Phase 3 (modest-core capacity): prop:capacity + rem:two-sources". The commit is the author''s. Confirmed
+    by the author on 2026-10-28: the pass was made at the author''s direction, in the role given here.;
+    Claude Code (Claude Opus 4.8), derivation, 2026-07-25: Commit 85c9ad5 (2026-07-25), co-authored by
+    Claude Opus 4.8: "Formal-core: explicit e-process construction (app:eprocess)". The commit is the
+    author''s. Confirmed by the author on 2026-10-28: the pass was made at the author''s direction, in
+    the role given here.; Claude Code (Claude Opus 4.8), derivation, 2026-07-25: Commit b070314 (2026-07-25),
+    co-authored by Claude Opus 4.8: "Formal-core Phase 3: strengthen prop:diagnostic with a genericity
+    result". The commit is the author''s. Confirmed by the author on 2026-10-28: the pass was made at
+    the author''s direction, in the role given here.; Claude Code (Claude Fable 5), editing, 2026-08-15:
+    Commit 0a18f80 (2026-08-15), co-authored by Claude Fable 5: "v10 session 0: baseline + mechanical
+    demotions; ten items demoted verbatim to new Appendix D with pointers; six remarks converted to prose
+    in place". The commit is the author''s. Confirmed by the author on 2026-10-28: the pass was made at
+    the author''s direction, in the role given here.; Claude Code (claude-fable-5-1), record_keeping,
+    2026-10-21: appendix/appendix.md was converted by the same `mark1 import-tex` run. No sentence was
+    written or changed.'
+- file: declarations.yaml
+  by: author
+  basis: no AI use is declared for this file
+- file: materials/lab.py
+  by: ai
+  basis: 'Claude Code (claude-fable-5-1), code, 2026-10-21: The four-state laboratory of Example 1 and
+    appendix C written as code so that its numbers can be re-executed.'
+- file: paper/paper.md
+  by: ai
+  basis: 'Claude Code (Claude Fable 5), editing, 2026-07-23: Commit 18b3ebd (2026-07-23), co-authored
+    by Claude Fable 5: "v03 repair pass: repair of GPT machine review #2 + four internal audits; two typed
+    records, deliberative leverage, achievability weight, proof gaps closed, headline hedged". The commit
+    is the author''s. Confirmed by the author on 2026-10-28: the pass was made at the author''s direction,
+    in the role given here.; Claude Code (Claude Opus 4.8), editing, 2026-07-24: Commit 978ebe5 (2026-07-24),
+    co-authored by Claude Opus 4.8: "Add v04 as source of truth: one sentence per line, no content changes".
+    The commit is the author''s. Confirmed by the author on 2026-10-28: the pass was made at the author''s
+    direction, in the role given here.; Claude Code (Claude Opus 4.8), record_keeping, 2026-07-24: Commit
+    8f11b71 (2026-07-24), co-authored by Claude Opus 4.8: "Prune old paper versions; adopt version-agnostic
+    bib; fix v04 citations". The commit is the author''s. Confirmed by the author on 2026-10-28: the pass
+    was made at the author''s direction, in the role given here.; Claude Code (Claude Opus 4.8), editing,
+    2026-07-24: Commit 6cab9ea (2026-07-24), co-authored by Claude Opus 4.8: "Notation simplification
+    pass + single-clock redesign note". The commit is the author''s. Confirmed by the author on 2026-10-28:
+    the pass was made at the author''s direction, in the role given here.; Claude Code (Claude Opus 4.8),
+    derivation, 2026-07-24: Commit 97aae3c (2026-07-24), co-authored by Claude Opus 4.8: "Single-clock
+    overhaul T1 (front end): timing, standing policy, sequential detector". The commit is the author''s.
+    Confirmed by the author on 2026-10-28: the pass was made at the author''s direction, in the role given
+    here.; Claude Code (Claude Opus 4.8), derivation, 2026-07-24: Commit ab6bf72 (2026-07-24), co-authored
+    by Claude Opus 4.8: "Single-clock overhaul T2 (economics): valuation horizon, net-of-switching participation,
+    decoupling". The commit is the author''s. Confirmed by the author on 2026-10-28: the pass was made
+    at the author''s direction, in the role given here.; Claude Code (Claude Opus 4.8), derivation, 2026-07-25:
+    Commit 30c5de8 (2026-07-25), co-authored by Claude Opus 4.8: "T2 fix: do not net the switching cost
+    into the inquiry decision". The commit is the author''s. Confirmed by the author on 2026-10-28: the
+    pass was made at the author''s direction, in the role given here.; Claude Code (Claude Opus 4.8),
+    derivation, 2026-07-25: Commit 3696e24 (2026-07-25), co-authored by Claude Opus 4.8: "Single-clock
+    overhaul T3a: dynamics section recast to periods + standing policy". The commit is the author''s.
+    Confirmed by the author on 2026-10-28: the pass was made at the author''s direction, in the role given
+    here.; Claude Code (Claude Opus 4.8), derivation, 2026-07-25: Commit 4e25239 (2026-07-25), co-authored
+    by Claude Opus 4.8: "Single-clock overhaul T3c: running example recast to periods + switching-cost
+    illustration". The commit is the author''s. Confirmed by the author on 2026-10-28: the pass was made
+    at the author''s direction, in the role given here.; Claude Code (Claude Opus 4.8), derivation, 2026-07-25:
+    Commit b28f3c9 (2026-07-25), co-authored by Claude Opus 4.8: "Audit fixes: minors + def:test repair-threshold
+    + rest-points(i) kappa=0 clause". The commit is the author''s. Confirmed by the author on 2026-10-28:
+    the pass was made at the author''s direction, in the role given here.; Claude Code (Claude Opus 4.8),
+    derivation, 2026-07-25: Commit cef4415 (2026-07-25), co-authored by Claude Opus 4.8: "Formal-core
+    Phase 2: interpret the valuation horizon T". The commit is the author''s. Confirmed by the author
+    on 2026-10-28: the pass was made at the author''s direction, in the role given here.; Claude Code
+    (Claude Opus 4.8), checks, 2026-07-25: Commit be4b0f9 (2026-07-25), co-authored by Claude Opus 4.8:
+    "Apply verification findings on the new formal-core material". The commit is the author''s. Confirmed
+    by the author on 2026-10-28: the pass was made at the author''s direction, in the role given here.;
+    Codex (GPT-6-Astra), editing, 2026-08-12: Commit f36ac71 (2026-08-12): "Establish GPTedit-01 as authoritative
+    manuscript". The pass was made with Codex, model GPT-6-Astra, at the author''s direction, per the
+    author''s statement (Ryall, 2026-10-28): between the drafts, drafting, exploration of propositions,
+    drafts of proofs, red-teaming, and help addressing the referees'' concerns. The commit names the manuscript
+    it promotes.; Codex (GPT-6-Astra), editing, 2026-08-12: Commit ebb306c (2026-08-12): "Complete B1
+    evidence-process audit and promote GPTedit-02". The pass was made with Codex, model GPT-6-Astra, at
+    the author''s direction, per the author''s statement (Ryall, 2026-10-28): between the drafts, drafting,
+    exploration of propositions, drafts of proofs, red-teaming, and help addressing the referees'' concerns.
+    The commit names the manuscript it promotes.; Codex (GPT-6-Astra), editing, 2026-08-13: Commit 0babced
+    (2026-08-13): "Complete B2 formal-hygiene audit and promote GPTedit-03". The pass was made with Codex,
+    model GPT-6-Astra, at the author''s direction, per the author''s statement (Ryall, 2026-10-28): between
+    the drafts, drafting, exploration of propositions, drafts of proofs, red-teaming, and help addressing
+    the referees'' concerns. The commit names the manuscript it promotes.; Codex (GPT-6-Astra), editing,
+    2026-08-13: Commit 18ad0b9 (2026-08-13): "Complete B3 and promote GPTedit-04". The pass was made with
+    Codex, model GPT-6-Astra, at the author''s direction, per the author''s statement (Ryall, 2026-10-28):
+    between the drafts, drafting, exploration of propositions, drafts of proofs, red-teaming, and help
+    addressing the referees'' concerns. The commit names the manuscript it promotes.; Codex (GPT-6-Astra),
+    editing, 2026-08-13: Commit afc0202 (2026-08-13): "Complete B4 and promote GPTedit-05". The pass was
+    made with Codex, model GPT-6-Astra, at the author''s direction, per the author''s statement (Ryall,
+    2026-10-28): between the drafts, drafting, exploration of propositions, drafts of proofs, red-teaming,
+    and help addressing the referees'' concerns. The commit names the manuscript it promotes.; Codex (GPT-6-Astra),
+    editing, 2026-08-14: Commit a019dd3 (2026-08-14): "Complete B5 and promote GPTedit-06". The pass was
+    made with Codex, model GPT-6-Astra, at the author''s direction, per the author''s statement (Ryall,
+    2026-10-28): between the drafts, drafting, exploration of propositions, drafts of proofs, red-teaming,
+    and help addressing the referees'' concerns. The commit names the manuscript it promotes.; Codex (GPT-6-Astra),
+    editing, 2026-08-14: Commit 7646420 (2026-08-14): "Complete B6 and promote GPTedit-07". The pass was
+    made with Codex, model GPT-6-Astra, at the author''s direction, per the author''s statement (Ryall,
+    2026-10-28): between the drafts, drafting, exploration of propositions, drafts of proofs, red-teaming,
+    and help addressing the referees'' concerns. The commit names the manuscript it promotes.; Codex (GPT-6-Astra),
+    editing, 2026-08-14: Commit 6ba14cb (2026-08-14): "Complete B7 and promote GPTedit-08". The pass was
+    made with Codex, model GPT-6-Astra, at the author''s direction, per the author''s statement (Ryall,
+    2026-10-28): between the drafts, drafting, exploration of propositions, drafts of proofs, red-teaming,
+    and help addressing the referees'' concerns. The commit names the manuscript it promotes.; Codex (GPT-6-Astra),
+    editing, 2026-08-14: Commit 48c0c14 (2026-08-14): "Complete B8 and promote GPTedit-09". The pass was
+    made with Codex, model GPT-6-Astra, at the author''s direction, per the author''s statement (Ryall,
+    2026-10-28): between the drafts, drafting, exploration of propositions, drafts of proofs, red-teaming,
+    and help addressing the referees'' concerns. The commit names the manuscript it promotes.; Claude
+    Code (claude-fable-5-1), record_keeping, 2026-10-21: Kalanoski asked for the round-2 draft to be put
+    through Mark 1. paper/paper.md and appendix/appendix.md were converted from tbv_mdr_GPTedit-10.tex
+    by `mark1 import-tex` (headings with ids, mathematics kept as written, citations from the .bib, three
+    TikZ figures dropped with their captions kept); the scope-and-choices section carries the paper''s
+    own "Scope and modeling commitments" and "Limitations" passages verbatim. No sentence of the paper
+    was written or changed.'
+- file: provenance/ai-use.yaml
+  by: ai_use_record
+  basis: 34 entries added or revised; the generator run it records is now 20261021-074338-author-c6e282f;
+    the declarations are the author's
+- file: provenance/derivations.yaml
+  by: ai
+  basis: 'Claude Code (claude-fable-5-1), derivation, 2026-10-21: The derivations were stated in the protocol''s
+    checkable forms from the draft''s proofs: a reading of the author''s proofs, not the author''s own
+    statement of them.'
+declared:
+- tool: Claude Code
+  model_version: Claude Fable 5
+  role: editing
+  scope_pointer: paper/paper.md
+  date: '2026-07-23'
+  human_direction: 'Commit 18b3ebd (2026-07-23), co-authored by Claude Fable 5: "v03 repair pass: repair
+    of GPT machine review #2 + four internal audits; two typed records, deliberative leverage, achievability
+    weight, proof gaps closed, headline hedged". The commit is the author''s. Confirmed by the author
+    on 2026-10-28: the pass was made at the author''s direction, in the role given here.'
+- tool: Claude Code
+  model_version: Claude Opus 4.8
+  role: editing
+  scope_pointer: paper/paper.md
+  date: '2026-07-24'
+  human_direction: 'Commit 978ebe5 (2026-07-24), co-authored by Claude Opus 4.8: "Add v04 as source of
+    truth: one sentence per line, no content changes". The commit is the author''s. Confirmed by the author
+    on 2026-10-28: the pass was made at the author''s direction, in the role given here.'
+- tool: Claude Code
+  model_version: Claude Opus 4.8
+  role: record_keeping
+  scope_pointer: paper/paper.md
+  date: '2026-07-24'
+  human_direction: 'Commit 8f11b71 (2026-07-24), co-authored by Claude Opus 4.8: "Prune old paper versions;
+    adopt version-agnostic bib; fix v04 citations". The commit is the author''s. Confirmed by the author
+    on 2026-10-28: the pass was made at the author''s direction, in the role given here.'
+- tool: Claude Code
+  model_version: Claude Opus 4.8
+  role: editing
+  scope_pointer: paper/paper.md
+  date: '2026-07-24'
+  human_direction: 'Commit 6cab9ea (2026-07-24), co-authored by Claude Opus 4.8: "Notation simplification
+    pass + single-clock redesign note". The commit is the author''s. Confirmed by the author on 2026-10-28:
+    the pass was made at the author''s direction, in the role given here.'
+- tool: Claude Code
+  model_version: Claude Opus 4.8
+  role: derivation
+  scope_pointer: paper/paper.md
+  date: '2026-07-24'
+  human_direction: 'Commit 97aae3c (2026-07-24), co-authored by Claude Opus 4.8: "Single-clock overhaul
+    T1 (front end): timing, standing policy, sequential detector". The commit is the author''s. Confirmed
+    by the author on 2026-10-28: the pass was made at the author''s direction, in the role given here.'
+- tool: Claude Code
+  model_version: Claude Opus 4.8
+  role: derivation
+  scope_pointer: paper/paper.md
+  date: '2026-07-24'
+  human_direction: 'Commit ab6bf72 (2026-07-24), co-authored by Claude Opus 4.8: "Single-clock overhaul
+    T2 (economics): valuation horizon, net-of-switching participation, decoupling". The commit is the
+    author''s. Confirmed by the author on 2026-10-28: the pass was made at the author''s direction, in
+    the role given here.'
+- tool: Claude Code
+  model_version: Claude Opus 4.8
+  role: derivation
+  scope_pointer: paper/paper.md
+  date: '2026-07-25'
+  human_direction: 'Commit 30c5de8 (2026-07-25), co-authored by Claude Opus 4.8: "T2 fix: do not net the
+    switching cost into the inquiry decision". The commit is the author''s. Confirmed by the author on
+    2026-10-28: the pass was made at the author''s direction, in the role given here.'
+- tool: Claude Code
+  model_version: Claude Opus 4.8
+  role: derivation
+  scope_pointer: paper/paper.md
+  date: '2026-07-25'
+  human_direction: 'Commit 3696e24 (2026-07-25), co-authored by Claude Opus 4.8: "Single-clock overhaul
+    T3a: dynamics section recast to periods + standing policy". The commit is the author''s. Confirmed
+    by the author on 2026-10-28: the pass was made at the author''s direction, in the role given here.'
+- tool: Claude Code
+  model_version: Claude Opus 4.8
+  role: derivation
+  scope_pointer: appendix/appendix.md
+  date: '2026-07-25'
+  human_direction: 'Commit 1484df3 (2026-07-25), co-authored by Claude Opus 4.8: "Single-clock overhaul
+    T3b: appendix reindexed (g,t) -> single period t". The commit is the author''s. Confirmed by the author
+    on 2026-10-28: the pass was made at the author''s direction, in the role given here.'
+- tool: Claude Code
+  model_version: Claude Opus 4.8
+  role: derivation
+  scope_pointer: paper/paper.md
+  date: '2026-07-25'
+  human_direction: 'Commit 4e25239 (2026-07-25), co-authored by Claude Opus 4.8: "Single-clock overhaul
+    T3c: running example recast to periods + switching-cost illustration". The commit is the author''s.
+    Confirmed by the author on 2026-10-28: the pass was made at the author''s direction, in the role given
+    here.'
+- tool: Claude Code
+  model_version: Claude Opus 4.8
+  role: derivation
+  scope_pointer: paper/paper.md
+  date: '2026-07-25'
+  human_direction: 'Commit b28f3c9 (2026-07-25), co-authored by Claude Opus 4.8: "Audit fixes: minors
+    + def:test repair-threshold + rest-points(i) kappa=0 clause". The commit is the author''s. Confirmed
+    by the author on 2026-10-28: the pass was made at the author''s direction, in the role given here.'
+- tool: Claude Code
+  model_version: Claude Opus 4.8
+  role: derivation
+  scope_pointer: appendix/appendix.md
+  date: '2026-07-25'
+  human_direction: 'Commit 93e3a58 (2026-07-25), co-authored by Claude Opus 4.8: "Formal-core Phase 1:
+    recast rest-points(ii-b) on the e-process; broaden persistence". The commit is the author''s. Confirmed
+    by the author on 2026-10-28: the pass was made at the author''s direction, in the role given here.'
+- tool: Claude Code
+  model_version: Claude Opus 4.8
+  role: derivation
+  scope_pointer: appendix/appendix.md
+  date: '2026-07-25'
+  human_direction: 'Commit 1e15cbf (2026-07-25), co-authored by Claude Opus 4.8: "Formal-core Phase 3
+    (modest-core capacity): prop:capacity + rem:two-sources". The commit is the author''s. Confirmed by
+    the author on 2026-10-28: the pass was made at the author''s direction, in the role given here.'
+- tool: Claude Code
+  model_version: Claude Opus 4.8
+  role: derivation
+  scope_pointer: paper/paper.md
+  date: '2026-07-25'
+  human_direction: 'Commit cef4415 (2026-07-25), co-authored by Claude Opus 4.8: "Formal-core Phase 2:
+    interpret the valuation horizon T". The commit is the author''s. Confirmed by the author on 2026-10-28:
+    the pass was made at the author''s direction, in the role given here.'
+- tool: Claude Code
+  model_version: Claude Opus 4.8
+  role: derivation
+  scope_pointer: appendix/appendix.md
+  date: '2026-07-25'
+  human_direction: 'Commit 85c9ad5 (2026-07-25), co-authored by Claude Opus 4.8: "Formal-core: explicit
+    e-process construction (app:eprocess)". The commit is the author''s. Confirmed by the author on 2026-10-28:
+    the pass was made at the author''s direction, in the role given here.'
+- tool: Claude Code
+  model_version: Claude Opus 4.8
+  role: derivation
+  scope_pointer: appendix/appendix.md
+  date: '2026-07-25'
+  human_direction: 'Commit b070314 (2026-07-25), co-authored by Claude Opus 4.8: "Formal-core Phase 3:
+    strengthen prop:diagnostic with a genericity result". The commit is the author''s. Confirmed by the
+    author on 2026-10-28: the pass was made at the author''s direction, in the role given here.'
+- tool: Claude Code
+  model_version: Claude Opus 4.8
+  role: checks
+  scope_pointer: paper/paper.md
+  date: '2026-07-25'
+  human_direction: 'Commit be4b0f9 (2026-07-25), co-authored by Claude Opus 4.8: "Apply verification findings
+    on the new formal-core material". The commit is the author''s. Confirmed by the author on 2026-10-28:
+    the pass was made at the author''s direction, in the role given here.'
+- tool: Codex
+  model_version: GPT-6-Astra
+  role: editing
+  scope_pointer: paper/paper.md
+  date: '2026-08-12'
+  human_direction: 'Commit f36ac71 (2026-08-12): "Establish GPTedit-01 as authoritative manuscript". The
+    pass was made with Codex, model GPT-6-Astra, at the author''s direction, per the author''s statement
+    (Ryall, 2026-10-28): between the drafts, drafting, exploration of propositions, drafts of proofs,
+    red-teaming, and help addressing the referees'' concerns. The commit names the manuscript it promotes.'
+- tool: Codex
+  model_version: GPT-6-Astra
+  role: editing
+  scope_pointer: paper/paper.md
+  date: '2026-08-12'
+  human_direction: 'Commit ebb306c (2026-08-12): "Complete B1 evidence-process audit and promote GPTedit-02".
+    The pass was made with Codex, model GPT-6-Astra, at the author''s direction, per the author''s statement
+    (Ryall, 2026-10-28): between the drafts, drafting, exploration of propositions, drafts of proofs,
+    red-teaming, and help addressing the referees'' concerns. The commit names the manuscript it promotes.'
+- tool: Codex
+  model_version: GPT-6-Astra
+  role: editing
+  scope_pointer: paper/paper.md
+  date: '2026-08-13'
+  human_direction: 'Commit 0babced (2026-08-13): "Complete B2 formal-hygiene audit and promote GPTedit-03".
+    The pass was made with Codex, model GPT-6-Astra, at the author''s direction, per the author''s statement
+    (Ryall, 2026-10-28): between the drafts, drafting, exploration of propositions, drafts of proofs,
+    red-teaming, and help addressing the referees'' concerns. The commit names the manuscript it promotes.'
+- tool: Codex
+  model_version: GPT-6-Astra
+  role: editing
+  scope_pointer: paper/paper.md
+  date: '2026-08-13'
+  human_direction: 'Commit 18ad0b9 (2026-08-13): "Complete B3 and promote GPTedit-04". The pass was made
+    with Codex, model GPT-6-Astra, at the author''s direction, per the author''s statement (Ryall, 2026-10-28):
+    between the drafts, drafting, exploration of propositions, drafts of proofs, red-teaming, and help
+    addressing the referees'' concerns. The commit names the manuscript it promotes.'
+- tool: Codex
+  model_version: GPT-6-Astra
+  role: editing
+  scope_pointer: paper/paper.md
+  date: '2026-08-13'
+  human_direction: 'Commit afc0202 (2026-08-13): "Complete B4 and promote GPTedit-05". The pass was made
+    with Codex, model GPT-6-Astra, at the author''s direction, per the author''s statement (Ryall, 2026-10-28):
+    between the drafts, drafting, exploration of propositions, drafts of proofs, red-teaming, and help
+    addressing the referees'' concerns. The commit names the manuscript it promotes.'
+- tool: Codex
+  model_version: GPT-6-Astra
+  role: editing
+  scope_pointer: paper/paper.md
+  date: '2026-08-14'
+  human_direction: 'Commit a019dd3 (2026-08-14): "Complete B5 and promote GPTedit-06". The pass was made
+    with Codex, model GPT-6-Astra, at the author''s direction, per the author''s statement (Ryall, 2026-10-28):
+    between the drafts, drafting, exploration of propositions, drafts of proofs, red-teaming, and help
+    addressing the referees'' concerns. The commit names the manuscript it promotes.'
+- tool: Codex
+  model_version: GPT-6-Astra
+  role: editing
+  scope_pointer: paper/paper.md
+  date: '2026-08-14'
+  human_direction: 'Commit 7646420 (2026-08-14): "Complete B6 and promote GPTedit-07". The pass was made
+    with Codex, model GPT-6-Astra, at the author''s direction, per the author''s statement (Ryall, 2026-10-28):
+    between the drafts, drafting, exploration of propositions, drafts of proofs, red-teaming, and help
+    addressing the referees'' concerns. The commit names the manuscript it promotes.'
+- tool: Codex
+  model_version: GPT-6-Astra
+  role: editing
+  scope_pointer: paper/paper.md
+  date: '2026-08-14'
+  human_direction: 'Commit 6ba14cb (2026-08-14): "Complete B7 and promote GPTedit-08". The pass was made
+    with Codex, model GPT-6-Astra, at the author''s direction, per the author''s statement (Ryall, 2026-10-28):
+    between the drafts, drafting, exploration of propositions, drafts of proofs, red-teaming, and help
+    addressing the referees'' concerns. The commit names the manuscript it promotes.'
+- tool: Codex
+  model_version: GPT-6-Astra
+  role: editing
+  scope_pointer: paper/paper.md
+  date: '2026-08-14'
+  human_direction: 'Commit 48c0c14 (2026-08-14): "Complete B8 and promote GPTedit-09". The pass was made
+    with Codex, model GPT-6-Astra, at the author''s direction, per the author''s statement (Ryall, 2026-10-28):
+    between the drafts, drafting, exploration of propositions, drafts of proofs, red-teaming, and help
+    addressing the referees'' concerns. The commit names the manuscript it promotes.'
+- tool: Claude Code
+  model_version: Claude Fable 5
+  role: editing
+  scope_pointer: appendix/appendix.md
+  date: '2026-08-15'
+  human_direction: 'Commit 0a18f80 (2026-08-15), co-authored by Claude Fable 5: "v10 session 0: baseline
+    + mechanical demotions; ten items demoted verbatim to new Appendix D with pointers; six remarks converted
+    to prose in place". The commit is the author''s. Confirmed by the author on 2026-10-28: the pass was
+    made at the author''s direction, in the role given here.'
+- tool: Claude Code
+  model_version: claude-fable-5-1
+  role: record_keeping
+  scope_pointer: paper/paper.md
+  date: '2026-10-21'
+  human_direction: Kalanoski asked for the round-2 draft to be put through Mark 1. paper/paper.md and
+    appendix/appendix.md were converted from tbv_mdr_GPTedit-10.tex by `mark1 import-tex` (headings with
+    ids, mathematics kept as written, citations from the .bib, three TikZ figures dropped with their captions
+    kept); the scope-and-choices section carries the paper's own "Scope and modeling commitments" and
+    "Limitations" passages verbatim. No sentence of the paper was written or changed.
+- tool: Claude Code
+  model_version: claude-fable-5-1
+  role: record_keeping
+  scope_pointer: appendix/appendix.md
+  date: '2026-10-21'
+  human_direction: appendix/appendix.md was converted by the same `mark1 import-tex` run. No sentence
+    was written or changed.
+- tool: Claude Code
+  model_version: claude-fable-5-1
+  role: derivation
+  scope_pointer: provenance/derivations.yaml
+  date: '2026-10-21'
+  human_direction: 'The derivations were stated in the protocol''s checkable forms from the draft''s proofs:
+    a reading of the author''s proofs, not the author''s own statement of them.'
+- tool: Claude Code
+  model_version: claude-fable-5-1
+  role: code
+  scope_pointer: materials/lab.py
+  date: '2026-10-21'
+  human_direction: The four-state laboratory of Example 1 and appendix C written as code so that its numbers
+    can be re-executed.
+- tool: Claude Code
+  model_version: claude-opus-5-5
+  role: record_keeping
+  scope_pointer: record.yaml
+  date: '2026-10-27'
+  human_direction: 'At Kalanoski''s direction, for round 2 under protocol formal-0.3: the front notice
+    at the head of paper/paper.md written by `machine/notice.py`; record.yaml, declarations.yaml and this
+    file brought to formal-0.3, this file re-scoped to the 29 commits between the rounds.'
+- tool: Claude Code
+  model_version: claude-opus-5-5
+  role: editing
+  scope_pointer: ai-appendix/claims.yaml
+  date: '2026-10-28'
+  human_direction: 'The claims list of round 2, which the reference generator produced, corrected before
+    submission, with the author''s own self-check report as the work list: each statement the report found
+    the list does not carry added as a claim, with its evidence pointer; each claim whose evidence the
+    report found establishes only part of it given a wider pointer; claim C10''s evidence pointer rewritten
+    in the protocol''s form. A coding assistant drafted the entries at Kalanoski''s direction; Kalanoski,
+    standing in for the author as Ryall asked on 2026-10-28, reviewed and approved each statement and
+    pointer. The list is therefore no longer the generator''s output, and the stamp says so.'
+- tool: Claude Code
+  model_version: claude-fable-5-1
+  role: editing
+  scope_pointer: ai-appendix/claims.yaml
+  date: '2026-10-29'
+  human_direction: The question the contribution claim answers, stated in the claims list in the paper's
+    words with a pointer to where the paper states it (paper/paper.md:L14-L15), as protocol formal-0.4
+    asks. A coding assistant drafted the entry at Kalanoski's direction; Kalanoski, standing in for the
+    author, approved the wording and the pointer.
+declared_late:
+- tool: Claude Code
+  model_version: Claude Fable 5
+  role: editing
+  scope_pointer: paper/paper.md
+  date: '2026-07-23'
+  human_direction: 'Commit 18b3ebd (2026-07-23), co-authored by Claude Fable 5: "v03 repair pass: repair
+    of GPT machine review #2 + four internal audits; two typed records, deliberative leverage, achievability
+    weight, proof gaps closed, headline hedged". The commit is the author''s. Confirmed by the author
+    on 2026-10-28: the pass was made at the author''s direction, in the role given here.'
+- tool: Claude Code
+  model_version: Claude Opus 4.8
+  role: editing
+  scope_pointer: paper/paper.md
+  date: '2026-07-24'
+  human_direction: 'Commit 978ebe5 (2026-07-24), co-authored by Claude Opus 4.8: "Add v04 as source of
+    truth: one sentence per line, no content changes". The commit is the author''s. Confirmed by the author
+    on 2026-10-28: the pass was made at the author''s direction, in the role given here.'
+- tool: Claude Code
+  model_version: Claude Opus 4.8
+  role: record_keeping
+  scope_pointer: paper/paper.md
+  date: '2026-07-24'
+  human_direction: 'Commit 8f11b71 (2026-07-24), co-authored by Claude Opus 4.8: "Prune old paper versions;
+    adopt version-agnostic bib; fix v04 citations". The commit is the author''s. Confirmed by the author
+    on 2026-10-28: the pass was made at the author''s direction, in the role given here.'
+- tool: Claude Code
+  model_version: Claude Opus 4.8
+  role: editing
+  scope_pointer: paper/paper.md
+  date: '2026-07-24'
+  human_direction: 'Commit 6cab9ea (2026-07-24), co-authored by Claude Opus 4.8: "Notation simplification
+    pass + single-clock redesign note". The commit is the author''s. Confirmed by the author on 2026-10-28:
+    the pass was made at the author''s direction, in the role given here.'
+- tool: Claude Code
+  model_version: Claude Opus 4.8
+  role: derivation
+  scope_pointer: paper/paper.md
+  date: '2026-07-24'
+  human_direction: 'Commit 97aae3c (2026-07-24), co-authored by Claude Opus 4.8: "Single-clock overhaul
+    T1 (front end): timing, standing policy, sequential detector". The commit is the author''s. Confirmed
+    by the author on 2026-10-28: the pass was made at the author''s direction, in the role given here.'
+- tool: Claude Code
+  model_version: Claude Opus 4.8
+  role: derivation
+  scope_pointer: paper/paper.md
+  date: '2026-07-24'
+  human_direction: 'Commit ab6bf72 (2026-07-24), co-authored by Claude Opus 4.8: "Single-clock overhaul
+    T2 (economics): valuation horizon, net-of-switching participation, decoupling". The commit is the
+    author''s. Confirmed by the author on 2026-10-28: the pass was made at the author''s direction, in
+    the role given here.'
+- tool: Claude Code
+  model_version: Claude Opus 4.8
+  role: derivation
+  scope_pointer: paper/paper.md
+  date: '2026-07-25'
+  human_direction: 'Commit 30c5de8 (2026-07-25), co-authored by Claude Opus 4.8: "T2 fix: do not net the
+    switching cost into the inquiry decision". The commit is the author''s. Confirmed by the author on
+    2026-10-28: the pass was made at the author''s direction, in the role given here.'
+- tool: Claude Code
+  model_version: Claude Opus 4.8
+  role: derivation
+  scope_pointer: paper/paper.md
+  date: '2026-07-25'
+  human_direction: 'Commit 3696e24 (2026-07-25), co-authored by Claude Opus 4.8: "Single-clock overhaul
+    T3a: dynamics section recast to periods + standing policy". The commit is the author''s. Confirmed
+    by the author on 2026-10-28: the pass was made at the author''s direction, in the role given here.'
+- tool: Claude Code
+  model_version: Claude Opus 4.8
+  role: derivation
+  scope_pointer: appendix/appendix.md
+  date: '2026-07-25'
+  human_direction: 'Commit 1484df3 (2026-07-25), co-authored by Claude Opus 4.8: "Single-clock overhaul
+    T3b: appendix reindexed (g,t) -> single period t". The commit is the author''s. Confirmed by the author
+    on 2026-10-28: the pass was made at the author''s direction, in the role given here.'
+- tool: Claude Code
+  model_version: Claude Opus 4.8
+  role: derivation
+  scope_pointer: paper/paper.md
+  date: '2026-07-25'
+  human_direction: 'Commit 4e25239 (2026-07-25), co-authored by Claude Opus 4.8: "Single-clock overhaul
+    T3c: running example recast to periods + switching-cost illustration". The commit is the author''s.
+    Confirmed by the author on 2026-10-28: the pass was made at the author''s direction, in the role given
+    here.'
+- tool: Claude Code
+  model_version: Claude Opus 4.8
+  role: derivation
+  scope_pointer: paper/paper.md
+  date: '2026-07-25'
+  human_direction: 'Commit b28f3c9 (2026-07-25), co-authored by Claude Opus 4.8: "Audit fixes: minors
+    + def:test repair-threshold + rest-points(i) kappa=0 clause". The commit is the author''s. Confirmed
+    by the author on 2026-10-28: the pass was made at the author''s direction, in the role given here.'
+- tool: Claude Code
+  model_version: Claude Opus 4.8
+  role: derivation
+  scope_pointer: appendix/appendix.md
+  date: '2026-07-25'
+  human_direction: 'Commit 93e3a58 (2026-07-25), co-authored by Claude Opus 4.8: "Formal-core Phase 1:
+    recast rest-points(ii-b) on the e-process; broaden persistence". The commit is the author''s. Confirmed
+    by the author on 2026-10-28: the pass was made at the author''s direction, in the role given here.'
+- tool: Claude Code
+  model_version: Claude Opus 4.8
+  role: derivation
+  scope_pointer: appendix/appendix.md
+  date: '2026-07-25'
+  human_direction: 'Commit 1e15cbf (2026-07-25), co-authored by Claude Opus 4.8: "Formal-core Phase 3
+    (modest-core capacity): prop:capacity + rem:two-sources". The commit is the author''s. Confirmed by
+    the author on 2026-10-28: the pass was made at the author''s direction, in the role given here.'
+- tool: Claude Code
+  model_version: Claude Opus 4.8
+  role: derivation
+  scope_pointer: paper/paper.md
+  date: '2026-07-25'
+  human_direction: 'Commit cef4415 (2026-07-25), co-authored by Claude Opus 4.8: "Formal-core Phase 2:
+    interpret the valuation horizon T". The commit is the author''s. Confirmed by the author on 2026-10-28:
+    the pass was made at the author''s direction, in the role given here.'
+- tool: Claude Code
+  model_version: Claude Opus 4.8
+  role: derivation
+  scope_pointer: appendix/appendix.md
+  date: '2026-07-25'
+  human_direction: 'Commit 85c9ad5 (2026-07-25), co-authored by Claude Opus 4.8: "Formal-core: explicit
+    e-process construction (app:eprocess)". The commit is the author''s. Confirmed by the author on 2026-10-28:
+    the pass was made at the author''s direction, in the role given here.'
+- tool: Claude Code
+  model_version: Claude Opus 4.8
+  role: derivation
+  scope_pointer: appendix/appendix.md
+  date: '2026-07-25'
+  human_direction: 'Commit b070314 (2026-07-25), co-authored by Claude Opus 4.8: "Formal-core Phase 3:
+    strengthen prop:diagnostic with a genericity result". The commit is the author''s. Confirmed by the
+    author on 2026-10-28: the pass was made at the author''s direction, in the role given here.'
+- tool: Claude Code
+  model_version: Claude Opus 4.8
+  role: checks
+  scope_pointer: paper/paper.md
+  date: '2026-07-25'
+  human_direction: 'Commit be4b0f9 (2026-07-25), co-authored by Claude Opus 4.8: "Apply verification findings
+    on the new formal-core material". The commit is the author''s. Confirmed by the author on 2026-10-28:
+    the pass was made at the author''s direction, in the role given here.'
+- tool: Codex
+  model_version: GPT-6-Astra
+  role: editing
+  scope_pointer: paper/paper.md
+  date: '2026-08-12'
+  human_direction: 'Commit f36ac71 (2026-08-12): "Establish GPTedit-01 as authoritative manuscript". The
+    pass was made with Codex, model GPT-6-Astra, at the author''s direction, per the author''s statement
+    (Ryall, 2026-10-28): between the drafts, drafting, exploration of propositions, drafts of proofs,
+    red-teaming, and help addressing the referees'' concerns. The commit names the manuscript it promotes.'
+- tool: Codex
+  model_version: GPT-6-Astra
+  role: editing
+  scope_pointer: paper/paper.md
+  date: '2026-08-12'
+  human_direction: 'Commit ebb306c (2026-08-12): "Complete B1 evidence-process audit and promote GPTedit-02".
+    The pass was made with Codex, model GPT-6-Astra, at the author''s direction, per the author''s statement
+    (Ryall, 2026-10-28): between the drafts, drafting, exploration of propositions, drafts of proofs,
+    red-teaming, and help addressing the referees'' concerns. The commit names the manuscript it promotes.'
+- tool: Codex
+  model_version: GPT-6-Astra
+  role: editing
+  scope_pointer: paper/paper.md
+  date: '2026-08-13'
+  human_direction: 'Commit 0babced (2026-08-13): "Complete B2 formal-hygiene audit and promote GPTedit-03".
+    The pass was made with Codex, model GPT-6-Astra, at the author''s direction, per the author''s statement
+    (Ryall, 2026-10-28): between the drafts, drafting, exploration of propositions, drafts of proofs,
+    red-teaming, and help addressing the referees'' concerns. The commit names the manuscript it promotes.'
+- tool: Codex
+  model_version: GPT-6-Astra
+  role: editing
+  scope_pointer: paper/paper.md
+  date: '2026-08-13'
+  human_direction: 'Commit 18ad0b9 (2026-08-13): "Complete B3 and promote GPTedit-04". The pass was made
+    with Codex, model GPT-6-Astra, at the author''s direction, per the author''s statement (Ryall, 2026-10-28):
+    between the drafts, drafting, exploration of propositions, drafts of proofs, red-teaming, and help
+    addressing the referees'' concerns. The commit names the manuscript it promotes.'
+- tool: Codex
+  model_version: GPT-6-Astra
+  role: editing
+  scope_pointer: paper/paper.md
+  date: '2026-08-13'
+  human_direction: 'Commit afc0202 (2026-08-13): "Complete B4 and promote GPTedit-05". The pass was made
+    with Codex, model GPT-6-Astra, at the author''s direction, per the author''s statement (Ryall, 2026-10-28):
+    between the drafts, drafting, exploration of propositions, drafts of proofs, red-teaming, and help
+    addressing the referees'' concerns. The commit names the manuscript it promotes.'
+- tool: Codex
+  model_version: GPT-6-Astra
+  role: editing
+  scope_pointer: paper/paper.md
+  date: '2026-08-14'
+  human_direction: 'Commit a019dd3 (2026-08-14): "Complete B5 and promote GPTedit-06". The pass was made
+    with Codex, model GPT-6-Astra, at the author''s direction, per the author''s statement (Ryall, 2026-10-28):
+    between the drafts, drafting, exploration of propositions, drafts of proofs, red-teaming, and help
+    addressing the referees'' concerns. The commit names the manuscript it promotes.'
+- tool: Codex
+  model_version: GPT-6-Astra
+  role: editing
+  scope_pointer: paper/paper.md
+  date: '2026-08-14'
+  human_direction: 'Commit 7646420 (2026-08-14): "Complete B6 and promote GPTedit-07". The pass was made
+    with Codex, model GPT-6-Astra, at the author''s direction, per the author''s statement (Ryall, 2026-10-28):
+    between the drafts, drafting, exploration of propositions, drafts of proofs, red-teaming, and help
+    addressing the referees'' concerns. The commit names the manuscript it promotes.'
+- tool: Codex
+  model_version: GPT-6-Astra
+  role: editing
+  scope_pointer: paper/paper.md
+  date: '2026-08-14'
+  human_direction: 'Commit 6ba14cb (2026-08-14): "Complete B7 and promote GPTedit-08". The pass was made
+    with Codex, model GPT-6-Astra, at the author''s direction, per the author''s statement (Ryall, 2026-10-28):
+    between the drafts, drafting, exploration of propositions, drafts of proofs, red-teaming, and help
+    addressing the referees'' concerns. The commit names the manuscript it promotes.'
+- tool: Codex
+  model_version: GPT-6-Astra
+  role: editing
+  scope_pointer: paper/paper.md
+  date: '2026-08-14'
+  human_direction: 'Commit 48c0c14 (2026-08-14): "Complete B8 and promote GPTedit-09". The pass was made
+    with Codex, model GPT-6-Astra, at the author''s direction, per the author''s statement (Ryall, 2026-10-28):
+    between the drafts, drafting, exploration of propositions, drafts of proofs, red-teaming, and help
+    addressing the referees'' concerns. The commit names the manuscript it promotes.'
+- tool: Claude Code
+  model_version: Claude Fable 5
+  role: editing
+  scope_pointer: appendix/appendix.md
+  date: '2026-08-15'
+  human_direction: 'Commit 0a18f80 (2026-08-15), co-authored by Claude Fable 5: "v10 session 0: baseline
+    + mechanical demotions; ten items demoted verbatim to new Appendix D with pointers; six remarks converted
+    to prose in place". The commit is the author''s. Confirmed by the author on 2026-10-28: the pass was
+    made at the author''s direction, in the role given here.'
+- tool: Claude Code
+  model_version: claude-fable-5-1
+  role: record_keeping
+  scope_pointer: paper/paper.md
+  date: '2026-10-21'
+  human_direction: Kalanoski asked for the round-2 draft to be put through Mark 1. paper/paper.md and
+    appendix/appendix.md were converted from tbv_mdr_GPTedit-10.tex by `mark1 import-tex` (headings with
+    ids, mathematics kept as written, citations from the .bib, three TikZ figures dropped with their captions
+    kept); the scope-and-choices section carries the paper's own "Scope and modeling commitments" and
+    "Limitations" passages verbatim. No sentence of the paper was written or changed.
+- tool: Claude Code
+  model_version: claude-fable-5-1
+  role: record_keeping
+  scope_pointer: appendix/appendix.md
+  date: '2026-10-21'
+  human_direction: appendix/appendix.md was converted by the same `mark1 import-tex` run. No sentence
+    was written or changed.
+- tool: Claude Code
+  model_version: claude-fable-5-1
+  role: derivation
+  scope_pointer: provenance/derivations.yaml
+  date: '2026-10-21'
+  human_direction: 'The derivations were stated in the protocol''s checkable forms from the draft''s proofs:
+    a reading of the author''s proofs, not the author''s own statement of them.'
+- tool: Claude Code
+  model_version: claude-fable-5-1
+  role: code
+  scope_pointer: materials/lab.py
+  date: '2026-10-21'
+  human_direction: The four-state laboratory of Example 1 and appendix C written as code so that its numbers
+    can be re-executed.
+- tool: Claude Code
+  model_version: claude-opus-5-5
+  role: record_keeping
+  scope_pointer: record.yaml
+  date: '2026-10-27'
+  human_direction: 'At Kalanoski''s direction, for round 2 under protocol formal-0.3: the front notice
+    at the head of paper/paper.md written by `machine/notice.py`; record.yaml, declarations.yaml and this
+    file brought to formal-0.3, this file re-scoped to the 29 commits between the rounds.'

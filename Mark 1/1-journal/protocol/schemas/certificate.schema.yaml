@@ -1,0 +1,16 @@
+title: Certificate (J3, appendix G.1), one or nothing, never partial
+type: object
+required: [paper_id, title, record_sha, versions, journal_run, data, new, interest, ai_use, signed_by, publication, issued_at]
+properties:
+  paper_id: {type: string}
+  title: {type: string}
+  record_sha: {type: string}
+  versions: {type: object}
+  journal_run: {type: object, required: [run_id, models]}
+  data: {type: object, required: [materials_tier, verification]}
+  new: {type: object, required: [kind, signed_by, evidence_map]}
+  interest: {type: object, required: [criteria_version, editor, reviewers]}
+  ai_use: {type: object}
+  signed_by: {type: array, minItems: 3, maxItems: 3, items: {type: string}}
+  publication: {type: object, required: [doi, minted]}
+  issued_at: {type: string}

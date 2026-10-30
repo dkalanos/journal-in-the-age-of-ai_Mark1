@@ -1,0 +1,16 @@
+modality: formal
+standard_version: formal-0.5
+materials_tier: public
+ai_use_summary:
+  tools:
+  - Codex
+  - ChatGPT
+  - Claude Code
+  roles:
+  - checks
+  - editing
+  - record_keeping
+  - derivation
+  - code
+  - drafting
+working_history_submitted: false

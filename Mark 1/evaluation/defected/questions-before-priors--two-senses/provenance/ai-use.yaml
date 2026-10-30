@@ -1,0 +1,59 @@
+entries:
+- tool: Codex
+  model_version: null
+  role: editing
+  scope_pointer: paper/paper.md
+  date: 2026-08
+  human_direction: 'Per the repository''s AGENTS.md, the agent''s role was implementation and verification
+    of change specifications approved by the author through a "Main Branch editorial process": edit the
+    authoritative source, compile, report any downstream inconsistency rather than resolve it; no notation,
+    definition, proposition, proof or claim to be changed without the author''s explicit approval. To
+    be confirmed by the author.'
+- tool: ChatGPT
+  model_version: null
+  role: editing
+  scope_pointer: paper/paper.md
+  date: 2026-07
+  human_direction: The manuscript files are named "GPTedit-09" and "GPTedit-10", and Machine_Reviews/
+    holds two GPT review reports on an earlier draft. The record reads this as editing passes and requested
+    reviews on the author's prose; what was drafted by the model and what by the author is not stated
+    in the repository. To be confirmed by the author.
+- tool: ChatGPT
+  model_version: null
+  role: editing
+  scope_pointer: paper/paper.md#sec-miniature
+  date: 2026-10
+  human_direction: The revision plan for version 10 says section 2 is written personally by the author,
+    with the agent supplying a fragment-level scaffold in the notes and the author's draft integrated
+    verbatim. In the file the record was built from, the section is still empty. To be confirmed by the
+    author.
+- tool: Claude Code
+  model_version: claude-fable-5-1
+  role: record_keeping
+  scope_pointer: paper/paper.md
+  date: '2026-10-21'
+  human_direction: Kalanoski asked for the dropped repository to be put through Mark 1. The paper and
+    appendix were converted from tbv_mdr_GPTedit-10.tex by `mark1 import-tex` (headings with ids, mathematics
+    kept as written, citations from the .bib, three TikZ figures dropped with their captions kept, six
+    TeX comment lines dropped); the scope-and-choices section carries the paper's own "Scope and modeling
+    commitments" and "Limitations" passages verbatim. No sentence of the paper was written or changed.
+- tool: Claude Code
+  model_version: claude-fable-5-1
+  role: record_keeping
+  scope_pointer: provenance/derivations.yaml
+  date: '2026-10-21'
+  human_direction: 'The derivations were stated in the protocol''s checkable forms from the paper''s proofs
+    and appendix C: closed-form entries for the numbers the paper states, proof entries for the theorems,
+    each step naming what the paper''s proof rests on. This is a reading of the author''s proofs, not
+    the author''s own statement of them.'
+- tool: Claude Code
+  model_version: claude-fable-5-1
+  role: code
+  scope_pointer: materials/lab.py
+  date: '2026-10-21'
+  human_direction: 'The four-state laboratory of Example 1 and appendix C written as code so that its
+    numbers can be re-executed: payoffs, repairs, deliberative leverage, the trap and persistence payoffs,
+    the two bounds.'
+generator_run:
+  generator_version: 0.1.0
+  run_id: 20261021-074338-author-c6e282f

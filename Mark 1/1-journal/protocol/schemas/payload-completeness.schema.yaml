@@ -1,0 +1,14 @@
+title: Level 2 (a) completeness payload
+type: object
+required: [statements]
+additionalProperties: false
+properties:
+  statements:
+    type: array
+    items:
+      type: object
+      required: [pointer, text, matched_claim]
+      properties:
+        pointer: {type: string}
+        text: {type: string}
+        matched_claim: {type: [string, "null"]}

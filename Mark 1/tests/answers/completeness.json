@@ -1,0 +1,864 @@
+{
+  "statements": [
+    {
+      "pointer": "paper/paper.md:L13",
+      "text": "This paper models the step before: how an actor whose causal language has failed comes to possess a new one.",
+      "matched_claim": "C1"
+    },
+    {
+      "pointer": "paper/paper.md:L14",
+      "text": "Bayesian updating can rank the theories a manager can already express; it cannot produce a distinction never yet drawn",
+      "matched_claim": "C2"
+    },
+    {
+      "pointer": "paper/paper.md:L17",
+      "text": "Experience directs repair without determining it, so insight is necessarily fallible.",
+      "matched_claim": "C8"
+    },
+    {
+      "pointer": "paper/paper.md:L18",
+      "text": "A firm can rationally value a question before it can state any answer—and an unresolved action margin, not success, is what sustains that value.",
+      "matched_claim": "C11"
+    },
+    {
+      "pointer": "paper/paper.md:L19",
+      "text": "The evidence that generates a theory cannot also validate it",
+      "matched_claim": "C13"
+    },
+    {
+      "pointer": "paper/paper.md:L19",
+      "text": "which gives boards and investors a precise epistemic role",
+      "matched_claim": "C14"
+    },
+    {
+      "pointer": "paper/paper.md:L20",
+      "text": "And because inquiry can die economically, firms facing identical environments can end with permanently different theories and payoffs: strategic heterogeneity can originate before priors.",
+      "matched_claim": "C20"
+    },
+    {
+      "pointer": "paper/paper.md:L38",
+      "text": "This paper models that step.",
+      "matched_claim": "C1"
+    },
+    {
+      "pointer": "paper/paper.md:L41-L42",
+      "text": "Bayesian updating ranks the theories an actor can already express. It cannot produce a distinction never yet drawn, because conditioning reweights a space of possibilities and no reweighting enlarges the space.",
+      "matched_claim": "C2"
+    },
+    {
+      "pointer": "paper/paper.md:L52",
+      "text": "The creative act itself, how a mind produces a new predicate, is treated as a primitive technology; the model explains when insight is demanded, what constrains it, what it is worth, and what its output warrants.",
+      "matched_claim": "C1"
+    },
+    {
+      "pointer": "paper/paper.md:L60",
+      "text": "The first finding is that experience directs repair without determining it.",
+      "matched_claim": "C8"
+    },
+    {
+      "pointer": "paper/paper.md:L61",
+      "text": "When the example's firms differentiate and the market delivers a win at one customer configuration and a loss at another, the record tells each firm exactly what any new theory must explain: those two experiences can no longer be treated as alike.",
+      "matched_claim": "C10"
+    },
+    {
+      "pointer": "paper/paper.md:L62",
+      "text": "That requirement has teeth—of the fifteen ways to partition the example's four states, eleven are ruled out.",
+      "matched_claim": "C10"
+    },
+    {
+      "pointer": "paper/paper.md:L63",
+      "text": "But four repairs remain, and the two simplest, organizing the market by row or by column, fit the record equally well and cannot both be right.",
+      "matched_claim": "C10"
+    },
+    {
+      "pointer": "paper/paper.md:L64",
+      "text": "Worlds that agree on everything the firms have ever seen can require different repairs, so no procedure that reads only the record—the model calls such procedures truth-blind—can be reliably correct",
+      "matched_claim": "C8"
+    },
+    {
+      "pointer": "paper/paper.md:L64",
+      "text": "in the example, the best any truth-blind technology can guarantee is a coin flip",
+      "matched_claim": "C10"
+    },
+    {
+      "pointer": "paper/paper.md:L65",
+      "text": "Insight is necessarily fallible, and the fallibility is not a defect of the inquirer but the price of a representation that economizes on distinctions.",
+      "matched_claim": "C9"
+    },
+    {
+      "pointer": "paper/paper.md:L67",
+      "text": "The second finding is that a firm can rationally pay for a distinction it cannot yet name.",
+      "matched_claim": "C11"
+    },
+    {
+      "pointer": "paper/paper.md:L71",
+      "text": "In the example that value is exactly one half, for both firms, at the moment their shared language collapses.",
+      "matched_claim": "C12"
+    },
+    {
+      "pointer": "paper/paper.md:L72",
+      "text": "Leverage prices action separation, not uncertainty reduction",
+      "matched_claim": "C11"
+    },
+    {
+      "pointer": "paper/paper.md:L72",
+      "text": "after a later stretch of play, the firm holding the true theory faces no unresolved action margin and values its question at zero, while its defeated rival values the same question at one half",
+      "matched_claim": "C12"
+    },
+    {
+      "pointer": "paper/paper.md:L75",
+      "text": "The third finding is that generating a theory and validating it are different achievements, and the evidence for the first cannot double as evidence for the second.",
+      "matched_claim": "C13"
+    },
+    {
+      "pointer": "paper/paper.md:L76-L77",
+      "text": "A successful repair fits the record that provoked it—by construction, since fitting the record is the entry requirement for a repair. Retrospective fit therefore carries no evidential weight of its own: conditional on the record and the inquiry history, the output of a truth-blind technology is independent of which world is actual.",
+      "matched_claim": "C13"
+    },
+    {
+      "pointer": "paper/paper.md:L78",
+      "text": "In the example, a firm that adopts the unique theory consistent with its refined language holds it with subjective confidence one, while a reflective assessor who has seen the same record assigns it probability one half: the gap between confidence and warranted confidence is exactly plus one half, and it is the same whether the adopted theory happens to be true or false.",
+      "matched_claim": "C15"
+    },
+    {
+      "pointer": "paper/paper.md:L79",
+      "text": "The firm cannot close this gap by itself, because computing it requires representing rival worlds its language cannot express.",
+      "matched_claim": "C14"
+    },
+    {
+      "pointer": "paper/paper.md:L80",
+      "text": "Validation must come from new evidence that discriminates",
+      "matched_claim": "C13"
+    },
+    {
+      "pointer": "paper/paper.md:L80",
+      "text": "which gives boards, investors, and other broader-awareness outsiders a precise epistemic role that retrospective coherence cannot play",
+      "matched_claim": "C14"
+    },
+    {
+      "pointer": "paper/paper.md:L82",
+      "text": "The fourth finding is that strategic heterogeneity can originate before priors.",
+      "matched_claim": "C1"
+    },
+    {
+      "pointer": "paper/paper.md:L85",
+      "text": "Under perfectly forgiving demand the two firms can settle permanently on the same false theory, each earning one half forever, because their pooled play conceals the error; the market never generates the contrast that would expose it.",
+      "matched_claim": "C23"
+    },
+    {
+      "pointer": "paper/paper.md:L86",
+      "text": "Under even slightly punishing demand that trap becomes a knife edge, and an asymmetric ending appears instead: one firm holds the truth and earns three quarters while its rival earns one quarter, permanently.",
+      "matched_claim": "C23"
+    },
+    {
+      "pointer": "paper/paper.md:L87",
+      "text": "The disadvantaged firm sits in dissonant stasis—aware that its account has failed, yet rationally unwilling to pay for a question priced below its cost.",
+      "matched_claim": "C23"
+    },
+    {
+      "pointer": "paper/paper.md:L88",
+      "text": "A third ending requires no ignorance at all: a firm can acquire the true theory and still hold its old policy, because the switch it now knows to be an improvement does not clear its switching cost—enlightened inertia.",
+      "matched_claim": "C12"
+    },
+    {
+      "pointer": "paper/paper.md:L91",
+      "text": "The contribution is therefore upstream of the existing formal apparatus of the theory-based view.",
+      "matched_claim": "C1"
+    },
+    {
+      "pointer": "paper/paper.md:L92",
+      "text": "Models of theory testing, theory-guided search, and awareness advantage each begin with a representational achievement in hand; this paper supplies the passage that produces it—from the failure of a causal language, through a priced question and a fallible repair, back to Bayesian judgment—and shows that the passage itself generates competitively consequential heterogeneity.",
+      "matched_claim": "C1"
+    },
+    {
+      "pointer": "paper/paper.md:L94",
+      "text": "The model treats the semantic act of insight as a primitive: it explains the conditions, direction, price, and warrant of representational change, not the conscious creative operation itself.",
+      "matched_claim": "C1"
+    },
+    {
+      "pointer": "paper/paper.md:L110",
+      "text": "This paper supplies their upstream transition: how experience poses a question, constrains representation change, and can produce heterogeneous causal languages before priors over new theories exist.",
+      "matched_claim": "C1"
+    },
+    {
+      "pointer": "paper/paper.md:L111",
+      "text": "It thereby changes the location of strategic heterogeneity in the causal sequence.",
+      "matched_claim": "C1"
+    },
+    {
+      "pointer": "paper/paper.md:L112",
+      "text": "Instead of treating different theories only as inputs into search, experimentation, or resource acquisition, the model makes their representational origins and stopping conditions objects of analysis.",
+      "matched_claim": "C1"
+    },
+    {
+      "pointer": "paper/paper.md:L113",
+      "text": "The existence claim is limited: different question histories can support different terminal languages and payoffs, not that all durable advantage arises this way.",
+      "matched_claim": "C1"
+    },
+    {
+      "pointer": "paper/paper.md:L120",
+      "text": "This paper supplies an endogenous trigger, economic demand, and record-dependent constraints for awareness expansion while retaining semantic production as a primitive operation.",
+      "matched_claim": "C1"
+    },
+    {
+      "pointer": "paper/paper.md:L121",
+      "text": "It connects the defect that generates a question to a fallible refinement and then to bridge-prior formation and warrant.",
+      "matched_claim": "C1"
+    },
+    {
+      "pointer": "paper/paper.md:L122",
+      "text": "Where unawareness has been linked to value capture (Bryan et al. 2022), the present model explains a possible origin of the awareness advantage.",
+      "matched_claim": "C20"
+    },
+    {
+      "pointer": "paper/paper.md:L123",
+      "text": "The contribution is thus neither an endogenous derivation of semantic creativity nor another rule for updating on an enlarged space.",
+      "matched_claim": "C1"
+    },
+    {
+      "pointer": "paper/paper.md:L124",
+      "text": "It identifies when the old space fails, what the retained record requires of a repair, why the agent may pay for an unnamed distinction, and what the generating evidence warrants after that distinction arrives.",
+      "matched_claim": "C1"
+    },
+    {
+      "pointer": "paper/paper.md:L130",
+      "text": "This paper studies failure and repair of that vocabulary: when no expressible structure remains adequate, experience constrains but need not identify the new distinction, and observationally equivalent worlds can require different repairs.",
+      "matched_claim": "C8"
+    },
+    {
+      "pointer": "paper/paper.md:L131",
+      "text": "Once refinement and formulation create a new represented class, conventional interventions and Bayesian discrimination can again operate among its members.",
+      "matched_claim": "C1"
+    },
+    {
+      "pointer": "paper/paper.md:L137",
+      "text": "When truth is inexpressible, this paper supplies a process for diagnosing failure and restoring a viable represented class.",
+      "matched_claim": "C1"
+    },
+    {
+      "pointer": "paper/paper.md:L138",
+      "text": "Its terminal analysis adds two epistemic possibilities: self-confirming unawareness equilibrium requires a surviving represented class and no worthwhile question, while dissonant stasis permits rational cessation outside a Bayesian world.",
+      "matched_claim": "C16"
+    },
+    {
+      "pointer": "paper/paper.md:L139",
+      "text": "Enlightened inertia adds a policy condition rather than a third theory of learning: even after an improved policy becomes representable, its finite-horizon gain may not clear the switching hurdle.",
+      "matched_claim": "C20"
+    },
+    {
+      "pointer": "paper/paper.md:L144-L145",
+      "text": "Existing work explains learning and action once theories, vocabularies, or awareness advantages exist; this paper supplies the pre-Bayesian passage from represented-class failure to a question, a fallible new representation, formulation, and renewed Bayesian judgment. Its distinctive economic and epistemic results are that an agent can value a finer actionable distinction before representing its answers, and that evidence generating a truth-blind representation cannot be counted again as independent validation.",
+      "matched_claim": "C1"
+    },
+    {
+      "pointer": "paper/paper.md:L147-L148",
+      "text": "Embedding that passage in strategic interaction provides a mechanism by which play exposes or conceals coarse languages and establishes the existence of absorbing configurations with heterogeneous terminal languages and payoffs. The contribution is therefore upstream: question histories and rational stopping points can generate strategic heterogeneity before priors over the resulting theories are available.",
+      "matched_claim": "C1"
+    },
+    {
+      "pointer": "paper/paper.md:L150",
+      "text": "This paper endogenizes the strategically consequential transition into a new hypothesis space while leaving the semantic act that produces it primitive.",
+      "matched_claim": "C1"
+    },
+    {
+      "pointer": "paper/paper.md:L201",
+      "text": "the dissonance capacity $b_i$ affects neither detection nor false alarms under the exact calibration",
+      "matched_claim": "C19"
+    },
+    {
+      "pointer": "paper/paper.md:L357",
+      "text": "once the discovery record labels $s_{00}$ and $s_{11}$, exactly four minimal repairs separate them (thick boundaries): the row partition, the column partition, and the two partitions isolating one labeled state",
+      "matched_claim": "C10"
+    },
+    {
+      "pointer": "paper/paper.md:L370-L371",
+      "text": "Any well-defined judged or ordinary conditioning of a prior $\\mu\\in\\Delta(M(\\mathcal P_i))$ on an observation in the agent's observation algebra yields a posterior $\\mu'\\in\\Delta(M(\\mathcal P_i))$. No sequence of such updates makes a theory outside $M(\\mathcal P_i)$ expressible or a distinction finer than $\\mathcal P_i$ usable in a policy.",
+      "matched_claim": "C2"
+    },
+    {
+      "pointer": "paper/paper.md:L390-L392",
+      "text": "The row law $\\tau$ is inexpressible: no reweighting of $\\{m^0,m^1,m^n\\}$, on any evidence, produces it ([proposition 5.1](#prop-no-emergence)). After successive deterministic observations eliminate the expressible theories one by one, the observation that eliminates the last theory with positive posterior mass produces a zero Bayesian normalizer, so ordinary conditioning itself is undefined—the deterministic instance of [“The posterior is self-sealing”](#rem-self-sealing), in which misspecification announces itself only because likelihoods hit zero exactly. With stochastic full-support mechanisms, the Bayesian normalizer remains positive and no such announcement occurs.",
+      "matched_claim": "C3"
+    },
+    {
+      "pointer": "paper/paper.md:L408",
+      "text": "for a theory adequate from initialization, Ville's inequality gives $\\Pr(\\sup_t E_i^m(t)\\ge e^{b_i})\\le e^{-b_i}$",
+      "matched_claim": "C4"
+    },
+    {
+      "pointer": "paper/paper.md:L408",
+      "text": "a high-capacity agent tolerates apparent misfit and rarely rejects on noise, while a low-capacity agent rejects on slight evidence and suffers more false alarms",
+      "matched_claim": "C19"
+    },
+    {
+      "pointer": "paper/paper.md:L419",
+      "text": "Sequential testing is consistent: a theory strictly inadequate at a recurrent pair is almost surely rejected, an adequate theory is falsely rejected with conditional probability at most $E_i^m(t_0)e^{-b_i}$, and the active set is monotone and eventually constant; the formal statement and proof are [lemma D.1](../appendix/appendix.md#lem-test-consistency) in [appendix D](../appendix/appendix.md#app-deferred).",
+      "matched_claim": "C4"
+    },
+    {
+      "pointer": "paper/paper.md:L422",
+      "text": "Under the exact calibration the separate zero-likelihood detector of [appendix A](../appendix/appendix.md#app-eprocess) applies and capacity $b_i$ plays no role ([“The Calibration Convention”](#conv-calibration)).",
+      "matched_claim": "C19"
+    },
+    {
+      "pointer": "paper/paper.md:L442",
+      "text": "it guarantees, in [section 10](#sec-dynamics), that surviving acting beliefs are supported on adequate theories",
+      "matched_claim": "C16"
+    },
+    {
+      "pointer": "paper/paper.md:L457",
+      "text": "Whether dissonance occurs depends on whether play exposes inadequacy of the represented class; objective falsity can remain concealed.",
+      "matched_claim": "C5"
+    },
+    {
+      "pointer": "paper/paper.md:L466-L468",
+      "text": "Fix a standing profile and suppose no theory sits exactly at the adequacy boundary ([lemma D.1](../appendix/appendix.md#lem-test-consistency)). If every theory that is $\\eta$-adequate under the fixed profile remains active when that profile begins at $t_0$, then $\\mathcal P_i$ is exposed if and only if eventual dissonance occurs almost surely. If the profile is not exposed and $m$ is an active $\\eta$-adequate theory at entry, then, conditional on the entry history, dissonance is avoided forever with probability at least $1-E_i^m(t_0)e^{-b_i}$; if some such $m$ satisfies $E_i^m(t_0)\\le1$, this bound is at least $1-e^{-b_i}$.",
+      "matched_claim": "C5"
+    },
+    {
+      "pointer": "paper/paper.md:L485-L486",
+      "text": "A direct computation shows that, against any conjecture about the rival, offering architecture $0$ is subjectively strictly dominant for firm 1 and architecture $1$ for firm 2 whenever $\\mu_i(m^a)>(2-\\beta)\\,\\mu_i(m^{a'})$; at $\\beta=1$ this is simple belief asymmetry. The firms therefore adopt differentiated constant policies.",
+      "matched_claim": "C6"
+    },
+    {
+      "pointer": "paper/paper.md:L488-L489",
+      "text": "With differentiated actions, the winner-take-all payoffs reveal the objectively preferred architecture at each state: firm 1 wins at $s_{00}$ (payoffs $1,0$) and loses at $s_{11}$ (payoffs $0,1$). No constant assignment is consistent with both observations—$m^0$ fails at $s_{11}$, $m^1$ at $s_{00}$, and $m^n$ predicts one-half at both—so each firm's active set empties: causal dissonance, in its exact deterministic form.",
+      "matched_claim": "C6"
+    },
+    {
+      "pointer": "paper/paper.md:L490",
+      "text": "Had the firms instead pooled on the same architecture at both states, each would have received one-half at every period, an outcome consistent with all three constant theories: the pooled profile is concealing, and coarse awareness would have survived its own evidence indefinitely.",
+      "matched_claim": "C6"
+    },
+    {
+      "pointer": "paper/paper.md:L491",
+      "text": "Belief heterogeneity, by inducing differentiated play, is what made the shared language's failure visible.",
+      "matched_claim": "C6"
+    },
+    {
+      "pointer": "paper/paper.md:L496",
+      "text": "This section characterizes what a successful answer must accomplish, shows that the requirement directs inquiry without determining its output, and establishes that any inquiry process meeting the paper's disciplines must be fallible.",
+      "matched_claim": "C8"
+    },
+    {
+      "pointer": "paper/paper.md:L542",
+      "text": "Restoration factorizes cell by cell, so finding a repair is a coloring problem; the formal statement and proof are [proposition D.2](../appendix/appendix.md#prop-coherence) in [appendix D](../appendix/appendix.md#app-deferred).",
+      "matched_claim": "C7"
+    },
+    {
+      "pointer": "paper/paper.md:L545",
+      "text": "every restorative refinement must separate mutually incoherent sets, since a cell containing both would be incoherent",
+      "matched_claim": "C7"
+    },
+    {
+      "pointer": "paper/paper.md:L557",
+      "text": "If the deliberative record still admits a positive-leverage coherent grouping, the agent may elect a doomed inquiry until its achievability weight decays; if no coherent grouping prices the question, it declines immediately.",
+      "matched_claim": "C11"
+    },
+    {
+      "pointer": "paper/paper.md:L592-L593",
+      "text": "This model does not derive the semantic act that produces a new predicate; it treats that act as a representational technology and shows how experience directs, constrains, prices, and disciplines its output. The model endogenizes the demand for representational production, the record-dependent constraints on successful products, their unavoidable fallibility, and their strategic consequences, while leaving the internal creative operation primitive.",
+      "matched_claim": "C1"
+    },
+    {
+      "pointer": "paper/paper.md:L609-L610",
+      "text": "The two worlds admit a coupling under which, through $H$, their state draws, full consequence profiles, analyst and deliberative records, partition paths, beliefs, conjectures, standing policies, and production-and-formulation outputs coincide pathwise. If the equality holds at every pair reachable at any finite horizon, the coupling extends to the entire process.",
+      "matched_claim": "C8"
+    },
+    {
+      "pointer": "paper/paper.md:L612-L613",
+      "text": "Consequently, no truth-blind inquiry-and-formulation rule can produce an objectively correct formulation with probability one in both worlds. More generally, the same conclusion holds for any success criterion whose sets of realizable outputs are disjoint across the two worlds.",
+      "matched_claim": "C8"
+    },
+    {
+      "pointer": "paper/paper.md:L630-L631",
+      "text": "A partition sufficient for every assignment in a candidate set $\\mathcal T$ must refine $\\bigvee_{\\tau'\\in\\mathcal T}\\mathcal P^{\\tau'}$, where $\\bigvee$ denotes the coarsest partition that refines every candidate causal-equivalence partition. A representation guaranteed to accommodate all observationally equivalent worlds is accordingly finer than any single world requires; a technology that economizes on distinctions must accept fallibility.",
+      "matched_claim": "C9"
+    },
+    {
+      "pointer": "paper/paper.md:L640-L641",
+      "text": "Of the fifteen partitions of four states, exactly four are minimally restorative—each must separate $s_{00}$ from $s_{11}$: the row partition $\\{\\{s_{00},s_{01}\\},\\{s_{10},s_{11}\\}\\}$, the column partition $\\{\\{s_{00},s_{10}\\},\\{s_{01},s_{11}\\}\\}$, and the two partitions isolating one labeled state (figure 3). The record directs inquiry (eleven partitions are excluded) without determining it (four remain).",
+      "matched_claim": "C10"
+    },
+    {
+      "pointer": "paper/paper.md:L643",
+      "text": "A factor-seeking technology thus produces the row or the column refinement—and here direction runs out.",
+      "matched_claim": "C10"
+    },
+    {
+      "pointer": "paper/paper.md:L645-L646",
+      "text": "Through the discovery horizon and conditional on the diagonal-state event, it agrees with the row world on the full joint mechanism at both visited states, so the two worlds generate the discovery record and every truth-blind production-and-formulation output with the same probability by the same coupling argument, conditional on the diagonal-state event. No truth-blind rule can formulate correctly in both, a randomized rule succeeds in the worst case with probability at most one-half, and by [proposition 7.5](#prop-robust-sufficiency) a partition sufficient for both worlds must be the full partition into singletons: robustness costs every distinction the language can draw, which is exactly what a minimal technology economizes on.",
+      "matched_claim": "C10"
+    },
+    {
+      "pointer": "paper/paper.md:L647",
+      "text": "The example also locates the failure mode of each residual candidate: whichever factor refinement arrives, its unique consistent theory extrapolates the wrong prediction to the two unlabeled states in one of the two worlds.",
+      "matched_claim": "C10"
+    },
+    {
+      "pointer": "paper/paper.md:L664",
+      "text": "Its decay is the answerability meta-prior doing formal work: repeated failure is evidence that the question may be unanswerable (the record irreparable, the repertoire inadequate), and a rational inquirer eventually abandons it.",
+      "matched_claim": "C16"
+    },
+    {
+      "pointer": "paper/paper.md:L793",
+      "text": "$\\widehat B_i(r_i)$ is well defined, nonnegative, bounded by $T(\\max \\pi_i-\\min \\pi_i)$, and computable from the deliberative record, the standing policy, and the agent-known model primitives and test calibration.",
+      "matched_claim": "C11"
+    },
+    {
+      "pointer": "paper/paper.md:L794-L798",
+      "text": "At a dissonant record, electing inquiry has represented value $\\lambda_i^{(k_i)}\\widehat B_i(r_i)-\\gamma_i$, so agent $i$ elects if and only if $$ \\lambda_i^{(k_i)}\\widehat B_i(r_i)\\geq\\gamma_i. $$",
+      "matched_claim": "C11"
+    },
+    {
+      "pointer": "paper/paper.md:L800-L807",
+      "text": "Moreover, at a dissonant record, $\\widehat B_i(r_i)>0$ if and only if some coherent grouping has positive representational increment: $$ J_i(G;r_i)>0 \\qquad\\text{for some }G\\in\\mathcal G_i(r_i). $$ Thus a question is priced positively only when some coherent reading of the record supports action variation within at least one current awareness cell that robustly outperforms the best action kept uniform on that cell under the same coherent reading.",
+      "matched_claim": "C11"
+    },
+    {
+      "pointer": "paper/paper.md:L833",
+      "text": "The participation rule is a coherent non-Bayesian criterion operating precisely where the acting belief is undefined, and it respects every discipline of [section 4.6](#sec-commitments): $\\widehat B_i$ quantifies over the agent's own remembered tokens and the groupings it can articulate—“situations like the ones I lost will recur, and a distinction that sorted them would let me act on them”—never over named future representations.",
+      "matched_claim": "C11"
+    },
+    {
+      "pointer": "paper/paper.md:L837",
+      "text": "*Action separation, not information*: the value of a question tracks whether a finer distinction could improve action beyond the best current-cell-uniform response, not how much residual uncertainty remains; an agent for whom no coherent grouping yields positive representational increment declines to inquire.",
+      "matched_claim": "C11"
+    },
+    {
+      "pointer": "paper/paper.md:L838",
+      "text": "sustained success can extinguish inquiry even though awareness stays incomplete",
+      "matched_claim": "C12"
+    },
+    {
+      "pointer": "paper/paper.md:L838",
+      "text": "by the decay of $\\lambda_i^{(k)}$, so can sustained failure—a true, valuable, repairable question can be rationally abandoned",
+      "matched_claim": "C16"
+    },
+    {
+      "pointer": "paper/paper.md:L845",
+      "text": "Once inquiry delivers a concrete refinement, the realized gain may fail to clear $\\kappa_i$, so the agent carries its old policy forward despite knowing that its earlier causal account was incomplete.",
+      "matched_claim": "C20"
+    },
+    {
+      "pointer": "paper/paper.md:L848",
+      "text": "Enlightened inertia remains a second source of persistence, distinct from an unpriced question, whether or not mechanisms are deterministic, and it feeds the performance differences of [section 10](#sec-dynamics).",
+      "matched_claim": "C20"
+    },
+    {
+      "pointer": "paper/paper.md:L855",
+      "text": "Because mechanisms are deterministic, the conflicting payoffs *certify* the two tokens as distinct states ([remark D.4](../appendix/appendix.md#rem-certification)), and the agent's best coherent grouping splits them: on the winning token the fine optimal gain is zero, while on the losing token switching to the pinned architecture gains $\\tfrac12$ against every rival action—a differentiated loss becomes a pooled half, or a pooled half a differentiated win.",
+      "matched_claim": "C12"
+    },
+    {
+      "pointer": "paper/paper.md:L856-L858",
+      "text": "Thus $L_i^{\\mathrm{fine}}=\\tfrac12$. Under the coarse one-cell current language, keeping the standing action gives aggregate gain zero, while switching uniformly gains $\\tfrac12$ on the losing token and loses $\\tfrac12$ on the winning token, so $L_i^{\\mathrm{cur}}=0$ and $J_i=\\tfrac12$. Consequently $\\widehat B_i=(2/2)(\\tfrac12)=\\tfrac12$ for both firms—identical gross representational leverage from opposite experiences—so each elects iff $\\lambda_i^{(0)}\\widehat B_i\\geq\\gamma_i$, i.e. $\\lambda_i^{(0)}/2\\geq\\gamma_i$.",
+      "matched_claim": "C12"
+    },
+    {
+      "pointer": "paper/paper.md:L859",
+      "text": "The positive value is genuinely representational because no uniform current-language action improves on the standing policy.",
+      "matched_claim": "C12"
+    },
+    {
+      "pointer": "paper/paper.md:L860",
+      "text": "Acting on the row refinement, once acquired, means re-differentiating by row at the switching hurdle $\\kappa_i$; the post-refinement horizon gain remains exactly $\\tfrac12$, so the firm re-differentiates when $\\kappa_i<\\tfrac12$ and—knowing the row law yet finding the change not worth its cost—holds its old policy when $\\kappa_i\\geq\\tfrac12$, the deterministic face of enlightened inertia ([“Enlightened inertia”](#rem-stickiness)).",
+      "matched_claim": "C12"
+    },
+    {
+      "pointer": "paper/paper.md:L863-L864",
+      "text": "For rational cessation and its converse, consider a later stretch that serves the two off-diagonal states, by which point firm 1 has acquired the row refinement (certain of the true assignment) while firm 2 has acquired the column refinement (certain of the false one): their policies differ at those states, firm 1 wins both, and the labels revealed there falsify firm 2's column theory. For firm 1, both the fine and current-language values are zero, so $L_1^{\\mathrm{fine}}=L_1^{\\mathrm{cur}}=J_1=\\widehat B_1=0$: the firm holding the truth rationally never inquires again, and its awareness stays permanently incomplete.",
+      "matched_claim": "C12"
+    },
+    {
+      "pointer": "paper/paper.md:L865-L866",
+      "text": "For firm 2, two tokens disagree with its column policy and contribute $\\tfrac12$ each under fine contingency, while two agree and contribute zero, so $L_2^{\\mathrm{fine}}=1$. Within either current column, reversing the action gains $\\tfrac12$ on one token and loses $\\tfrac12$ on the other, so $L_2^{\\mathrm{cur}}=0$, $J_2=1$, and $\\widehat B_2=(2/4)1=\\tfrac12$.",
+      "matched_claim": "C12"
+    },
+    {
+      "pointer": "paper/paper.md:L867",
+      "text": "Defeat thus concentrates the evidence, dissonance, and incentive in the losing firm in this example",
+      "matched_claim": "C12"
+    },
+    {
+      "pointer": "paper/paper.md:L868",
+      "text": "The winner/loser asymmetry—$\\widehat B_1=0<\\widehat B_2$—is the durable point; the appendix records the exact value of $\\widehat B_2$.",
+      "matched_claim": "C12"
+    },
+    {
+      "pointer": "paper/paper.md:L919",
+      "text": "Conditional on the analyst record $\\bar r_i$ and the pre-production inquiry history $h_i$, a record-measurable, truth-blind production, formulation, and bridge-prior-selection rule makes the complete output $O_i=(\\mathcal P_i',m',\\mu_i^+)$ conditionally independent of the candidate objective assignment.",
+      "matched_claim": "C13"
+    },
+    {
+      "pointer": "paper/paper.md:L936-L937",
+      "text": "Passing the repair test adds no information beyond the record because post-restoration fit is guaranteed by the successful-output construction. If candidates assign equal likelihood to $(\\bar r_i,h_i)$, their posterior odds remain their reflective prior odds.",
+      "matched_claim": "C13"
+    },
+    {
+      "pointer": "paper/paper.md:L957",
+      "text": "In this precise conditional sense, the insight itself is not evidence: once the complete analyst record and inquiry history are held fixed, a truth-blind output adds no evidential content of its own.",
+      "matched_claim": "C13"
+    },
+    {
+      "pointer": "paper/paper.md:L959",
+      "text": "The theorem prohibits treating that information as independent confirmation after the complete generating record has already entered the assessment; its practical force is a prohibition on double counting.",
+      "matched_claim": "C13"
+    },
+    {
+      "pointer": "paper/paper.md:L964-L966",
+      "text": "The assessment $(\\mathcal T,\\nu)$ is expressible by agent $i$ only if its current post-refinement partition $\\mathcal P_i'$ is sufficient for every $\\tau'\\in\\mathcal T$, hence only if $\\mathcal P_i'$ refines the join of [proposition 7.5](#prop-robust-sufficiency). This is necessary but not sufficient for complete computation of warrant, which also requires a candidate set, a reflective prior, candidate likelihoods for the generating record and inquiry history, and the relevant selection rule. An agent holding a minimal restoration therefore generally cannot formulate the cross-representation comparison required to determine the sign or magnitude of its signed warrant gap.",
+      "matched_claim": "C14"
+    },
+    {
+      "pointer": "paper/paper.md:L967",
+      "text": "A broader-awareness assessor may be able to formulate the comparison",
+      "matched_claim": "C14"
+    },
+    {
+      "pointer": "paper/paper.md:L975",
+      "text": "The agent has returned to the Bayesian world carrying an analyst-defined signed warrant gap whose sign and magnitude it generally cannot compute.",
+      "matched_claim": "C14"
+    },
+    {
+      "pointer": "paper/paper.md:L980-L981",
+      "text": "The recoded record pins the unique consistent theory: architecture $0$ on the first column, $1$ on the second. Representation-relative coherence assigns it probability one.",
+      "matched_claim": "C15"
+    },
+    {
+      "pointer": "paper/paper.md:L983",
+      "text": "The two worlds assign the realized diagonal-only record equal probability by the same coupling argument conditional on the diagonal-state event, and the technology is truth-blind, so by [theorem 9.2](#thm-uninformative) the reflective posterior equals the prior: $W(O_i)=\\tfrac12$, and the signed warrant gap is $1-\\tfrac12=+\\tfrac12$.",
+      "matched_claim": "C15"
+    },
+    {
+      "pointer": "paper/paper.md:L984",
+      "text": "The same example-specific gap applies to a firm that acquires the *row* refinement: its representation-relative coherence is also one, its warrant is also one-half, and confidence exceeds warrant even when the formulated theory happens to be objectively correct.",
+      "matched_claim": "C15"
+    },
+    {
+      "pointer": "paper/paper.md:L985",
+      "text": "By [corollary 9.3](#cor-self-audit), neither firm can conduct this assessment itself: expressing both candidate worlds requires the full partition into singletons.",
+      "matched_claim": "C15"
+    },
+    {
+      "pointer": "paper/paper.md:L986",
+      "text": "One fresh differentiated observation at an off-diagonal state resolves the row/column identification problem completely because the two worlds predict opposite labels there: if the formulated theory is correct, $W(O_i)$ rises to one and the positive signed gap closes; if it is false, it is rejected, the singleton active set empties, and the acting belief becomes undefined.",
+      "matched_claim": "C15"
+    },
+    {
+      "pointer": "paper/paper.md:L987-L988",
+      "text": "At $\\beta=1$ under pooled play, any number of pooled observations remains nondiagnostic between the row and column worlds. In this four-state laboratory at $\\beta=1$, differentiated play purchases the evidence that separates the row and column worlds; pooled play does not.",
+      "matched_claim": "C15"
+    },
+    {
+      "pointer": "paper/paper.md:L1026",
+      "text": "the $\\beta=1$ trap: both firms certain of the false column law, each earning $\\tfrac12$ forever",
+      "matched_claim": "C23"
+    },
+    {
+      "pointer": "paper/paper.md:L1027",
+      "text": "at $\\beta<1$: the coarse firm earns $\\tfrac14$ against its refined rival's $\\tfrac34$, permanently",
+      "matched_claim": "C23"
+    },
+    {
+      "pointer": "paper/paper.md:L1028",
+      "text": "$\\kappa_i\\ge\\tfrac12$ after acquiring the row law: the firm knows it and holds its old policy",
+      "matched_claim": "C12"
+    },
+    {
+      "pointer": "paper/paper.md:L1055",
+      "text": "- (a) at most $n(|S|-1)$ refinements occur, and every agent's awareness partition is eventually constant;",
+      "matched_claim": "C16"
+    },
+    {
+      "pointer": "paper/paper.md:L1056",
+      "text": "- (b) only finitely many inquiry elections occur—each agent stops electing once its achievability weight has decayed enough that $\\lambda_i^{(k)}\\,T(\\max \\pi_i-\\min \\pi_i)<\\gamma_i$, and this happens after finitely many consecutive failures because $\\widehat B_i$ is bounded and $\\gamma_i>0$; and",
+      "matched_claim": "C16"
+    },
+    {
+      "pointer": "paper/paper.md:L1057",
+      "text": "- (c) there is an almost surely finite period after which no agent's language changes and no agent pays an inquiry cost: every agent's epistemic life thereafter is judged-Bayesian updating within a fixed language, punctuated at most by belief-driven policy switches under [assumption 4.4](#ass-commitment) and by dissonance events that fail the participation threshold.",
+      "matched_claim": "C16"
+    },
+    {
+      "pointer": "paper/paper.md:L1061",
+      "text": "- (d) every agent's active set is eventually constant; every theory retained in that eventual active set is $\\eta$-adequate at every recurrent pair under terminal play, every theory $\\eta$-inadequate at a recurrent pair under terminal play is eventually absent, and each agent is eventually either never dissonant—it lives in a Bayesian world—or in dissonant stasis ([definition 10.2](#def-stasis)).",
+      "matched_claim": "C16"
+    },
+    {
+      "pointer": "paper/paper.md:L1065",
+      "text": "Converging non-stasis configurations limit to a partial SCUE, and a SCUE configuration with strict optimality margins and zero leverage persists—exactly with deterministic mechanisms, and with probability at least $1-\\sum_i e^{-b_i}$ in the stochastic case, so capacity governs the robustness of a rest point; the formal statement is [proposition D.5](../appendix/appendix.md#prop-rest-points) in [appendix D](../appendix/appendix.md#app-deferred), with proof in [appendix B](../appendix/appendix.md#app-absorption).",
+      "matched_claim": "C17"
+    },
+    {
+      "pointer": "paper/paper.md:L1073",
+      "text": "The decay of $\\lambda_i^{(k)}$ is what makes inquiry die out even when the question is genuine: an agent facing a true, valuable, but hard-to-repair defect abandons it once repeated failure has eroded its hope.",
+      "matched_claim": "C16"
+    },
+    {
+      "pointer": "paper/paper.md:L1075",
+      "text": "Were $\\lambda_i^{(k)}$ held fixed instead of decaying, an agent could elect a doomed inquiry forever, paying $\\gamma_i$ each period for a repair that never arrives; the decay rules this out and is the model's account of when a rational inquirer stops.",
+      "matched_claim": "C16"
+    },
+    {
+      "pointer": "paper/paper.md:L1079",
+      "text": "Zero-leverage dissonant stasis is a recognizable condition, not a pathology of the model: the agent registers that no admitted theory survives its test—yet its deliberative valuation finds no coherent grouping with positive representational increment, so repairing the account is worth nothing to it.",
+      "matched_claim": "C11"
+    },
+    {
+      "pointer": "paper/paper.md:L1085",
+      "text": "In a SCUE, surviving error lives only in what play never exposes: acting-belief mass on every $\\eta$-inadequate theory vanishes, and all retained falsity is confined to pooled mechanism assignments within tolerance at visited profiles and to counterfactual claims at unvisited profiles ([proposition D.6](../appendix/appendix.md#prop-adequacy), [appendix D](../appendix/appendix.md#app-deferred)).",
+      "matched_claim": "C18"
+    },
+    {
+      "pointer": "paper/paper.md:L1087",
+      "text": "In stochastic environments capacity is a single cognitive-style dial—expected detection time under an exposed profile is $O(b_i/D_i)$ while spurious dissonance at a non-exposed rest point has probability at most $e^{-b_i}$—and it plays no role in the exact deterministic case; the formal statement and proof are [proposition D.7](../appendix/appendix.md#prop-capacity) in [appendix D](../appendix/appendix.md#app-deferred).",
+      "matched_claim": "C19"
+    },
+    {
+      "pointer": "paper/paper.md:L1091",
+      "text": "There exist primitives and absorbing configurations in which agents hold different terminal partitions and theories, and expected per-period payoffs differ strictly and permanently, with no disadvantaged agent closing the gap—because for each the corrective process has died economically at one of its two stages: either its question is unpriced (*dissonant stasis*, $\\lambda_i^{(k_i)}\\widehat B_i(r_i)<\\gamma_i$ from some period on), or, having asked and refined, the policy change its new model recommends is priced below the switching hurdle (*enlightened inertia*, $T$-horizon gain $\\le\\kappa_i$, [“Enlightened inertia”](#rem-stickiness)).",
+      "matched_claim": "C20"
+    },
+    {
+      "pointer": "paper/paper.md:L1093",
+      "text": "The stasis channel is established by the instance below; the enlightened-inertia channel is the deterministic possibility of [“Enlightened inertia”](#rem-stickiness) (a firm that acquires the true distinction yet, facing $\\kappa_i$ above the gain, forgoes the improvement its rival captures)",
+      "matched_claim": "C20"
+    },
+    {
+      "pointer": "paper/paper.md:L1094",
+      "text": "Performance differences persist not because an equilibrium concept freezes them but because the process that would erase them has died economically: the disadvantaged agent's question is priced below the cost of asking—through zero leverage, an eroded achievability weight, or an irreparable record—or, having asked and learned, it finds the switch its new model recommends priced below the hurdle and holds its old policy ([“Enlightened inertia”](#rem-stickiness)).",
+      "matched_claim": "C20"
+    },
+    {
+      "pointer": "paper/paper.md:L1104",
+      "text": "In environments whose primitives are *diagnostic*—payoff-relevant policy errors always expose the erring agent's awareness under confirmed stationary play—no SCUE contains a payoff-relevant policy error; the formal apparatus is [definition D.8](../appendix/appendix.md#def-diagnostic) and [proposition D.9](../appendix/appendix.md#prop-diagnostic) in [appendix D](../appendix/appendix.md#app-deferred).",
+      "matched_claim": "C21"
+    },
+    {
+      "pointer": "paper/paper.md:L1108",
+      "text": "By [proposition D.6](../appendix/appendix.md#prop-adequacy), an objectively false theory that retains nonvanishing acting-belief mass in a stable SCUE must be $\\eta$-adequate on path; the induced profile is therefore concealing for that theory in the sense of [definition 6.4](#def-exposure).",
+      "matched_claim": "C18"
+    },
+    {
+      "pointer": "paper/paper.md:L1111",
+      "text": "In stochastic environments even an active $\\eta$-adequate theory remains subject to the conditional false-rejection bound of [lemma D.1](../appendix/appendix.md#lem-test-consistency); under the exact calibration false rejection is impossible ([“The Calibration Convention”](#conv-calibration)), but the remaining SCUE conditions are still required.",
+      "matched_claim": "C4"
+    },
+    {
+      "pointer": "paper/paper.md:L1113",
+      "text": "Strictly punishing primitives—those whose on-path conditionals at every payoff-relevant policy error separate from every expressible prediction by more than $\\eta$—are diagnostic, as [proposition D.10](../appendix/appendix.md#prop-punishing) in [appendix D](../appendix/appendix.md#app-deferred) records.",
+      "matched_claim": "C22"
+    },
+    {
+      "pointer": "paper/paper.md:L1121",
+      "text": "Each plays the column policy; the firms pool at every state; every payoff is one-half; and one-half is exactly what the column theory predicts under pooled play.",
+      "matched_claim": "C23"
+    },
+    {
+      "pointer": "paper/paper.md:L1122",
+      "text": "The configuration is a SCUE with payoff-relevant error: policies are subjectively optimal, conjectures confirmed, and no dissonance ever occurs because the profile is concealing—so the technology never triggers, whatever its cost or reliability.",
+      "matched_claim": "C23"
+    },
+    {
+      "pointer": "paper/paper.md:L1123",
+      "text": "The positive signed warrant gap of the running example is permanent: unbounded pooled experience accumulates while each firm remains exactly half-warranted, the missing half being the reflective weight on the world their shared language cannot express.",
+      "matched_claim": "C23"
+    },
+    {
+      "pointer": "paper/paper.md:L1127",
+      "text": "In the first period serving an off-diagonal state, the pooled firms receive $\\beta/2$ where their theory predicts one-half: the demand side reveals the label, dissonance returns, $\\widehat B$ turns positive, and the reflective posterior becomes degenerate.",
+      "matched_claim": "C23"
+    },
+    {
+      "pointer": "paper/paper.md:L1128",
+      "text": "Payoff-relevant self-confirmation is a knife-edge property of perfectly forgiving demand, and the destroyed value $1-\\beta$ at each misserved period is itself the corrective signal: what demand withholds from the firms, their epistemics receives as evidence.",
+      "matched_claim": "C23"
+    },
+    {
+      "pointer": "paper/paper.md:L1153-L1154",
+      "text": "Under either condition firm 2 never elects after $t_0$, its failure count remains unchanged, and it is in dissonant stasis. Here firm 2's coarse record genuinely rejects all three constant theories—its differentiated losses defeat the constant theory matching its own action, its pooled payoff of one-half defeats the opposite theory's $\\beta/2$ prediction, and neutrality fails at the differentiated losses—so it is dissonant rather than merely mistaken, and it stays put because its question is priced below cost.",
+      "matched_claim": "C23"
+    },
+    {
+      "pointer": "paper/paper.md:L1155-L1156",
+      "text": "With constant action $c$, the two correctly served tokens contribute zero and the two misserved tokens contribute $\\tfrac12$ each under fine contingency, so $L_2^{\\mathrm{fine}}=1$. A uniform current-language reversal has aggregate robust gain $\\beta-1<0$, while retaining the standing action gives zero, so $L_2^{\\mathrm{cur}}=0$, $J_2=1$, and, for this balanced four-token record with $T=2$, $\\widehat B_2=\\tfrac12$.",
+      "matched_claim": "C23"
+    },
+    {
+      "pointer": "paper/paper.md:L1157",
+      "text": "For other realized record compositions the gross representational leverage remains positive when some coherent grouping supplies a positive increment and is bounded as in [proposition 8.4](#prop-participation).",
+      "matched_claim": "C11"
+    },
+    {
+      "pointer": "paper/paper.md:L1158",
+      "text": "Firm 1 offers the preferred architecture in the row its rival misserves, winning both those states and splitting the rest, so under uniform $\\rho$ the firms earn three-quarters and one-quarter, permanently.",
+      "matched_claim": "C23"
+    },
+    {
+      "pointer": "paper/paper.md:L1159-L1164",
+      "text": "At $\\beta=1$, the same initial constant-$c$ record leaves the opposite constant theory as firm 2's only active theory. If the reversal that theory recommends clears the switching hurdle, firm 2 switches once from $c$ to $1-c$. Under the reversed policy, a subsequent visit to a state in the true row $c$ produces a diagnostic contradiction and rejects that last active theory. Because the constant-$c$ and neutral theories were already permanently rejected and theories do not re-enter, the active set then becomes empty and firm 2 enters dissonance rather than oscillating. If the switching hurdle blocks the initial reversal, firm 2 may instead remain in policy inertia under [assumption 4.4](#ass-commitment). Thus the $\\beta=1$ continuation is either a one-switch path into renewed dissonance or a stable policy-inertia path, depending on the switching hurdle; it is not an indefinite oscillation.",
+      "matched_claim": "C23"
+    },
+    {
+      "pointer": "paper/paper.md:L1171",
+      "text": "The model supplies the theory-based view with an upstream source of strategic heterogeneity: question histories.",
+      "matched_claim": "C1"
+    },
+    {
+      "pointer": "paper/paper.md:L1172",
+      "text": "Experiences can pose different questions, truth-blind technologies can produce different repairs, and inquiry can stop at different points, leaving agents with different languages, theories, and payoffs ([proposition 10.5](#prop-persistence)).",
+      "matched_claim": "C20"
+    },
+    {
+      "pointer": "paper/paper.md:L1176",
+      "text": "Two firms facing the same opportunity may not disagree over common theories at all: one may possess an actionable distinction the other has never formulated, so comparing priors starts too late.",
+      "matched_claim": "C20"
+    },
+    {
+      "pointer": "paper/paper.md:L1178",
+      "text": "Inquiry creates value through *action separation*, not uncertainty reduction.",
+      "matched_claim": "C11"
+    },
+    {
+      "pointer": "paper/paper.md:L1179",
+      "text": "Deliberative leverage asks whether a coherent reading of retained experience supports a finer contingent policy whose robust value exceeds the best policy already expressible on each current cell ([proposition 8.4](#prop-participation)).",
+      "matched_claim": "C11"
+    },
+    {
+      "pointer": "paper/paper.md:L1180",
+      "text": "High uncertainty without such an increment is economically irrelevant, whereas a narrow contrast crossing an action threshold can be worth pursuing.",
+      "matched_claim": "C11"
+    },
+    {
+      "pointer": "paper/paper.md:L1181",
+      "text": "a firm may rationally leave a question unasked when leverage is zero",
+      "matched_claim": "C11"
+    },
+    {
+      "pointer": "paper/paper.md:L1181",
+      "text": "stop after its achievability weight decays",
+      "matched_claim": "C16"
+    },
+    {
+      "pointer": "paper/paper.md:L1182",
+      "text": "In the running example, competitive defeat concentrates diagnostic evidence and produces a winner/loser inquiry asymmetry; the example exhibits this mechanism without implying that losers generally have greater inquiry incentives.",
+      "matched_claim": "C12"
+    },
+    {
+      "pointer": "paper/paper.md:L1183",
+      "text": "Success can remove action-separating leverage",
+      "matched_claim": "C12"
+    },
+    {
+      "pointer": "paper/paper.md:L1183",
+      "text": "a genuine anomaly can remain economically dormant when no feasible refinement changes robust action",
+      "matched_claim": "C11"
+    },
+    {
+      "pointer": "paper/paper.md:L1186",
+      "text": "Warrant depends on *independent discrimination*, not retrospective fit.",
+      "matched_claim": "C13"
+    },
+    {
+      "pointer": "paper/paper.md:L1187",
+      "text": "The result disciplines interpretations of scientific entrepreneurship (Camuffo et al. 2020; Zellweger and Zenger 2023): once the complete generating record and inquiry history are conditioned upon, a record-measurable truth-blind output earns no additional warrant merely by organizing that record.",
+      "matched_claim": "C13"
+    },
+    {
+      "pointer": "paper/paper.md:L1188",
+      "text": "Validation requires evidence whose likelihood differs across relevant candidate worlds, yet the agent may lack the awareness needed to formulate that comparison ([corollary 9.3](#cor-self-audit)).",
+      "matched_claim": "C14"
+    },
+    {
+      "pointer": "paper/paper.md:L1189",
+      "text": "A broader-awareness board, investor, advisor, or other outsider can serve as a warrant assessor if it represents the alternatives and has an appropriate assessment model; outside challenge can therefore play a warrant role under those conditions.",
+      "matched_claim": "C14"
+    },
+    {
+      "pointer": "paper/paper.md:L1190",
+      "text": "The relevant contribution is diagnostic variation separating worlds the focal agent cannot jointly represent, so governance is epistemically useful only when the outsider's broader language and evidence support that discrimination.",
+      "matched_claim": "C14"
+    },
+    {
+      "pointer": "paper/paper.md:L1193",
+      "text": "Shared false theories can remain viable when play pools states that a coarse language treats alike",
+      "matched_claim": "C23"
+    },
+    {
+      "pointer": "paper/paper.md:L1194",
+      "text": "Strategic differentiation can supply diagnostic contrasts",
+      "matched_claim": "C6"
+    },
+    {
+      "pointer": "paper/paper.md:L1194",
+      "text": "observable environmental punishment can reveal misservice even under common play",
+      "matched_claim": "C22"
+    },
+    {
+      "pointer": "paper/paper.md:L1196",
+      "text": "strong customer outside options can instead discipline a consensus, while forgiving demand can protect it",
+      "matched_claim": "C23"
+    },
+    {
+      "pointer": "paper/paper.md:L1197",
+      "text": "A false theory may predict well along the path it induces because its policy suppresses the contrast that would refute it, yet the same theory can fail after a rival differentiates or customers visibly punish misservice.",
+      "matched_claim": "C23"
+    },
+    {
+      "pointer": "paper/paper.md:L1205",
+      "text": "The cross-representation warrant assessment remains an analyst-level comparison the agent may be unable to perform ([corollary 9.3](#cor-self-audit)).",
+      "matched_claim": "C14"
+    },
+    {
+      "pointer": "paper/paper.md:L1213",
+      "text": "The model can explain why a new representation is demanded and constrained, but not creation of the analyst's ontology or a new kind of causal mechanism.",
+      "matched_claim": "C1"
+    },
+    {
+      "pointer": "paper/paper.md:L1223",
+      "text": "This paper supplies the upstream step that the theory-based view has lacked: where theories come from relative to an actor's prior causal language.",
+      "matched_claim": "C1"
+    },
+    {
+      "pointer": "paper/paper.md:L1224",
+      "text": "Bayesian learning ranks possibilities inside such a language; producing a new one begins when causal dissonance separately diagnoses that the represented class has failed.",
+      "matched_claim": "C2"
+    },
+    {
+      "pointer": "paper/paper.md:L1227",
+      "text": "Experience directs repair without selecting its answer, so economical representation change is necessarily fallible.",
+      "matched_claim": "C9"
+    },
+    {
+      "pointer": "paper/paper.md:L1228",
+      "text": "An agent can value a question before representing candidate answers because leverage isolates the value of finer actionable contingency from corrections already available in the current language.",
+      "matched_claim": "C11"
+    },
+    {
+      "pointer": "paper/paper.md:L1229",
+      "text": "And generating a representation is not warranting it: conditional on the complete generating record and inquiry history, a record-measurable truth-blind output adds no evidence of its own, and retrospective fit is not independent validation.",
+      "matched_claim": "C13"
+    },
+    {
+      "pointer": "paper/paper.md:L1232",
+      "text": "The paper establishes the existence of absorbing configurations in which heterogeneous question histories and stopping points sustain different terminal languages and payoffs.",
+      "matched_claim": "C1"
+    },
+    {
+      "pointer": "paper/paper.md:L1233",
+      "text": "It does not claim that every performance difference has this origin; it identifies a pre-prior mechanism by which otherwise similar firms can diverge.",
+      "matched_claim": "C1"
+    },
+    {
+      "pointer": "paper/paper.md:L1234",
+      "text": "They can come to different theories because they came to different questions, and because some questions died or were abandoned before resolution.",
+      "matched_claim": "C1"
+    },
+    {
+      "pointer": "paper/paper.md:L1235",
+      "text": "The contribution is an origin result: enduring variety can begin with different histories of which questions became thinkable and worth pursuing.",
+      "matched_claim": "C1"
+    }
+  ]
+}

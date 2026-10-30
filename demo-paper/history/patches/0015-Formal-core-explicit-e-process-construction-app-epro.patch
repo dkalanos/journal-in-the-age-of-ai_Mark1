@@ -1,0 +1,63 @@
+From 85c9ad5c53ef7645de8fb006236359c1d0d9eb58 Mon Sep 17 00:00:00 2001
+From: MDR Git <mdr@mikeryall.com>
+Date: Sat, 25 Jul 2026 10:30:15 -0400
+Subject: [PATCH 15/27] Formal-core: explicit e-process construction
+ (app:eprocess)
+
+Add appendix section giving the mixture e-value construction underlying def:test:
+per-pair betting supermartingales for the TV-ball adequacy null, mixed over
+subsets/sign/betting-fraction, combined across pairs by a weighted sum. Yields the
+Ville false-alarm bound e^{-b_i}, the dominating-component property used in
+lem:test-consistency and prop:capacity, and the deterministic likelihood-ratio
+reduction. def:test now points to it instead of "a standard mixture construction."
+
+Compiles, 42pp.
+
+Co-Authored-By: Claude Opus 4.8 <noreply@anthropic.com>
+---
+ paper/tbv_mdr_Paper01-v04.tex | 22 +++++++++++++++++++++-
+ 1 file changed, 21 insertions(+), 1 deletion(-)
+
+diff --git a/paper/tbv_mdr_Paper01-v04.tex b/paper/tbv_mdr_Paper01-v04.tex
+index a873339..8efadae 100644
+--- a/paper/tbv_mdr_Paper01-v04.tex
++++ b/paper/tbv_mdr_Paper01-v04.tex
+@@ -416,7 +416,7 @@ Fix an adequacy tolerance $\eta\ge0$.
+ Theory $m$ is \emph{adequate} at a visited pair $(C,a)$ when $\TV\!\left(p_i^{*}(\cdot\mid C,a),\marg{i}m(C)(a)\right)\le\eta$, where $\TV$ is total-variation distance; under a standing profile call $m$ \emph{$\eta$-adequate} if it is adequate at every visited pair and \emph{$\eta$-inadequate} if it is inadequate at some visited pair.
+ The agent monitors adequacy \emph{sequentially}, period by period.
+ For each expressible theory $m$ it maintains a nonnegative \emph{evidence process} $E_i^{m}$, equal to $1$ before any play and multiplied each period by a nonnegative factor for the observed token; the factor is built so that $E_i^{m}$ is a supermartingale as long as $m$ is adequate---its evidence against $m$ does not grow in expectation---while at any pair where $m$ is inadequate $\log E_i^{m}$ grows in expectation at a strictly positive rate, the information divergence between the on-path conditional and $m$'s prediction.
+-(A standard mixture construction over the adequacy region yields such a process; in the exact deterministic case $\eta=0$ the factor is the likelihood ratio, so $E_i^{m}$ becomes $+\infty$ the first period $m$ assigns probability zero to a realized consequence.)
++(\Cref{app:eprocess} gives an explicit mixture construction; in the exact deterministic case $\eta=0$ the factor is the likelihood ratio, so $E_i^{m}$ becomes $+\infty$ the first period $m$ assigns probability zero to a realized consequence.)
+ Agent $i$ carries a \emph{dissonance capacity} $b_i>0$ and \emph{rejects} $m$, permanently, at the first period in which $\log E_i^{m}\ge b_i$.
+ The \emph{active set} $\widehat M_i(\mathcal P_i,r_i)$ collects the not-yet-rejected theories.
+ Capacity is the agent's evidence threshold for abandoning a theory: by Ville's inequality the probability that an $\eta$-adequate theory is ever rejected is at most $e^{-b_i}$, so a high-capacity agent tolerates apparent misfit and rarely rejects on noise, while a low-capacity agent rejects on slight evidence and suffers more false alarms.
+@@ -1225,6 +1225,26 @@ Strategy's oldest question---why do similar firms perform differently?---here re
+ \bibliography{MDR_TBV_Paper01}
+ 
+ \appendix
++\section{The evidence process}
++\label{app:eprocess}
++
++Fix agent $i$ and theory $m$.
++At a visited pair $(C,a)$ write $q=\marg{i}m(C)(a)$ for $m$'s prediction; adequacy at $(C,a)$ is $\TV(p_i^{*}(\cdot\mid C,a),q)\le\eta$, equivalently $\lvert p_i^{*}(D)-q(D)\rvert\le\eta$ for every $D\subseteq X_i$.
++For each such $D$, each sign, and each betting fraction $\lambda\in[0,\lambda_{\max}]$, the process that multiplies by $1+\lambda\bigl(\mathbf 1\{x\in D\}-(q(D)+\eta)\bigr)$ at each visit to $(C,a)$, and by $1$ otherwise, is nonnegative and, under adequacy, a supermartingale: its conditional expectation multiplies by $1+\lambda\bigl(p_i^{*}(D)-q(D)-\eta\bigr)\le1$.
++Let $M_i^{m,(C,a)}$ average these betting processes over $D$, sign, and a prior on $\lambda$---a \emph{mixture} e-value, so no bet need be fixed in advance---and set
++\[
++E_i^{m}=\sum_{(C,a)}v_{(C,a)}\,M_i^{m,(C,a)},
++\qquad
++\textstyle\sum_{(C,a)}v_{(C,a)}=1,\ v_{(C,a)}>0.
++\]
++As a convex combination of nonnegative supermartingales, $E_i^{m}$ is a nonnegative supermartingale under the null that $m$ is adequate at every pair, with $E_i^{m}=1$ before play; Ville's inequality then gives $\Pr(\sup_t E_i^{m}\ge e^{b_i})\le e^{-b_i}$, the false-alarm bound of \cref{def:test}.
++If instead $m$ is inadequate at a recurrent pair $j^{*}=(C,a)$---some $D$ has $p_i^{*}(D)>q(D)+\eta$---the corresponding betting process has strictly positive expected log-growth, so
++\[
++E_i^{m}\ \ge\ v_{j^{*}}\,M_i^{m,j^{*}}\ \longrightarrow\ \infty\quad\text{a.s.},
++\]
++at a rate equal to that pair's optimal betting exponent (a Chernoff information divergence); this is the dominating-component property used in \cref{lem:test-consistency,prop:capacity}.
++In the exact deterministic case $\eta=0$ with degenerate predictions, the $D=\{x\}$ bet with $\lambda\to\lambda_{\max}$ reduces to the likelihood ratio, and $E_i^{m}$ becomes $+\infty$ at the first consequence $m$ deems impossible.
++
+ \section{Proofs of Theorem~\ref{thm:absorption} and
+ Proposition~\ref{prop:rest-points}}
+ \label{app:absorption}
+-- 
+2.43.0
+

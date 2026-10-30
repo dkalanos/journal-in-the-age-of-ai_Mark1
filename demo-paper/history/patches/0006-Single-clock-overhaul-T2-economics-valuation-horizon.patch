@@ -1,0 +1,113 @@
+From ab6bf72ca229064e985cdc1f8728d39b20e31b44 Mon Sep 17 00:00:00 2001
+From: MDR Git <mdr@mikeryall.com>
+Date: Fri, 24 Jul 2026 22:37:29 -0400
+Subject: [PATCH 06/27] Single-clock overhaul T2 (economics): valuation
+ horizon, net-of-switching participation, decoupling
+
+- Reinterpret T as a common valuation horizon (periods): ass:commitment switch
+  rule becomes T*(U_i(sigma*)-U_i(sigma)) > kappa_i with kappa_i a one-time cost.
+- def:leverage premise reworded to horizon-T; ass:elective -> standing policy.
+- prop:participation now nets the switching hurdle: elect iff
+  lambda_i (B_i - kappa_i)_+ >= gamma_i (don't inquire for a distinction you won't act on).
+- New rem:stickiness (Enlightened inertia): model updates but policy doesn't when
+  the realized switch gain falls below kappa_i -- a second persistence channel;
+  an opacity phenomenon (collapses under pointwise transparency, rem:certification).
+
+Compiles, 41pp. Remaining: T3 (dynamics/appendix/running example).
+
+Co-Authored-By: Claude Opus 4.8 <noreply@anthropic.com>
+---
+ paper/tbv_mdr_Paper01-v04.tex | 31 ++++++++++++++++++++-----------
+ 1 file changed, 20 insertions(+), 11 deletions(-)
+
+diff --git a/paper/tbv_mdr_Paper01-v04.tex b/paper/tbv_mdr_Paper01-v04.tex
+index 259fcd9..1830ae9 100644
+--- a/paper/tbv_mdr_Paper01-v04.tex
++++ b/paper/tbv_mdr_Paper01-v04.tex
+@@ -318,14 +318,14 @@ U_i(\sigma\mid\mu_i,q_i)=\sum_{C\in\mathcal P_i}\rho(C)\sum_{m\in M(\mathcal P_i
+ \label{eq:subjective-value}
+ \end{equation}
+ where $\rho(C)=\sum_{s\in C}\rho(s)$.
+-Revising the standing policy is costly: agent $i$ replaces $\sigma_i$ by $\sigma_i^{\star}$ if and only if the per-period gain clears a \emph{switching hurdle} $\kappa_i\ge0$, measured in per-period payoff units,
++Agent $i$ values a lumpy, one-time cost against the gain it produces over a fixed \emph{valuation horizon} of $T$ periods, without discounting.
++Revising the standing policy is costly: agent $i$ replaces $\sigma_i$ by $\sigma_i^{\star}$ if and only if the horizon-$T$ gain clears a one-time \emph{switching hurdle} $\kappa_i\ge0$,
+ \[
+-U_i(\sigma_i^{\star}\mid\mu_i,q_i)-U_i(\sigma_i\mid\mu_i,q_i)>\kappa_i,
++T\bigl(U_i(\sigma_i^{\star}\mid\mu_i,q_i)-U_i(\sigma_i\mid\mu_i,q_i)\bigr)>\kappa_i,
+ \]
+ and otherwise carries $\sigma_i$ unchanged.
+-The inaction band $U_i(\sigma_i^{\star})-U_i(\sigma_i)\le\kappa_i$ is the source of policy inertia: beliefs may drift and the belief-optimal action may move, yet the standing policy holds until the gain from switching clears the hurdle.
++The inaction band $T\,[\,U_i(\sigma_i^{\star})-U_i(\sigma_i)\,]\le\kappa_i$ is the source of policy inertia: beliefs may drift and the belief-optimal action may move, yet the standing policy holds until the gain from switching clears the hurdle.
+ When dissonance (\cref{sec:dissonance}) leaves $\mu_i$ undefined, $\sigma_i^{\star}$ is undefined and the standing policy is carried forward unchanged.
+-Agents evaluate one period ahead and do not discount.
+ \end{assumption}
+ 
+ Policy inertia is thus an outcome, not an assumption: a standing policy persists until the belief-optimal action moves far enough to clear the switching hurdle $\kappa_i$, or until the language itself breaks down and must be repaired (\cref{sec:dissonance}).
+@@ -723,8 +723,8 @@ The resulting statistic is a genuine estimate, not a guarantee: the agent guesse
+ \label{ass:elective}
+ The technology $\phi_i$ operates only when agent $i$ experiences dissonance and elects inquiry, at cost $\gamma_i>0$ in payoff units.
+ Let $k_i$ count agent $i$'s consecutive failed elections, reset to zero on any success.
+-Agent $i$ holds a \emph{delabeled achievability weight} $\lambda_i^{(k)}\in(0,1]$, nonincreasing in $k$ with $\lambda_i^{(k)}\to0$: a subjective probability that an elected episode produces a refinement \emph{delivering the estimated value below}, defined on that event alone and not on the identities of possible outputs.
+-On failure or abstention the committed policy is carried forward.
++Agent $i$ holds a \emph{delabeled achievability weight} $\lambda_i^{(k)}\in(0,1]$, nonincreasing in $k$ with $\lambda_i^{(k)}\to0$: a subjective probability that an election produces a refinement \emph{delivering the estimated value below}, defined on that event alone and not on the identities of possible outputs.
++On failure or abstention the standing policy is carried forward.
+ Awareness is cumulative: acquired distinctions are never lost, though theories formulated on them may later be rejected.
+ \end{assumption}
+ 
+@@ -809,16 +809,16 @@ The \emph{deliberative leverage} is
+ \end{cases}
+ \label{eq:leverage}
+ \end{equation}
+-The premise is that the empirical token \emph{distribution} recurs, so the per-generation estimate is $T$ times average per-token robust gain.
++The premise is that the empirical token \emph{distribution} recurs, so the horizon-$T$ estimate is $T$ times the average per-token robust gain.
+ The outside option $0$ represents declining to attribute actionable value to any available grouping; it also makes leverage zero when $\mathcal G_i(r_i)=\emptysetset$.
+ \end{definition}
+ 
+ \begin{proposition}[Participation]
+ \label{prop:participation}
+ $\widehat B_i(r_i)$ is well defined, nonnegative, bounded by $T(\max \pi_i-\min \pi_i)$, and computable from the deliberative record, the carried-forward policy, and the known structure $(\Theta,\pi_i)$.
+-At a dissonant record, electing inquiry has represented value $\lambda_i^{(k_i)}\widehat B_i(r_i)-\gamma_i$, so agent $i$ elects if and only if
++At a dissonant record, electing inquiry has represented value $\lambda_i^{(k_i)}\bigl(\widehat B_i(r_i)-\kappa_i\bigr)_{+}-\gamma_i$---the achievability-weighted horizon gain, net of the switching hurdle acting on the distinction would trigger, less the inquiry cost---so agent $i$ elects if and only if
+ \[
+-\lambda_i^{(k_i)}\widehat B_i(r_i)\geq\gamma_i.
++\lambda_i^{(k_i)}\bigl(\widehat B_i(r_i)-\kappa_i\bigr)_{+}\geq\gamma_i.
+ \]
+ Moreover, at a dissonant record, $\widehat B_i(r_i)>0$ if and only if some coherent grouping has positive aggregate robust gain:
+ \[
+@@ -836,7 +836,7 @@ The set whose maximum appears in \cref{eq:leverage} always contains $0$, includi
+ Writing $\Delta \pi_i=\max \pi_i-\min \pi_i$, each $\Delta_i(t,a_i)\leq\Delta \pi_i$.
+ Every grouping contains exactly $\lvert r_i\rvert$ tokens, so $L_i(G;r_i)\leq\lvert r_i\rvert\Delta \pi_i$ and therefore $\widehat B_i(r_i)\leq T\Delta \pi_i$.
+ Computability follows by finite enumeration using only $r_i$, the carried-forward policy, $\Theta$, and $\pi_i$.
+-The election rule is the achievability-weighted represented gain net of cost.
++The election rule is the achievability-weighted horizon gain, net of the switching hurdle, compared with the inquiry cost.
+ Finally, because the outside option is zero, the maximum in \cref{eq:leverage} is strictly positive exactly when some coherent grouping has strictly positive aggregate robust gain.
+ \end{proof}
+ 
+@@ -846,6 +846,15 @@ Two comparative properties organize the applications.
+ \emph{Action separation, not information}: the value of a question tracks whether resolving it could change behavior, not how much residual uncertainty remains; an agent for whom no coherent grouping yields positive aggregate robust gain declines to inquire.
+ \emph{Rational cessation}: an agent for whose record no coherent grouping yields positive aggregate robust gain has $\widehat B_i=0$, so sustained success can extinguish inquiry even though awareness stays incomplete; and, by the decay of $\lambda_i^{(k)}$, so can sustained failure---a true, valuable, repairable question can be rationally abandoned.
+ 
++\begin{remark}[Enlightened inertia]
++\label{rem:stickiness}
++Because switching is itself costly, acquiring a distinction and acting on it are separate decisions.
++An agent elects inquiry only when the achievability-weighted horizon gain, net of the switching hurdle, covers the inquiry cost (\cref{prop:participation}); but the deliberative leverage $\widehat B_i$ is an estimate, and the refinement that actually arrives may recommend a policy change whose realized horizon gain falls below $\kappa_i$.
++The agent then refines its awareness and updates its model while carrying its old policy forward: it knows the world is not what it thought, yet the change this implies is not worth its cost.
++This is a second source of persistence, distinct from an unpriced question---the model moves and behavior does not---and it feeds the performance differences of \cref{sec:dynamics}.
++Under the pointwise-transparency condition of \cref{rem:certification} the estimate is exact and the two decisions align, so enlightened inertia is a feature of opacity: the very gap the achievability weight prices.
++\end{remark}
++
+ \begin{remark}[What determinism certifies---and what it does not]
+ \label{rem:certification}
+ Determinism supplies a limited but useful separability certificate.
+@@ -886,7 +895,7 @@ Renormalizing $\mu_i^{+}$ on the active set yields what we call \emph{representa
+ The question of this section is how much of that confidence the evidence actually licenses.
+ 
+ The conjecture on the refined partition is initialized from the recoded empirical frequencies of observed rival actions wherever the record contains observations, with a fixed default on previously unvisited cells, and is updated empirically thereafter.
+-Thus both inputs needed for the next committed policy---the bridge belief and the strategic conjecture---are defined on the expanded language only after the refinement has arrived.
++Thus both inputs needed for the next standing policy---the bridge belief and the strategic conjecture---are defined on the expanded language only after the refinement has arrived.
+ 
+ \begin{definition}[Reflective assessment, warrant, and the gap]
+ \label{def:warrant}
+-- 
+2.43.0
+

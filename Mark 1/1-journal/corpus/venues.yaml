@@ -1,0 +1,483 @@
+# Venue lists the evidence map searches (appendix D.6). Published in advance; a journal switches lists on or off in `search`.
+# Membership compiled 2026-10-21 from the sources named below; a coauthor checks it before use on a real paper.
+# ISSNs: Crossref journal records keyed by each journal's print ISSN, with the electronic ISSN taken from Wikidata/OpenAlex where Crossref lacks one; print + electronic only.
+version: "0.1"
+search: [utd24, ft50, cabs4star, cabs4]
+hand_list: false
+# At most this many candidates are read from their introduction (a licensed or open-access copy, taken down the candidate list); the rest keep their abstract.
+introductions: 20
+# The journal's own copies of paywalled work, PDFs named by OpenAlex id or DOI, tried before open-access copies.
+# Outside Mark 1 and never published: in this demonstration, copies Kalanoski supplied on 2026-10-22.
+licensed_copies: ../_drop/licensed-copies
+lists:
+  utd24:
+    name: UT Dallas 24
+    source: https://jsom.utdallas.edu/the-utd-top-100-business-school-research-rankings/index.php
+    note: "Taken from the \"List of Journals\" on the rankings overview page (the site's dedicated journals page is a script shell with no list); UTD spells two titles differently (\"Journal on Computing\", \"The Accounting Review\")."
+  ft50:
+    name: Financial Times 50
+    source: https://library.novasbe.unl.pt/50-journals-used-in-ft-research-rank
+    note: "The 2016 list (FT's own page, https://www.ft.com/ft50-journals, refuses automated fetch, so a library reproduction is cited). FT revised the list in April 2026, replacing Human Relations, Journal of Business Ethics and Organization Studies with Academy of Management Annals, American Sociological Review and Psychological Science; that revision is NOT applied here."
+  cabs4star:
+    name: "Chartered ABS Academic Journal Guide 2024, grade 4*"
+    source: https://docs.google.com/spreadsheets/d/1AC3zhcbK4Kjb-ZkffDJTsujqLmKx5H9I/edit
+    note: "AJG 2024 (published 30 Oct 2024) sits behind a free login at https://charteredabs.org/academic-journal-guide/academic-journal-guide-2024; grades come from this public spreadsheet copy, cross-checked title-for-title against a second copy (https://scmor.com/view/10554), which agrees on all 47 journals."
+  cabs4:
+    name: "Chartered ABS Academic Journal Guide 2024, grade 4"
+    source: https://docs.google.com/spreadsheets/d/1AC3zhcbK4Kjb-ZkffDJTsujqLmKx5H9I/edit
+    note: "Same copies and cross-check as cabs4star; both agree on all 98 journals. Titles follow the publisher, not the AJG spelling (e.g. AJG's \"Human Resource Management (USA)\", \"MIS Quarterly: Management Information Systems\")."
+journals:
+  - name: Academy of Management Annals
+    issn: ["1941-6520", "1941-6067"]
+    lists: [cabs4star]
+  - name: Academy of Management Journal
+    issn: ["0001-4273", "1948-0989"]
+    lists: [utd24, ft50, cabs4star]
+  - name: "Academy of Management Learning & Education"
+    issn: ["1537-260X", "1944-9585"]
+    lists: [cabs4star]
+  - name: Academy of Management Perspectives
+    issn: ["1558-9080", "1943-4529"]
+    lists: [cabs4]
+  - name: Academy of Management Review
+    issn: ["0363-7425", "1930-3807"]
+    lists: [utd24, ft50, cabs4star]
+  - name: Accounting Review
+    issn: ["0001-4826", "1558-7967"]
+    lists: [utd24, ft50, cabs4star]
+  - name: "Accounting, Organizations and Society"
+    issn: ["0361-3682", "1873-6289"]
+    lists: [ft50, cabs4star]
+  - name: Administrative Science Quarterly
+    issn: ["0001-8392", "1930-3815"]
+    lists: [utd24, ft50, cabs4star]
+  - name: "American Economic Journal: Applied Economics"
+    issn: ["1945-7782", "1945-7790"]
+    lists: [cabs4]
+  - name: "American Economic Journal: Macroeconomics"
+    issn: ["1945-7707", "1945-7715"]
+    lists: [cabs4]
+  - name: American Economic Review
+    issn: ["0002-8282", "1944-7981"]
+    lists: [ft50, cabs4star]
+  - name: American Journal of Political Science
+    issn: ["0092-5853", "1540-5907"]
+    lists: [cabs4star]
+  - name: American Journal of Sociology
+    issn: ["0002-9602", "1537-5390"]
+    lists: [cabs4star]
+  - name: American Political Science Review
+    issn: ["0003-0554", "1537-5943"]
+    lists: [cabs4star]
+  - name: American Sociological Review
+    issn: ["0003-1224", "1939-8271"]
+    lists: [cabs4star]
+  - name: Annals of Statistics
+    issn: ["0090-5364", "2168-8966"]
+    lists: [cabs4star]
+  - name: Annals of Tourism Research
+    issn: ["0160-7383", "1873-7722"]
+    lists: [cabs4]
+  - name: Annual Review of Psychology
+    issn: ["0066-4308", "1545-2085"]
+    lists: [cabs4]
+  - name: Annual Review of Sociology
+    issn: ["0360-0572", "1545-2115"]
+    lists: [cabs4star]
+  - name: Behavioral and Brain Sciences
+    issn: ["0140-525X", "1469-1825"]
+    lists: [cabs4]
+  - name: Biometrika
+    issn: ["0006-3444", "1464-3510"]
+    lists: [cabs4]
+  - name: British Journal of Industrial Relations
+    issn: ["0007-1080", "1467-8543"]
+    lists: [cabs4]
+  - name: British Journal of Management
+    issn: ["1045-3172", "1467-8551"]
+    lists: [cabs4]
+  - name: Business History
+    issn: ["0007-6791", "1743-7938"]
+    lists: [cabs4]
+  - name: Business History Review
+    issn: ["0007-6805", "2044-768X"]
+    lists: [cabs4]
+  - name: Cognition
+    issn: ["0010-0277", "1873-7838"]
+    lists: [cabs4]
+  - name: Contemporary Accounting Research
+    issn: ["0823-9150", "1911-3846"]
+    lists: [ft50, cabs4]
+  - name: Current Directions in Psychological Science
+    issn: ["0963-7214", "1467-8721"]
+    lists: [cabs4]
+  - name: Econometric Theory
+    issn: ["0266-4666", "1469-4360"]
+    lists: [cabs4]
+  - name: Econometrica
+    issn: ["0012-9682", "1468-0262"]
+    lists: [ft50, cabs4star]
+  - name: Economic Geography
+    issn: ["0013-0095", "1944-8287"]
+    lists: [cabs4]
+  - name: Economic History Review
+    issn: ["0013-0117", "1468-0289"]
+    lists: [cabs4]
+  - name: Economic Journal
+    issn: ["0013-0133", "1468-0297"]
+    lists: [cabs4]
+  - name: Entrepreneurship Theory and Practice
+    issn: ["1042-2587", "1540-6520"]
+    lists: [ft50, cabs4star]
+  - name: "Environment and Planning D: Society and Space"
+    issn: ["0263-7758", "1472-3433"]
+    lists: [cabs4]
+  - name: European Journal of Information Systems
+    issn: ["0960-085X", "1476-9344"]
+    lists: [cabs4]
+  - name: European Journal of Operational Research
+    issn: ["0377-2217", "1872-6860"]
+    lists: [cabs4]
+  - name: Global Strategy Journal
+    issn: ["2042-5791", "2042-5805"]
+    lists: [cabs4]
+  - name: Governance
+    issn: ["0952-1895", "1468-0491"]
+    lists: [cabs4]
+  - name: Harvard Business Review
+    issn: ["0017-8012"]
+    lists: [ft50]
+    note: "Magazine, not peer reviewed."
+  - name: Human Relations
+    issn: ["0018-7267", "1741-282X"]
+    lists: [ft50, cabs4]
+  - name: Human Resource Management
+    issn: ["0090-4848", "1099-050X"]
+    lists: [ft50, cabs4]
+  - name: Human Resource Management Journal
+    issn: ["0954-5395", "1748-8583"]
+    lists: [cabs4star]
+  - name: IEEE Transactions on Evolutionary Computation
+    issn: ["1089-778X", "1941-0026"]
+    lists: [cabs4]
+  - name: "Industrial Relations: A Journal of Economy and Society"
+    issn: ["0019-8676", "1468-232X"]
+    lists: [cabs4]
+  - name: Information Systems Journal
+    issn: ["1350-1917", "1365-2575"]
+    lists: [cabs4]
+  - name: Information Systems Research
+    issn: ["1047-7047", "1526-5536"]
+    lists: [utd24, ft50, cabs4star]
+  - name: INFORMS Journal on Computing
+    issn: ["0899-1499", "1091-9856", "1526-5528", "2326-3245"]
+    lists: [utd24]
+    note: "UTD lists it as 'Journal on Computing'; ISSNs include its former title ORSA Journal on Computing."
+  - name: International Economic Review
+    issn: ["0020-6598", "1468-2354"]
+    lists: [cabs4]
+  - name: "International Journal of Operations & Production Management"
+    issn: ["0144-3577", "1758-6593"]
+    lists: [cabs4]
+  - name: International Journal of Research in Marketing
+    issn: ["0167-8116", "1873-8001"]
+    lists: [cabs4]
+  - name: International Organization
+    issn: ["0020-8183", "1531-5088"]
+    lists: [cabs4]
+  - name: International Studies Quarterly
+    issn: ["0020-8833", "1468-2478"]
+    lists: [cabs4]
+  - name: Journal of Accounting and Economics
+    issn: ["0165-4101", "1879-1980"]
+    lists: [utd24, ft50, cabs4star]
+  - name: Journal of Accounting Research
+    issn: ["0021-8456", "1475-679X"]
+    lists: [utd24, ft50, cabs4star]
+  - name: Journal of Applied Psychology
+    issn: ["0021-9010", "1939-1854"]
+    lists: [ft50, cabs4star]
+  - name: "Journal of Business & Economic Statistics"
+    issn: ["0735-0015", "1537-2707"]
+    lists: [cabs4]
+  - name: Journal of Business Ethics
+    issn: ["0167-4544", "1573-0697"]
+    lists: [ft50]
+  - name: Journal of Business Venturing
+    issn: ["0883-9026", "1873-2003"]
+    lists: [ft50, cabs4star]
+  - name: Journal of Consumer Psychology
+    issn: ["1057-7408", "1532-7663"]
+    lists: [ft50, cabs4star]
+  - name: Journal of Consumer Research
+    issn: ["0093-5301", "1537-5277"]
+    lists: [utd24, ft50, cabs4star]
+  - name: Journal of Corporate Finance
+    issn: ["0929-1199", "1872-6313"]
+    lists: [cabs4]
+  - name: Journal of Econometrics
+    issn: ["0304-4076", "1872-6895"]
+    lists: [cabs4]
+  - name: Journal of Economic Geography
+    issn: ["1468-2702", "1468-2710"]
+    lists: [cabs4]
+  - name: Journal of Economic Literature
+    issn: ["0022-0515", "2328-8175"]
+    lists: [cabs4]
+  - name: Journal of Economic Perspectives
+    issn: ["0895-3309", "1944-7965"]
+    lists: [cabs4]
+  - name: Journal of Economic Theory
+    issn: ["0022-0531", "1095-7235"]
+    lists: [cabs4]
+  - name: "Journal of Experimental Psychology: Applied"
+    issn: ["1076-898X", "1939-2192"]
+    lists: [cabs4]
+  - name: "Journal of Experimental Psychology: General"
+    issn: ["0096-3445", "1939-2222"]
+    lists: [cabs4]
+  - name: Journal of Experimental Social Psychology
+    issn: ["0022-1031", "1096-0465"]
+    lists: [cabs4]
+  - name: Journal of Finance
+    issn: ["0022-1082", "1540-6261"]
+    lists: [utd24, ft50, cabs4star]
+  - name: Journal of Financial and Quantitative Analysis
+    issn: ["0022-1090", "1756-6916"]
+    lists: [ft50, cabs4]
+  - name: Journal of Financial Economics
+    issn: ["0304-405X", "1879-2774"]
+    lists: [utd24, ft50, cabs4star]
+  - name: Journal of Financial Intermediation
+    issn: ["1042-9573", "1096-0473"]
+    lists: [cabs4]
+  - name: Journal of Information Technology
+    issn: ["0268-3962", "1466-4437"]
+    lists: [cabs4]
+  - name: Journal of International Business Studies
+    issn: ["0047-2506", "1478-6990"]
+    lists: [utd24, ft50, cabs4star]
+  - name: Journal of International Economics
+    issn: ["0022-1996", "1873-0353"]
+    lists: [cabs4]
+  - name: Journal of Labor Economics
+    issn: ["0734-306X", "1537-5307"]
+    lists: [cabs4]
+  - name: Journal of Management
+    issn: ["0149-2063", "1557-1211"]
+    lists: [ft50, cabs4star]
+  - name: Journal of Management Information Systems
+    issn: ["0742-1222", "1557-928X"]
+    lists: [ft50, cabs4]
+  - name: Journal of Management Studies
+    issn: ["0022-2380", "1467-6486"]
+    lists: [ft50, cabs4]
+  - name: Journal of Marketing
+    issn: ["0022-2429", "1547-7185"]
+    lists: [utd24, ft50, cabs4star]
+  - name: Journal of Marketing Research
+    issn: ["0022-2437", "1547-7193"]
+    lists: [utd24, ft50, cabs4star]
+  - name: Journal of Monetary Economics
+    issn: ["0304-3932", "1873-1295"]
+    lists: [cabs4]
+  - name: "Journal of Money, Credit and Banking"
+    issn: ["0022-2879", "1538-4616"]
+    lists: [cabs4]
+  - name: Journal of Occupational and Organizational Psychology
+    issn: ["0963-1798", "2044-8325"]
+    lists: [cabs4]
+  - name: Journal of Occupational Health Psychology
+    issn: ["1076-8998", "1939-1307"]
+    lists: [cabs4]
+  - name: Journal of Operations Management
+    issn: ["0272-6963", "1873-1317"]
+    lists: [utd24, ft50, cabs4star]
+  - name: Journal of Organizational Behavior
+    issn: ["0894-3796", "1099-1379"]
+    lists: [cabs4]
+  - name: Journal of Personality and Social Psychology
+    issn: ["0022-3514", "1939-1315"]
+    lists: [cabs4]
+  - name: Journal of Political Economy
+    issn: ["0022-3808", "1537-534X"]
+    lists: [ft50, cabs4star]
+  - name: Journal of Politics
+    issn: ["0022-3816", "1468-2508"]
+    lists: [cabs4]
+  - name: Journal of Product Innovation Management
+    issn: ["0737-6782", "1540-5885"]
+    lists: [cabs4]
+  - name: Journal of Public Administration Research and Theory
+    issn: ["1053-1858", "1477-9803"]
+    lists: [cabs4]
+  - name: Journal of Retailing
+    issn: ["0022-4359", "1873-3271"]
+    lists: [cabs4]
+  - name: Journal of Service Research
+    issn: ["1094-6705", "1552-7379"]
+    lists: [cabs4]
+  - name: Journal of Strategic Information Systems
+    issn: ["0963-8687", "1873-1198"]
+    lists: [cabs4]
+  - name: Journal of Supply Chain Management
+    issn: ["1523-2409", "1745-493X"]
+    lists: [cabs4]
+  - name: Journal of the Academy of Marketing Science
+    issn: ["0092-0703", "1552-7824"]
+    lists: [ft50, cabs4star]
+  - name: Journal of the American Statistical Association
+    issn: ["0162-1459", "1537-274X"]
+    lists: [cabs4]
+  - name: Journal of the Association for Information Systems
+    issn: ["1536-9323"]
+    lists: [cabs4star]
+  - name: Journal of the European Economic Association
+    issn: ["1542-4766", "1542-4774"]
+    lists: [cabs4]
+  - name: "Journal of the Royal Statistical Society Series B: Statistical Methodology"
+    issn: ["1369-7412", "1467-9868"]
+    lists: [cabs4]
+  - name: Journal of Travel Research
+    issn: ["0047-2875", "1552-6763"]
+    lists: [cabs4]
+  - name: Journal of Vocational Behavior
+    issn: ["0001-8791", "1095-9084"]
+    lists: [cabs4]
+  - name: Journal of World Business
+    issn: ["1090-9516"]
+    lists: [cabs4]
+    note: Electronic ISSN not verified.
+  - name: Leadership Quarterly
+    issn: ["1048-9843", "1873-3409"]
+    lists: [cabs4]
+  - name: Long Range Planning
+    issn: ["0024-6301", "1873-1872"]
+    lists: [cabs4]
+  - name: Management Science
+    issn: ["0025-1909", "1526-5501"]
+    lists: [utd24, ft50, cabs4star]
+  - name: "Manufacturing & Service Operations Management"
+    issn: ["1523-4614", "1526-5498"]
+    lists: [utd24, ft50]
+  - name: Marketing Science
+    issn: ["0732-2399", "1526-548X"]
+    lists: [utd24, ft50, cabs4star]
+  - name: Mathematical Programming
+    issn: ["0025-5610", "1436-4646"]
+    lists: [cabs4]
+  - name: MIS Quarterly
+    issn: ["0276-7783", "2162-9730"]
+    lists: [utd24, ft50, cabs4star]
+  - name: MIT Sloan Management Review
+    issn: ["1532-9194", "1532-8937"]
+    lists: [ft50]
+    note: "Magazine, not peer reviewed; FT lists it as 'Sloan Management Review'."
+  - name: Nature Human Behaviour
+    issn: ["2397-3374"]
+    lists: [cabs4]
+  - name: Operations Research
+    issn: ["0030-364X", "1526-5463"]
+    lists: [utd24, ft50, cabs4star]
+  - name: Organization Science
+    issn: ["1047-7039", "1526-5455"]
+    lists: [utd24, ft50, cabs4star]
+  - name: Organization Studies
+    issn: ["0170-8406", "1741-3044"]
+    lists: [ft50, cabs4]
+  - name: Organizational Behavior and Human Decision Processes
+    issn: ["0749-5978", "1095-9920"]
+    lists: [ft50, cabs4]
+  - name: Organizational Research Methods
+    issn: ["1094-4281", "1552-7425"]
+    lists: [cabs4]
+  - name: Personality and Social Psychology Bulletin
+    issn: ["0146-1672", "1552-7433"]
+    lists: [cabs4]
+  - name: Personnel Psychology
+    issn: ["0031-5826", "1744-6570"]
+    lists: [cabs4star]
+  - name: Production and Operations Management
+    issn: ["1059-1478", "1937-5956"]
+    lists: [utd24, ft50, cabs4]
+  - name: Psychological Bulletin
+    issn: ["0033-2909", "1939-1455"]
+    lists: [cabs4]
+  - name: Psychological Review
+    issn: ["0033-295X", "1939-1471"]
+    lists: [cabs4]
+  - name: Psychological Science
+    issn: ["0956-7976", "1467-9280"]
+    lists: [cabs4star]
+  - name: Public Administration
+    issn: ["0033-3298", "1467-9299"]
+    lists: [cabs4]
+  - name: Public Administration Review
+    issn: ["0033-3352", "1540-6210"]
+    lists: [cabs4star]
+  - name: Public Management Review
+    issn: ["1471-9037", "1471-9045"]
+    lists: [cabs4]
+  - name: Quantitative Economics
+    issn: ["1759-7323", "1759-7331"]
+    lists: [cabs4]
+  - name: Quarterly Journal of Economics
+    issn: ["0033-5533", "1531-4650"]
+    lists: [ft50, cabs4star]
+  - name: RAND Journal of Economics
+    issn: ["0741-6261", "1756-2171"]
+    lists: [cabs4]
+  - name: Regional Studies
+    issn: ["0034-3404", "1360-0591"]
+    lists: [cabs4]
+  - name: Research Policy
+    issn: ["0048-7333", "1873-7625"]
+    lists: [ft50, cabs4star]
+  - name: Review of Accounting Studies
+    issn: ["1380-6653", "1573-7136"]
+    lists: [ft50, cabs4]
+  - name: Review of Economic Studies
+    issn: ["0034-6527", "1467-937X"]
+    lists: [ft50, cabs4star]
+  - name: Review of Economics and Statistics
+    issn: ["0034-6535", "1530-9142"]
+    lists: [cabs4]
+  - name: Review of Finance
+    issn: ["1572-3097", "1573-692X"]
+    lists: [ft50, cabs4]
+  - name: Review of Financial Studies
+    issn: ["0893-9454", "1465-7368"]
+    lists: [utd24, ft50, cabs4star]
+  - name: Risk Analysis
+    issn: ["0272-4332", "1539-6924"]
+    lists: [cabs4]
+  - name: Social Science and Medicine
+    issn: ["0277-9536", "1873-5347"]
+    lists: [cabs4]
+  - name: Socio-Economic Review
+    issn: ["1475-1461", "1475-147X"]
+    lists: [cabs4]
+  - name: Sociology
+    issn: ["0038-0385", "1469-8684"]
+    lists: [cabs4]
+  - name: Strategic Entrepreneurship Journal
+    issn: ["1932-4391", "1932-443X"]
+    lists: [ft50, cabs4]
+  - name: Strategic Management Journal
+    issn: ["0143-2095", "1097-0266"]
+    lists: [utd24, ft50, cabs4star]
+  - name: Theoretical Economics
+    issn: ["1933-6837", "1555-7561"]
+    lists: [cabs4]
+  - name: Tourism Management
+    issn: ["0261-5177", "1879-3193"]
+    lists: [cabs4]
+  - name: "Transportation Research Part B: Methodological"
+    issn: ["0191-2615", "1879-2367"]
+    lists: [cabs4]
+  - name: "Work & Stress"
+    issn: ["0267-8373", "1464-5335"]
+    lists: [cabs4]
+  - name: "Work, Employment and Society"
+    issn: ["0950-0170", "1469-8722"]
+    lists: [cabs4]

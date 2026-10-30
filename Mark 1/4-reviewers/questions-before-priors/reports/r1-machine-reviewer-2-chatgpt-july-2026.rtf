@@ -1,0 +1,67 @@
+{\rtf1\ansi\ansicpg1252\deff0{\fonttbl{\f0\froman\fcharset0 Times New Roman;}{\f1\fmodern\fcharset0 Courier New;}}\f0\fs24
+{\pard\sb360\sa120\keepn\b Draft01-GPTReview02 (text extracted from the PDF of the same name)\par}
+{\pard\sa160 Worked for 9m 31s\par}
+{\pard\sa160 A. Verification verdict REVISE \u8212? not yet PASS\par}
+{\pard\sa160 Source control is verified:\par}
+{\pard\sa160 % TRUTH VERSION: tbv_mdr_Paper01-v02.tex\par}
+{\pard\sa160 I reviewed the complete integrated 1,786-line file. It compiles successfully, and the source contains no missing internal labels.\par}
+{\pard\sa160 B. Brief justification The revision substantially improves the formal system: Irreparable stochastic records are now explicitly accommodated. Elections are correctly excluded when no restorative refinement exists. The positive production-success bound now applies only to repairable inquiries. Reference and acting beliefs resolve the active-set refill problem. The retained record is included in the SCUE state. The pinned structure and leverage statistic now have explicit mathematical definitions.\par}
+{\pard\sa160 Nevertheless, the participation decision is not yet feasible under the agent\u8217?s information, and parts of the persistence characterization remain incorrect as stated.\par}
+{\pard\sa160 C. Issues preventing PASS\par}
+{\pard\li360\fi-360\sa60 1.\tab The agent cannot compute the objects governing inquiry.\par}
+{\pard\f1\fs20\sa0 The agent observes only (CP i (s), a, xi ); the underlying s is retained only in\par}
+{\pard\f1\fs20\sa0                                \u8203?\par}
+{\pard\f1\fs20\sa0                                    \u8203?       \u8203?\par}
+{\pard\f1\fs20\sa0 analyst-level history (lines 456\u8211?465). Yet determining R, the induced token\par}
+{\pard\f1\fs20\sa0 partitions, \u923?i , and \u920?i (t) requires recoding tokens under every finer,\par}
+{\pard\f1\fs20\sa0                \u8203?      \u8203?\par}
+{\pard\f1\fs20\sa0 presently unrepresented partition (lines 769\u8211?782 and 947\u8211?966).\par}
+{\pard\f1\fs20\sa0 Thus two agent-indistinguishable records can differ in whether R is empty\par}
+{\pard\f1\fs20\sa0 and in the resulting value of Bi . This conflicts with the claims that the agent\par}
+{\pard\f1\fs20\sa0                                        \u8203?\par}
+{\pard\f1\fs20\sa0 recognizes irreparability and computes Bi before insight. The model needs\par}
+{\pard\f1\fs20\sa0                                                \u8203?\par}
+{\pard\f1\fs20\sa0 either an explicit pre-insight oracle/cognitive primitive, richer observable\par}
+{\pard\f1\fs20\sa0 records, or a construction based entirely on currently observable token\par}
+{\pard\f1\fs20\sa0 conflicts.\par}
+{\pard\sa160\par}
+{\pard\li360\fi-360\sa60 2.\tab The stochastic persistence result is false under its stated premises.\par}
+{\pard\f1\fs20\sa0 Proposition 9(ii-b) treats a sufficiently large existing count as enough to\par}
+{\pard\f1\fs20\sa0 make all future dissonance arbitrarily unlikely. Its Hoeffding argument,\par}
+{\pard\f1\fs20\sa0 however, ignores the arbitrary pre-configuration prefix embedded in the\par}
+{\pard\f1\fs20\sa0 cumulative empirical conditional.\par}
+{\pard\f1\fs20\sa0 A record can have arbitrarily many observations while sitting exactly at the\par}
+{\pard\f1\fs20\sa0 test boundary. The next observation can then empty the active set with a\par}
+{\pard\f1\fs20\sa0 probability bounded away from zero, regardless of how large the count is.\par}
+{\pard\f1\fs20\sa0 The result needs an entry-margin condition, a clean post-entry validation\par}
+{\pard\f1\fs20\sa0 sample, or a weaker conclusion of eventual rather than uninterrupted\par}
+{\pard\f1\fs20\sa0 stability.\par}
+{\pard\sa160\par}
+{\pard\li360\fi-360\sa60 3.\tab Exact SCUE persistence conflicts with empirical conjecture updating.\par}
+{\pard\f1\fs20\sa0 SCUE requires qi to agree exactly with induced play, but the persistence\par}
+{\pard\f1\fs20\sa0                   \u8203?\par}
+{\pard\f1\fs20\sa0 results say the SCUE conditions hold in every subsequent generation while\par}
+{\pard\f1\fs20\sa0 conjectures merely converge empirically. With nondegenerate induced\par}
+{\pard\f1\fs20\sa0 play, finite empirical updating generally moves qi away from exact equality.\par}
+{\pard\f1\fs20\sa0                                                        \u8203?\par}
+{\pard\f1\fs20\sa0 Either conjectures must be frozen, condition (ii) must be asymptotic, or the\par}
+{\pard\f1\fs20\sa0 conclusion must be convergence to SCUE rather than continuous SCUE\par}
+{\pard\f1\fs20\sa0 membership.\par}
+{\pard\sa160\par}
+{\pard\li360\fi-360\sa60 4.\tab The positive-leverage persistence example is inconsistent with the revised Bi . \u8203?\par}
+{\pard\f1\fs20\sa0 Because \u923?i changes as the record grows, Bi need not \u8220?grow as evidence\par}
+{\pard\f1\fs20\sa0              \u8203?                                 \u8203?\par}
+{\pard\f1\fs20\sa0 accumulates.\u8221? In the stated example, later pooled tokens can make the\par}
+{\pard\f1\fs20\sa0 meet of the minimal repairs trivial, producing B2 = 0, not the asserted\par}
+{\pard\f1\fs20\sa0                                                    \u8203?\par}
+{\pard\f1\fs20\sa0 B2 > 0. Conversely, if a stable pinned rule continues earning a positive\par}
+{\pard\f1\fs20\sa0    \u8203?\par}
+{\pard\f1\fs20\sa0 amount per recurrent token, the full-record sum eventually exceeds every\par}
+{\pard\f1\fs20\sa0 fixed \u947?2 , forcing inquiry.\par}
+{\pard\f1\fs20\sa0          \u8203?\par}
+{\pard\f1\fs20\sa0 The performance difference may therefore remain supportable through\par}
+{\pard\f1\fs20\sa0 zero leverage, but the present claim of permanently positive leverage\par}
+{\pard\f1\fs20\sa0 held below a fixed cost is not established.\par}
+{\pard\sa160\par}
+{\pard\sa160 A final local correction will also be required: the abstract, introduction, and conclusion say every agent eventually lives in a Bayesian world, whereas the theorem explicitly permits permanent dissonant stasis.\par}
+}

@@ -1,0 +1,11 @@
+title: Publication manifest (J4), the version of record, issued with the certificate or not at all
+type: object
+required: [paper_id, doi, minted, record_sha, files, certificate, record_link]
+properties:
+  paper_id: {type: string}
+  doi: {type: string}
+  minted: {type: boolean}
+  record_sha: {type: string}
+  files: {type: array, items: {type: string}}
+  certificate: {type: string}
+  record_link: {type: object, required: [path, tier]}

@@ -1,0 +1,22 @@
+[build-system]
+requires = ["setuptools>=69"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "mark1"
+version = "0.1.0"
+description = "Mark 1: the journal after AI, demonstrated end to end on one formal paper"
+requires-python = ">=3.12"
+dependencies = ["jsonschema>=4.22", "pyyaml>=6", "sympy>=1.13", "requests>=2.31", "pypdf>=5"]
+
+[project.optional-dependencies]
+test = ["pytest>=8"]
+
+[project.scripts]
+mark1 = "machine.cli:main"
+
+[tool.setuptools.packages.find]
+include = ["machine*"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]

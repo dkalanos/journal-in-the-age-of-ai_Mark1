@@ -1,0 +1,102 @@
+entries:
+- tool: Codex
+  model_version: GPT-6-Astra
+  role: drafting
+  scope_pointer: paper/paper.md
+  date: 2026-07
+  human_direction: 'Before the July 23 draft, per the author''s statement (Ryall, 2026-10-28): drafting an outline and
+    initial drafts of the text, at the author''s direction. The author names the tool and the model.'
+- tool: Codex
+  model_version: GPT-6-Astra
+  role: derivation
+  scope_pointer: paper/paper.md
+  date: 2026-07
+  human_direction: 'Before the July 23 draft, per the author''s statement (Ryall, 2026-10-28): exploration of possible
+    propositions and initial drafts of proofs, at the author''s direction.'
+- tool: Codex
+  model_version: GPT-6-Astra
+  role: checks
+  scope_pointer: paper/paper.md
+  date: 2026-07
+  human_direction: 'Before the July 23 draft, per the author''s statement (Ryall, 2026-10-28): red-teaming the paper
+    before submission, at the author''s direction.'
+- tool: ChatGPT
+  model_version: null
+  role: checks
+  scope_pointer: paper/paper.md
+  date: 2026-07
+  human_direction: Two machine reviews of this draft were requested from ChatGPT and filed with it on 2026-07-23 (Draft01-GPTReview
+    and Draft01-GPTReview02; both verdicts REVISE). The repository names this draft "the GPT-reviewed baseline". Their
+    text is filed as the round's reviewer reports. The drafting before July 23 was done with Codex (entries above), per
+    the author's statement (Ryall, 2026-10-28).
+- tool: Claude Code
+  model_version: null
+  role: editing
+  scope_pointer: paper/paper.md
+  date: 2026-07
+  human_direction: The first commit of the paper's history (18b3ebd, 2026-07-23) is co-authored by Claude Code and adds
+    the first draft, this draft and the v03 repair pass together; the repair pass it names is round 2's work. The coding-assistant
+    passes stand as the commits name them, per the author's statement (Ryall, 2026-10-28).
+- tool: Claude Code
+  model_version: claude-fable-5-1
+  role: record_keeping
+  scope_pointer: paper/paper.md
+  date: '2026-10-27'
+  human_direction: Kalanoski asked for the round-1 draft to be put through Mark 1 as the first submission of the paper's
+    real history (Ryall, 2026-10-24). paper/paper.md was converted from tbv_mdr_Paper01-v02.tex by `mark1 import-tex`
+    (headings with the TeX labels as ids, mathematics kept as written, citations from tbv_mdr_Paper01-v01.bib, drawings
+    dropped with their captions kept), and the front notice required by protocol P2 was written at its head by `machine/notice.py`.
+    No sentence of the paper was written or changed.
+- tool: Claude Code
+  model_version: claude-fable-5-1
+  role: record_keeping
+  scope_pointer: appendix/appendix.md
+  date: '2026-10-27'
+  human_direction: appendix/appendix.md was converted by the same `mark1 import-tex` run from the draft's two appendices;
+    its scope-and-choices section carries, unchanged, the paper's "Modeling commitments" (sec:commitments), Remark 9.6
+    "What the theorem does and does not claim" (rem:scope) and "Limitations and the research program". No sentence was
+    written or changed.
+- tool: Claude Code
+  model_version: claude-fable-5-1
+  role: record_keeping
+  scope_pointer: record.yaml
+  date: '2026-10-27'
+  human_direction: record.yaml, declarations.yaml and this file were written by the session at Kalanoski's direction,
+    from the draft, the repository's README and the first commit of its history.
+- tool: Claude Code
+  model_version: claude-fable-5-1
+  role: derivation
+  scope_pointer: provenance/derivations.yaml
+  date: '2026-10-27'
+  human_direction: The derivations were stated in the protocol's checkable forms (P6) from this draft's proofs and its
+    appendix B, taking the later draft's file as the pattern where a result is unchanged. This is a reading of the author's
+    proofs, not the author's own statement of them.
+- tool: Claude Code
+  model_version: claude-fable-5-1
+  role: code
+  scope_pointer: materials/lab.py
+  date: '2026-10-27'
+  human_direction: The four-state laboratory of the running example written as code, to this draft's definitions (retained-record
+    leverage, Definition 7.3), so that the numbers appendix B states can be re-executed.
+- tool: Claude Code
+  model_version: claude-opus-5-5
+  role: record_keeping
+  scope_pointer: provenance/ai-use.yaml
+  date: '2026-10-28'
+  human_direction: At Kalanoski's direction, the author's statement (Ryall, 2026-10-28) was entered into this file and
+    into declarations.yaml; the entries drafted on 2026-10-27 from the commits stand, with that statement as the author's
+    account of what the passes did.
+- tool: Claude Code
+  model_version: claude-opus-5-5
+  role: editing
+  scope_pointer: ai-appendix/claims.yaml
+  date: '2026-10-28'
+  human_direction: 'The claims list of round 1, which the reference generator produced, corrected before submission,
+    with the author''s own self-check report as the work list: each statement the report found the list does not carry
+    added as a claim, with its evidence pointer; each claim whose evidence the report found establishes only part of
+    it given a wider pointer. A coding assistant drafted the entries at Kalanoski''s direction; Kalanoski, standing in
+    for the author as Ryall asked on 2026-10-28, reviewed and approved each statement and pointer. The list is therefore
+    no longer the generator''s output, and the stamp says so.'
+generator_run:
+  generator_version: 0.1.0
+  run_id: 20261027-040052-author-cfeeaca

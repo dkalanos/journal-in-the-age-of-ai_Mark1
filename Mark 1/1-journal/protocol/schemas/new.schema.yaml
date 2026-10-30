@@ -1,0 +1,13 @@
+title: The new signature (H5), one editor on the evidence map after the author answers once
+type: object
+required: [paper_id, new, kind, not_new_because, map_kind, departure, signature]
+properties:
+  paper_id: {type: string}
+  new: {type: boolean}
+  kind: {enum: [answer, question, reading, evidence, null]}
+  not_new_because: {type: array, items: {type: string}}
+  map_kind: {type: [string, "null"]}  # what the map proposed, on the question as the paper states it
+  question_as_read: {type: [string, "null"]}  # the question as the editor read it, when not as the paper states it
+  reason: {type: [string, "null"]}  # required when the kind signed is not the map's, or the question is read otherwise
+  departure: {type: boolean}
+  signature: {$ref: "decision.schema.yaml#/$defs/signature"}

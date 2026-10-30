@@ -1,0 +1,304 @@
+From 3696e24b53dd934d4e962e7845f9aaa8b6c2907e Mon Sep 17 00:00:00 2001
+From: MDR Git <mdr@mikeryall.com>
+Date: Sat, 25 Jul 2026 07:27:49 -0400
+Subject: [PATCH 08/27] Single-clock overhaul T3a: dynamics section recast to
+ periods + standing policy
+
+- def:scue(i): standing policy stationary under the switching rule (no switch clears
+  kappa_i; = subjective optimality when kappa_i=0). State lists the standing policy.
+- ass:regularity(i): generic-tolerance -> strict-adequacy (no theory at the boundary),
+  matching the sequential detector; deterministic case automatic.
+- thm:absorption / prop:rest-points / prop:adequacy: period + standing-policy wording;
+  rest point = standing policy strictly inside the inaction band.
+- rem:scope: switching costs temper cycling (inaction band absorbs small swings).
+- prop:persistence: add the enlightened-inertia channel (rem:stickiness) alongside
+  unpriced repair.
+
+Compiles, 41pp. Remaining: T3b (appendix (g,t)->t reindex) and T3c (running example).
+
+Co-Authored-By: Claude Opus 4.8 <noreply@anthropic.com>
+---
+ paper/tbv_mdr_Paper01-v04.tex | 85 ++++++++++++++++++-----------------
+ 1 file changed, 43 insertions(+), 42 deletions(-)
+
+diff --git a/paper/tbv_mdr_Paper01-v04.tex b/paper/tbv_mdr_Paper01-v04.tex
+index b761637..671cc52 100644
+--- a/paper/tbv_mdr_Paper01-v04.tex
++++ b/paper/tbv_mdr_Paper01-v04.tex
+@@ -77,7 +77,7 @@ a research program on pre-Bayesian theory formation in strategy.}}
+ \noindent The theory-based view treats economic actors as theorists whose causal understandings direct search, experimentation, and action.
+ Existing formal treatments begin after the theory exists.
+ This paper models where strategic theories come from.
+-Agents represent their environment through awareness partitions of a state space; expressible causal theories assign elementary mechanisms to awareness cells; theories and beliefs determine committed policies; and the policy profile causes everyone's consequences through an objective causal system.
++Agents represent their environment through awareness partitions of a state space; expressible causal theories assign elementary mechanisms to awareness cells; theories and beliefs determine standing policies; and the policy profile causes everyone's consequences through an objective causal system.
+ Bayesian learning operates only within the current language, and a misspecified posterior grows confident rather than alarmed, so detecting representational failure requires a distinct faculty: causal dissonance, the statistical rejection of every expressible theory.
+ Dissonance directs inquiry without determining its output; a costly, fallible technology may produce a previously inexpressible distinction; and a bridge prior restores Bayesian competence on the expanded language.
+ An agent can estimate the value of a question before its answers are conceivable, warrant is distinct from post-insight confidence---the insight itself is not evidence---and an agent generally cannot measure its own overconfidence.
+@@ -131,7 +131,7 @@ Its organizing object is the chain
+ 	\longrightarrow \cdots
+ \end{align*}
+ the process by which an agent whose causal representation has failed regains the capacity to be a Bayesian.
+-The back end of the model follows the subjective-rationality tradition \citep{KalaiLehrer1993b,Ryall2003}: a finite set of agents adopt causal theories, combine them with beliefs and conjectures to choose committed policies, and the policy profile determines every agent's consequences through an objective causal system that absorbs all market and environmental detail.
++The back end of the model follows the subjective-rationality tradition \citep{KalaiLehrer1993b,Ryall2003}: a finite set of agents adopt causal theories, combine them with beliefs and conjectures to choose standing policies, and the policy profile determines every agent's consequences through an objective causal system that absorbs all market and environmental detail.
+ The front end is new.
+ Agents represent the environment through awareness partitions of a state space; the theories they can formulate assign elementary causal mechanisms to awareness cells; and the partition itself---the language---is endogenous.
+ An awareness cell is an implicit claim that the states it pools are causally alike.
+@@ -329,7 +329,7 @@ When dissonance (\cref{sec:dissonance}) leaves $\mu_i$ undefined, $\sigma_i^{\st
+ \end{assumption}
+ 
+ Policy inertia is thus an outcome, not an assumption: a standing policy persists until the belief-optimal action moves far enough to clear the switching hurdle $\kappa_i$, or until the language itself breaks down and must be repaired (\cref{sec:dissonance}).
+-How long play stays fixed is therefore governed by agent-level parameters---the switching hurdle here, and the tolerance for misfit introduced with the test of \cref{sec:dissonance}---rather than by a fixed number of episodes.
++How long play stays fixed is therefore governed by agent-level parameters---the switching hurdle here, and the tolerance for misfit introduced with the test of \cref{sec:dissonance}---rather than fixed by assumption.
+ 
+ \subsection{On-path conditionals}
+ 
+@@ -603,7 +603,7 @@ This product is nonempty exactly when every factor is nonempty.
+ 
+ Coherence is the general form of a conflict structure.
+ Token sets are \emph{mutually incoherent} when no single mechanism accommodates their union; every restorative refinement must separate mutually incoherent sets, since a cell containing both would be incoherent.
+-In the deterministic running example incoherence is a binary relation between labeled episodes and restoration is a graph-coloring problem; in general, a mixture of three mechanisms may defeat every single mechanism even though each pair of tokens is individually accommodatable, so restoration is a hypergraph coloring.
++In the deterministic running example incoherence is a binary relation between labeled periods and restoration is a graph-coloring problem; in general, a mixture of three mechanisms may defeat every single mechanism even though each pair of tokens is individually accommodatable, so restoration is a hypergraph coloring.
+ Two further structural facts matter.
+ First, minimal restorations, when they exist, are typically multiple---as the example shows vividly.
+ Second, existence itself is guaranteed only in the deterministic case.
+@@ -664,14 +664,14 @@ The output, and even the set of possible outputs, is not a pre-insight subjectiv
+ 
+ \begin{theorem}[Observational nonidentification]
+ \label{thm:nonidentification}
+-Fix common initial epistemic states, common record-measurable behavioral and tie-breaking rules, common truth-blind inquiry-and-formulation rules, and a finite generation horizon $G$.
++Fix common initial epistemic states, common record-measurable behavioral and tie-breaking rules, common truth-blind inquiry-and-formulation rules, and a finite horizon of $G$ periods.
+ Let $\tau\neq\tau'$ be objective assignments whose \emph{joint} consequence laws agree at every state--profile pair reachable through $G$ under either world from those initial conditions:
+ \[
+ \tau(s)(a)=\tau'(s)(a)\in\Delta(X)
+ \qquad
+ \text{at every such $(s,a)$.}
+ \]
+-The two worlds admit a coupling under which, through $G$, their state draws, full consequence profiles, analyst and deliberative records, partition paths, beliefs, conjectures, committed policies, and production-and-formulation outputs coincide pathwise.
++The two worlds admit a coupling under which, through $G$, their state draws, full consequence profiles, analyst and deliberative records, partition paths, beliefs, conjectures, standing policies, and production-and-formulation outputs coincide pathwise.
+ If the equality holds at every pair reachable at any finite horizon, the coupling extends to the entire process.
+ 
+ Consequently, no truth-blind inquiry-and-formulation rule can produce an objectively correct formulation with probability one in both worlds.
+@@ -680,8 +680,8 @@ More generally, the same conclusion holds for any success criterion whose sets o
+ 
+ \begin{proof}
+ Use common state draws, common independent random seeds for production, formulation, bridge-prior selection, and tie-breaking, and an identity coupling of the joint consequence draws at every reachable pair.
+-Proceed by induction over episodes and generations.
+-Identical histories imply identical current partitions and committed policies, hence the same action profile at the common state.
++Proceed by induction over periods.
++Identical histories imply identical current partitions and standing policies, hence the same action profile at the common state.
+ The pair is reachable, so the two objective assignments give it the same joint consequence distribution and the coupled consequence profiles coincide.
+ Both analyst and deliberative records therefore remain identical.
+ Record-measurability and truth-blindness then give identical belief updates, conjectures, policies, refinements, and formulations, closing the induction through $G$; the all-horizons claim follows by countability.
+@@ -976,15 +976,15 @@ Warrant, like leverage, is purchased with differentiated action.
+ \label{sec:dynamics}
+ 
+ The chain now runs inside a population.
+-Theories determine committed policies; policies determine which conditionals are visited; visited conditionals determine dissonance and leverage; and refinements feed back into theories.
++Theories determine standing policies; policies determine which conditionals are visited; visited conditionals determine dissonance and leverage; and refinements feed back into theories.
+ This section characterizes where the process comes to rest.
+ The object of interest is not a strategic equilibrium but an epistemic condition: a configuration of the population in which \emph{every agent permanently inhabits a Bayesian world}---models fit, questions are dead, and no represented calculation prices further inquiry above its cost.
+ 
+ \begin{definition}[Self-confirming unawareness equilibrium]
+ \label{def:scue}
+-A profile of epistemic states $\xi_i=(\mathcal P_i,r_i,\bar\mu_i,q_i,\sigma_i,k_i)$, $i\in N$---awareness, retained record, reference posterior, conjecture, committed policy, and failure counter, with acting beliefs $\mu_i$ derived by judged updating---is a \emph{self-confirming unawareness equilibrium} (SCUE) if, under the play it induces,
++A profile of epistemic states $\xi_i=(\mathcal P_i,r_i,\bar\mu_i,q_i,\sigma_i,k_i)$, $i\in N$---awareness, retained record, reference posterior, conjecture, standing policy, and failure counter, with acting beliefs $\mu_i$ derived by judged updating---is a \emph{self-confirming unawareness equilibrium} (SCUE) if, under the play it induces,
+ \begin{enumerate}[label=(\roman*)]
+-  \item each $\sigma_i$ is subjectively optimal (\cref{eq:subjective-optimality});
++  \item each standing policy is stationary under the switching rule of \cref{ass:commitment}: no switch clears the hurdle, $T\,[\,U_i(\sigma_i^{\star}\mid\mu_i,q_i)-U_i(\sigma_i\mid\mu_i,q_i)\,]\le\kappa_i$, which is subjective optimality itself when $\kappa_i=0$;
+   \item each conjecture $q_i$ agrees, in the limit of its empirical frequencies, with the play induced by $\sigma_{-i}$ at every on-path cell;
+   \item no dissonance survives: each agent's active set, computed from its record as play accumulates, is almost surely eventually nonempty, and the acting-belief mass on any $\eta$-inadequate theory vanishes almost surely; and
+   \item no agent elects inquiry: $\lambda_i^{(k_i)}\widehat B_i(r_i)<\gamma_i$ along the induced records, which holds in particular whenever $\widehat B_i=0$.
+@@ -1001,9 +1001,9 @@ A SCUE in which every partition is sufficient for $\tau$ and beliefs concentrate
+ 
+ \begin{definition}[Dissonant stasis]
+ \label{def:stasis}
+-Agent $i$ is in \emph{dissonant stasis} from some generation on if dissonance recurs while it never both elects and succeeds---because $\lambda_i^{(k_i)}\widehat B_i(r_i)<\gamma_i$ (no priced repair: zero leverage, or an abandoned question after the achievability weight has decayed, possibly at an irreparable record), or because elected production fails at every subsequent attempt.
+-Its committed policy is carried forward with a standing anomaly.
+-A population profile is \emph{absorbing} if every agent is, from some generation on, either in a SCUE role (never dissonant) or in dissonant stasis.
++Agent $i$ is in \emph{dissonant stasis} from some period on if dissonance recurs while it never both elects and succeeds---because $\lambda_i^{(k_i)}\widehat B_i(r_i)<\gamma_i$ (no priced repair: zero leverage, or an abandoned question after the achievability weight has decayed, possibly at an irreparable record), or because elected production fails at every subsequent attempt.
++Its standing policy is carried forward with a standing anomaly.
++A population profile is \emph{absorbing} if every agent is, from some period on, either in a SCUE role (never dissonant) or in dissonant stasis.
+ \end{definition}
+ 
+ \begin{remark}[The grain of truth, restored endogenously]
+@@ -1016,15 +1016,15 @@ A SCUE is a configuration in which the grain of truth holds on-path for every ag
+ 
+ \begin{assumption}[Regularity]
+ \label{ass:regularity}
+-(i) \emph{Generic tolerance.}
+-In the stochastic case, the tolerance $\eta$ lies outside the finite set of critical values at which, for some agent, theory, partition profile, and policy profile, the total-variation distance between an induced on-path conditional and the theory's prediction equals $\eta$.
+-In the deterministic case the exact calibration $\eta=0$, $\bar n=1$, and $w\equiv0$ applies instead, together with the deterministic conclusion of \cref{lem:test-consistency}.
++(i) \emph{Strict adequacy.}
++At each visited pair every theory is either $\eta$-adequate or strictly inadequate---none sits exactly at the adequacy boundary---so \cref{lem:test-consistency} applies for every agent, theory, partition profile, and policy profile.
++In the deterministic case $\eta=0$ this holds automatically and the sequential detector recovers the exact test.
+ (ii) \emph{Production randomness.}
+ The randomization in each $\phi_i$ is independent across elections and of the state and consequence draws, and, conditional on an election at a \emph{repairable} record ($\mathcal R(\mathcal P_i,\bar r_i)\neq\emptysetset$), production succeeds with probability at least $\underline\pi>0$.
+ At an irreparable record production fails surely (\cref{def:technology}).
+ \end{assumption}
+ 
+-Part (i) excludes finitely many tolerance values in the stochastic case, since agents, theories, partitions, and policies are all finite, and handles the exact deterministic boundary separately.
++Part (i) is the genericity that makes each theory's evidence process settle cleanly relative to the capacity threshold (\cref{lem:test-consistency}); it rules out only a boundary knife-edge and holds automatically in the deterministic case.
+ Part (ii) gives every elected repairable question a real chance of resolution; finiteness of elections comes instead from the decay of the achievability weight, so no separate never-produce exclusion is needed.
+ The agent, unable to tell a repairable record from an irreparable one, may elect either; the two are distinguished only in their success probabilities, not in the agent's decision.
+ 
+@@ -1034,11 +1034,11 @@ Under \cref{ass:regularity}, almost surely:
+ \begin{enumerate}[label=(\alph*)]
+   \item at most $n(|S|-1)$ refinements occur, and every agent's awareness partition is eventually constant;
+   \item only finitely many inquiry elections occur---each agent stops electing once its achievability weight has decayed enough that $\lambda_i^{(k)}\,T(\max \pi_i-\min \pi_i)<\gamma_i$, and this happens after finitely many consecutive failures because $\widehat B_i$ is bounded and $\gamma_i>0$; and
+-  \item there is an almost surely finite generation after which no agent's language changes and no agent pays an inquiry cost: every agent's epistemic life thereafter is judged-Bayesian updating within a fixed language, punctuated at most by dissonance episodes that fail the participation threshold.
++  \item there is an almost surely finite period after which no agent's language changes and no agent pays an inquiry cost: every agent's epistemic life thereafter is judged-Bayesian updating within a fixed language, punctuated at most by belief-driven policy switches under \cref{ass:commitment} and by dissonance events that fail the participation threshold.
+ \end{enumerate}
+-Moreover, on the event that the committed profile is eventually constant,
++Moreover, on the event that the standing profile is eventually constant,
+ \begin{enumerate}[label=(\alph*),start=4]
+-  \item every agent's active set is eventually constant, equal to the theories $\eta$-adequate under the terminal play at every recurrent pair and satisfying every frozen constraint, and each agent is eventually either never dissonant---it lives in a Bayesian world---or in dissonant stasis (\cref{def:stasis}).
++  \item every agent's active set is eventually constant, equal to the theories $\eta$-adequate under the terminal play at every recurrent pair and below $b_i$ on frozen evidence, and each agent is eventually either never dissonant---it lives in a Bayesian world---or in dissonant stasis (\cref{def:stasis}).
+ \end{enumerate}
+ The proof is in \cref{app:absorption}.
+ \end{theorem}
+@@ -1047,16 +1047,16 @@ The proof is in \cref{app:absorption}.
+ \label{prop:rest-points}
+ \leavevmode
+ \begin{enumerate}[label=(\roman*)]
+-  \item Suppose awareness partitions and committed policies are eventually constant almost surely, conjectures and reference posteriors converge, and each non-stasis agent's terminal action is strictly optimal under its limiting belief and conjecture by a positive margin.
++  \item Suppose awareness partitions and standing policies are eventually constant almost surely, conjectures and reference posteriors converge, and each non-stasis agent's standing policy sits strictly inside the inaction band of \cref{ass:commitment} at the limit---its switching gain is bounded strictly below $\kappa_i$.
+   Then the limiting configuration is a \emph{partial SCUE}: the SCUE conditions hold for every non-stasis agent, taking the stasis agents' constant carried-forward policies as fixed environment.
+-  (Belief coordinates need not literally freeze; the strict margin transfers optimality to the limit by continuity of the finite-dimensional payoff comparison.)
+-  \item Conversely, consider a configuration whose epistemic states satisfy the SCUE conditions, whose play generates only records with $\widehat B_i=0$, and in which each agent's committed action at each cell is strictly optimal under every conjecture and every theory in its active set.
++  (Belief coordinates need not literally freeze; the strict slack transfers the no-switch condition to the limit by continuity of the finite-dimensional payoff comparison.)
++  \item Conversely, consider a configuration whose epistemic states satisfy the SCUE conditions, whose play generates only records with $\widehat B_i=0$, and in which each agent's standing action at each cell is strictly optimal under every conjecture and every theory in its active set.
+   \begin{enumerate}[label=(\alph*)]
+     \item With deterministic mechanisms, the configuration persists: dissonance, elections, and policy changes never occur, and the SCUE conditions continue to hold, with conjectures converging empirically to induced play.
+     \item With stochastic mechanisms, suppose in addition that, at the entry configuration, every agent's active set is nonempty and every theory it contains is $\eta'$-adequate under the configuration's play for some $\eta'<\eta$.
+     Suppose also that the strict optimality extends to every $(\eta+\varepsilon)$-adequate theory for some $\varepsilon\in(0,\,2(\eta-\eta')]$.
+     Then for every $\delta>0$ there is a count threshold $N(\delta)$ such that the following holds.
+-    If the configuration is reached at a generation boundary and, at every recurrent pair $(C,a)$,
++    If the configuration is entered at some period and, at every recurrent pair $(C,a)$,
+     \[
+     n_i(C,a)\geq N(\delta)
+     \qquad\text{and}\qquad
+@@ -1066,7 +1066,7 @@ The proof is in \cref{app:absorption}.
+     \right)
+     \leq \frac{\varepsilon}{4},
+     \]
+-    then, conditional on the entry history, with probability at least $1-\delta$ play never changes, dissonance and elections never occur, and the SCUE conditions hold in every subsequent generation, with conjectures converging empirically to induced play.
++    then, conditional on the entry history, with probability at least $1-\delta$ play never changes, dissonance and elections never occur, and the SCUE conditions hold in every subsequent period, with conjectures converging empirically to induced play.
+   \end{enumerate}
+ \end{enumerate}
+ The proof is in \cref{app:absorption}.
+@@ -1075,11 +1075,12 @@ The proof is in \cref{app:absorption}.
+ \begin{remark}[What the theorem does and does not claim]
+ \label{rem:scope}
+ \Cref{thm:absorption} is a statement about the epistemic process---the death of inquiry---not about the convergence of play.
+-Within a Bayesian world, committed policies may in principle continue to cycle as beliefs and conjectures chase one another; that is the classical convergence problem of learning in games \citep{FudenbergLevine1993,KalaiLehrer1993a}, it is orthogonal to this paper's contribution, and the theorem deliberately does not resolve it.
++Within a Bayesian world, standing policies may in principle continue to cycle as beliefs and conjectures chase one another; that is the classical convergence problem of learning in games \citep{FudenbergLevine1993,KalaiLehrer1993a}, it is orthogonal to this paper's contribution, and the theorem deliberately does not resolve it.
+ Part (d) and the rest-point characterization are accordingly conditional on play stabilizing, which in every configuration featured in this paper is immediate: their beliefs make one action per cell strictly dominant.
++Switching costs temper the cycling: the inaction band absorbs belief fluctuations too small to be worth acting on, so only swings whose horizon-$T$ gain exceeds $\kappa_i$ move play---a stabilizing force, though not one that rules out large-amplitude cycles.
+ The decay of $\lambda_i^{(k)}$ is what makes inquiry die out even when the question is genuine: an agent facing a true, valuable, but hard-to-repair defect abandons it once repeated failure has eroded its hope.
+ Abandoned questions are thus a substantive absorbing outcome, not an artifact---inquiry ceases because it is answered, because it is unpriced, or because it is given up.
+-Were $\lambda_i^{(k)}$ held fixed instead of decaying, an agent could elect a doomed inquiry forever, paying $\gamma_i$ each generation for a repair that never arrives; the decay rules this out and is the model's account of when a rational inquirer stops.
++Were $\lambda_i^{(k)}$ held fixed instead of decaying, an agent could elect a doomed inquiry forever, paying $\gamma_i$ each period for a repair that never arrives; the decay rules this out and is the model's account of when a rational inquirer stops.
+ \end{remark}
+ 
+ \begin{remark}[Rational anomaly tolerance]
+@@ -1094,28 +1095,28 @@ And an \emph{abandoned question} is a repairable, positively-valued defect the a
+ \begin{proposition}[On-path adequacy, and where error lives]
+ \label{prop:adequacy}
+ In a SCUE, acting-belief mass on every $\eta$-inadequate theory vanishes almost surely.
+-Under the genericity condition of \cref{lem:test-consistency}, or in its exact deterministic case, every theory remaining in the eventual support of $\mu_i$ is $\eta$-adequate at every on-path pair.
++Under the strict-adequacy condition of \cref{lem:test-consistency}, or in its exact deterministic case, every theory remaining in the eventual support of $\mu_i$ is $\eta$-adequate at every on-path pair.
+ All falsity retaining nonvanishing acting-belief mass is confined to what the configuration does not expose: mechanism assignments at states pooled with causally different states whose mixture remains within tolerance of a single mechanism at the visited profiles, and counterfactual claims at unvisited profiles.
+ \end{proposition}
+ 
+ \begin{proof}
+ The first claim is \cref{def:scue}(iii).
+-Under genericity, or under the lemma's exact deterministic argument, \cref{lem:test-consistency} makes the active set eventually constant and excludes every $\eta$-inadequate theory; judged updating restricts the acting belief to that set.
++Under strict adequacy, or under the lemma's exact deterministic argument, \cref{lem:test-consistency} makes the active set eventually constant and excludes every $\eta$-inadequate theory; judged updating restricts the acting belief to that set.
+ The residual clause is the complement of the on-path constraints.
+ \end{proof}
+ 
+ \begin{proposition}[Persistent performance differences]
+ \label{prop:persistence}
+-There exist primitives and absorbing configurations in which agents hold different terminal partitions and theories, expected per-generation payoffs differ strictly and permanently, and no disadvantaged agent has a priced repair: each such agent is in dissonant stasis, with $\lambda_i^{(k_i)}\widehat B_i(r_i)<\gamma_i$ from some generation on.
++There exist primitives and absorbing configurations in which agents hold different terminal partitions and theories, expected per-period payoffs differ strictly and permanently, and no disadvantaged agent has a priced repair: each such agent is in dissonant stasis, with $\lambda_i^{(k_i)}\widehat B_i(r_i)<\gamma_i$ from some period on.
+ \end{proposition}
+ 
+ The proof is by the instance below, and the mechanism deserves emphasis.
+-Performance differences persist not because an equilibrium concept freezes them but because the process that would erase them has died economically: the disadvantaged agent's question is priced below the cost of asking---through zero leverage, an eroded achievability weight, or an irreparable record.
++Performance differences persist not because an equilibrium concept freezes them but because the process that would erase them has died economically: the disadvantaged agent's question is priced below the cost of asking---through zero leverage, an eroded achievability weight, or an irreparable record---or, having asked and learned, it finds the switch its new model recommends priced below the hurdle and holds its old policy (\cref{rem:stickiness}).
+ Terminal heterogeneity in awareness is path dependence in the strong sense---agents with identical preferences and identical Bayesian competence, facing the same objective system, end at different languages and different payoffs because their histories posed different questions.
+ 
+ \begin{definition}[Diagnostic environments]
+ \label{def:diagnostic}
+-An expressible theory is \emph{payoff-relevantly false} for agent $i$ under a profile if the truth would render $i$'s committed action suboptimal at some visited state---not merely shrink the set of optimal actions.
++An expressible theory is \emph{payoff-relevantly false} for agent $i$ under a profile if the truth would render $i$'s standing action suboptimal at some visited state---not merely shrink the set of optimal actions.
+ The primitives $(\Theta,\tau,\rho,\pi)$ are \emph{diagnostic} if, under every profile sustainable in a SCUE, every payoff-relevantly false theory is $\eta$-inadequate.
+ \end{definition}
+ 
+@@ -1184,7 +1185,7 @@ The model locates where tolerated anomalies accumulate: where consequences are o
+ \subsection{The cognitional interpretation}
+ 
+ The model's architecture tracks a classical account of inquiry \citep{Lonergan1992,RyallWilkins2018}, and the correspondence is disciplining rather than decorative: it dictates which formal objects must not be conflated.
+-Experience is the flow of episodes; the question for intelligence is dissonance, which localizes a defect without naming its repair; heuristic anticipation is the agent's search over coherent groupings of its own record, which gropes toward an answer without supplying its content; insight's formal footprint is the refinement (whose direction the analyst models through restoration, minimality, and the complexity ordering); formulation is the mechanism assignment on the new cells; reflective judgment is the agent's consistency test---the faculty distinct from the posterior that asks whether any expressible theory is adequate (\cref{rem:self-sealing}), as against the analyst's warrant accounting, which the agent generally cannot perform on itself (\cref{cor:self-audit}); and decision is the committed policy, which then determines what experience will teach next.
++Experience is the flow of periods; the question for intelligence is dissonance, which localizes a defect without naming its repair; heuristic anticipation is the agent's search over coherent groupings of its own record, which gropes toward an answer without supplying its content; insight's formal footprint is the refinement (whose direction the analyst models through restoration, minimality, and the complexity ordering); formulation is the mechanism assignment on the new cells; reflective judgment is the agent's consistency test---the faculty distinct from the posterior that asks whether any expressible theory is adequate (\cref{rem:self-sealing}), as against the analyst's warrant accounting, which the agent generally cannot perform on itself (\cref{cor:self-audit}); and decision is the standing policy, which then determines what experience will teach next.
+ The election adds the economic layer: an unrestricted desire to know, prosecuted under restricted resources, and eventually surrendered when hope of an answer fails.
+ Nothing in the mathematics represents the conscious act of insight itself; the model represents its products and its price, which is what an economic theory can responsibly claim.
+ 
+@@ -1246,8 +1247,8 @@ Because the election rule is mechanical---agent $i$ elects exactly when it is di
+ All other epistemic activity after $G^{*}$ is judged-Bayesian updating within the fixed terminal language.
+ 
+ \paragraph{Part (d).}
+-The event $E=\{$committed profile eventually constant$\}$ is future-dependent, so we handle the conditioning by coupling rather than by conditioning on $E$ directly.
+-Decompose $E=\bigcup_{G_2,\sigma^{*}}E_{G_2,\sigma^{*}}$ over the countable set of (generation, deterministic profile) pairs, where $E_{G_2,\sigma^{*}}$ is the event that the committed profile equals $\sigma^{*}$ from generation $G_2$ on and $G_2>G^{*}$.
++The event $E=\{$standing profile eventually constant$\}$ is future-dependent, so we handle the conditioning by coupling rather than by conditioning on $E$ directly.
++Decompose $E=\bigcup_{G_2,\sigma^{*}}E_{G_2,\sigma^{*}}$ over the countable set of (generation, deterministic profile) pairs, where $E_{G_2,\sigma^{*}}$ is the event that the standing profile equals $\sigma^{*}$ from generation $G_2$ on and $G_2>G^{*}$.
+ Fix $(G_2,\sigma^{*})$ and an agent $i$.
+ Define an \emph{auxiliary} process that plays $\sigma^{*}$ in every generation from $G_2$ on, driven by the same i.i.d.\ draws $(s_{g,t},U_{g,t})$; its observations are a function of those draws alone, so unconditional almost-sure statements about it carry no conditioning bias.
+ On $E_{G_2,\sigma^{*}}$ the actual and auxiliary observations coincide from $G_2$ on, so any almost-sure property of the auxiliary process holds almost surely on $E_{G_2,\sigma^{*}}$.
+@@ -1262,8 +1263,8 @@ Taking the union over the countably many $(G_2,\sigma^{*})$ gives the claim on a
+ \hfill$\square$
+ 
+ \paragraph{Proof of Proposition~\ref{prop:rest-points}(i).}
+-Suppose awareness and committed policies are eventually constant almost surely, conjectures and reference posteriors converge, and each non-stasis agent's terminal action is strictly optimal under its limiting belief and conjecture by a positive margin, with the stasis agents' carried-forward policies fixed.
+-Condition (i) of \cref{def:scue} holds at the limit: the committed policy solves \cref{eq:subjective-optimality} each generation, and by the strict margin and continuity of the finite-dimensional payoff comparison in $(\mu_i,q_i)$, the argmax is constant near the limit, so the eventually constant policy is optimal under the limiting belief and conjecture.
++Suppose awareness and standing policies are eventually constant almost surely, conjectures and reference posteriors converge, and each non-stasis agent's terminal action is strictly optimal under its limiting belief and conjecture by a positive margin, with the stasis agents' carried-forward policies fixed.
++Condition (i) of \cref{def:scue} holds at the limit: the standing policy solves \cref{eq:subjective-optimality} each generation, and by the strict margin and continuity of the finite-dimensional payoff comparison in $(\mu_i,q_i)$, the argmax is constant near the limit, so the eventually constant policy is optimal under the limiting belief and conjecture.
+ For condition (ii), empirical conjectures converge to the frequencies induced by the eventually constant profile, giving limit agreement.
+ For condition (iii), a non-stasis agent is eventually never dissonant by \cref{thm:absorption}(d), and judged updating keeps the acting belief supported on the eventual active set $A_i^{*}$, whose members are $\eta$-adequate at every recurrent pair, so the mass on any $\eta$-inadequate theory is eventually zero.
+ For condition (iv), elections cease by \cref{thm:absorption}(b).
+@@ -1283,7 +1284,7 @@ The SCUE conditions therefore continue to hold.
+ 
+ \paragraph{Proof of Proposition~\ref{prop:rest-points}(ii-b).}
+ Let $g_0$ be the entry generation and condition on the history $\mathcal F_{g_0}$.
+-Couple the actual process to an auxiliary process that holds the configuration's committed profile fixed after $g_0$.
++Couple the actual process to an auxiliary process that holds the configuration's standing profile fixed after $g_0$.
+ At each recurrent pair, the auxiliary process's future consequences are i.i.d.\ with conditional law $p_i^{*}(\cdot\mid C,a)$.
+ 
+ Fix one recurrent pair, write $n_0$ for its entry count, and let $\hat p_{n_0+m}$ denote its cumulative empirical conditional after $m$ additional visits.
+@@ -1350,7 +1351,7 @@ Conversely, every theory admitted at a later date is $(\eta+\varepsilon)$-adequa
+ \leq
+ \eta+\varepsilon.
+ \]
+-The extended strict-optimality hypothesis therefore fixes each committed action for every conjecture and every acting belief that judged updating can produce.
++The extended strict-optimality hypothesis therefore fixes each standing action for every conjecture and every acting belief that judged updating can produce.
+ Induction under the coupling shows that actual play coincides with the auxiliary fixed play.
+ Hence no dissonance, election, or refinement occurs.
+ Empirical conjectures converge to induced play, and \cref{lem:test-consistency} implies that acting-belief mass on every $\eta$-inadequate theory vanishes.
+@@ -1364,12 +1365,12 @@ Thus the SCUE conditions continue to hold.
+ At an awareness cell $C$, write $p^a=\mu_i(\{m:m(C)=\theta^a\})$ for $a\in\{0,1\}$.
+ Against a rival playing $0$, the subjective expected-payoff difference between own actions $0$ and $1$ is $\tfrac12p^0-(1-\tfrac{\beta}{2})p^1$; against a rival playing $1$ it is $(1-\tfrac{\beta}{2})p^0-\tfrac12p^1$; mixtures follow by linearity.
+ Action $0$ is strictly dominant on $C$ if and only if $p^0>(2-\beta)p^1$, and symmetrically.
+-Certainty in an architecture label makes the labeled action strictly dominant for every $\beta\in[0,1]$, which is what sustains the committed policies in the trap configuration.
++Certainty in an architecture label makes the labeled action strictly dominant for every $\beta\in[0,1]$, which is what sustains the standing policies in the trap configuration.
+ At $\beta=1$ the threshold is simple belief asymmetry, which is what differentiates the firms' opening policies.
+ 
+ \paragraph{Per-token gain and deliberative leverage.}
+ Consider a retained token whose coherent group pins mechanism $\theta^{a^{*}}$ while the carried-forward policy plays $a\neq a^{*}$ at the token's cell, at $\beta=1$.
+-Proposing $a^{*}$: if the rival plays $a^{*}$, the committed action yields $0$ (differentiated loss) and $a^{*}$ yields $\tfrac12$ (pool); if the rival plays $a$, the committed action yields $\tfrac12$ (pool) and $a^{*}$ yields $1$ (differentiated win).
++Proposing $a^{*}$: if the rival plays $a^{*}$, the standing action yields $0$ (differentiated loss) and $a^{*}$ yields $\tfrac12$ (pool); if the rival plays $a$, the standing action yields $\tfrac12$ (pool) and $a^{*}$ yields $1$ (differentiated win).
+ The per-token robust gain is $\tfrac12$ in both cases---transparency makes $\Theta_i(g)$ a singleton, so the mechanism minimum is degenerate.
+ A token whose group's optimal action equals the committed one contributes $0$.
+ Discovery record: two tokens, gains $\{\tfrac12,0\}$, average $\tfrac14$, so $\widehat B_i=(T/\lvert r_i\rvert)\sum_t\Delta=(2/2)\tfrac12=\tfrac12$.
+-- 
+2.43.0
+

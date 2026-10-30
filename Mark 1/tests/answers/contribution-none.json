@@ -1,0 +1,43 @@
+{
+  "claims": [
+    {
+      "claim_id": "C1",
+      "nearest": [
+        {
+          "corpus_id": "karni-viero-2013",
+          "establishes": "Belief updating when awareness grows, the growth itself taken as given.",
+          "relation": "anticipates",
+          "basis": "abstract",
+          "poses_question": true,
+          "states_claim": true
+        },
+        {
+          "corpus_id": "karni-viero-2017",
+          "establishes": "Decision makers who anticipate discovering consequences they cannot yet imagine.",
+          "relation": "overlaps",
+          "basis": "abstract",
+          "poses_question": false,
+          "states_claim": false
+        },
+        {
+          "corpus_id": "ryall-2003",
+          "establishes": "Persistent strategic heterogeneity from self-confirming beliefs in a fixed language.",
+          "relation": "overlaps",
+          "basis": "abstract",
+          "poses_question": false,
+          "states_claim": false
+        },
+        {
+          "corpus_id": "heifetz-meier-schipper-2005",
+          "establishes": "Interactive unawareness with awareness held fixed.",
+          "relation": "background",
+          "basis": "title_and_known_work",
+          "poses_question": false,
+          "states_claim": false
+        }
+      ],
+      "newness_kind": "none",
+      "rationale": "Canned test answer, deliberately wrong about this paper: it treats Karni and Viero (2013) as already establishing the claim, so that the 'not new' path can be tested."
+    }
+  ]
+}

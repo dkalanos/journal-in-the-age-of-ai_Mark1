@@ -1,0 +1,274 @@
+From a019dd36c5441fed258521f8ec1763b0287e074e Mon Sep 17 00:00:00 2001
+From: MDR Git <mdr@mikeryall.com>
+Date: Fri, 14 Aug 2026 11:27:45 -0400
+Subject: [PATCH 23/27] Complete B5 and promote GPTedit-06
+
+---
+ ..._GPTedit-05.tex => tbv_mdr_GPTedit-06.tex} | 106 ++++++++++--------
+ 1 file changed, 62 insertions(+), 44 deletions(-)
+ rename paper/{tbv_mdr_GPTedit-05.tex => tbv_mdr_GPTedit-06.tex} (92%)
+
+diff --git a/paper/tbv_mdr_GPTedit-05.tex b/paper/tbv_mdr_GPTedit-06.tex
+similarity index 92%
+rename from paper/tbv_mdr_GPTedit-05.tex
+rename to paper/tbv_mdr_GPTedit-06.tex
+index 58cc304..9bb820f 100644
+--- a/paper/tbv_mdr_GPTedit-05.tex
++++ b/paper/tbv_mdr_GPTedit-06.tex
+@@ -1,4 +1,4 @@
+-% TRUTH VERSION: tbv_mdr_GPTedit-05.tex
++% TRUTH VERSION: tbv_mdr_GPTedit-06.tex
+ % FILE ROLE: AUTHORITATIVE SOURCE
+ % DOCUMENT: Scholarly Paper TBV
+ 
+@@ -78,11 +78,12 @@ a research program on pre-Bayesian theory formation in strategy.}}
+ \begin{abstract}
+ \noindent The theory-based view treats economic actors as theorists whose causal understandings direct search, experimentation, and action.
+ Existing formal treatments begin after the theory exists.
+-This paper models where strategic theories come from.
++This paper models where strategic theories come from relative to an actor's prior causal language.
+ Agents represent their environment through awareness partitions of a state space; expressible causal theories assign elementary mechanisms to awareness cells; theories and beliefs determine standing policies; and the policy profile causes everyone's consequences through an objective causal system.
+-Bayesian learning operates only within the current language, and a misspecified posterior grows confident rather than alarmed, so detecting representational failure requires a distinct faculty: causal dissonance, the statistical rejection of every expressible theory.
+-Dissonance directs inquiry without determining its output; a costly, fallible technology may produce a previously inexpressible distinction; and a bridge prior restores Bayesian competence on the expanded language.
+-An agent can estimate the value of a question before its answers are conceivable, but generating a representation and warranting it are distinct: conditional on the complete generating record and inquiry history, a truth-blind insight adds no evidence of its own, and an agent generally cannot formulate the cross-representation assessment needed to determine the sign or magnitude of its signed warrant gap.
++Bayesian learning operates only within the current language, and when the on-path data-generating conditionals lie outside the represented model class a misspecified posterior grows confident rather than alarmed.
++A separate, statistically fallible adequacy test is therefore needed, and causal dissonance occurs when no theory admitted on the current language remains unrejected.
++Within the modeled anomaly-driven pathway, dissonance directs inquiry without determining its output; a costly, fallible technology may produce a previously inexpressible distinction; and a bridge prior restores Bayesian competence on the expanded language.
++An agent can estimate the value of a question before candidate answers are representable to it, but generating a representation and warranting it are distinct: conditional on the complete generating record and inquiry history, a truth-blind insight adds no evidence of its own, and an agent generally cannot formulate the cross-representation assessment needed to determine the sign or magnitude of its signed warrant gap.
+ Because theories cause actions and actions generate evidence, inquiry dies out almost surely, leaving every agent either in a Bayesian world or in rationally tolerated dissonance---its question unpriced, unanswerable, or abandoned.
+ The configurations that remain can preserve false theories, heterogeneous awareness, and permanent performance differences: shared false theories survive exactly when neither strategic variety nor environmental harshness exposes them, and performance gaps persist whenever the laggard's question is priced below the cost of asking.
+ \medskip
+@@ -98,17 +99,17 @@ The configurations that remain can preserve false theories, heterogeneous awaren
+ The theory-based view of strategy holds that economic actors are theorists: managers and entrepreneurs carry causal accounts of how value is created, and those accounts---not merely their information or their incentives---direct what they notice, which experiments they run, and what they do \citep{FelinZenger2017,FelinGambardellaZenger2024}.
+ A decade of work has established the consequences of holding a theory.
+ Theories guide experimentation and search \citep{CamuffoEtAl2020,ChavdaGansStern2024}, support the acquisition of resources and rents \citep{EhrigZenger2024}, and discipline entrepreneurial decision-making in the field \citep{CamuffoEtAl2024}.
+-What this literature has not yet formalized is the step before all of that: where a genuinely new theory comes from.
++What this literature has not yet formalized is the step before all of that: where a genuinely new theory comes from relative to an actor's existing causal language.
+ Existing formal treatments begin with the theory present---as a menu of candidate theories to select among \citep{CamuffoEtAl2024}, as a given causal conjecture that directs search \citep{ChavdaGansStern2024}, or as a given awareness advantage to be exploited competitively \citep{EhrigZenger2024}.
+ The origin of the theory is described verbally and documented empirically \citep{OttHannah2024}, and the absence of formal machinery for it has been explicitly noted as the field's open analytical problem \citep{FelinGambardellaZenger2024}.
+ 
+ The difficulty is not a missing application of Bayesian reasoning; it is a boundary of Bayesian reasoning.
+ A Bayesian agent updates beliefs over a space of represented possibilities.
+ Conditioning reweights that space and cannot enlarge it, so no sequence of updates makes an unrepresented causal distinction available for belief or action.
+-Worse, when every represented theory is false, the posterior does not sound an alarm: by the logic of misspecified Bayesian learning \citep{Berk1966}, it concentrates on the least wrong of the available theories, and the agent grows more confident, not less.
++Worse, when the on-path data-generating conditionals lie outside the represented model class, the posterior does not sound an alarm: by the logic of misspecified Bayesian learning \citep{Berk1966}, it concentrates on the least-misspecified available theories, and the agent grows more confident, not less.
+ Within-language updating is self-sealing.
+ The economics of growing awareness has developed axiomatic accounts of how beliefs should extend when the state space expands \citep{KarniViero2013,KarniViero2017,Viero2021}, but in those models the expansion itself arrives exogenously; models of discovery in games describe how play can reveal objectively available actions \citep{Schipper2021} without explaining how experience generates a substantive causal question or its answer.
+-What is missing, in both the strategy literature and the economics of unawareness, is a model of the transition: from a broken causal language, through a directed question, to a new representation, and back to ordinary Bayesian life.
++What is missing, in both the strategy literature and the economics of unawareness, is a model of the transition: from a causal language that has become untenable to the agent, through a directed question, to a new representation, and back to ordinary Bayesian life.
+ 
+ This paper models that transition, embedded in strategic interaction.
+ Its organizing object is the chain
+@@ -132,21 +133,22 @@ Its organizing object is the chain
+ 	\text{theory}
+ 	\longrightarrow \cdots
+ \end{align*}
+-the process by which an agent whose causal representation has failed regains the capacity to be a Bayesian.
++the process by which an agent whose current causal representation has become untenable to it regains the capacity to be a Bayesian.
+ The back end of the model follows the subjective-rationality tradition \citep{KalaiLehrer1993b,Ryall2003}: a finite set of agents adopt causal theories, combine them with beliefs and conjectures to choose standing policies, and the policy profile determines every agent's consequences through an objective causal system that absorbs all market and environmental detail.
+ The front end is new.
+ Agents represent the environment through awareness partitions of a state space; the theories they can formulate assign elementary causal mechanisms to awareness cells; and the partition itself---the language---is endogenous.
+ An awareness cell is an implicit claim that the states it pools are causally alike.
+-Strategic experience can refute that claim: when the statistical record rejects every expressible theory, the agent faces \emph{causal dissonance}, a determinate defect with no expressible repair.
+-Dissonance makes a question salient without providing its answer.
++Strategic experience can exhaust the model class admitted on that language: when no admitted theory survives the adequacy screen and sequential test, the agent faces \emph{causal dissonance}.
++The diagnostic event is determinate---no admitted theory remains---but its cause and repair need not be.
++Within the model, dissonance triggers and localizes an anomaly-driven question without providing its answer.
+ A costly, fallible, truth-blind inquiry technology may then produce a refinement of the partition---the formal footprint of an insight---after which a bridge prior restores a probability space and Bayesian judgment resumes on the expanded language.
+ 
+ Five sets of results give the chain its content.
+-First, boundary results locate exactly where Bayesian competence stops: conditioning cannot expand the language, and the misspecified posterior is self-sealing, so detecting representational failure requires a faculty formally distinct from updating.
++First, boundary results locate exactly where Bayesian competence stops: conditioning cannot expand the language, and the misspecified posterior is self-sealing, so diagnosing that no admitted theory survives the current evidence requires a faculty formally distinct from Bayesian updating.
+ Second, dissonance directs inquiry without determining it.
+ The record restricts admissible repairs---every restorative refinement must separate the evidence clusters that no single mechanism can accommodate---but generally many minimal repairs remain, observationally equivalent worlds demand different answers, and no truth-blind technology can be uniformly correct.
+ Fallibility is the price of a representation that economizes on distinctions.
+-Third, an agent can price a question before its answers are conceivable.
++Third, an agent can price a question before candidate answers are representable to the agent.
+ A leverage statistic built from the agent's own retained experience---its remembered tokens and the coherent groupings it can articulate, never the analyst's list of repairs---estimates the value of inquiry at exactly the moment the acting belief is undefined, and it tracks whether an answer could change action, not how much uncertainty remains.
+ The estimate is honest: under noise the agent cannot tell a causal contrast from sampling accident, and the achievability weight it applies decays as inquiry fails.
+ Questions die rationally: sustained success extinguishes them, defeat concentrates the evidence and the incentive in the loser, and hard questions are eventually abandoned.
+@@ -185,7 +187,7 @@ This paper supplies the front end those models presuppose, and its equilibrium a
+ Standard state-space models cannot represent nontrivial unawareness \citep{DekelLipmanRustichini1998}; generalized structures represent multiple awareness levels and interactive beliefs \citep{HeifetzMeierSchipper2006,HeifetzMeierSchipper2013}.
+ On belief revision under expansion, reverse Bayesianism preserves relative odds as the state space grows \citep{KarniViero2013}, with extensions to awareness of unawareness \citep{KarniViero2017}, intertemporal settings \citep{Viero2021}, unforeseen evidence \citep{Piermont2021}, and learning under incomplete awareness \citep{GrantMeneghelTourky2022}.
+ \citet{Schipper2021} distinguishes learning, which discards conceived possibilities, from discovery, which adds unconceived ones, and shows how play can move players to richer games; \citet{Schipper2025} shows that beliefs about novelty can be held without representing the novel objects---a precedent for the delabeled constructs used here.
+-Relative to this literature the paper endogenizes what those models take as given: the expansion event itself.
++Relative to this literature the paper endogenizes the trigger, economic demand, and record-dependent constraints of awareness expansion, while treating the semantic production operation itself as a primitive technology.
+ Experience generates the defect, the defect localizes the question, a fallible technology produces the new distinction, and the bridge prior problem---which reverse Bayesianism constrains but does not solve---is embedded in an explicit account of what the generating evidence can and cannot warrant.
+ In strategy, \citet{BryanRyallSchipper2022} bring unawareness into value capture and show that awareness itself earns rents; the present paper models where the awareness advantage originates, which that paper leaves open.
+ 
+@@ -201,13 +203,14 @@ The back end follows \citet{KalaiLehrer1993b} and \citet{FudenbergLevine1993}: b
+ Those models fix the hypothesis space; convergence results in the rational-learning tradition require a grain of truth---the truth absolutely continuous with respect to beliefs \citep{KalaiLehrer1993a}.
+ Under unawareness the grain-of-truth condition can fail at the level of language: the truth may be inexpressible.
+ This paper supplies the missing dynamics.
+-Statistical dissonance is the detector of language-level failure, awareness refinement restores the grain of truth on the path of play, and the fixed-language models are recovered exactly as the special case in which awareness never changes.
++Causal dissonance is the model's operational signal that no admitted theory survives the current evidence; awareness refinement restores a nonempty represented model class consistent with the retained record; and the fixed-language models are recovered exactly as the special case in which awareness never changes.
+ The paper's absorbing configurations extend self-confirming equilibrium with two epistemic conditions---the language survives its own evidence, and no question is worth its price---and it is these conditions, not the strategic ones, that carry the new results.
+ 
+ \paragraph{Statement of contribution.}
+ Existing models show how theories guide learning, how Bayesian agents discriminate among represented causal structures, and how play can reveal previously unavailable actions.
+ This paper models a different transition.
+-An agent's causal language pools objectively different situations; strategic experience endogenously reveals an action-relevant failure of that pooling and thereby creates a localized open question; costly inquiry activates a fallible technology whose output is not measurable in the agent's prior awareness; only after that output is formulated does the agent construct a prior and undertake Bayesian judgment, under an explicit account of how much confidence the generating experience licenses.
++An agent's causal language pools objectively different situations; strategic experience can make the current represented class fail its adequacy criterion and thereby generate a localized open question.
++A deliberative leverage statistic then determines whether a finer actionable distinction carries gross representational value; costly inquiry activates a fallible technology whose output is not measurable in the agent's prior awareness; only after that output is formulated does the agent construct a prior and undertake Bayesian judgment, under an explicit account of how much confidence the generating experience licenses.
+ Because actions depend on theories, play can either create the contrasts that generate questions or suppress them---so the model also yields population-level sufficient conditions: for when shared false theories persist, and for when a diagnostic environment erases them.
+ \section{The model}
+ \label{sec:model}
+@@ -288,7 +291,7 @@ An expressible theory makes the claim explicit by naming the mechanism.
+ Restricting theories to \emph{single} mechanism assignments---rather than arbitrary conditional distributions per cell---is substantive and deliberate.
+ If any distribution were expressible, any within-cell mixture would be too, and no experience could reject the class: coarseness alone cannot produce a detectable failure in a saturated model space.
+ The mechanism vocabulary $\Theta$ is known to all agents from the outset; what an agent may lack is the \emph{distinction} that separates states carrying different mechanisms.
+-Everything the paper calls insight is the production of such a distinction.
++Everything the paper formalizes as the representational product of insight is the production of such a distinction.
+ Expansion of the mechanism vocabulary itself is a deeper dimension of awareness growth deliberately left outside this paper.
+ 
+ Agent $i$ holds a belief $\mu_i\in\Delta(M(\mathcal P_i))$ over $M(\mathcal P_i)$---formally, the acting tier of a two-tier belief specified in \cref{sec:dissonance}---and a conjecture $q_i:\mathcal P_i\to\Delta(A_{-i})$ about rival play that conditions on $\mathcal P_i$-cells.
+@@ -369,7 +372,7 @@ It is precisely this dependence---differentiated play by others inside one's own
+ 
+ Five disciplines govern everything that follows; they are what distinguish a model of unawareness from a model of inattention or model selection.
+ (i)~Agents hold no prior over the outputs of the inquiry technology and never optimize over named future theories; pre-insight deliberation quantifies only over represented objects.
+-(ii)~Questions are generated by defects in the current representation, not drawn from a primitive list.
++(ii)~The questions modeled here are generated by defects in the current representation, not drawn from a primitive list.
+ (iii)~Inquiry can fail, and its successes can be false; nothing reveals the objective assignment by construction.
+ (iv)~All valuations attached to inquiry are subjective, coarse, and possibly wrong; no objective payoff information leaks from behind the awareness frontier.
+ (v)~Evidence that generates a candidate representation is separated, in the formal accounting, from evidence that warrants it.
+@@ -410,11 +413,11 @@ Conditioning reweights a distribution on its domain and cannot enlarge the domai
+ \begin{remark}[The posterior is self-sealing]
+ \label{rem:self-sealing}
+ The stochastic setting yields a sharper point.
+-Suppose every expressible theory is false: the agent's cell mixes mechanisms, so no cell-constant assignment matches the on-path conditionals.
++Suppose the on-path data-generating conditionals lie outside the expressible model class, so every expressible theory is misspecified on path.
+ A full-support posterior does not signal this.
+-By the logic of misspecified Bayesian learning \citep{Berk1966}, it concentrates on the expressible theories closest to the on-path conditionals in Kullback--Leibler divergence, and the agent becomes increasingly \emph{confident} in a wrong theory.
+-Posterior mass always sums to one; the inadequacy of the whole model class is not an event in the agent's algebra.
+-Detecting that the language itself is broken therefore requires a faculty outside the posterior---the consistency test of the next section.
++By the logic of misspecified Bayesian learning \citep{Berk1966}, it concentrates on the expressible theories closest to the on-path conditionals in Kullback--Leibler divergence, and the agent becomes increasingly \emph{confident} in one of the least-misspecified expressible theories.
++Posterior mass always sums to one; the inadequacy of the whole represented model class is not an event in the agent's algebra.
++Diagnosing that no expressible theory is adequate to the observed on-path conditionals therefore requires a faculty outside the posterior---the consistency test of the next section.
+ The distinction matters for how the theory-based view should treat ``updating'': ranking the answers one can express and judging whether any expressible answer is adequate are different cognitive operations, and only the first is Bayesian.
+ \end{remark}
+ 
+@@ -507,12 +510,15 @@ Judged updating is the formal junction between the test and the acting belief---
+ \label{def:dissonance}
+ Agent $i$ experiences \emph{causal dissonance} at any period at which $\widehat M_i(\mathcal P_i,r_i)=\emptysetset$: no theory admitted on the current language remains unrejected.
+ The expressible set does not disappear; every element is either excluded by the current language's initialization screen or subsequently rejected by the sequential test.
+-The immediate question has a determinate defect but not a determinate answer: \emph{what unrepresented difference among the pooled states explains the heterogeneity of their consequences?}
++The diagnostic event is determinate---no theory admitted on the current language remains---but its cause and repair need not be.
++The modeled question is: \emph{is there an unrepresented distinction among the pooled states that can reconcile the record, and if so what is it?}
+ \end{definition}
+ 
+-Dissonance is the model's rendering of a question for intelligence.
+-It is localized (the failing cells are identified by the test), it is directed (an adequate repair must reconcile the record), and it is semantically open (no expressible object names the missing distinction).
+-Whether dissonance ever occurs, however, depends on whether play makes the falsity of the language visible.
++Within the model, dissonance is the endogenous trigger and localization of an anomaly-driven question for intelligence.
++It is localized by the cells and observation pairs at which admitted theories fail, directed because any successful repair must reconcile the retained record, and semantically open because no expressible object names the candidate distinction.
++Under exact deterministic testing, dissonance implies that the current partition is insufficient for the objective assignment: an expressible true deterministic theory could not be rejected.
++In the stochastic model, false rejection and irreparable finite records mean that dissonance is an operational diagnosis, not by itself proof of objective representational insufficiency (\cref{lem:test-consistency,rem:irreparable}).
++Whether dissonance occurs depends on whether play exposes inadequacy of the represented class; objective falsity can remain concealed.
+ 
+ \begin{definition}[Exposure and concealment]
+ \label{def:exposure}
+@@ -552,7 +558,7 @@ Belief heterogeneity, by inducing differentiated play, is what made the shared l
+ \section{Inquiry: restoration, direction, and fallibility}
+ \label{sec:inquiry}
+ 
+-Dissonance poses a question the current language cannot answer.
++Within the model, dissonance poses an anomaly-driven question the current language cannot answer.
+ This section characterizes what a successful answer must accomplish, shows that the requirement directs inquiry without determining its output, and establishes that any inquiry process meeting the paper's disciplines must be fallible.
+ 
+ \subsection{Restorative refinements}
+@@ -685,7 +691,8 @@ Any randomized post-refinement prior-selection rule is subject to the same recor
+ \end{definition}
+ 
+ The technology is the paper's stated representational primitive.
+-No formal model derives a semantically new concept from nothing; the contribution is to show how experience \emph{directs} a limited, fallible generative capacity and why that capacity does not amount to a prior over future theories.
++This model does not derive the semantic act that produces a new predicate; it treats that act as a representational technology and shows how experience directs, constrains, prices, and disciplines its output.
++The model endogenizes the demand for representational production, the record-dependent constraints on successful products, their unavoidable fallibility, and their strategic consequences, while leaving the internal creative operation primitive.
+ The output, and even the set of possible outputs, is not a pre-insight subjective menu: the agent cannot name a candidate refinement, assign it a probability, or condition a policy on it before production succeeds (\cref{sec:commitments}).
+ 
+ \subsection{Nonidentification and the price of robustness}
+@@ -1110,12 +1117,14 @@ Its standing policy is carried forward with a standing anomaly.
+ A population profile is \emph{absorbing} if every agent is, from some period on, either in a SCUE role (never dissonant) or in dissonant stasis.
+ \end{definition}
+ 
+-\begin{remark}[The grain of truth, restored endogenously]
++\begin{remark}[A represented model class, restored endogenously]
+ \label{rem:grain}
+-Rational-learning convergence requires a grain of truth: the environment absolutely continuous with respect to beliefs \citep{KalaiLehrer1993a}.
+-Under unawareness the condition can fail at the level of language---the truth may be inexpressible---and statistical dissonance is precisely the detector of that failure.
+-Each successful refinement restores the grain \emph{on the path of play}: post-restoration, some expressible theory matches the visited conditionals within tolerance.
+-A SCUE is a configuration in which the grain of truth holds on-path for every agent and no one has a priced reason to look for the off-path remainder.
++Rational-learning convergence traditionally requires a grain of truth: the environment is absolutely continuous with respect to beliefs \citep{KalaiLehrer1993a}.
++Under unawareness the objective assignment may be inexpressible on the current language.
++Causal dissonance is the model's operational signal that no admitted theory survives the current evidence; in the stochastic setting it is not by itself proof that the objective truth is inexpressible.
++Successful refinement restores a nonempty represented model class consistent with the retained record.
++It does not by itself establish objective correctness or future on-path adequacy; subsequent experience determines whether the restored language survives.
++A SCUE is a configuration in which an admitted represented model class continues to survive on path and no agent has a priced reason to seek a finer one.
+ \end{remark}
+ 
+ \begin{assumption}[Regularity]
+@@ -1178,7 +1187,7 @@ Were $\lambda_i^{(k)}$ held fixed instead of decaying, an agent could elect a do
+ 
+ \begin{remark}[Rational anomaly tolerance]
+ \label{rem:anomaly}
+-Zero-leverage dissonant stasis is a recognizable condition, not a pathology of the model: the agent registers that its causal account is broken---its test rejects every expressible theory---yet its deliberative valuation finds no coherent grouping with positive representational increment, so repairing the account is worth nothing to it.
++Zero-leverage dissonant stasis is a recognizable condition, not a pathology of the model: the agent registers that no admitted theory survives its test---yet its deliberative valuation finds no coherent grouping with positive representational increment, so repairing the account is worth nothing to it.
+ Standing anomalies tolerated by working scientists and managers have exactly this structure, and the model locates them: anomaly tolerance is rational precisely when the agent's coherent groupings carry no gross representational leverage.
+ Two sharper instances complete the taxonomy.
+ At an irreparable record (\cref{rem:irreparable}) no expressible repair exists at any price---the anomaly is not merely unprofitable but impossible to fix within the current grammar---though the agent, unable to certify irreparability under noise, may keep electing while its deliberative record supports positive leverage and until the achievability weight decays.
+@@ -1321,34 +1330,43 @@ Industries where customers absorb misservice---captive buyers, no substitutes, t
+ Where demand is forgiving, the only corrective is strategic variety in beliefs, which gives belief heterogeneity a social value distinct from its private value: the entrant with a deviant theory is the industry's epistemic infrastructure.
+ 
+ \emph{Anomaly tolerance is an absorbing-state phenomenon.}
+-Firms that register their causal account is broken and rationally decline to fix it (\cref{rem:anomaly}) are not failing at learning; their standing anomalies carry no gross representational leverage, or have grown too costly to keep pursuing.
++Firms that register that no admitted theory survives their test and rationally decline to seek a repair (\cref{rem:anomaly}) are not failing at learning; their standing anomalies carry no gross representational leverage, or have grown too costly to keep pursuing.
+ Such firms sit in dissonant stasis, outside any Bayesian world, which is why the condition is an absorbing state rather than an equilibrium.
+ The model locates where tolerated anomalies accumulate: where consequences are opaque, so the agent cannot price the forgone value of a repair, and---even under transparency---near decisions whose robust optimum is insensitive to the unresolved structure.
+ 
+ \subsection{The cognitional interpretation}
+ 
+ The model's architecture tracks a classical account of inquiry \citep{Lonergan1992,RyallWilkins2018}, and the correspondence is disciplining rather than decorative: it dictates which formal objects must not be conflated.
+-Experience is the flow of periods; the question for intelligence is dissonance, which localizes a defect without naming its repair; heuristic anticipation is the agent's search over coherent groupings of its own record, which gropes toward an answer without supplying its content; insight's formal footprint is the refinement (whose direction the analyst models through restoration, minimality, and the complexity ordering); formulation is the mechanism assignment on the new cells; reflective judgment is the agent's consistency test---the faculty distinct from the posterior that asks whether any expressible theory is adequate (\cref{rem:self-sealing}), as against the specified cross-representation warrant assessment, which the agent generally cannot perform on itself (\cref{cor:self-audit}); and decision is the standing policy, which then determines what experience will teach next.
++Experience is represented by the flow of periods.
++Within the modeled anomaly-driven pathway, dissonance triggers and localizes a question for intelligence without naming its repair.
++The agent's search over coherent groupings of its own record provides a formal analogue of heuristic anticipation: it gropes toward an answer without supplying its semantic content.
++The refinement is the formal footprint and representational product of insight, whose direction the analyst models through restoration, minimality, and the complexity ordering.
++Formulation is the mechanism assignment on the new cells.
++The consistency test is the model's formal analogue of judgment about the adequacy of the current represented class---the faculty distinct from the posterior described in \cref{rem:self-sealing}---whereas the specified cross-representation warrant assessment is an analyst-level comparison the agent generally cannot perform on itself (\cref{cor:self-audit}).
++Decision is represented by the standing policy, which then determines what subsequent experience can teach.
+ The election adds the economic layer: an unrestricted desire to know, prosecuted under restricted resources, and eventually surrendered when hope of an answer fails.
+ Nothing in the mathematics represents the conscious act of insight itself; the model represents its products and its price, which is what an economic theory can responsibly claim.
+ 
+ \subsection{Limitations and the research program}
+ 
+-Four boundaries of the present model define the program's next steps.
++Five boundaries of the present model define the program's next steps.
+ First, the mechanism vocabulary $\Theta$ is fixed: agents lack distinctions, not concepts of consequence-generation.
+ Expanding the vocabulary itself---deeper unawareness---is the natural second paper in the sequence, and the awareness-transition machinery here is built to receive it.
+-Second, the model prices participation in inquiry but not its intensity or duration, and the technology's success is exogenous; endogenizing the depth of inquiry connects to models of costly deliberation and planning \citep{RyallAction2026}, where cached prior conclusions govern when reconsideration is rational---the theory-to-plan transition.
+-Third, agents are individuals; the theory-bearing \emph{firm}---how insights become shared languages, collective intentions, and organizational commitments---is a separate paper resting on the same primitives \citep{RyallWilkins2018}.
+-Fourth, the competitive consequences here run through payoffs in a fixed game; joining the front end developed here to the cooperative back end of value capture \citep{GansRyall2017,BryanRyallSchipper2022}, where awareness itself earns rents and disclosure is strategic, completes the arc.
++Second, the analyst's finite state space $S$ is fixed.
++Novelty is therefore agent-relative: refinement makes a distinction available to the agent that existed only in the analyst's ontology before insight; the present model does not generate new objective states outside $S$.
++Third, the model prices participation in inquiry but not its intensity or duration, and the technology's success is exogenous; endogenizing the depth of inquiry connects to models of costly deliberation and planning \citep{RyallAction2026}, where cached prior conclusions govern when reconsideration is rational---the theory-to-plan transition.
++Fourth, agents are individuals; the theory-bearing \emph{firm}---how insights become shared languages, collective intentions, and organizational commitments---is a separate paper resting on the same primitives \citep{RyallWilkins2018}.
++Fifth, the competitive consequences here run through payoffs in a fixed game; joining the front end developed here to the cooperative back end of value capture \citep{GansRyall2017,BryanRyallSchipper2022}, where awareness itself earns rents and disclosure is strategic, completes the arc.
+ Within the present model, the flagged analytical items are general conditions for the convergence of play within Bayesian worlds (\cref{rem:scope}), equilibrium in the anti-coordination region that value destruction creates, counterfactual transparency as a design variable, and Markov state processes.
+ 
+ \section{Conclusion}
+ \label{sec:conclusion}
+ 
+-This paper models the step the theory-based view has described but not formalized: the origin of a strategic theory.
+-The model draws a formal boundary between learning within a causal language and producing a new one, and it prices the crossing.
+-Bayesian updating cannot expand the language and cannot even detect that expansion is needed; detection is statistical dissonance, a faculty distinct from the posterior.
+-Dissonance directs repair without determining it; observational equivalence makes any economical inquiry technology fallible; and the agent estimates the value of a question---from its own record, honestly, without the analyst's list of answers---at exactly the moment the acting belief is undefined.
++This paper models the step the theory-based view has described but not formalized: the origin of a strategic theory relative to an agent's prior causal language.
++The model draws a formal boundary between learning within a causal language and producing a new one for the agent, and it prices the crossing.
++The internal semantic operation remains primitive, but the experience that calls it forth, the record-dependent constraints on its output, the decision to pay for it, its unavoidable fallibility, and its strategic consequences are endogenous.
++Bayesian updating cannot expand the language and cannot by itself diagnose failure of the represented model class; causal dissonance supplies a separate, statistically fallible diagnostic.
++Within the modeled anomaly-driven pathway, dissonance directs repair without determining it; observational equivalence makes any economical inquiry technology fallible; and the agent estimates the value of a question---from its own record, honestly, without the analyst's list of answers---at exactly the moment the acting belief is undefined.
+ The return to Bayesian life is disciplined by a warrant account: conditional on the complete generating record and inquiry history, a truth-blind insight adds no evidence of its own, and its guaranteed retrospective fit is not independent validation.
+ And because theories cause the actions that cause the evidence, inquiry is almost surely absorbed: eventually every agent either lives in a Bayesian world or rests in a dissonance it has no priced reason to fix---in configurations that preserve false theories, heterogeneous languages, and permanent performance differences.
+ Shared false theories survive exactly when neither strategic variety nor environmental harshness disturbs them; performance gaps persist whenever the laggard's question is priced below the cost of asking.
+-- 
+2.43.0
+

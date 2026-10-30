@@ -1,0 +1,29 @@
+title: Intake decision (H1, D2, H2), a named editor applies the mapping
+$defs:
+  signature:
+    type: object
+    required: [name, at, signs]
+    properties:
+      name: {type: string, minLength: 1}
+      role: {type: string}
+      at: {type: string}
+      signs: {type: object}
+type: object
+required: [kind, paper_id, run_id, report_sha, standard_action, fired_rules, passes_used, action, departure, signature]
+properties:
+  kind: {const: intake}
+  paper_id: {type: string}
+  run_id: {type: string}
+  report_sha: {type: string}
+  standard_action: {type: string}
+  fired_rules: {type: array}
+  passes_used: {type: integer}
+  action: {enum: [proceed_to_review, return_for_corrections, return_without_review, refer_to_specialist]}
+  departure:
+    type: [object, "null"]
+    required: [direction, reason]
+    properties:
+      direction: {enum: [stricter, more_lenient]}
+      reason: {type: string, minLength: 1}
+  specialist: {type: [string, "null"]}
+  signature: {$ref: "#/$defs/signature"}

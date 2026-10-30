@@ -1,0 +1,219 @@
+From 6cab9eab8fe261b6b660cf232133aff956a7a0c6 Mon Sep 17 00:00:00 2001
+From: MDR Git <mdr@mikeryall.com>
+Date: Fri, 24 Jul 2026 18:32:11 -0400
+Subject: [PATCH 04/27] Notation simplification pass + single-clock redesign
+ note (checkpoint)
+
+Pre-overhaul checkpoint. Notation economy:
+- Drop redundant F(\cdot\mid s,a); use \tau(s)(a) throughout.
+- Fix u_i -> \pi_i straggler; remove unused symbols (warrant-gap letter G,
+  complexity ordering \kappa, election indicator \varepsilon_i, unused \ind macro).
+- Motivate the two-clock timing at first appearance (about to be replaced).
+
+Add notes/single-clock-redesign.md: full spec + claim-by-claim change map for
+the single-clock / dissonance-capacity / switching-cost overhaul.
+
+Also carries in-progress manual edits to v04.tex.
+
+Co-Authored-By: Claude Opus 4.8 <noreply@anthropic.com>
+---
+ paper/tbv_mdr_Paper01-v04.tex | 76 ++++++++++++++++++-----------------
+ 1 file changed, 40 insertions(+), 36 deletions(-)
+
+diff --git a/paper/tbv_mdr_Paper01-v04.tex b/paper/tbv_mdr_Paper01-v04.tex
+index d3d66e3..d58630f 100644
+--- a/paper/tbv_mdr_Paper01-v04.tex
++++ b/paper/tbv_mdr_Paper01-v04.tex
+@@ -59,7 +59,6 @@
+ \Crefname{example}{Example}{Examples}
+ 
+ \newcommand{\emptysetset}{\varnothing}
+-\newcommand{\ind}{\mathbf 1}
+ \newcommand{\TV}{\operatorname{TV}}
+ \newcommand{\marg}[1]{\operatorname{marg}_{#1}}
+ 
+@@ -214,36 +213,42 @@ Because actions depend on theories, play can either create the contrasts that ge
+ \subsection{Agents, states, actions, and consequences}
+ \label{sec:primitives}
+ 
+-There are $n$ agents, $N=\{1,\dots,n\}$.
+-Time is divided into generations $g=1,2,\dots$, each consisting of $T$ episodes.
+-In each episode a state $s\in S$, with $S$ finite, is drawn independently from a full-support distribution $\rho\in\Delta(S)$; each agent takes an action $a_i$ from a finite set $A_i$ through a committed policy described below; and a consequence profile $x=(x_1,\dots,x_n)$ is realized in a finite space $X=\prod_iX_i$.
+-Agent $i$'s consequence $x_i$ is everything the episode delivers to it---profit, sales, observed reactions---and its payoff is a function $u_i:X_i\to\mathbb R$ of that consequence.
+-Write $A=\prod_iA_i$ for action profiles.
++There are $n\ge 2$ \textit{agents}, $N=\{1,\dots,n\}$.
++Time is divided into \textit{policy generations} $g=1,2,\dots$, each consisting of $T$ \textit{episodes}.
++The two timescales are deliberate: within a generation each agent holds a committed policy fixed while $T$ states are drawn, and revises beliefs, policy, and awareness only between generations (\cref{ass:commitment}), so that each learning step confronts a stable, replicated sample of play rather than a single draw under an ever-shifting profile---the batch the statistical tests below require.
+ 
+-States are the analyst's descriptions of the payoff-relevant situations agents may face: customer configurations, input conditions, competitive circumstances.
++In each episode a \textit{state} $s\in S$, with $S$ finite, is drawn independently from a full-support distribution $\rho\in\Delta(S)$.
++States describe the strategically-relevant features of the environment that agents may face: customer configurations, input conditions, competitive circumstances, available production technologies, and so on.
+ Their status in the agents' own representations is the subject of \cref{sec:awareness-sub}.
+ 
+-\subsection{Mechanisms and the objective causal system}
++Each episode, agent \(i\) chooses an \textit{action} $a_i$ from a finite set $A_i$ through a committed policy described below.
++An \textit{action profile} is a list $a=(a_1,\ldots,a_n)$ where $A=\prod_iA_i$ is the set of all action profiles.
++Let $X=\prod_iX_i$ be the finite set of performance-related \textit{consequences} with typical element $x=(x_1,\dots,x_n)$.
++Agent $i$'s consequence $x_i$ is everything an episode delivers to it---profit, sales, rival behavior, and any other observed events.
++Then, agent \(i\)'s \textit{payoff function} $\pi_i:X_i\to\mathbb R$ maps her consequences to payoffs.
++
++
++
++\subsection{The objective causal system}
+ \label{sec:mechanisms-sub}
+ 
++We take a very general view of how causality works in the world. 
++
++
+ \begin{definition}[Elementary mechanisms and the objective system]
+ \label{def:mechanisms}
+ A finite set $\Theta$ of \emph{elementary causal mechanisms} is given, each a map $\theta:A\to\Delta(X)$.
+-The \emph{objective assignment} is a function $\tau:S\to\Theta$, and the \emph{objective causal system} is
+-\begin{equation}
+-F(\cdot\mid s,a)=\tau(s)(a)\in\Delta(X).
+-\label{eq:objective-system}
+-\end{equation}
++The \emph{objective assignment} is a function $\tau:S\to\Theta$; at state $s$ under action profile $a$ the resulting consequence distribution is $\tau(s)(a)\in\Delta(X)$, and this map from state--profile pairs to consequence distributions is the \emph{objective causal system}.
+ Two states are \emph{causally equivalent} if they carry the same mechanism; $\mathcal P^{\tau}$ denotes the partition of $S$ into causal-equivalence classes, and $\marg{i}\theta(a)$ the $X_i$-marginal of $\theta(a)$.
+ \end{definition}
+ 
+-The causal reading of \cref{eq:objective-system} is maintained throughout and does real work.
+-$F$ is a response function, not a statistical summary: it specifies the distribution of consequences that \emph{would} result from every action profile at every state, including profiles never played.
++This causal reading is maintained throughout and does real work.
++The objective system is a response function, not a statistical summary: $\tau(s)(a)$ specifies the distribution of consequences that \emph{would} result from every action profile at every state, including profiles never played.
+ Agents' actions, together with the state, cause their consequences.
+ A mechanism is the reduced form of whatever detailed model---a structural causal model of customer behavior, a market microstructure, a production process---underlies that relation; the paper imposes no structural-causal-model formalism, but examples may exhibit micro-foundations explicitly, as the running example's customer market does.
+ Three consequences of the causal reading recur.
+ First, theories, defined next, are interventional objects: they make predictions at unplayed profiles.
+-Second, on-path data constrain $F$ only at visited state--profile pairs, so observationally equivalent systems with different counterfactual content are generic; that is the engine of the identification results.
++Second, on-path data constrain $\tau(s)(a)$ only at visited state--profile pairs, so observationally equivalent systems with different counterfactual content are generic; that is the engine of the identification results.
+ Third, the on-path distribution of consequences given an agent's category of states is a \emph{selection} object---it mixes mechanisms according to which states co-occur with which play---and must never be conflated with any mechanism's own conditional.
+ 
+ \subsection{Awareness, theories, and conjectures}
+@@ -301,7 +306,7 @@ At the start of each generation, agent $i$ commits to a policy $\sigma_i:\mathca
+ \sigma_i(C)\in\arg\max_{a_i\in A_i}
+ \sum_{m\in M(\mathcal P_i)}\mu_i(m)
+ \sum_{a_{-i}\in A_{-i}}q_i(a_{-i}\mid C)\,
+-\mathbb E_{x\sim m(C)(a_i,a_{-i})}\!\left[u_i(x_i)\right],
++\mathbb E_{x\sim m(C)(a_i,a_{-i})}\!\left[\pi_i(x_i)\right],
+ \label{eq:subjective-optimality}
+ \end{equation}
+ holds it for the generation's $T$ episodes, and revises beliefs, conjectures, and policies only between generations.
+@@ -309,8 +314,7 @@ When dissonance (\cref{sec:dissonance}) has made $\mu_i$ undefined and no new re
+ Agents evaluate one generation ahead; no discounting is imposed.
+ \end{assumption}
+ 
+-Commitment is where statistics and economics meet: a test needs a stable data-generating configuration, and a generation of committed play supplies exactly that.
+-What a deterministic model must assume as a batching device is, in the stochastic model, the natural granularity of learning.
++Commitment is where statistics and economics meet: what a deterministic model must assume as a batching device is, in the stochastic model, the natural granularity of learning.
+ 
+ \subsection{On-path conditionals}
+ 
+@@ -613,7 +617,7 @@ A representation-producing technology for agent $i$ is a possibly randomized map
+ When $\mathcal R(\mathcal P_i,\bar r_i)=\emptysetset$, the range is the singleton $\{\mathcal P_i\}$ and the technology fails surely.
+ It is \emph{truth-blind}: its output distribution depends only on $(\mathcal P_i,\bar r_i)$, never directly on $\tau$.
+ The technology consumes the analyst record because producing a distinction operates on retained particulars in their full concreteness; what the agent lacks pre-insight is not the particulars but the predicate that organizes them, and truth-blindness records that even this concrete operation cannot read off the objective law.
+-A complexity ordering $\kappa$ on refinements---the analyst's model of which conceptual products the agent's comparison capacities can generate---may restrict the range further, provided it leaves the admissible subset of $\mathcal R$ nonempty whenever $\mathcal R$ is; $\kappa$ is a primitive of the technology, not an object of the agent's optimization.
++A complexity ordering on refinements---the analyst's model of which conceptual products the agent's comparison capacities can generate---may restrict the range further, provided it leaves the admissible subset of $\mathcal R$ nonempty whenever $\mathcal R$ is; it is a primitive of the technology, not an object of the agent's optimization.
+ \end{definition}
+ 
+ \begin{definition}[Truth-blind formulation rule]
+@@ -700,7 +704,7 @@ The resulting statistic is a genuine estimate, not a guarantee: the agent guesse
+ 
+ \begin{assumption}[Costly, elective, dissonance-triggered production]
+ \label{ass:elective}
+-The technology $\phi_i$ operates only when agent $i$ experiences dissonance and elects inquiry, $\varepsilon_i=1$, at cost $\gamma_i>0$ in payoff units.
++The technology $\phi_i$ operates only when agent $i$ experiences dissonance and elects inquiry, at cost $\gamma_i>0$ in payoff units.
+ Let $k_i$ count agent $i$'s consecutive failed elections, reset to zero on any success.
+ Agent $i$ holds a \emph{delabeled achievability weight} $\lambda_i^{(k)}\in(0,1]$, nonincreasing in $k$ with $\lambda_i^{(k)}\to0$: a subjective probability that an elected episode produces a refinement \emph{delivering the estimated value below}, defined on that event alone and not on the identities of possible outputs.
+ On failure or abstention the committed policy is carried forward.
+@@ -754,9 +758,9 @@ The \emph{per-token robust gain} of proposing action $a_i$ for a group is
+ \min_{a_{-i}\in A_{-i}}\;
+ \min_{\theta\in\Theta_i(g(t))}
+ \Bigl(
+-\mathbb E_{x\sim\theta(a_i,a_{-i})}\!\bigl[u_i(x_i)\bigr]
++\mathbb E_{x\sim\theta(a_i,a_{-i})}\!\bigl[\pi_i(x_i)\bigr]
+ -
+-\mathbb E_{x\sim\theta(\sigma_i(t),a_{-i})}\!\bigl[u_i(x_i)\bigr]
++\mathbb E_{x\sim\theta(\sigma_i(t),a_{-i})}\!\bigl[\pi_i(x_i)\bigr]
+ \Bigr),
+ \]
+ the worst case over rival responses and over the mechanisms the group's record leaves open.
+@@ -794,7 +798,7 @@ The outside option $0$ represents declining to attribute actionable value to any
+ 
+ \begin{proposition}[Participation]
+ \label{prop:participation}
+-$\widehat B_i(r_i)$ is well defined, nonnegative, bounded by $T(\max u_i-\min u_i)$, and computable from the deliberative record, the carried-forward policy, and the known structure $(\Theta,u_i)$.
++$\widehat B_i(r_i)$ is well defined, nonnegative, bounded by $T(\max \pi_i-\min \pi_i)$, and computable from the deliberative record, the carried-forward policy, and the known structure $(\Theta,\pi_i)$.
+ At a dissonant record, electing inquiry has represented value $\lambda_i^{(k_i)}\widehat B_i(r_i)-\gamma_i$, so agent $i$ elects if and only if
+ \[
+ \lambda_i^{(k_i)}\widehat B_i(r_i)\geq\gamma_i.
+@@ -812,9 +816,9 @@ The record is finite, so it has finitely many groupings.
+ For every coherent group, $\Theta_i(g)$ is a nonempty finite set, and all action and consequence spaces are finite.
+ Hence every max--min expression and every $L_i(G;r_i)$ is well defined.
+ The set whose maximum appears in \cref{eq:leverage} always contains $0$, including when $\mathcal G_i(r_i)=\emptysetset$, proving existence and nonnegativity.
+-Writing $\Delta u_i=\max u_i-\min u_i$, each $\Delta_i(t,a_i)\leq\Delta u_i$.
+-Every grouping contains exactly $\lvert r_i\rvert$ tokens, so $L_i(G;r_i)\leq\lvert r_i\rvert\Delta u_i$ and therefore $\widehat B_i(r_i)\leq T\Delta u_i$.
+-Computability follows by finite enumeration using only $r_i$, the carried-forward policy, $\Theta$, and $u_i$.
++Writing $\Delta \pi_i=\max \pi_i-\min \pi_i$, each $\Delta_i(t,a_i)\leq\Delta \pi_i$.
++Every grouping contains exactly $\lvert r_i\rvert$ tokens, so $L_i(G;r_i)\leq\lvert r_i\rvert\Delta \pi_i$ and therefore $\widehat B_i(r_i)\leq T\Delta \pi_i$.
++Computability follows by finite enumeration using only $r_i$, the carried-forward policy, $\Theta$, and $\pi_i$.
+ The election rule is the achievability-weighted represented gain net of cost.
+ Finally, because the outside option is zero, the maximum in \cref{eq:leverage} is strictly positive exactly when some coherent grouping has strictly positive aggregate robust gain.
+ \end{proof}
+@@ -873,7 +877,7 @@ A reflective assessment problem is a pair $(\mathcal T,\nu)$: a finite set of ca
+ It is an \emph{analyst-level} construct: conditioning on the events below uses the analyst record and the inquiry history.
+ Let $h_i$ denote the pre-production inquiry history, including earlier elections and failures.
+ Given $(\bar r_i,h_i)$ together with a realized successful production-and-formulation output $(\mathcal P_i',m')$, the \emph{selection-adjusted warrant} $W$ of $(\mathcal P_i',m')$ is the $\nu$-posterior probability that $m'$ is objectively correct---that $\tau'(s)=m'(C_{\mathcal P_i'}(s))$ for all $s$---conditional on that record \emph{and} history and on the realized output.
+-The \emph{warrant gap} $G$ is the representation-relative coherence probability of $m'$ minus $W$.
++The \emph{warrant gap} is the representation-relative coherence probability of $m'$ minus its warrant $W$.
+ \end{definition}
+ 
+ \begin{theorem}[The insight is not evidence]
+@@ -1002,7 +1006,7 @@ The agent, unable to tell a repairable record from an irreparable one, may elect
+ Under \cref{ass:regularity}, almost surely:
+ \begin{enumerate}[label=(\alph*)]
+   \item at most $n(|S|-1)$ refinements occur, and every agent's awareness partition is eventually constant;
+-  \item only finitely many inquiry elections occur---each agent stops electing once its achievability weight has decayed enough that $\lambda_i^{(k)}\,T(\max u_i-\min u_i)<\gamma_i$, and this happens after finitely many consecutive failures because $\widehat B_i$ is bounded and $\gamma_i>0$; and
++  \item only finitely many inquiry elections occur---each agent stops electing once its achievability weight has decayed enough that $\lambda_i^{(k)}\,T(\max \pi_i-\min \pi_i)<\gamma_i$, and this happens after finitely many consecutive failures because $\widehat B_i$ is bounded and $\gamma_i>0$; and
+   \item there is an almost surely finite generation after which no agent's language changes and no agent pays an inquiry cost: every agent's epistemic life thereafter is judged-Bayesian updating within a fixed language, punctuated at most by dissonance episodes that fail the participation threshold.
+ \end{enumerate}
+ Moreover, on the event that the committed profile is eventually constant,
+@@ -1085,7 +1089,7 @@ Terminal heterogeneity in awareness is path dependence in the strong sense---age
+ \begin{definition}[Diagnostic environments]
+ \label{def:diagnostic}
+ An expressible theory is \emph{payoff-relevantly false} for agent $i$ under a profile if the truth would render $i$'s committed action suboptimal at some visited state---not merely shrink the set of optimal actions.
+-The primitives $(\Theta,\tau,\rho,u)$ are \emph{diagnostic} if, under every profile sustainable in a SCUE, every payoff-relevantly false theory is $\eta$-inadequate.
++The primitives $(\Theta,\tau,\rho,\pi)$ are \emph{diagnostic} if, under every profile sustainable in a SCUE, every payoff-relevantly false theory is $\eta$-inadequate.
+ \end{definition}
+ 
+ \begin{proposition}[No payoff-relevant error in diagnostic environments]
+@@ -1154,7 +1158,7 @@ The model locates where tolerated anomalies accumulate: where consequences are o
+ 
+ The model's architecture tracks a classical account of inquiry \citep{Lonergan1992,RyallWilkins2018}, and the correspondence is disciplining rather than decorative: it dictates which formal objects must not be conflated.
+ Experience is the flow of episodes; the question for intelligence is dissonance, which localizes a defect without naming its repair; heuristic anticipation is the agent's search over coherent groupings of its own record, which gropes toward an answer without supplying its content; insight's formal footprint is the refinement (whose direction the analyst models through restoration, minimality, and the complexity ordering); formulation is the mechanism assignment on the new cells; reflective judgment is the agent's consistency test---the faculty distinct from the posterior that asks whether any expressible theory is adequate (\cref{rem:self-sealing}), as against the analyst's warrant accounting, which the agent generally cannot perform on itself (\cref{cor:self-audit}); and decision is the committed policy, which then determines what experience will teach next.
+-The election $\varepsilon_i$ adds the economic layer: an unrestricted desire to know, prosecuted under restricted resources, and eventually surrendered when hope of an answer fails.
++The election adds the economic layer: an unrestricted desire to know, prosecuted under restricted resources, and eventually surrendered when hope of an answer fails.
+ Nothing in the mathematics represents the conscious act of insight itself; the model represents its products and its price, which is what an economic theory can responsibly claim.
+ 
+ \subsection{Limitations and the research program}
+@@ -1199,11 +1203,11 @@ The total cell count $\sum_i\lvert\mathcal P_i\rvert$ is integer valued, starts
+ Hence at most $n(\lvert S\rvert-1)$ successes occur on every path, and each agent's partition is eventually constant.
+ 
+ \paragraph{Part (b).}
+-Fix agent $i$ and let $\Delta u_i=\max u_i-\min u_i$.
+-By \cref{prop:participation}, $\widehat B_i\leq T\Delta u_i$.
+-If $\Delta u_i=0$, then $\widehat B_i=0$ and no election occurs because $\gamma_i>0$.
+-Hence suppose $\Delta u_i>0$.
+-The election condition $\lambda_i^{(k)}\widehat B_i\geq\gamma_i$ fails whenever $\lambda_i^{(k)}<\gamma_i/(T\Delta u_i)$; since $\lambda_i^{(k)}$ is nonincreasing with $\lambda_i^{(k)}\to0$ and $\gamma_i>0$, there is a finite $k_i^{*}$ beyond which no election occurs at failure count $k\geq k_i^{*}$.
++Fix agent $i$ and let $\Delta \pi_i=\max \pi_i-\min \pi_i$.
++By \cref{prop:participation}, $\widehat B_i\leq T\Delta \pi_i$.
++If $\Delta \pi_i=0$, then $\widehat B_i=0$ and no election occurs because $\gamma_i>0$.
++Hence suppose $\Delta \pi_i>0$.
++The election condition $\lambda_i^{(k)}\widehat B_i\geq\gamma_i$ fails whenever $\lambda_i^{(k)}<\gamma_i/(T\Delta \pi_i)$; since $\lambda_i^{(k)}$ is nonincreasing with $\lambda_i^{(k)}\to0$ and $\gamma_i>0$, there is a finite $k_i^{*}$ beyond which no election occurs at failure count $k\geq k_i^{*}$.
+ The failure counter resets only on a successful production, and by part (a) there are at most $n(\lvert S\rvert-1)$ successes across all agents.
+ Between consecutive successes the counter climbs monotonically, so each agent elects at most $k_i^{*}$ times per success-interval and hence finitely often in total; summing over agents, only finitely many elections occur on every path.
+ (\Cref{ass:regularity}(ii) is not needed for election finiteness or for parts (c)--(d); it ensures that an elected repairable question has a positive conditional chance of resolution before abandonment.)
+-- 
+2.43.0
+

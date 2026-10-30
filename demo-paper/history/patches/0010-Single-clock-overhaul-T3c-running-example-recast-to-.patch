@@ -1,0 +1,81 @@
+From 4e252395ad278366d4e53f439ea031c383414747 Mon Sep 17 00:00:00 2001
+From: MDR Git <mdr@mikeryall.com>
+Date: Sat, 25 Jul 2026 09:03:08 -0400
+Subject: [PATCH 10/27] Single-clock overhaul T3c: running example recast to
+ periods + switching-cost illustration
+
+- Example fully period-based: valuation horizon T=2 preserves the leverage numbers
+  (B_hat=1/2); "discovery generation" -> two periods serving the diagonal states;
+  "validation generation" -> a later stretch; episodes -> observations/periods.
+- Added the kappa illustration: acting on the row refinement costs kappa_i; with
+  kappa_i<1/2 the firm re-differentiates, with kappa_i>1/2 it holds its old policy
+  despite knowing the row law -- the deterministic face of enlightened inertia.
+
+Overhaul complete: zero generation/episode references remain. Compiles, 41pp.
+
+Co-Authored-By: Claude Opus 4.8 <noreply@anthropic.com>
+---
+ paper/tbv_mdr_Paper01-v04.tex | 17 +++++++++--------
+ 1 file changed, 9 insertions(+), 8 deletions(-)
+
+diff --git a/paper/tbv_mdr_Paper01-v04.tex b/paper/tbv_mdr_Paper01-v04.tex
+index de2049d..078174d 100644
+--- a/paper/tbv_mdr_Paper01-v04.tex
++++ b/paper/tbv_mdr_Paper01-v04.tex
+@@ -515,10 +515,10 @@ Both reappear as the corrective forces in \cref{sec:dynamics}.
+ Let $\beta=1$ and suppose the firms' priors over the constant theories are heterogeneous: firm~1 considers $\theta^0$ more likely than $\theta^1$, and firm~2 the reverse.
+ A direct computation shows that, against any conjecture about the rival, offering architecture $0$ is subjectively strictly dominant for firm~1 and architecture $1$ for firm~2 whenever $\mu_i(m^a)>(2-\beta)\,\mu_i(m^{a'})$; at $\beta=1$ this is simple belief asymmetry.
+ The firms therefore commit to differentiated constant policies.
+-Set $T=2$ and condition on the discovery generation serving the two diagonal states $s_{00}$ and $s_{11}$---a positive-probability event under uniform $\rho$; the appendix records how the leverage below scales with the realized composition.
++Take the valuation horizon $T=2$ and condition on two periods that serve the diagonal states $s_{00}$ and $s_{11}$ under differentiated play---a positive-probability event under uniform $\rho$; the appendix records how the leverage below scales with the realized composition.
+ With differentiated actions, the winner-take-all payoffs reveal the objectively preferred architecture at each state: firm~1 wins at $s_{00}$ (payoffs $1,0$) and loses at $s_{11}$ (payoffs $0,1$).
+-No constant assignment is consistent with both episodes---$m^0$ fails at $s_{11}$, $m^1$ at $s_{00}$, and $m^n$ predicts one-half at both---so each firm's active set empties: causal dissonance, in its exact deterministic form.
+-Had the firms instead pooled on the same architecture at both states, each would have received one-half at every episode, an outcome consistent with all three constant theories: the pooled profile is concealing, and coarse awareness would have survived its own evidence indefinitely.
++No constant assignment is consistent with both observations---$m^0$ fails at $s_{11}$, $m^1$ at $s_{00}$, and $m^n$ predicts one-half at both---so each firm's active set empties: causal dissonance, in its exact deterministic form.
++Had the firms instead pooled on the same architecture at both states, each would have received one-half at every period, an outcome consistent with all three constant theories: the pooled profile is concealing, and coarse awareness would have survived its own evidence indefinitely.
+ Belief heterogeneity, by inducing differentiated play, is what made the shared language's failure visible.
+ \end{excont}
+ \section{Inquiry: restoration, direction, and fallibility}
+@@ -702,7 +702,7 @@ Sufficiency for $\tau'$ is refinement of $\mathcal P^{\tau'}$ (\cref{def:awarene
+ \end{proof}
+ 
+ \begin{excont}
+-After the dissonant generation, the record contains two labeled episodes: architecture $0$ objectively preferred at $s_{00}$, architecture $1$ at $s_{11}$.
++After discovery, the record contains two labeled observations: architecture $0$ objectively preferred at $s_{00}$, architecture $1$ at $s_{11}$.
+ Of the fifteen partitions of four states, exactly four are minimally restorative---each must separate $s_{00}$ from $s_{11}$: the row partition $\{\{s_{00},s_{01}\},\{s_{10},s_{11}\}\}$, the column partition $\{\{s_{00},s_{10}\},\{s_{01},s_{11}\}\}$, and the two partitions isolating one labeled state.
+ The record directs inquiry (eleven partitions are excluded) without determining it (four remain).
+ A natural complexity ordering counts the coordinates needed to describe a refinement: rows and columns are one-coordinate distinctions, the isolating partitions require two.
+@@ -881,8 +881,9 @@ Counterfactual transparency---a small $\Theta_i(g)$, ideally a singleton---makes
+ At the discovery record ($T=2$, diagonal states served), each firm holds two tokens sharing the profile $(0,1)$ but differing in payoff: firm~1 won at $s_{00}$ and lost at $s_{11}$, firm~2 the reverse.
+ Because mechanisms are deterministic, the conflicting payoffs \emph{certify} the two tokens as distinct states (\cref{rem:certification}), and the agent's best coherent grouping splits them: the winning token pins its architecture as preferred (current action stays optimal, contributing zero), the losing token pins the other architecture (switching to it gains $\tfrac12$ against every rival action---a differentiated loss becomes a pooled half, or a pooled half a differentiated win).
+ The two tokens average a per-token gain of $(\tfrac12+0)/2=\tfrac14$, so $\widehat B_i=(T/\lvert r_i\rvert)\sum_t\Delta=(2/2)\cdot \tfrac12=\tfrac12$ for both firms---identical leverage from opposite experiences---so each elects iff $\lambda_i^{(0)}\widehat B_i\geq\gamma_i$, i.e.\ $\lambda_i^{(0)}/2\geq\gamma_i$.
++Acting on the row refinement, once acquired, means re-differentiating by row at the switching hurdle $\kappa_i$; because transparency makes the realized horizon-$T$ gain equal to $\widehat B_i=\tfrac12$, the firm re-differentiates when $\kappa_i<\tfrac12$ and---knowing the row law yet finding the change not worth its cost---holds its old policy when $\kappa_i>\tfrac12$, the deterministic face of enlightened inertia (\cref{rem:stickiness}).
+ The valuation used no conjecture about the rival and no reference to which refinement might arrive; transparency (winner-take-all) makes each $\Theta_i(g)$ a singleton, so the deliberative estimate is exact.
+-For rational cessation and its converse, append a validation generation in which firm~1 has acquired the row refinement (certain of the true assignment) while firm~2 has acquired the column refinement (certain of the false one): their policies differ at the two off-diagonal states, firm~1 wins both, and the labels revealed there falsify firm~2's column theory.
++For rational cessation and its converse, consider a later stretch that serves the two off-diagonal states, by which point firm~1 has acquired the row refinement (certain of the true assignment) while firm~2 has acquired the column refinement (certain of the false one): their policies differ at those states, firm~1 wins both, and the labels revealed there falsify firm~2's column theory.
+ Firm~1's record then contains no coherent group favoring a switch, so $\widehat B_1=0$: the firm holding the truth rationally never inquires again, and its awareness stays permanently incomplete.
+ Firm~2's record now carries losing off-diagonal tokens its column policy misplays, so $\widehat B_2>0$: defeat concentrates the evidence, the dissonance, and the incentive in the losing firm, which elects whenever $\lambda_2^{(k_2)}\widehat B_2\geq\gamma_2$ and, upon success, reaches complete awareness in one step (both column cells must split).
+ The winner/loser asymmetry---$\widehat B_1=0<\widehat B_2$---is the durable point; the appendix records the exact value of $\widehat B_2$.
+@@ -1140,8 +1141,8 @@ The warrant gap of \cref{sec:pivot} is permanent: unbounded experience accumulat
+ 
+ \emph{The knife edge.}
+ Now let $\beta<1$.
+-In the first generation containing an off-diagonal state, the pooled firms receive $\beta/2$ where their theory predicts one-half: the demand side reveals the label, dissonance returns, $\widehat B$ turns positive, and the reflective posterior becomes degenerate.
+-Payoff-relevant self-confirmation is a knife-edge property of perfectly forgiving demand, and the destroyed value $1-\beta$ at each misserved episode is itself the corrective signal: what demand withholds from the firms, their epistemics receives as evidence.
++In the first period serving an off-diagonal state, the pooled firms receive $\beta/2$ where their theory predicts one-half: the demand side reveals the label, dissonance returns, $\widehat B$ turns positive, and the reflective posterior becomes degenerate.
++Payoff-relevant self-confirmation is a knife-edge property of perfectly forgiving demand, and the destroyed value $1-\beta$ at each misserved period is itself the corrective signal: what demand withholds from the firms, their epistemics receives as evidence.
+ 
+ \emph{Persistence.}
+ Run the asymmetric configuration at $\beta<1$: firm~1 holds the row refinement and the true assignment; firm~2 remains coarse and, by $\gamma_2>\lambda_2^{(k_2)}\widehat B_2$, sits in dissonant stasis.
+@@ -1374,7 +1375,7 @@ Proposing $a^{*}$: if the rival plays $a^{*}$, the standing action yields $0$ (d
+ The per-token robust gain is $\tfrac12$ in both cases---transparency makes $\Theta_i(g)$ a singleton, so the mechanism minimum is degenerate.
+ A token whose group's optimal action equals the committed one contributes $0$.
+ Discovery record: two tokens, gains $\{\tfrac12,0\}$, average $\tfrac14$, so $\widehat B_i=(T/\lvert r_i\rvert)\sum_t\Delta=(2/2)\tfrac12=\tfrac12$.
+-After the validation generation of \cref{sec:economics} (serving the two off-diagonal states, $T=2$), firm~1's four-token cumulative record has no group favoring a switch, so $\widehat B_1=0$; firm~2's four tokens split into two $\theta^0$-groups and two $\theta^1$-groups, of which two disagree with its column policy (gain $\tfrac12$ each) and two agree (gain $0$), average $\tfrac14$, giving $\widehat B_2=(2/4)\cdot 1=\tfrac12$.
++After the validation stretch of \cref{sec:economics} (serving the two off-diagonal states, valuation horizon $T=2$), firm~1's four-token cumulative record has no group favoring a switch, so $\widehat B_1=0$; firm~2's four tokens split into two $\theta^0$-groups and two $\theta^1$-groups, of which two disagree with its column policy (gain $\tfrac12$ each) and two agree (gain $0$), average $\tfrac14$, giving $\widehat B_2=(2/4)\cdot 1=\tfrac12$.
+ The durable content is the asymmetry $\widehat B_1=0<\widehat B_2$, not the coincidence that $\widehat B_2$ equals the discovery value.
+ 
+ \paragraph{The trap and its knife edge.}
+-- 
+2.43.0
+

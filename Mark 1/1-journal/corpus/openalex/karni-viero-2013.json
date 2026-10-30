@@ -1,0 +1,19 @@
+{
+  "id": "W2145868584",
+  "openalex_id": "W2145868584",
+  "doi": "10.1257/aer.103.7.2790",
+  "title": "“Reverse Bayesianism”: A Choice-Based Theory of Growing Awareness",
+  "year": 2013,
+  "authors": [
+    "Edi Karni",
+    "Marie‐Louise Vierø"
+  ],
+  "venue": "American Economic Review",
+  "abstract": "This article introduces a new approach to modeling the expanding universe of decision makers in the wake of growing awareness, and invokes the axiomatic approach to model the evolution of decision makers' beliefs as awareness grows. The expanding universe is accompanied by extension of the set of acts, the preference relations over which are linked by a new axiom, invariant risk preferences, asserting that the ranking of lotteries is independent of the set of acts under consideration. The main results are representation theorems and rules for updating beliefs over expanding state spaces and events that have the flavor of “reverse Bayesianism.” (JEL D81, D83)",
+  "topics": [
+    "Decision-Making and Behavioral Economics",
+    "Game Theory and Applications",
+    "Experimental Behavioral Economics Studies"
+  ],
+  "cited_by_count": 209
+}

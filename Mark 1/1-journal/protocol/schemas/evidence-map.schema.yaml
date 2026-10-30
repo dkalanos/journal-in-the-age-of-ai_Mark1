@@ -1,0 +1,28 @@
+title: Evidence map (appendix D.6), the contribution claim placed against the corpus
+type: object
+required: [paper_id, run_id, corpus, claims, coverage]
+properties:
+  paper_id: {type: string}
+  run_id: {type: string}
+  corpus: {type: object, required: [version, items]}
+  claims:
+    type: array
+    items:
+      type: object
+      required: [claim_id, text, newness_kind, nearest, rationale, agreement, question]
+      properties:
+        claim_id: {type: string}
+        text: {type: string}
+        newness_kind: {enum: [answer, question, reading, evidence, none, uncovered, no_consensus]}
+        nearest: {type: array}
+        rationale: {type: string}
+        agreement: {type: string}
+        question:  # the question the claim was placed on: the paper's, when the claims list states it; else the model's reading
+          type: object
+          required: [text, stated_by]
+          properties:
+            text: {type: [string, "null"]}
+            pointer: {type: [string, "null"]}
+            stated_by: {enum: [author, model, none]}
+            read_differently: {type: array, items: {type: string}}
+  coverage: {type: object}

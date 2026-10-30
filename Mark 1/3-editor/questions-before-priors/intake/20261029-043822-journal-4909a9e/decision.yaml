@@ -1,0 +1,84 @@
+kind: intake
+paper_id: questions-before-priors
+run_id: 20261029-043822-journal-4909a9e
+report_sha: 4d8306fecf12ec79dc82a13b594c882b4946d6af1153967973ea388514df71f1
+standard_action: proceed_to_review
+fired_rules:
+- rule: R9
+  finding: F-2-resolution-01
+  class: evidence_partial
+  action: proceed_to_review
+  acknowledged: true
+- rule: R9
+  finding: F-2-resolution-02
+  class: evidence_partial
+  action: proceed_to_review
+  acknowledged: true
+- rule: R9
+  finding: F-2-resolution-03
+  class: evidence_partial
+  action: proceed_to_review
+  acknowledged: true
+- rule: R9
+  finding: F-2-resolution-04
+  class: evidence_partial
+  action: proceed_to_review
+  acknowledged: true
+- rule: R9
+  finding: F-2-resolution-05
+  class: evidence_partial
+  action: proceed_to_review
+  acknowledged: true
+- rule: R9
+  finding: F-2-resolution-06
+  class: evidence_partial
+  action: proceed_to_review
+  acknowledged: true
+- rule: R9
+  finding: F-2-resolution-07
+  class: evidence_partial
+  action: proceed_to_review
+  acknowledged: true
+- rule: R9
+  finding: F-2-resolution-08
+  class: evidence_partial
+  action: proceed_to_review
+  acknowledged: true
+- rule: R9
+  finding: F-2-resolution-09
+  class: evidence_partial
+  action: proceed_to_review
+  acknowledged: true
+- rule: R9
+  finding: F-2-resolution-10
+  class: evidence_partial
+  action: proceed_to_review
+  acknowledged: true
+- rule: R9
+  finding: F-2-resolution-11
+  class: evidence_partial
+  action: proceed_to_review
+  acknowledged: true
+passes_used: 0
+action: proceed_to_review
+departure: null
+acknowledged:
+- F-2-resolution-01
+- F-2-resolution-02
+- F-2-resolution-03
+- F-2-resolution-04
+- F-2-resolution-05
+- F-2-resolution-06
+- F-2-resolution-07
+- F-2-resolution-08
+- F-2-resolution-09
+- F-2-resolution-10
+- F-2-resolution-11
+findings_total: 11
+specialist: null
+signature:
+  name: Dimitrija Kalanoski
+  role: editor
+  at: '2026-10-29T04:48:58Z'
+  signs:
+    3-editor/questions-before-priors/intake/20261029-043822-journal-4909a9e/findings.json: 4d8306fecf12ec79dc82a13b594c882b4946d6af1153967973ea388514df71f1

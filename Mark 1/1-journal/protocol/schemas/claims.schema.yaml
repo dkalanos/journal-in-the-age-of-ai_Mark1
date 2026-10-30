@@ -1,0 +1,22 @@
+title: The claims list (ai-appendix/claims.yaml), AI appendix part 3
+$defs:
+  claim:
+    type: object
+    required: [id, kind, main, text, pointer, evidence_pointer]
+    additionalProperties: false
+    properties:
+      id: {type: string, pattern: "^C[0-9]+$"}
+      kind: {enum: [result, causal, contribution]}
+      form: {enum: [proposition, comparative_static, lemma, example]}
+      main: {type: boolean}
+      text: {type: string, minLength: 1}
+      condition: {type: [array, "null"], items: {type: string}}
+      pointer: {type: string}
+      evidence_pointer: {type: string}
+      question: {type: string, minLength: 1}  # the contribution claim: the question it answers, in the paper's words (formal-0.4)
+      question_pointer: {type: string}  # where the paper states that question
+      derivation_id: {type: [string, "null"]}
+type: object
+required: [claims]
+properties:
+  claims: {type: array, minItems: 1, items: {$ref: "#/$defs/claim"}}

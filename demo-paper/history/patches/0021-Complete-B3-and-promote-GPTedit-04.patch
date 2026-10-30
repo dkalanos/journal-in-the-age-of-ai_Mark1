@@ -1,0 +1,304 @@
+From 18ad0b9f6f352d0ad722f71fa29c29363b5ec82e Mon Sep 17 00:00:00 2001
+From: MDR Git <mdr@mikeryall.com>
+Date: Thu, 13 Aug 2026 15:56:38 -0400
+Subject: [PATCH 21/27] Complete B3 and promote GPTedit-04
+
+---
+ ..._GPTedit-03.tex => tbv_mdr_GPTedit-04.tex} | 170 +++++++++++++-----
+ 1 file changed, 127 insertions(+), 43 deletions(-)
+ rename paper/{tbv_mdr_GPTedit-03.tex => tbv_mdr_GPTedit-04.tex} (92%)
+
+diff --git a/paper/tbv_mdr_GPTedit-03.tex b/paper/tbv_mdr_GPTedit-04.tex
+similarity index 92%
+rename from paper/tbv_mdr_GPTedit-03.tex
+rename to paper/tbv_mdr_GPTedit-04.tex
+index 34aaec4..2908a69 100644
+--- a/paper/tbv_mdr_GPTedit-03.tex
++++ b/paper/tbv_mdr_GPTedit-04.tex
+@@ -1,4 +1,4 @@
+-% TRUTH VERSION: tbv_mdr_GPTedit-03.tex
++% TRUTH VERSION: tbv_mdr_GPTedit-04.tex
+ % FILE ROLE: AUTHORITATIVE SOURCE
+ % DOCUMENT: Scholarly Paper TBV
+ 
+@@ -809,13 +809,41 @@ The \emph{per-token robust gain} of proposing action $a_i$ for a group is
+ \Bigr),
+ \]
+ the worst case over rival responses and over the mechanisms the group's record leaves open.
+-For $G\in\mathcal G_i(r_i)$, define its aggregate robust gain by
++For $G\in\mathcal G_i(r_i)$, define the current-cell/group intersection
+ \[
+-L_i(G;r_i)
++ r_i(C,g)
+ =
+-\sum_{g\in G}\;
+-\max_{a_i\in A_i}\;
+-\sum_{t\in g}\Delta_i^G(t,a_i).
++\{t\in r_i:C_i(t)=C,\ g(t)=g\},
++\qquad C\in\mathcal P_i,\quad g\in G,
++\]
++where empty intersections contribute zero.
++Define the robust fine-contingent value
++\[
++L_i^{\mathrm{fine}}(G;r_i)
++=
++\sum_{C\in\mathcal P_i}
++\sum_{g\in G}
++\max_{a_i\in A_i}
++\sum_{t\in r_i(C,g)}
++\Delta_i^G(t,a_i),
++\]
++which lets action vary by each nonempty current-cell/group intersection, and define the current-language benchmark
++\[
++L_i^{\mathrm{cur}}(G;r_i)
++=
++\sum_{C\in\mathcal P_i}
++\max_{a_i\in A_i}
++\sum_{g\in G}
++\sum_{t\in r_i(C,g)}
++\Delta_i^G(t,a_i),
++\]
++which requires one action for every token in a current awareness cell, although the coherent grouping is used to evaluate that action.
++The grouping may span more than one current awareness cell, since any future awareness partition refines rather than erases current awareness.
++The \emph{gross representational increment} under grouping $G$ is
++\[
++J_i(G;r_i)
++=
++L_i^{\mathrm{fine}}(G;r_i)-L_i^{\mathrm{cur}}(G;r_i).
+ \]
+ The \emph{deliberative leverage} is
+ \begin{equation}
+@@ -826,7 +854,7 @@ The \emph{deliberative leverage} is
+ \frac{T}{\lvert r_i\rvert}
+ \max\!\left(
+ \{0\}\cup
+-\{L_i(G;r_i):G\in\mathcal G_i(r_i)\}
++\{J_i(G;r_i):G\in\mathcal G_i(r_i)\}
+ \right),
+ &
+ \widehat M_i(\mathcal P_i,r_i)=\emptysetset,
+@@ -837,51 +865,65 @@ The \emph{deliberative leverage} is
+ \end{cases}
+ \label{eq:leverage}
+ \end{equation}
+-The premise is that the empirical token \emph{distribution} recurs, so the horizon-$T$ estimate is $T$ times the average per-token robust gain.
++The premise is that the empirical token \emph{distribution} recurs, so the horizon-$T$ estimate is $T$ times the average per-token gross representational increment.
+ The outside option $0$ represents declining to attribute actionable value to any available grouping; it also makes leverage zero when $\mathcal G_i(r_i)=\emptysetset$.
++The current-language term is a counterfactual valuation benchmark, not a new dissonant policy-switching rule: at dissonance the standing policy continues to be carried forward under \cref{ass:commitment} unless inquiry succeeds.
++Thus $\widehat B_i$ prices the incremental gross action value of making a coherent grouping actionable beyond what one action per current awareness cell can already obtain, not a complete net expected-payoff value after switching costs.
+ \end{definition}
+ 
+ \begin{proposition}[Participation]
+ \label{prop:participation}
+-$\widehat B_i(r_i)$ is well defined, nonnegative, bounded by $T(\max \pi_i-\min \pi_i)$, and computable from the deliberative record, the carried-forward policy, and the agent-known model primitives and test calibration.
++$\widehat B_i(r_i)$ is well defined, nonnegative, bounded by $T(\max \pi_i-\min \pi_i)$, and computable from the deliberative record, the standing policy, and the agent-known model primitives and test calibration.
+ At a dissonant record, electing inquiry has represented value $\lambda_i^{(k_i)}\widehat B_i(r_i)-\gamma_i$, so agent $i$ elects if and only if
+ \[
+ \lambda_i^{(k_i)}\widehat B_i(r_i)\geq\gamma_i.
+ \]
+-Moreover, at a dissonant record, $\widehat B_i(r_i)>0$ if and only if some coherent grouping has positive aggregate robust gain:
++Moreover, at a dissonant record, $\widehat B_i(r_i)>0$ if and only if some coherent grouping has positive representational increment:
+ \[
+-L_i(G;r_i)>0
++J_i(G;r_i)>0
+ \qquad\text{for some }G\in\mathcal G_i(r_i).
+ \]
+-Thus a question is priced positively only when some coherent reading of the record supports a group-contingent action proposal that robustly improves on the carried-forward policy in the aggregate.
++Thus a question is priced positively only when some coherent reading of the record supports action variation within at least one current awareness cell that robustly outperforms the best action kept uniform on that cell under the same coherent reading.
+ \end{proposition}
+ 
+ \begin{proof}
+ The record is finite, so it has finitely many groupings.
+ For every coherent group, $\Theta_i(g)$ is a nonempty finite set, and all action and consequence spaces are finite.
+-Hence every max--min expression and every $L_i(G;r_i)$ is well defined.
++Hence every max--min expression and every $L_i^{\mathrm{fine}}(G;r_i)$, $L_i^{\mathrm{cur}}(G;r_i)$, and $J_i(G;r_i)$ is well defined.
+ The set whose maximum appears in \cref{eq:leverage} always contains $0$, including when $\mathcal G_i(r_i)=\emptysetset$, proving existence and nonnegativity.
+-Writing $\Delta \pi_i=\max \pi_i-\min \pi_i$, each $\Delta_i^G(t,a_i)\leq\Delta \pi_i$.
+-Every grouping contains exactly $\lvert r_i\rvert$ tokens, so $L_i(G;r_i)\leq\lvert r_i\rvert\Delta \pi_i$ and therefore $\widehat B_i(r_i)\leq T\Delta \pi_i$.
+-Computability follows by finite enumeration using only the deliberative record, the carried-forward policy, and the agent-known model primitives and test calibration.
++For fixed $C$ and $G$, put $f_{C,g}(a_i)=\sum_{t\in r_i(C,g)}\Delta_i^G(t,a_i)$.
++Then
++\[
++\sum_{g\in G}\max_{a_i}f_{C,g}(a_i)
++\geq
++\max_{a_i}\sum_{g\in G}f_{C,g}(a_i),
++\]
++because the left side permits a separate maximizing action for every intersection while the right side restricts them to a common action.
++Summing across current cells gives $L_i^{\mathrm{fine}}(G;r_i)\geq L_i^{\mathrm{cur}}(G;r_i)$ and hence $J_i(G;r_i)\geq0$.
++Writing $\Delta \pi_i=\max \pi_i-\min \pi_i$, each $\Delta_i^G(t,a_i)\leq\Delta \pi_i$, so $L_i^{\mathrm{fine}}(G;r_i)\leq\lvert r_i\rvert\Delta \pi_i$.
++For each current cell $C$, selecting its standing action $a_i=\sigma_i(C)$ gives zero gain for every token in that cell, so $L_i^{\mathrm{cur}}(G;r_i)\geq0$.
++Therefore $0\leq J_i(G;r_i)\leq\lvert r_i\rvert\Delta \pi_i$, which gives $\widehat B_i(r_i)\leq T\Delta \pi_i$.
++Computability follows by finite enumeration using only the deliberative record, the standing policy, and the agent-known model primitives and test calibration.
+ The election rule is the achievability-weighted represented gain net of the inquiry cost.
+-Finally, because the outside option is zero, the maximum in \cref{eq:leverage} is strictly positive exactly when some coherent grouping has strictly positive aggregate robust gain.
++Finally, because every $J_i(G;r_i)$ is nonnegative and the outside option is zero, the maximum in \cref{eq:leverage} is strictly positive exactly when some coherent grouping has strictly positive representational increment.
+ \end{proof}
+ 
+ The participation rule is a coherent non-Bayesian criterion operating precisely where the acting belief is undefined, and it respects every discipline of \cref{sec:commitments}: $\widehat B_i$ quantifies over the agent's own remembered tokens and the groupings it can articulate---``situations like the ones I lost will recur, and a distinction that sorted them would let me act on them''---never over named future representations.
+-This is also why the switching hurdle of \cref{ass:commitment} cannot enter the inquiry decision: the policy it would buy lives on a partition the agent does not yet possess, so it cannot be priced before insight---the agent values the question, not the answer.
++For each coherent reading, the current-language benchmark first values the best action already expressible uniformly on each current awareness cell; gross representational leverage is only the additional robust gain from conditioning action on the finer grouping.
+ The estimate can be wrong, and honestly so: the agent does not know whether a distinction realizing its best grouping exists, which is why $\lambda_i^{(k)}$ prices achievability.
+ Two comparative properties organize the applications.
+-\emph{Action separation, not information}: the value of a question tracks whether resolving it could change behavior, not how much residual uncertainty remains; an agent for whom no coherent grouping yields positive aggregate robust gain declines to inquire.
+-\emph{Rational cessation}: an agent for whose record no coherent grouping yields positive aggregate robust gain has $\widehat B_i=0$, so sustained success can extinguish inquiry even though awareness stays incomplete; and, by the decay of $\lambda_i^{(k)}$, so can sustained failure---a true, valuable, repairable question can be rationally abandoned.
++\emph{Action separation, not information}: the value of a question tracks whether a finer distinction could improve action beyond the best current-cell-uniform response, not how much residual uncertainty remains; an agent for whom no coherent grouping yields positive representational increment declines to inquire.
++\emph{Rational cessation}: an agent for whose record no coherent grouping yields positive representational increment has $\widehat B_i=0$, so sustained success can extinguish inquiry even though awareness stays incomplete; and, by the decay of $\lambda_i^{(k)}$, so can sustained failure---a true, valuable, repairable question can be rationally abandoned.
+ 
+ \begin{remark}[Enlightened inertia]
+ \label{rem:stickiness}
+-Acquiring a distinction and acting on it are separate decisions, and they must be, because the policy one would switch to lives on a partition the agent cannot yet represent.
+-Pre-insight the agent therefore prices only its question---the stakes $\widehat B_i$ of its present, mis-served record---and cannot fold in the switching hurdle of a refined policy it has no way to name (\cref{prop:participation}).
+-Once inquiry delivers a concrete refinement, the switch becomes a well-defined decision (\cref{ass:commitment}): the agent may find the realized horizon gain below $\kappa_i$ and carry its old policy forward.
+-It then knows the world is not what it thought yet does not act---a second source of persistence, distinct from an unpriced question, and one the agent could not have anticipated, because it could not have anticipated what it would learn.
+-This holds whether or not mechanisms are deterministic, and it feeds the performance differences of \cref{sec:dynamics}.
++The model deliberately treats acquiring a distinction and acting on it as sequential decisions.
++Pre-insight the agent uses $\widehat B_i$ as a gross estimate of representational leverage, while the known switching hurdle $\kappa_i$ is applied only after a concrete refinement, belief, conjecture, and policy make the realized horizon gain well defined (\cref{ass:commitment,prop:participation}).
++This timing is a bounded-rationality modeling convention, not a logical implication of unawareness.
++Once inquiry delivers a concrete refinement, the realized gain may fail to clear $\kappa_i$, so the agent carries its old policy forward despite knowing that its earlier causal account was incomplete.
++Away from pointwise transparency, that enlightened inertia can be unanticipated because pre-insight leverage is only an estimate and the realized refinement may deliver a different gain.
++Under pointwise transparency, by contrast, exact and repair-invariant leverage can make later enlightened inertia foreseeable; the model nevertheless preserves the two-stage timing as a deliberate simplification.
++Enlightened inertia remains a second source of persistence, distinct from an unpriced question, whether or not mechanisms are deterministic, and it feeds the performance differences of \cref{sec:dynamics}.
+ \end{remark}
+ 
+ \begin{remark}[What determinism certifies---and what it does not]
+@@ -895,9 +937,10 @@ In general, $\widehat B_i$ therefore remains a deliberative estimate even with d
+ 
+ A stronger, record-level condition restores exactness.
+ In the deterministic zero-tolerance case with $\bar n=1$ and $w\equiv0$, call a record \emph{pointwise transparent} if $\Theta_i(\{t\})$ is a singleton for every retained token $t$.
+-Then every coherent group contains only tokens carrying the same pinned mechanism, while every restorative refinement separates tokens carrying different pinned mechanisms.
+-Tokens with the same pin and the same current awareness cell also have the same robust action comparison; tokens in different current cells remain separately actionable because every new partition refines the current one.
+-Consequently every maximizing group-contingent proposal is implementable under any restorative refinement, and the deliberative leverage is exact and repair-invariant.
++Every token pins one mechanism, and every restorative refinement separates tokens carrying incompatible pinned mechanisms.
++A fine-contingent proposal chooses actions separately at each current-cell/pinned-group intersection, so it is implementable under any restorative refinement; a coherent group may span current cells without merging them because every new partition refines the current one.
++The current-language benchmark, which chooses one action per current cell, is already implementable.
++Consequently both value terms, and therefore their representational increment, are exact and repair-invariant.
+ The running example's differentiated discovery record is pointwise transparent, so its leverage calculation has precisely this property.
+ 
+ Under stochastic mechanisms, differing consequences at one $(C,a)$-pair may reflect mechanism noise rather than distinct states, and even a coherent grouping need not be realizable.
+@@ -907,13 +950,19 @@ Counterfactual transparency---a small $\Theta_i(g)$, ideally a singleton---makes
+ 
+ \begin{excont}
+ At the discovery record ($T=2$, diagonal states served), each firm holds two tokens sharing the profile $(0,1)$ but differing in payoff: firm~1 won at $s_{00}$ and lost at $s_{11}$, firm~2 the reverse.
+-Because mechanisms are deterministic, the conflicting payoffs \emph{certify} the two tokens as distinct states (\cref{rem:certification}), and the agent's best coherent grouping splits them: the winning token pins its architecture as preferred (current action stays optimal, contributing zero), the losing token pins the other architecture (switching to it gains $\tfrac12$ against every rival action---a differentiated loss becomes a pooled half, or a pooled half a differentiated win).
+-The two tokens average a per-token gain of $(\tfrac12+0)/2=\tfrac14$, so $\widehat B_i=(T/\lvert r_i\rvert)\sum_t\Delta=(2/2)\cdot \tfrac12=\tfrac12$ for both firms---identical leverage from opposite experiences---so each elects iff $\lambda_i^{(0)}\widehat B_i\geq\gamma_i$, i.e.\ $\lambda_i^{(0)}/2\geq\gamma_i$.
+-Acting on the row refinement, once acquired, means re-differentiating by row at the switching hurdle $\kappa_i$; because transparency makes the realized horizon-$T$ gain equal to $\widehat B_i=\tfrac12$, the firm re-differentiates when $\kappa_i<\tfrac12$ and---knowing the row law yet finding the change not worth its cost---holds its old policy when $\kappa_i>\tfrac12$, the deterministic face of enlightened inertia (\cref{rem:stickiness}).
++Because mechanisms are deterministic, the conflicting payoffs \emph{certify} the two tokens as distinct states (\cref{rem:certification}), and the agent's best coherent grouping splits them: on the winning token the fine optimal gain is zero, while on the losing token switching to the pinned architecture gains $\tfrac12$ against every rival action---a differentiated loss becomes a pooled half, or a pooled half a differentiated win.
++Thus $L_i^{\mathrm{fine}}=\tfrac12$.
++Under the coarse one-cell current language, keeping the standing action gives aggregate gain zero, while switching uniformly gains $\tfrac12$ on the losing token and loses $\tfrac12$ on the winning token, so $L_i^{\mathrm{cur}}=0$ and $J_i=\tfrac12$.
++Consequently $\widehat B_i=(2/2)(\tfrac12)=\tfrac12$ for both firms---identical gross representational leverage from opposite experiences---so each elects iff $\lambda_i^{(0)}\widehat B_i\geq\gamma_i$, i.e.\ $\lambda_i^{(0)}/2\geq\gamma_i$.
++The positive value is genuinely representational because no uniform current-language action improves on the standing policy.
++Acting on the row refinement, once acquired, means re-differentiating by row at the switching hurdle $\kappa_i$; the post-refinement horizon gain remains exactly $\tfrac12$, so the firm re-differentiates when $\kappa_i<\tfrac12$ and---knowing the row law yet finding the change not worth its cost---holds its old policy when $\kappa_i\geq\tfrac12$, the deterministic face of enlightened inertia (\cref{rem:stickiness}).
++Under the model's two-stage timing it may still elect inquiry when the participation condition holds; in this transparent case, a hurdle at or above the exact gain makes later enlightened inertia foreseeable, a consequence of the deliberate timing convention rather than of unawareness.
+ The valuation used no conjecture about the rival and no reference to which refinement might arrive; transparency (winner-take-all) makes each $\Theta_i(g)$ a singleton, so the deliberative estimate is exact.
+ For rational cessation and its converse, consider a later stretch that serves the two off-diagonal states, by which point firm~1 has acquired the row refinement (certain of the true assignment) while firm~2 has acquired the column refinement (certain of the false one): their policies differ at those states, firm~1 wins both, and the labels revealed there falsify firm~2's column theory.
+-Firm~1's record then contains no coherent group favoring a switch, so $\widehat B_1=0$: the firm holding the truth rationally never inquires again, and its awareness stays permanently incomplete.
+-Firm~2's record now carries losing off-diagonal tokens its column policy misplays, so $\widehat B_2>0$: defeat concentrates the evidence, the dissonance, and the incentive in the losing firm, which elects whenever $\lambda_2^{(k_2)}\widehat B_2\geq\gamma_2$ and, upon success, reaches complete awareness in one step (both column cells must split).
++For firm~1, both the fine and current-language values are zero, so $L_1^{\mathrm{fine}}=L_1^{\mathrm{cur}}=J_1=\widehat B_1=0$: the firm holding the truth rationally never inquires again, and its awareness stays permanently incomplete.
++For firm~2, two tokens disagree with its column policy and contribute $\tfrac12$ each under fine contingency, while two agree and contribute zero, so $L_2^{\mathrm{fine}}=1$.
++Within either current column, reversing the action gains $\tfrac12$ on one token and loses $\tfrac12$ on the other, so $L_2^{\mathrm{cur}}=0$, $J_2=1$, and $\widehat B_2=(2/4)1=\tfrac12$.
++Defeat thus concentrates the evidence, dissonance, and incentive in the losing firm in this example, which elects whenever $\lambda_2^{(k_2)}\widehat B_2\geq\gamma_2$ and, upon success, reaches complete awareness in one step (both column cells must split).
+ The winner/loser asymmetry---$\widehat B_1=0<\widehat B_2$---is the durable point; the appendix records the exact value of $\widehat B_2$.
+ \end{excont}
+ \section{The pivot: formulation, warrant, and the return to Bayes}
+@@ -1103,8 +1152,8 @@ Were $\lambda_i^{(k)}$ held fixed instead of decaying, an agent could elect a do
+ 
+ \begin{remark}[Rational anomaly tolerance]
+ \label{rem:anomaly}
+-Zero-leverage dissonant stasis is a recognizable condition, not a pathology of the model: the agent registers that its causal account is broken---its test rejects every expressible theory---yet its deliberative valuation finds no coherent grouping with positive aggregate robust gain, so repairing the account is worth nothing to it.
+-Standing anomalies tolerated by working scientists and managers have exactly this structure, and the model locates them: anomaly tolerance is rational precisely when the agent's coherent groupings carry no robust action leverage.
++Zero-leverage dissonant stasis is a recognizable condition, not a pathology of the model: the agent registers that its causal account is broken---its test rejects every expressible theory---yet its deliberative valuation finds no coherent grouping with positive representational increment, so repairing the account is worth nothing to it.
++Standing anomalies tolerated by working scientists and managers have exactly this structure, and the model locates them: anomaly tolerance is rational precisely when the agent's coherent groupings carry no gross representational leverage.
+ Two sharper instances complete the taxonomy.
+ At an irreparable record (\cref{rem:irreparable}) no expressible repair exists at any price---the anomaly is not merely unprofitable but impossible to fix within the current grammar---though the agent, unable to certify irreparability under noise, may keep electing while its deliberative record supports positive leverage and until the achievability weight decays.
+ And an \emph{abandoned question} is a repairable, positively-valued defect the agent stops pursuing because repeated failure has driven $\lambda_i^{(k)}\widehat B_i$ below cost: rational surrender, not indifference.
+@@ -1210,6 +1259,9 @@ Payoff-relevant self-confirmation is a knife-edge property of perfectly forgivin
+ \emph{Persistence.}
+ Run the asymmetric configuration at $\beta<1$: firm~1 holds the row refinement and the true assignment; firm~2 remains coarse and, by $\gamma_2>\lambda_2^{(k_2)}\widehat B_2$, sits in dissonant stasis.
+ Here firm~2's coarse record genuinely rejects all three constant theories---its differentiated losses defeat the constant theory matching its own action, its pooled payoff of one-half defeats the opposite theory's $\beta/2$ prediction, and neutrality fails at the differentiated losses---so it is dissonant rather than merely mistaken, and it stays put because its question is priced below cost.
++With constant action $c$, the two correctly served tokens contribute zero and the two misserved tokens contribute $\tfrac12$ each under fine contingency, so $L_2^{\mathrm{fine}}=1$.
++A uniform current-language reversal has aggregate robust gain $\beta-1<0$, while retaining the standing action gives zero, so $L_2^{\mathrm{cur}}=0$, $J_2=1$, and, for this balanced four-token record with $T=2$, $\widehat B_2=\tfrac12$.
++For other realized record compositions the gross representational leverage remains positive when some coherent grouping supplies a positive increment and is bounded as in \cref{prop:participation}.
+ Firm~1 offers the preferred architecture in the row its rival misserves, winning both those states and splitting the rest, so under uniform $\rho$ the firms earn three-quarters and one-quarter, permanently.
+ (At $\beta=1$ this instance instead sends firm~2 oscillating: whichever constant architecture it plays, the surviving constant theory prescribes the other, so its policy never settles---an instructive contrast, but not a persistent \emph{stable} difference, which is why the diagnostic environment $\beta<1$ is the right home for the result.)
+ Every route out---strategic variety, demand harshness, a cheaper or more hopeful inquiry---is exactly one of the model's named forces.
+@@ -1227,8 +1279,8 @@ Heterogeneous prior understanding generates heterogeneous questions; questions g
+ This sequence begins before probability does, and it is path-dependent in the strong sense: the order of experiences shapes the terminal language, and agents end at different languages and different payoffs (\cref{prop:persistence}).
+ 
+ \emph{The value of experimentation is not information.}
+-An agent prices a question by whether some coherent reading of its own record supports a robustly improving action change (\cref{prop:participation}), not by how much its resolution would reduce uncertainty.
+-This reframes theory testing: high-entropy uncertainty with no action leverage is rationally ignored, and narrow contrasts that straddle an action threshold are rationally pursued.
++An agent prices a question by whether some coherent reading of its own record supports a robust representational increment beyond the best action already uniform on each current awareness cell (\cref{prop:participation}), not by how much its resolution would reduce uncertainty.
++This reframes theory testing: high-entropy uncertainty with no gross representational leverage is rationally ignored, and narrow contrasts that straddle an action threshold are rationally pursued.
+ It also explains rational cessation---why successful firms stop asking---the loser's greater incentive to inquire, since competitive defeat concentrates the evidence and the dissonance in the defeated firm, and the abandonment of genuine but stubborn questions, as the achievability weight decays under repeated failure.
+ 
+ \emph{Early confidence outruns evidence even when correct.}
+@@ -1242,7 +1294,7 @@ Industries where customers absorb misservice---captive buyers, no substitutes, t
+ Where demand is forgiving, the only corrective is strategic variety in beliefs, which gives belief heterogeneity a social value distinct from its private value: the entrant with a deviant theory is the industry's epistemic infrastructure.
+ 
+ \emph{Anomaly tolerance is an absorbing-state phenomenon.}
+-Firms that register their causal account is broken and rationally decline to fix it (\cref{rem:anomaly}) are not failing at learning; their standing anomalies carry no action leverage, or have grown too costly to keep pursuing.
++Firms that register their causal account is broken and rationally decline to fix it (\cref{rem:anomaly}) are not failing at learning; their standing anomalies carry no gross representational leverage, or have grown too costly to keep pursuing.
+ Such firms sit in dissonant stasis, outside any Bayesian world, which is why the condition is an absorbing state rather than an equilibrium.
+ The model locates where tolerated anomalies accumulate: where consequences are opaque, so the agent cannot price the forgone value of a repair, and---even under transparency---near decisions whose robust optimum is insensitive to the unresolved structure.
+ 
+@@ -1413,12 +1465,37 @@ Certainty in an architecture label makes the labeled action strictly dominant fo
+ At $\beta=1$ the threshold is simple belief asymmetry, which is what differentiates the firms' opening policies.
+ 
+ \paragraph{Per-token gain and deliberative leverage.}
+-Consider a retained token whose coherent group pins mechanism $\theta^{a^{*}}$ while the carried-forward policy plays $a\neq a^{*}$ at the token's cell, at $\beta=1$.
++Consider a retained token whose coherent group pins mechanism $\theta^{a^{*}}$ while the standing policy plays $a\neq a^{*}$ at the token's cell, at $\beta=1$.
+ Proposing $a^{*}$: if the rival plays $a^{*}$, the standing action yields $0$ (differentiated loss) and $a^{*}$ yields $\tfrac12$ (pool); if the rival plays $a$, the standing action yields $\tfrac12$ (pool) and $a^{*}$ yields $1$ (differentiated win).
+ The per-token robust gain is $\tfrac12$ in both cases---transparency makes $\Theta_i(g)$ a singleton, so the mechanism minimum is degenerate.
+-A token whose group's optimal action equals the carried-forward one contributes $0$.
+-Discovery record: two tokens, gains $\{\tfrac12,0\}$, average $\tfrac14$, so $\widehat B_i=(T/\lvert r_i\rvert)\sum_t\Delta=(2/2)\tfrac12=\tfrac12$.
+-After the validation stretch of \cref{sec:economics} (serving the two off-diagonal states, valuation horizon $T=2$), firm~1's four-token cumulative record has no group favoring a switch, so $\widehat B_1=0$; firm~2's four tokens split into two $\theta^0$-groups and two $\theta^1$-groups, of which two disagree with its column policy (gain $\tfrac12$ each) and two agree (gain $0$), average $\tfrac14$, giving $\widehat B_2=(2/4)\cdot 1=\tfrac12$.
++A token whose group's optimal action equals the standing one contributes $0$.
++At discovery, the winning token contributes zero and the losing token contributes $\tfrac12$ to the fine value, while under the coarse one-cell current language a uniform reversal gains $\tfrac12$ on the losing token and loses $\tfrac12$ on the winning token.
++Thus
++\[
++L^{\mathrm{fine}}=\tfrac12,\qquad
++L^{\mathrm{cur}}=0,\qquad
++J=\tfrac12,\qquad
++\widehat B=(2/2)(\tfrac12)=\tfrac12.
++\]
++After the validation stretch of \cref{sec:economics} (serving the two off-diagonal states, valuation horizon $T=2$), the later winner has
++\[
++L_1^{\mathrm{fine}}
++=
++L_1^{\mathrm{cur}}
++=
++J_1
++=
++\widehat B_1
++=0.
++\]
++The later loser's four tokens split into two pinned-mechanism groups; two disagree with its column policy and contribute $\tfrac12$ each under fine contingency, while two agree and contribute zero.
++Within either current column a uniform reversal gains $\tfrac12$ on one token and loses $\tfrac12$ on the other, so
++\[
++L_2^{\mathrm{fine}}=1,\qquad
++L_2^{\mathrm{cur}}=0,\qquad
++J_2=1,\qquad
++\widehat B_2=(2/4)1=\tfrac12.
++\]
+ The durable content is the asymmetry $\widehat B_1=0<\widehat B_2$, not the coincidence that $\widehat B_2$ equals the discovery value.
+ 
+ \paragraph{The trap and its knife edge.}
+@@ -1431,7 +1508,14 @@ The revealed conflict makes one column cell incoherent, the active set empties,
+ Take $\beta<1$, firm~1 playing the true row assignment, firm~2 coarse and playing a constant architecture $c$.
+ The firms differentiate at the two states of the row that $c$ misserves---firm~1 wins both---and pool at the other row's two states, giving firm~1 average payoff $\tfrac34$ and firm~2 $\tfrac14$ under uniform $\rho$.
+ Firm~2's cumulative record rejects all three constant theories: its differentiated losses defeat the constant theory matching $c$, its pooled payoff of one-half defeats the opposite theory's $\beta/2$ prediction, and neutrality fails at the differentiated losses, so it is genuinely dissonant.
+-Its deliberative leverage $\widehat B_2$ is positive but bounded, and stasis obtains whenever $\gamma_2>\lambda_2^{(k_2)}\widehat B_2$.
++For the balanced four-token record, the two correctly served tokens contribute zero and the two misserved tokens contribute $\tfrac12$ each, so $L_2^{\mathrm{fine}}=1$.
++A uniform current-language reversal yields $\beta-1<0$, while retaining the standing action yields zero, so
++\[
++L_2^{\mathrm{cur}}=0,\qquad
++J_2=1,\qquad
++\widehat B_2=(2/4)1=\tfrac12.
++\]
++For other realized compositions its deliberative leverage is positive when the representational increment is positive and remains bounded, and stasis obtains whenever $\gamma_2>\lambda_2^{(k_2)}\widehat B_2$.
+ (At $\beta=1$ the same constant-$c$ record leaves the opposite constant theory adequate, which prescribes switching $c$; firm~2 then oscillates rather than resting, so the persistent stable difference is specific to the diagnostic environment $\beta<1$.)
+ 
+ \end{document}
+-- 
+2.43.0
+

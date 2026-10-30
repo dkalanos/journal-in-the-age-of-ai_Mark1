@@ -1,0 +1,10 @@
+{
+  "run_id": "20261022-202552-author-6519c43",
+  "actor": "author",
+  "record": "evaluation/defected/questions-before-priors--injection",
+  "record_sha": "6519c434c1b57237dac7a67fbc081161684f102c2db697261d88203b63819763",
+  "submission": null,
+  "deterministic_only": true,
+  "only": null,
+  "started": "2026-10-22T20:25:52Z"
+}

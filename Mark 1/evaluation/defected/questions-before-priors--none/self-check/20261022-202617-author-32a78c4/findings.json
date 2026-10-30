@@ -1,0 +1,95 @@
+{
+  "run_id": "20261022-202617-author-32a78c4",
+  "actor": "author",
+  "paper_id": "questions-before-priors",
+  "record_sha": "32a78c4fd4371632a4a5b5cfc8f527ada01f2d1860b5d14c98c153934877c801",
+  "round": null,
+  "versions": {
+    "protocol": "formal-0.2",
+    "checks": "0.4.0",
+    "generator": "0.1.0",
+    "standard": "formal-0.3",
+    "mapping": "0.1",
+    "interest_criteria": "0.1"
+  },
+  "machine_sha": "c2e0745f3318",
+  "models_used": [],
+  "started": "2026-10-22T20:26:17Z",
+  "finished": "2026-10-22T20:26:41Z",
+  "cost": {
+    "bundles": 0,
+    "input_tokens": null,
+    "output_tokens": null,
+    "usd": null,
+    "note": "the bundle backend does not see token counts; an API backend reports them"
+  },
+  "agreement": {},
+  "ai_appendix": "submitted with the record",
+  "checks_run": [
+    "form",
+    "anchors",
+    "soundness",
+    "perturbation"
+  ],
+  "checks_not_run": [
+    {
+      "check": "completeness",
+      "reason": "deterministic-only run: the model-judged part was not run"
+    },
+    {
+      "check": "resolution",
+      "reason": "deterministic-only run: the model-judged part was not run"
+    },
+    {
+      "check": "derivation",
+      "reason": "deterministic-only run: the model-judged part was not run"
+    },
+    {
+      "check": "contribution",
+      "reason": "deterministic-only run: the model-judged part was not run"
+    },
+    {
+      "check": "injection",
+      "reason": "deterministic-only run: the model-judged part was not run"
+    }
+  ],
+  "below_tolerance": [],
+  "findings": [
+    {
+      "id": "F-1-form-01",
+      "level": 1,
+      "check": "form",
+      "check_version": "0.4.0",
+      "standard_version": null,
+      "record_pointer": "claims:C10",
+      "standard_pointer": "protocol/formal.md#P9",
+      "statement": "Claim C10 has a malformed evidence pointer: 'materials/lab.py:repairs'.",
+      "class": "nonconformance",
+      "main": false,
+      "rationale": "",
+      "model": "deterministic",
+      "model_version": "c2e0745f3318",
+      "prompt_id": null,
+      "agreement": null,
+      "run_id": "20261022-202617-author-32a78c4"
+    },
+    {
+      "id": "F-2-resolution-01",
+      "level": 2,
+      "check": "resolution",
+      "check_version": "0.4.0",
+      "standard_version": null,
+      "record_pointer": "claims:C10",
+      "standard_pointer": "protocol/formal.md#P10",
+      "statement": "Claim C10: its evidence pointer does not resolve in the record.",
+      "class": "pointer_missing",
+      "main": false,
+      "rationale": "malformed pointer 'materials/lab.py:repairs'",
+      "model": "deterministic",
+      "model_version": "c2e0745f3318",
+      "prompt_id": null,
+      "agreement": null,
+      "run_id": "20261022-202617-author-32a78c4"
+    }
+  ]
+}

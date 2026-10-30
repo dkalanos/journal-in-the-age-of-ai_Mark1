@@ -1,0 +1,18 @@
+{
+  "id": "W2152908192",
+  "openalex_id": "W2152908192",
+  "doi": "10.1287/mnsc.49.7.936.16380",
+  "title": "Subjective Rationality, Self–Confirming Equilibrium, and Corporate Strategy",
+  "year": 2003,
+  "authors": [
+    "Michael D. Ryall"
+  ],
+  "venue": "Management Science",
+  "abstract": "This paper presents a formal theory of subjective rationality and demonstrates its application to corporate strategy. An agent is said to be subjectively rational when decisions are consistent with the available facts and, where these are lacking, with the agent's own subjective assessments. A self–confirming equilibrium arises when agents' subjectively rational actions generate events that are consistent with their own expectations. Equilibrium strategies may be suboptimal because certain counterfactual beliefs may be erroneous and yet fail to be contradicted by events observed in equilibrium. This weakening of the stronger rationality assumptions inherent in many of the more familiar equilibrium ideas appears well suited to applications in strategy. In particular, performance advantage may be sustained by a firm when its subjectively rational competitors persistently employ suboptimal self–confirming strategies.",
+  "topics": [
+    "Game Theory and Applications",
+    "Merger and Competition Analysis",
+    "Experimental Behavioral Economics Studies"
+  ],
+  "cited_by_count": 42
+}

@@ -1,0 +1,43 @@
+# Object 4: the mapping from finding classes to standard actions (appendix F.1).
+# Each finding takes the first rule it matches. The standard action at intake is the most severe
+# action across all findings. A pass is one prior "return for corrections" on this paper.
+version: "0.3"  # 0.3 (2026-10-29): evidence that carries part of a claim (class evidence_partial) proceeds to review with the finding carried (R9): the author submitted with it on their own report, and reviewers see it; return for corrections stays for a pointer that does not resolve or evidence that says nothing. 0.2 (2026-10-27): class `derivation` removed with check (d)
+two_pass_bound: 2
+
+severity:  # most severe first
+  - return_without_review
+  - refer_to_specialist
+  - return_for_corrections
+  - proceed_to_review
+
+rules:
+  - id: R1
+    when: {class: [injection]}
+    action: return_without_review
+  - id: R2
+    when: {class: [nonconformance, claim_unresolved, pointer_missing, anchor_failed], passes_exhausted: true}
+    action: return_without_review
+  - id: R3
+    when: {class: [nonconformance, claim_unresolved, pointer_missing, anchor_failed]}
+    action: return_for_corrections
+  - id: R4
+    when: {class: [warrant_gap, standard_departure], main: true, passes_exhausted: true}
+    action: return_without_review
+  - id: R5
+    when: {class: [warrant_gap, standard_departure], main: true}
+    action: return_for_corrections
+  - id: R6
+    when: {class: [warrant_gap, standard_departure], main: false}
+    action: proceed_to_review
+  - id: R7
+    when: {class: [established_by_prior]}
+    action: proceed_to_review
+  - id: R8
+    when: {class: [uncovered]}
+    action: refer_to_specialist
+  - id: R9
+    when: {class: [evidence_partial]}
+    action: proceed_to_review
+
+unmatched: refer_to_specialist
+no_findings: proceed_to_review

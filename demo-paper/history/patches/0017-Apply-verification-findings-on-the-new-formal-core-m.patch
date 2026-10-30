@@ -1,0 +1,112 @@
+From be4b0f9a5c72d078920a6cf9f0aca66e87d3dc3f Mon Sep 17 00:00:00 2001
+From: MDR Git <mdr@mikeryall.com>
+Date: Sat, 25 Jul 2026 10:47:01 -0400
+Subject: [PATCH 17/27] Apply verification findings on the new formal-core
+ material
+
+Independent adversarial check of the new math (rest-points ii-b recast,
+prop:capacity, app:eprocess, prop:punishing): no blockers; fixes applied:
+- prop:punishing [MAJOR]: "generic/knife-edge" was an eta=0 claim; for eta>0 the
+  concealing region is open too. Recast as "Diagnosticity is robust" (openness =>
+  robustness; knife-edge only as eta->0). Also quantify strict punishment over every
+  ACTIVE THEORY at the on-path conditional (not "a theory prescribes"), fixing the
+  >=3-action/mixed-belief looseness.
+- prop:capacity proof: dominate by a fixed-fraction bet with i.i.d. log-increments
+  (the mixture itself isn't one); rename w_{j*} -> v_{j*}.
+- app:eprocess: state lambda_max <= 1/(1+eta) for nonnegativity (eta=0 exception).
+- def:test / lem / prop:capacity: growth rate is the "betting exponent," not KL.
+
+rest-points(ii-b), prop:capacity(ii), app:eprocess core, rem:two-sources verified
+sound as-is. Compiles, 42pp.
+
+Co-Authored-By: Claude Opus 4.8 <noreply@anthropic.com>
+---
+ paper/tbv_mdr_Paper01-v04.tex | 26 ++++++++++++++------------
+ 1 file changed, 14 insertions(+), 12 deletions(-)
+
+diff --git a/paper/tbv_mdr_Paper01-v04.tex b/paper/tbv_mdr_Paper01-v04.tex
+index 37709e8..1ded198 100644
+--- a/paper/tbv_mdr_Paper01-v04.tex
++++ b/paper/tbv_mdr_Paper01-v04.tex
+@@ -415,7 +415,7 @@ With stochastic mechanisms, no announcement would occur at all.
+ Fix an adequacy tolerance $\eta\ge0$.
+ Theory $m$ is \emph{adequate} at a visited pair $(C,a)$ when $\TV\!\left(p_i^{*}(\cdot\mid C,a),\marg{i}m(C)(a)\right)\le\eta$, where $\TV$ is total-variation distance; under a standing profile call $m$ \emph{$\eta$-adequate} if it is adequate at every visited pair and \emph{$\eta$-inadequate} if it is inadequate at some visited pair.
+ The agent monitors adequacy \emph{sequentially}, period by period.
+-For each expressible theory $m$ it maintains a nonnegative \emph{evidence process} $E_i^{m}$, equal to $1$ before any play and multiplied each period by a nonnegative factor for the observed token; the factor is built so that $E_i^{m}$ is a supermartingale as long as $m$ is adequate---its evidence against $m$ does not grow in expectation---while at any pair where $m$ is inadequate $\log E_i^{m}$ grows in expectation at a strictly positive rate, the information divergence between the on-path conditional and $m$'s prediction.
++For each expressible theory $m$ it maintains a nonnegative \emph{evidence process} $E_i^{m}$, equal to $1$ before any play and multiplied each period by a nonnegative factor for the observed token; the factor is built so that $E_i^{m}$ is a supermartingale as long as $m$ is adequate---its evidence against $m$ does not grow in expectation---while at any pair where $m$ is inadequate $\log E_i^{m}$ grows in expectation at a strictly positive rate (the pair's optimal betting exponent; \cref{app:eprocess}).
+ (\Cref{app:eprocess} gives an explicit mixture construction; in the exact deterministic case $\eta=0$ the factor is the likelihood ratio, so $E_i^{m}$ becomes $+\infty$ the first period $m$ assigns probability zero to a realized consequence.)
+ Agent $i$ carries a \emph{dissonance capacity} $b_i>0$ and \emph{rejects} $m$, permanently, at the first period in which $\log E_i^{m}\ge b_i$.
+ The \emph{active set} $\widehat M_i(\mathcal P_i,r_i)$ collects the not-yet-rejected theories.
+@@ -444,7 +444,7 @@ Consequently dissonance arises almost surely when every expressible theory falls
+ 
+ \begin{proof}
+ A recurrent pair is visited each period with a fixed positive probability under the i.i.d.\ full-support draw, hence infinitely often; a frozen pair is visited only in the finite prefix and adds at most a fixed constant to $\log E_i^{m}$.
+-If $m$ is inadequate at a recurrent pair, that pair's betting factor has strictly positive expected log-growth (the information divergence) while every adequate pair's factor has nonnegative expected log-growth under the construction, so by the strong law $\log E_i^{m}\to+\infty$ almost surely and $m$ is rejected; likewise if the frozen constant alone reaches $b_i$.
++If $m$ is inadequate at a recurrent pair, that pair's betting factor has strictly positive expected log-growth (the pair's betting exponent) while every adequate pair's factor has nonnegative expected log-growth under the construction, so by the strong law $\log E_i^{m}\to+\infty$ almost surely and $m$ is rejected; likewise if the frozen constant alone reaches $b_i$.
+ If $m$ is $\eta$-adequate at every recurrent pair and its frozen evidence is below $b_i$, then $E_i^{m}$ is a nonnegative supermartingale, so Ville's inequality gives $\Pr(\sup_t\log E_i^{m}\ge b_i)\le e^{-b_i}$, and off that event $m$ is never rejected.
+ Permanence of rejection and finiteness of $M(\mathcal P_i)$ make the active set monotone and eventually constant; collecting the two cases gives the dissonance dichotomy.
+ \end{proof}
+@@ -1097,14 +1097,14 @@ The residual clause is the complement of the on-path constraints.
+ \label{prop:capacity}
+ Fix a standing profile and agent $i$ with dissonance capacity $b_i$.
+ \begin{enumerate}[label=(\roman*)]
+-  \item \emph{Detection.} Suppose the profile is exposed, and let its \emph{detectability} be $D_i>0$: the smallest across expressible theories of the per-period growth rate of $\log E_i^{m}$ (for each theory, the visit rate times the information divergence at its most-detectable inadequate pair; positive because each theory is inadequate at a recurrent pair). Then the expected number of periods until agent $i$'s dissonance is $O(b_i/D_i)$---linear in capacity, inverse in detectability---and at least of order $b_i$.
++  \item \emph{Detection.} Suppose the profile is exposed, and let its \emph{detectability} be $D_i>0$: the smallest across expressible theories of the per-period growth rate of $\log E_i^{m}$ (for each theory, the visit rate times the betting exponent at its most-detectable inadequate pair; positive because each theory is inadequate at a recurrent pair). Then the expected number of periods until agent $i$'s dissonance is $O(b_i/D_i)$---linear in capacity, inverse in detectability---and at least of order $b_i$.
+   \item \emph{Robustness.} If instead the profile is not exposed and is entered adequately, agent $i$ spuriously becomes dissonant with probability at most $e^{-b_i}$ (\cref{prop:rest-points}(ii-b)).
+ \end{enumerate}
+ Capacity is thus a single cognitive-style dial: raising $b_i$ lengthens stable stretches and hardens rest points against false alarms, at the cost of slower detection of a genuinely broken language.
+ \end{proposition}
+ 
+ \begin{proof}
+-(i) By the mixture construction of \cref{def:test}, $E_i^{m}$ dominates a nonnegative martingale $w_{j^{*}}M_i^{m,j^{*}}$ betting against $m$ at an inadequate recurrent pair $j^{*}$, and $\log M_i^{m,j^{*}}$ has i.i.d.\ increments of positive mean $\bar d_i^{m}\ge D_i$. The rejection time $\tau_m$ is no later than the crossing time of $\log M_i^{m,j^{*}}$ above $b_i-\log w_{j^{*}}$, so Wald's identity gives $\mathbb E[\tau_m]\le(b_i+c)/D_i$ with $c$ absorbing the constant $-\log w_{j^{*}}$ and the bounded overshoot. Dissonance is $\max_m\tau_m\le\sum_m\tau_m$, so its expected time is at most $\lvert M(\mathcal P_i)\rvert(b_i+c)/D_i$; and since per-period increments of $\log E_i^{m}$ are bounded by some $R$, crossing $b_i$ needs at least $b_i/R$ periods. (ii) is the per-agent bound of \cref{prop:rest-points}(ii-b).
++(i) By \cref{app:eprocess}, $E_i^{m}\ge v_{j^{*}}M_i^{m,j^{*}}$ at an inadequate recurrent pair $j^{*}$, and $M_i^{m,j^{*}}$ in turn dominates a single fixed-fraction bet $W$ whose $\log$ has i.i.d.\ per-period increments of positive mean $\bar d_i^{m}\ge D_i$ (the visit rate times the pair's betting exponent). The rejection time $\tau_m$ is no later than the crossing time of $\log W$ above $b_i-\log(v_{j^{*}}\pi^{*})$, where $\pi^{*}>0$ is the prior mass the mixture places near the optimal bet, so Wald's identity gives $\mathbb E[\tau_m]\le(b_i+c)/D_i$ with $c$ absorbing those constants and the bounded overshoot. Dissonance is $\max_m\tau_m\le\sum_m\tau_m$, so its expected time is at most $\lvert M(\mathcal P_i)\rvert(b_i+c)/D_i$; and since per-period increments of $\log E_i^{m}$ are bounded by some $R$, crossing $b_i$ needs at least $b_i/R$ periods. (ii) is the per-agent bound of \cref{prop:rest-points}(ii-b).
+ \end{proof}
+ 
+ \begin{proposition}[Persistent performance differences]
+@@ -1141,17 +1141,19 @@ By \cref{def:scue}(iii), theories surviving in a SCUE are not $\eta$-inadequate;
+ The second claim restates \cref{def:exposure}: a false theory survives only under concealing profiles, and, under its no-legacy proviso, \cref{prop:exposure} makes concealment necessary for survival and sufficient for avoiding eventual dissonance.
+ \end{proof}
+ 
+-\begin{proposition}[Diagnosticity is generic]
++\begin{proposition}[Diagnosticity is robust]
+ \label{prop:punishing}
+-Because an agent's consequence $x_i$ carries its realized payoff, a theory that makes an objectively suboptimal action look best is exposed the moment that action is played---unless the action's realized consequence happens to match what the theory predicts.
+-Call the primitives \emph{strictly punishing} if, under every SCUE-sustainable profile, each objectively suboptimal action an expressible theory can prescribe yields a realized consequence lying more than $\eta$ in total variation from that theory's prediction.
++Because an agent's consequence $x_i$ carries its realized payoff, an objectively suboptimal standing action is exposed the moment it is played---unless its on-path consequence happens to match what the agent's theories predict.
++Call the primitives \emph{strictly punishing} if, under every SCUE-sustainable profile, whenever an agent's standing action is objectively suboptimal at a visited state, the on-path conditional at that visited pair lies more than $\eta$ in total variation from every active theory's prediction.
+ Strictly punishing primitives are diagnostic, so by \cref{prop:diagnostic} their every SCUE is free of payoff-relevant error.
+-Strict punishment is an open condition on $(\Theta,\tau,\pi)$: diagnosticity is therefore generic, and concealment is the knife-edge on which a wrong action's realized consequence exactly matches the prediction that made it look best---in the running example, exactly $\beta=1$.
++The condition is a finite conjunction of strict inequalities, hence open in $(\Theta,\tau,\pi)$: diagnosticity is \emph{robust}, surviving small perturbations of the primitives.
++Concealment is open too when $\eta>0$---a theory predicting within $\eta$ of the on-path conditional tolerates perturbation---and collapses to the exact-match knife-edge only as $\eta\to0$, where the running example lives ($\beta=1$).
+ \end{proposition}
+ 
+ \begin{proof}
+-A payoff-relevantly false theory prescribes an objectively suboptimal action at some visited state; under strict punishment its realized consequence there lies more than $\eta$ in total variation from the theory's prediction, so the theory is $\eta$-inadequate and cannot survive a SCUE (\cref{def:scue}(iii))---the environment is diagnostic.
+-The defining inequality is strict, hence open in $(\Theta,\tau,\pi)$; its boundary, where the realized consequence matches the prediction exactly, is the concealing knife-edge, $\beta=1$ in the running example.
++If an agent's standing action is objectively suboptimal at a visited state, strict punishment places the on-path conditional there more than $\eta$ from every active theory's prediction, so every active theory is $\eta$-inadequate at that pair and the active set empties---dissonance, not a SCUE.
++Hence in a SCUE no standing action is payoff-relevantly false, which is the diagnostic property.
++Openness is the finite conjunction of strict inequalities; for $\eta>0$ the concealing region (predictions within $\eta$ of the on-path conditional) is open as well, so only at $\eta=0$ does concealment reduce to the exact-match knife-edge ($\beta=1$ in the running example).
+ \end{proof}
+ 
+ \begin{excont}
+@@ -1243,7 +1245,7 @@ Strategy's oldest question---why do similar firms perform differently?---here re
+ 
+ Fix agent $i$ and theory $m$.
+ At a visited pair $(C,a)$ write $q=\marg{i}m(C)(a)$ for $m$'s prediction; adequacy at $(C,a)$ is $\TV(p_i^{*}(\cdot\mid C,a),q)\le\eta$, equivalently $\lvert p_i^{*}(D)-q(D)\rvert\le\eta$ for every $D\subseteq X_i$.
+-For each such $D$, each sign, and each betting fraction $\lambda\in[0,\lambda_{\max}]$, the process that multiplies by $1+\lambda\bigl(\mathbf 1\{x\in D\}-(q(D)+\eta)\bigr)$ at each visit to $(C,a)$, and by $1$ otherwise, is nonnegative and, under adequacy, a supermartingale: its conditional expectation multiplies by $1+\lambda\bigl(p_i^{*}(D)-q(D)-\eta\bigr)\le1$.
++For each such $D$, each sign, and each betting fraction $\lambda\in[0,\lambda_{\max}]$ with $\lambda_{\max}\le1/(1+\eta)$ (so the factor stays nonnegative), the process that multiplies by $1+\lambda\bigl(\mathbf 1\{x\in D\}-(q(D)+\eta)\bigr)$ at each visit to $(C,a)$, and by $1$ otherwise, is nonnegative and, under adequacy, a supermartingale: its conditional expectation multiplies by $1+\lambda\bigl(p_i^{*}(D)-q(D)-\eta\bigr)\le1$.
+ Let $M_i^{m,(C,a)}$ average these betting processes over $D$, sign, and a prior on $\lambda$---a \emph{mixture} e-value, so no bet need be fixed in advance---and set
+ \[
+ E_i^{m}=\sum_{(C,a)}v_{(C,a)}\,M_i^{m,(C,a)},
+@@ -1256,7 +1258,7 @@ If instead $m$ is inadequate at a recurrent pair $j^{*}=(C,a)$---some $D$ has $p
+ E_i^{m}\ \ge\ v_{j^{*}}\,M_i^{m,j^{*}}\ \longrightarrow\ \infty\quad\text{a.s.},
+ \]
+ at a rate equal to that pair's optimal betting exponent (a Chernoff information divergence); this is the dominating-component property used in \cref{lem:test-consistency,prop:capacity}.
+-In the exact deterministic case $\eta=0$ with degenerate predictions, the $D=\{x\}$ bet with $\lambda\to\lambda_{\max}$ reduces to the likelihood ratio, and $E_i^{m}$ becomes $+\infty$ at the first consequence $m$ deems impossible.
++In the exact deterministic case $\eta=0$ with degenerate predictions, the $D=\{x\}$ bet---where $q(D)+\eta=0$ permits $\lambda_{\max}\to\infty$---reduces to the likelihood ratio, and $E_i^{m}$ becomes $+\infty$ at the first consequence $m$ deems impossible.
+ 
+ \section{Proofs of Theorem~\ref{thm:absorption} and
+ Proposition~\ref{prop:rest-points}}
+-- 
+2.43.0
+

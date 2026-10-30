@@ -1,0 +1,21 @@
+title: Research record manifest (record.yaml)
+type: object
+required: [paper_id, title, authors, modality, protocol_version, materials_tier, parts]
+properties:
+  paper_id: {type: string, pattern: "^[a-z0-9][a-z0-9-]*$"}
+  title: {type: string}
+  authors: {type: array, items: {type: string}, minItems: 1}
+  modality: {enum: [formal, empirical, simulation, qualitative, verbal, survey]}
+  protocol_version: {type: string}
+  materials_tier: {enum: [public, restricted, described_only]}
+  parts:
+    type: object
+    required: [paper, appendix, materials, provenance, declarations]
+    properties:
+      paper: {type: string}
+      appendix: {type: string}
+      ai_appendix: {type: string}
+      materials: {type: string}
+      provenance: {type: string}
+      declarations: {type: string}
+  working_history: {type: [string, "null"]}

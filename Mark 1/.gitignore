@@ -1,0 +1,7 @@
+.venv/
+__pycache__/
+*.egg-info/
+.pytest_cache/
+# other people's text (introduction excerpts from licensed copies); kept locally for replay, never pushed
+bundles/
+introductions.json

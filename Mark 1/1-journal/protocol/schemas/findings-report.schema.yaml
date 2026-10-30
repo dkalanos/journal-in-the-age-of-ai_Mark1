@@ -1,0 +1,22 @@
+title: Findings report, the set of findings from one run of the checks on one record
+type: object
+required: [run_id, actor, paper_id, record_sha, versions, machine_sha, models_used, started, finished,
+           cost, agreement, checks_run, checks_not_run, below_tolerance, findings]
+properties:
+  run_id: {type: string}
+  actor: {enum: [author, journal]}
+  paper_id: {type: string}
+  record_sha: {type: string}
+  round: {type: [integer, "null"]}
+  versions: {type: object}
+  machine_sha: {type: string}
+  models_used: {type: array, items: {type: object}}
+  started: {type: string}
+  finished: {type: string}
+  cost: {type: object}
+  agreement: {type: object}
+  ai_appendix: {type: string}
+  checks_run: {type: array, items: {type: string}}
+  checks_not_run: {type: array, items: {type: object, required: [check, reason]}}
+  below_tolerance: {type: array, items: {$ref: "finding.schema.yaml"}}
+  findings: {type: array, items: {$ref: "finding.schema.yaml"}}

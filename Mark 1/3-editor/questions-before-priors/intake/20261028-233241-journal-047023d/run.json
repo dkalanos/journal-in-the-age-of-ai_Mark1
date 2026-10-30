@@ -1,0 +1,10 @@
+{
+  "run_id": "20261028-233241-journal-047023d",
+  "actor": "journal",
+  "record": "3-editor/questions-before-priors/rounds/r1/record",
+  "record_sha": "047023dde171454808f76eb75961547c180e752978dee74ce32e98bfb1ee24c8",
+  "submission": "3-editor/questions-before-priors/rounds/r1",
+  "deterministic_only": false,
+  "only": null,
+  "started": "2026-10-28T23:32:41Z"
+}

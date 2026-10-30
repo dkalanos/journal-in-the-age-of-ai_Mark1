@@ -1,0 +1,9 @@
+title: Submission (written by mark1 submit into the journal snapshot)
+type: object
+required: [paper_id, round, record_sha, author_run, submitted_at]
+properties:
+  paper_id: {type: string}
+  round: {type: integer, minimum: 1}
+  record_sha: {type: string}
+  author_run: {type: string}
+  submitted_at: {type: string}

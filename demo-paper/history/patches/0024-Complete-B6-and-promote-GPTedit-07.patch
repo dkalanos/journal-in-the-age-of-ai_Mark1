@@ -1,0 +1,238 @@
+From 7646420218142a6dccf2fff7b65a3c19e7e8d66b Mon Sep 17 00:00:00 2001
+From: MDR Git <mdr@mikeryall.com>
+Date: Fri, 14 Aug 2026 13:13:46 -0400
+Subject: [PATCH 24/27] Complete B6 and promote GPTedit-07
+
+---
+ ..._GPTedit-06.tex => tbv_mdr_GPTedit-07.tex} | 174 +++++++++++++++---
+ 1 file changed, 152 insertions(+), 22 deletions(-)
+ rename paper/{tbv_mdr_GPTedit-06.tex => tbv_mdr_GPTedit-07.tex} (94%)
+
+diff --git a/paper/tbv_mdr_GPTedit-06.tex b/paper/tbv_mdr_GPTedit-07.tex
+similarity index 94%
+rename from paper/tbv_mdr_GPTedit-06.tex
+rename to paper/tbv_mdr_GPTedit-07.tex
+index 9bb820f..c7c70f5 100644
+--- a/paper/tbv_mdr_GPTedit-06.tex
++++ b/paper/tbv_mdr_GPTedit-07.tex
+@@ -1,4 +1,4 @@
+-% TRUTH VERSION: tbv_mdr_GPTedit-06.tex
++% TRUTH VERSION: tbv_mdr_GPTedit-07.tex
+ % FILE ROLE: AUTHORITATIVE SOURCE
+ % DOCUMENT: Scholarly Paper TBV
+ 
+@@ -1247,38 +1247,126 @@ Agents identical in \emph{everything} but their dissonance capacity $b_i$ and sw
+ The first is the awareness-path microfoundation; the second a parametric cognitive-style one---and neither is available in the fixed-language tradition.
+ \end{remark}
+ 
+-\begin{definition}[Diagnostic environments]
++\begin{definition}[Payoff-relevant policy error and diagnostic environments]
+ \label{def:diagnostic}
+-An expressible theory is \emph{payoff-relevantly false} for agent $i$ under a profile if the truth would render $i$'s standing action suboptimal at some visited state---not merely shrink the set of optimal actions.
+-The primitives $(\Theta,\tau,\rho,\pi)$ are \emph{diagnostic} if, under every profile sustainable in a SCUE, every payoff-relevantly false theory is $\eta$-inadequate.
++Fix a profile of epistemic states inducing standing profile \(\sigma\), and write
++\[
++a^{\sigma}(s)
++=
++\bigl(
++\sigma_j(C_{\mathcal P_j}(s))
++\bigr)_{j\in N}.
++\]
++Agent \(i\)'s standing policy has a \emph{payoff-relevant policy error} at state \(s\) if
++\[
++\mathbb E_{x\sim\tau(s)(a^{\sigma}(s))}
++\!\left[\pi_i(x_i)\right]
++<
++\max_{\widetilde a_i\in A_i}
++\mathbb E_{x\sim
++\tau(s)(\widetilde a_i,a_{-i}^{\sigma}(s))}
++\!\left[\pi_i(x_i)\right].
++\]
++Thus objective evaluation makes the standing action strictly suboptimal, rather than merely changing the set of optimal actions while leaving the standing action optimal.
++
++The primitives are \emph{diagnostic at tolerance \(\eta\)} if, for every profile of epistemic states satisfying the strategic stationarity and conjecture-confirmation conditions \emph{(i)}--\emph{(ii)} of \cref{def:scue}, any payoff-relevant policy error for any agent \(i\) implies that \(\mathcal P_i\) is exposed under the induced standing profile in the sense of \cref{def:exposure}.
+ \end{definition}
+ 
+-\begin{proposition}[No payoff-relevant error in diagnostic environments]
++\begin{proposition}[No payoff-relevant policy error in diagnostic environments]
+ \label{prop:diagnostic}
+-In a diagnostic environment, every SCUE is free of payoff-relevant error.
+-Payoff-relevant falsity survives only in environments that admit concealing profiles, and it requires them to be sustained: collective error needs the absence of \emph{both} corrective forces, strategic variety inside agents' categories and environmental punishment of uniform misservice.
++In an environment diagnostic at tolerance \(\eta\), no SCUE contains a payoff-relevant policy error.
+ \end{proposition}
+ 
+ \begin{proof}
+-By \cref{def:scue}(iii), theories surviving in a SCUE are not $\eta$-inadequate; in a diagnostic environment every payoff-relevantly false theory is.
+-The second claim restates \cref{def:exposure}: a false theory survives only under concealing profiles, and, under its no-legacy proviso, \cref{prop:exposure} makes concealment necessary for survival and sufficient for avoiding eventual dissonance.
++Suppose, to the contrary, that a SCUE contains a payoff-relevant policy error for agent \(i\).
++Every SCUE satisfies the strategic stationarity and conjecture-confirmation conditions \emph{(i)}--\emph{(ii)} of \cref{def:scue}, so diagnosticity implies that \(\mathcal P_i\) is exposed under the induced standing profile.
++Hence every theory in \(M(\mathcal P_i)\), and therefore every theory active on that language, is \(\eta\)-inadequate at some recurrent on-path pair.
++
++By \cref{lem:test-consistency}, every such active theory is eventually rejected almost surely; theories inactive at initialization or already rejected cannot re-enter.
++Because \(M(\mathcal P_i)\) is finite, the active set is therefore eventually empty almost surely.
++This contradicts condition \emph{(iii)} of \cref{def:scue}, which requires the active set to be almost surely eventually nonempty.
+ \end{proof}
+ 
+-\begin{proposition}[Diagnosticity is robust]
++\paragraph{Concealment is necessary, not sufficient.}
++By \cref{prop:adequacy}, an objectively false theory that retains nonvanishing acting-belief mass in a stable SCUE must be \(\eta\)-adequate on path; the induced profile is therefore concealing for that theory in the sense of \cref{def:exposure}.
++Concealment alone does not guarantee survival.
++The theory must also be admitted when the language is initialized, avoid prior and subsequent rejection, retain nonvanishing acting-belief mass, support a stationary standing policy, coexist with confirmed conjectures, and leave no profitable inquiry election.
++In stochastic environments even an active \(\eta\)-adequate theory remains subject to the conditional false-rejection bound of \cref{lem:test-consistency}; under the exact deterministic detector an active adequate theory is never falsely rejected, but the remaining SCUE conditions are still required.
++
++\begin{proposition}[Strict punishment implies diagnosticity]
+ \label{prop:punishing}
+-Because an agent's consequence $x_i$ carries its realized payoff, an objectively suboptimal standing action is exposed the moment it is played---unless its on-path consequence happens to match what the agent's theories predict.
+-Call the primitives \emph{strictly punishing} if, under every SCUE-sustainable profile, whenever an agent's standing action is objectively suboptimal at a visited state, the on-path conditional at that visited pair lies more than $\eta$ in total variation from every active theory's prediction.
+-Strictly punishing primitives are diagnostic, so by \cref{prop:diagnostic} their every SCUE is free of payoff-relevant error.
+-The condition is a finite conjunction of strict inequalities, hence open in $(\Theta,\tau,\pi)$: diagnosticity is \emph{robust}, surviving small perturbations of the primitives.
+-Concealment is open too when $\eta>0$---a theory predicting within $\eta$ of the on-path conditional tolerates perturbation---and collapses to the exact-match knife-edge only as $\eta\to0$, where the running example lives ($\beta=1$).
++Call the primitives \emph{strictly punishing at tolerance \(\eta\)} if, for every profile of epistemic states satisfying conditions \emph{(i)}--\emph{(ii)} of \cref{def:scue}, every payoff-relevant policy error for agent \(i\) at state \(s\) satisfies
++\[
++\min_{m\in M(\mathcal P_i)}
++\TV\!\left(
++p_i^{*}\!\left(
++\cdot\mid
++C_{\mathcal P_i}(s),a^{\sigma}(s)
++\right),
++\marg{i}m(C_{\mathcal P_i}(s))(a^{\sigma}(s))
++\right)
++>
++\eta.
++\]
++Strictly punishing primitives are diagnostic at tolerance \(\eta\).
++Consequently, every SCUE under strictly punishing primitives is free of payoff-relevant policy error.
+ \end{proposition}
+ 
+ \begin{proof}
+-If an agent's standing action is objectively suboptimal at a visited state, strict punishment places the on-path conditional there more than $\eta$ from every active theory's prediction, so every active theory is $\eta$-inadequate at that pair and the active set empties---dissonance, not a SCUE.
+-Hence in a SCUE no standing action is payoff-relevantly false, which is the diagnostic property.
+-Openness is the finite conjunction of strict inequalities; for $\eta>0$ the concealing region (predictions within $\eta$ of the on-path conditional) is open as well, so only at $\eta=0$ does concealment reduce to the exact-match knife-edge ($\beta=1$ in the running example).
++At a payoff-relevantly erroneous state, the displayed inequality places the on-path conditional more than \(\eta\) from the prediction of every expressible theory at the induced recurrent cell--profile pair.
++Every \(m\in M(\mathcal P_i)\) is therefore \(\eta\)-inadequate, so \(\mathcal P_i\) is exposed.
++Because this implication holds for every profile satisfying the strategic stationarity and conjecture-confirmation conditions, the primitives are diagnostic by \cref{def:diagnostic}.
++The final claim follows from \cref{prop:diagnostic}.
+ \end{proof}
+ 
++\begin{remark}[Local robustness of strict margins]
++Fix the awareness partitions, a standing profile \(\sigma\), and a state \(s\) at which agent \(i\) has a payoff-relevant policy error.
++Let the strict objective payoff margin be
++\[
++\varepsilon
++=
++\max_{\widetilde a_i\in A_i}
++\mathbb E_{x\sim
++\tau(s)(\widetilde a_i,a_{-i}^{\sigma}(s))}
++[\pi_i(x_i)]
++-
++\mathbb E_{x\sim\tau(s)(a^{\sigma}(s))}
++[\pi_i(x_i)]
++>0,
++\]
++and let the strict diagnostic separation margin be
++\[
++\delta
++=
++\min_{m\in M(\mathcal P_i)}
++\TV\!\left(
++p_i^{*}\!\left(
++\cdot\mid
++C_{\mathcal P_i}(s),a^{\sigma}(s)
++\right),
++\marg{i}m(C_{\mathcal P_i}(s))(a^{\sigma}(s))
++\right)
++-\eta
++>0.
++\]
++For a fixed finite indexing of states, actions, consequences, and mechanisms, and holding the induced profile and relevant support fixed, these payoff and total-variation comparisons are continuous in the underlying probability and payoff vectors.
++Sufficiently small perturbations therefore preserve both strict margins.
++
++This is a local stability result for a fixed profile and comparison, not a claim that global diagnosticity is an open property: perturbations may change which profiles satisfy the strategic stationarity and conjecture-confirmation conditions.
++Likewise, concealment relative to a fixed profile is locally stable when some objectively false theory satisfies
++\[
++\max_{(C,a)\ {\rm visited}}
++\TV\!\left(
++p_i^{*}(\cdot\mid C,a),
++\marg{i}m(C)(a)
++\right)
++<\eta
++\]
++with positive slack and the perturbation also preserves objective falsity.
++A weakly concealing theory that binds at
++\(\TV=\eta\) need not remain concealing after perturbation; exact matching at \(\eta=0\) is therefore a boundary case rather than an open region.
++\end{remark}
++
+ \begin{excont}
+ \emph{The trap.}
+ Set $\beta=1$ and suppose both firms acquired the column refinement after discovery and became certain of the false column assignment.
+@@ -1292,13 +1380,36 @@ In the first period serving an off-diagonal state, the pooled firms receive $\be
+ Payoff-relevant self-confirmation is a knife-edge property of perfectly forgiving demand, and the destroyed value $1-\beta$ at each misserved period is itself the corrective signal: what demand withholds from the firms, their epistemics receives as evidence.
+ 
+ \emph{Persistence.}
+-Run the asymmetric configuration at $\beta<1$: firm~1 holds the row refinement and the true assignment; firm~2 remains coarse and, by $\gamma_2>\lambda_2^{(k_2)}\widehat B_2$, sits in dissonant stasis.
++Run the asymmetric configuration at \(\beta<1\): firm~1 holds the row refinement and the true assignment, while firm~2 remains coarse and is dissonant from an entry period \(t_0\) onward.
++To make its stasis permanent, suppose
++\[
++\gamma_2
++>
++\lambda_2^{(k_{2,t_0})}
++\widehat B_2(r_{2,t})
++\qquad
++\text{for every subsequent record \(r_{2,t}\) generated by this profile.}
++\]
++A simple record-uniform sufficient condition is
++\[
++\gamma_2
++>
++\lambda_2^{(k_{2,t_0})}
++T\bigl(\max\pi_2-\min\pi_2\bigr),
++\]
++using the bound in \cref{prop:participation}.
++Under either condition firm~2 never elects after \(t_0\), its failure count remains unchanged, and it is in dissonant stasis.
+ Here firm~2's coarse record genuinely rejects all three constant theories---its differentiated losses defeat the constant theory matching its own action, its pooled payoff of one-half defeats the opposite theory's $\beta/2$ prediction, and neutrality fails at the differentiated losses---so it is dissonant rather than merely mistaken, and it stays put because its question is priced below cost.
+ With constant action $c$, the two correctly served tokens contribute zero and the two misserved tokens contribute $\tfrac12$ each under fine contingency, so $L_2^{\mathrm{fine}}=1$.
+ A uniform current-language reversal has aggregate robust gain $\beta-1<0$, while retaining the standing action gives zero, so $L_2^{\mathrm{cur}}=0$, $J_2=1$, and, for this balanced four-token record with $T=2$, $\widehat B_2=\tfrac12$.
+ For other realized record compositions the gross representational leverage remains positive when some coherent grouping supplies a positive increment and is bounded as in \cref{prop:participation}.
+ Firm~1 offers the preferred architecture in the row its rival misserves, winning both those states and splitting the rest, so under uniform $\rho$ the firms earn three-quarters and one-quarter, permanently.
+-(At $\beta=1$ this instance instead sends firm~2 oscillating: whichever constant architecture it plays, the surviving constant theory prescribes the other, so its policy never settles---an instructive contrast, but not a persistent \emph{stable} difference, which is why the diagnostic environment $\beta<1$ is the right home for the result.)
++At \(\beta=1\), the same initial constant-\(c\) record leaves the opposite constant theory as firm~2's only active theory.
++If the reversal that theory recommends clears the switching hurdle, firm~2 switches once from \(c\) to \(1-c\).
++Under the reversed policy, a subsequent visit to a state in the true row \(c\) produces a diagnostic contradiction and rejects that last active theory.
++Because the constant-\(c\) and neutral theories were already permanently rejected and theories do not re-enter, the active set then becomes empty and firm~2 enters dissonance rather than oscillating.
++If the switching hurdle blocks the initial reversal, firm~2 may instead remain in policy inertia under \cref{ass:commitment}.
++Thus the \(\beta=1\) continuation is either a one-switch path into renewed dissonance or a stable policy-inertia path, depending on the switching hurdle; it is not an indefinite oscillation.
+ Every route out---strategic variety, demand harshness, a cheaper or more hopeful inquiry---is exactly one of the model's named forces.
+ \end{excont}
+ \section{Discussion}
+@@ -1560,7 +1671,26 @@ L_2^{\mathrm{cur}}=0,\qquad
+ J_2=1,\qquad
+ \widehat B_2=(2/4)1=\tfrac12.
+ \]
+-For other realized compositions its deliberative leverage is positive when the representational increment is positive and remains bounded, and stasis obtains whenever $\gamma_2>\lambda_2^{(k_2)}\widehat B_2$.
+-(At $\beta=1$ the same constant-$c$ record leaves the opposite constant theory adequate, which prescribes switching $c$; firm~2 then oscillates rather than resting, so the persistent stable difference is specific to the diagnostic environment $\beta<1$.)
++For other realized compositions its deliberative leverage is positive whenever the representational increment is positive and remains bounded as in \cref{prop:participation}.
++Permanent stasis requires
++\[
++\gamma_2
++>
++\lambda_2^{(k_{2,t_0})}
++\widehat B_2(r_{2,t})
++\qquad
++\text{for every \(t\ge t_0\) along the induced continuation;}
++\]
++the record-uniform condition
++\[
++\gamma_2
++>
++\lambda_2^{(k_{2,t_0})}
++T\bigl(\max\pi_2-\min\pi_2\bigr)
++\]
++is sufficient.
++At \(\beta=1\), the same initial constant-\(c\) record leaves only the opposite constant theory active.
++A low switching hurdle induces one reversal, after which evidence generated under the reversed policy rejects that last theory and permanent no-reentry makes the firm dissonant; a sufficiently high hurdle instead permits policy inertia under the switching rule.
++The process does not oscillate indefinitely.
+ 
+ \end{document}
+-- 
+2.43.0
+

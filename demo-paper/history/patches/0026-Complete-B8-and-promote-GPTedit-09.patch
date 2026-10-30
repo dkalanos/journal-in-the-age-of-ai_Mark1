@@ -1,0 +1,26 @@
+From 48c0c14060fe5eb1162e6cd506a822c6f5e2431d Mon Sep 17 00:00:00 2001
+From: MDR Git <mdr@mikeryall.com>
+Date: Fri, 14 Aug 2026 16:29:41 -0400
+Subject: [PATCH 26/27] Complete B8 and promote GPTedit-09
+
+---
+ paper/{tbv_mdr_GPTedit-08.tex => tbv_mdr_GPTedit-09.tex} | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+ rename paper/{tbv_mdr_GPTedit-08.tex => tbv_mdr_GPTedit-09.tex} (99%)
+
+diff --git a/paper/tbv_mdr_GPTedit-08.tex b/paper/tbv_mdr_GPTedit-09.tex
+similarity index 99%
+rename from paper/tbv_mdr_GPTedit-08.tex
+rename to paper/tbv_mdr_GPTedit-09.tex
+index 982fe07..e7c02cd 100644
+--- a/paper/tbv_mdr_GPTedit-08.tex
++++ b/paper/tbv_mdr_GPTedit-09.tex
+@@ -1,4 +1,4 @@
+-% TRUTH VERSION: tbv_mdr_GPTedit-08.tex
++% TRUTH VERSION: tbv_mdr_GPTedit-09.tex
+ % FILE ROLE: AUTHORITATIVE SOURCE
+ % DOCUMENT: Scholarly Paper TBV
+ 
+-- 
+2.43.0
+

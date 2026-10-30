@@ -1,0 +1,6 @@
+defect: two-senses
+source: questions-before-priors
+source_sha: 32a78c4fd4371632a4a5b5cfc8f527ada01f2d1860b5d14c98c153934877c801
+expected:
+- class: standard_departure
+  pointer: derivations:D23

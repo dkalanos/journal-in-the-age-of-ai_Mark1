@@ -1,0 +1,66 @@
+anchors:
+- id: A1
+  kind: numeric
+  procedure:
+    language: python
+    source: materials/lab.py:minimal_repairs
+  params: {}
+  expected: 4
+  tolerance:
+    abs: 1.0e-09
+  pointer: paper/paper.md#example-1-continued-3
+  claim_id: C11
+  derivation_id: D21
+- id: A2
+  kind: numeric
+  procedure:
+    language: python
+    source: materials/lab.py:discovery_leverage
+  params:
+    firm: 1
+    beta: 1
+  expected: 0.5
+  tolerance:
+    abs: 1.0e-09
+  pointer: paper/paper.md#example-1-continued-4
+  claim_id: C13
+  derivation_id: D2
+- id: A3
+  kind: numeric
+  procedure:
+    language: python
+    source: materials/lab.py:warrant
+  params:
+    firm: 1
+    beta: 1
+    nu: 0.5
+  expected: 0.5
+  tolerance:
+    abs: 1.0e-09
+  pointer: paper/paper.md#example-1-continued-5
+  claim_id: C16
+  derivation_id: D3
+- id: A4
+  kind: identity
+  procedure:
+    language: sympy_expr
+    source: nu_row*L/(nu_row*L + (1 - nu_row)*L)
+  expected: nu_row
+  pointer: paper/paper.md#example-1-continued-5
+  claim_id: C16
+  derivation_id: D3
+- id: A5
+  kind: numeric
+  procedure:
+    language: python
+    source: materials/lab.py:persistence_payoff
+  params:
+    firm: 1
+    beta: 1
+    c: 1
+  expected: 0.75
+  tolerance:
+    abs: 1.0e-09
+  pointer: paper/paper.md#example-1-continued-6
+  claim_id: C23
+  derivation_id: D6

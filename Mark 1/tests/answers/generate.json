@@ -1,0 +1,690 @@
+{
+  "definitions": [
+    {
+      "term": "elementary causal mechanism",
+      "definition": "An element of the finite vocabulary Theta, known to all agents from the outset: a map from action profiles to distributions over consequences, the reduced form of whatever detailed causal model underlies the state-action-consequence relation.",
+      "formula": "theta: A -> Delta(X)",
+      "not_to_be_confused_with": "A theory (an assignment of mechanisms to awareness cells); the paper imposes no structural-causal-model formalism, and expansion of the mechanism vocabulary itself is outside the paper."
+    },
+    {
+      "term": "objective assignment (objective causal system)",
+      "definition": "The primitive tau assigning a mechanism to each state; tau(s)(a) is the distribution over consequences determined by the state and action profile of a period, defined also at unplayed profiles and unvisited states. Never accessed by agents.",
+      "formula": "tau: S -> Theta; x ~ tau(s)(a)",
+      "not_to_be_confused_with": "On-path conditionals, which mix mechanisms according to which states co-occur with which play."
+    },
+    {
+      "term": "causal equivalence; causal-equivalence partition",
+      "definition": "Two states are causally equivalent if the objective assignment gives them the same mechanism; P^tau is the partition of S into causal-equivalence classes.",
+      "formula": "s ~ s' iff tau(s) = tau(s')",
+      "not_to_be_confused_with": "Observational equivalence of two worlds (agreement of consequence laws at reachable state-profile pairs)."
+    },
+    {
+      "term": "awareness partition",
+      "definition": "Agent i's partition P_i of S. Theories and policies are defined on its cells, conjectures condition only on its cells, and beliefs range only over theories expressible on it. An awareness cell is an implicit causal claim that the states it pools are alike in how actions produce consequences.",
+      "formula": "P_i in Pi(S)",
+      "not_to_be_confused_with": "An information partition about which state occurred, or inattention: the agent perceives its current cell, but awareness bounds which distinctions it can represent at all."
+    },
+    {
+      "term": "expressible theories",
+      "definition": "The cell-constant mechanism assignments on the awareness partition; theory m predicts x_i ~ marg_i m(C)(a) at cell C under profile a. Restricting theories to a single mechanism per cell is substantive and deliberate.",
+      "formula": "M(P_i) = {m : P_i -> Theta}",
+      "not_to_be_confused_with": "Arbitrary conditional distributions per cell (a saturated model space that no experience could reject); conjectures about rival play."
+    },
+    {
+      "term": "sufficient partition",
+      "definition": "Partition P is sufficient for an assignment tau' if tau' is constant on every cell of P, equivalently if P refines P^tau'. The objective assignment is expressible for agent i iff P_i is sufficient for tau.",
+      "formula": "P refines P^tau'",
+      "not_to_be_confused_with": "Statistical sufficiency."
+    },
+    {
+      "term": "conjecture",
+      "definition": "Agent i's strategic claim about rival play, conditioning on its own awareness cells and updated empirically from observed play.",
+      "formula": "q_i : P_i -> Delta(A_-i)",
+      "not_to_be_confused_with": "A theory, which is a causal claim about the objective system; the diagnostic apparatus tests theories, not conjectures."
+    },
+    {
+      "term": "deliberative record",
+      "definition": "The multiset r_i of retained tokens (C_{P_i}(s), a, x_i); the only record on which the agent's beliefs, tests and decisions may depend.",
+      "formula": "r_i = multiset of (C_{P_i}(s), a, x_i)",
+      "not_to_be_confused_with": "The analyst record r_bar_i, which additionally carries the underlying state of each token."
+    },
+    {
+      "term": "analyst record",
+      "definition": "The record r_bar_i that additionally carries the underlying state s of each token. Used only by analyst-level constructions (restorative correspondence, irreparability, warrant accounting) and consumed by the representation-producing technology; never by deliberation.",
+      "formula": "r_bar_i = multiset of (s, C_{P_i}(s), a, x_i)",
+      "not_to_be_confused_with": "Anything the agent can deliberate on."
+    },
+    {
+      "term": "recodability",
+      "definition": "On acquiring a refinement P' the agent can classify every retained token under P', producing a recoded deliberative record r_i^{P'}; recoding is total and infallible once the predicate is held and unavailable before.",
+      "formula": null,
+      "not_to_be_confused_with": "Pre-insight access to the distinguishing predicate."
+    },
+    {
+      "term": "standing policy; belief-optimal policy",
+      "definition": "The standing policy sigma_i is carried from one period to the next. The belief-optimal policy plays, at each cell, an action maximizing subjective expected payoff under the acting belief and conjecture. It is undefined when the acting belief is undefined, and then the standing policy is carried forward.",
+      "formula": "sigma_i_star(C) in argmax_{a_i} sum_m mu_i(m) sum_{a_-i} q_i(a_-i|C) E_{x~m(C)(a_i,a_-i)}[pi_i(x_i)]",
+      "not_to_be_confused_with": "The policy actually played, which changes only when the switching hurdle is cleared."
+    },
+    {
+      "term": "subjective per-period value",
+      "definition": "Agent i's subjective per-period value of a policy given its acting belief and conjecture, weighting cells by their known probabilities.",
+      "formula": "U_i(sigma|mu_i,q_i) = sum_C rho(C) sum_m mu_i(m) sum_{a_-i} q_i(a_-i|C) E_{x~m(C)(sigma(C),a_-i)}[pi_i(x_i)], rho(C) = sum_{s in C} rho(s)",
+      "not_to_be_confused_with": "Objective expected payoff."
+    },
+    {
+      "term": "valuation horizon; switching hurdle; policy inertia",
+      "definition": "A lumpy one-time cost is valued against the gain it produces over a common undiscounted horizon of T periods. The agent replaces sigma_i by sigma_i_star iff the horizon-T gain exceeds the one-time switching hurdle kappa_i >= 0; the inaction band is the source of policy inertia, which is an outcome rather than an assumption.",
+      "formula": "switch iff T*(U_i(sigma_i_star|mu_i,q_i) - U_i(sigma_i|mu_i,q_i)) > kappa_i",
+      "not_to_be_confused_with": "Discounting (T is a bounded-rationality stand-in for it)."
+    },
+    {
+      "term": "on-path conditional",
+      "definition": "Over a stable stretch with constant standing profile, agent i's distribution of own consequences at an observation pair (C,a): a selection object mixing the mechanisms of the states in C that receive profile a.",
+      "formula": "p_i*(.|C,a) = sum_{s in S(C,a)} rho(s|S(C,a)) * marg_i tau(s)(a), S(C,a) = {s in C : a(s) = a}",
+      "not_to_be_confused_with": "Any mechanism's own conditional."
+    },
+    {
+      "term": "exact calibration",
+      "definition": "Deterministic mechanisms with adequacy tolerance eta = 0 and finite-sample slack w = 0, in which tests reject at the first impossible observation and false alarms are zero; the running example uses it.",
+      "formula": "eta = 0, w(n) = 0 for all n",
+      "not_to_be_confused_with": "The general stochastic case, in which every definition is stated."
+    },
+    {
+      "term": "adequate; eta-adequate; eta-inadequate",
+      "definition": "Theory m is adequate at a visited pair (C,a) when the total-variation distance between the on-path conditional and m's prediction is at most eta. Under a standing profile, m is eta-adequate if it is adequate at every visited pair and eta-inadequate if it is inadequate at some visited pair.",
+      "formula": "TV(p_i*(.|C,a), marg_i m(C)(a)) <= eta",
+      "not_to_be_confused_with": "Objective truth (an adequate theory can be false at pooled states or unvisited profiles); retrospective fit to a fixed record."
+    },
+    {
+      "term": "fit (retrospective)",
+      "definition": "Scoring a candidate against a fixed record rather than a stream, using counts n_i(C,a), empirical conditionals p_hat_i, and a nonnegative, nonincreasing slack w(.) -> 0.",
+      "formula": "TV(p_hat_i(.|C,a), marg_i m(C)(a)) <= eta + w(n_i(C,a))",
+      "not_to_be_confused_with": "Sequential adequacy testing."
+    },
+    {
+      "term": "evidence process; dissonance capacity",
+      "definition": "For each admitted theory, a nonnegative process E_i^m initialized at 1. It is a supermartingale under adequacy and diverges almost surely under recurrent strict inadequacy (Appendix A betting mixture; a zero-likelihood detector in the deterministic case). The theory is rejected permanently at the first period with log E_i^m >= b_i, and the capacity b_i > 0 is the agent's evidence threshold for abandoning a theory.",
+      "formula": "reject m when log(E_i^m) >= b_i; Pr(sup_t E_i^m(t) >= exp(b_i)) <= exp(-b_i)",
+      "not_to_be_confused_with": "The Bayesian posterior: the reference posterior is never conditioned on the test."
+    },
+    {
+      "term": "active set",
+      "definition": "The theories admitted when the current language was initialized that have not subsequently been rejected by the sequential test. It only shrinks, and rejected theories never re-enter.",
+      "formula": "M_hat_i(P_i, r_i)",
+      "not_to_be_confused_with": "The expressible set M(P_i); the support of the posterior."
+    },
+    {
+      "term": "judged updating (reference posterior and acting belief)",
+      "definition": "Beliefs have two tiers. The reference posterior mu_bar_i starts at a full-support prior and updates by token likelihoods, never conditioned on the test. The acting belief mu_i is the reference posterior restricted and renormalized to the current active set, and it is undefined when the active set is empty.",
+      "formula": "mu_i(m) = mu_bar_i(m) / sum_{m~ in M_hat_i} mu_bar_i(m~) for m in M_hat_i",
+      "not_to_be_confused_with": "Ordinary Bayesian conditioning, with which it coincides only in the deterministic case while the normalizer is positive."
+    },
+    {
+      "term": "causal dissonance",
+      "definition": "Agent i experiences causal dissonance at any period at which its active set is empty: no theory admitted on the current language remains unrejected. Dissonance poses the question whether an unrepresented distinction among the pooled states can reconcile the record, and if so what it is.",
+      "formula": "M_hat_i(P_i, r_i) = {}",
+      "not_to_be_confused_with": "A low posterior or surprise (posterior mass always sums to one); proof of objective representational insufficiency, which holds only under exact deterministic testing."
+    },
+    {
+      "term": "exposed; concealing",
+      "definition": "Under a standing profile, awareness P_i is exposed if every expressible theory is eta-inadequate. A standing profile is concealing for agent i if some expressible theory is eta-adequate under it while false as a claim about tau at some state its cells cover.",
+      "formula": null,
+      "not_to_be_confused_with": "Dissonance itself: exposure yields dissonance almost surely only under the activity proviso of Proposition 6.5."
+    },
+    {
+      "term": "repair test; repair-consistent active set",
+      "definition": "For a candidate refinement P', the theories on P' that fit the recoded analyst record at every nonempty recoded cell-profile pair. Refinement can reconcile observations but cannot delete their constraints.",
+      "formula": "M_hat_i^R(P', r_bar_i) = {m' in M(P') : TV(p_hat_i(.|C',a), marg_i m'(C')(a)) <= eta + w(n_i(C',a)) for every (C',a) with n_i(C',a) > 0}",
+      "not_to_be_confused_with": "The deliberative grouping test, which applies only where counts are at least n_bar."
+    },
+    {
+      "term": "restorative; minimally restorative refinement",
+      "definition": "A strict refinement P' of P_i is restorative if its repair-consistent active set is nonempty, and minimally restorative if no restorative partition lies strictly between P_i and P'. R(P_i, r_bar_i) is the set of minimally restorative refinements. This is an analyst-level object.",
+      "formula": "restorative iff M_hat_i^R(P', r_bar_i) != {}",
+      "not_to_be_confused_with": "An objectively correct refinement."
+    },
+    {
+      "term": "irreparable record",
+      "definition": "A dissonant record with no minimally restorative refinement. It is possible only with stochastic mechanisms, it is analyst-level, and the agent cannot in general tell it from a repairable record.",
+      "formula": "R(P_i, r_bar_i) = {}",
+      "not_to_be_confused_with": "A record whose repair is merely unpriced or abandoned."
+    },
+    {
+      "term": "representation-producing technology; truth-blind",
+      "definition": "A possibly randomized map from the analyst record to the current partition (failure) or to a minimally restorative refinement (success). It is truth-blind: its output distribution depends only on (P_i, r_bar_i), never directly on tau. A complexity ordering on refinements may restrict its range.",
+      "formula": "phi_i : (P_i, r_bar_i) -> {P_i} union R(P_i, r_bar_i)",
+      "not_to_be_confused_with": "A model of the semantic creative act (treated as a primitive); a pre-insight menu the agent can name, price, or condition on."
+    },
+    {
+      "term": "formulation rule (record-measurable and truth-blind)",
+      "definition": "A possibly randomized kernel selecting a theory from the repair-consistent active set on the refined language. It is record-measurable and truth-blind if it depends only on its displayed arguments and on internal randomness independent of the objective assignment and all draws; a truth-blind inquiry-and-formulation rule is such a pair (phi_i, psi_i).",
+      "formula": "psi_i(. | P_i', r_i^{P_i'}) in Delta(M_hat_i^R(P_i', r_bar_i))",
+      "not_to_be_confused_with": "Transmission from an informed source, which can be correlated with the objective assignment."
+    },
+    {
+      "term": "bridge prior",
+      "definition": "A fresh full-support prior on the expanded language, formed after successful production, from which ordinary updating resumes; Bayesian coherence does not determine it from the pre-dissonance belief.",
+      "formula": "mu_i^+ in Delta(M(P_i'))",
+      "not_to_be_confused_with": "A Bayesian update of the old prior (the domains differ)."
+    },
+    {
+      "term": "costly, elective inquiry",
+      "definition": "The technology operates only when agent i is dissonant and elects inquiry, at cost gamma_i > 0 in payoff units. On failure or abstention the standing policy is carried forward, and acquired distinctions are never lost.",
+      "formula": "cost gamma_i > 0 per election",
+      "not_to_be_confused_with": "Continuous search or experimentation within a fixed language."
+    },
+    {
+      "term": "delabeled achievability weight",
+      "definition": "A subjective probability that an election produces a refinement delivering the estimated leverage. It is defined on that event alone, not on the identities of possible outputs, and is nonincreasing in the count k of consecutive failed elections, tending to 0. It is awareness of unawareness in delabeled form.",
+      "formula": "lambda_i^(k) in (0,1], nonincreasing in k, lambda_i^(k) -> 0",
+      "not_to_be_confused_with": "A prior over named candidate refinements; a mere success probability."
+    },
+    {
+      "term": "deliberative grouping; coherent group",
+      "definition": "A deliberative grouping G is a partition of the record's tokens. Theta_i(g) is the set of mechanisms that pass the grouping test on group g wherever the count is at least n_bar. A group is coherent if Theta_i(g) is nonempty, and a grouping is coherent if all its groups are; G_i(r_i) is the finite family of coherent groupings. It uses no state labels.",
+      "formula": "Theta_i(g) = {theta in Theta : TV(p_hat_g(.|a), marg_i theta(a)) <= eta + w(n_g(a)) for every a with n_g(a) >= n_bar}",
+      "not_to_be_confused_with": "A partition of S or a candidate refinement: a coherent grouping is the agent's hypothesis about which particulars share a mechanism and need not be realizable."
+    },
+    {
+      "term": "per-token robust gain",
+      "definition": "The worst case, over rival responses and over the mechanisms the group's record leaves open, of the payoff gain from proposing action a_i rather than the standing action at the token's cell.",
+      "formula": "Delta_i^G(t,a_i) = min_{a_-i} min_{theta in Theta_i(g(t))} (E_{x~theta(a_i,a_-i)}[pi_i(x_i)] - E_{x~theta(sigma_i(t),a_-i)}[pi_i(x_i)])",
+      "not_to_be_confused_with": "An expected gain under a belief."
+    },
+    {
+      "term": "robust fine-contingent value; current-language benchmark; gross representational increment",
+      "definition": "L_fine lets action vary by each nonempty current-cell/group intersection. L_cur requires one action per current awareness cell, evaluated under the same coherent grouping. J is their difference.",
+      "formula": "Lfine = sum_C sum_g max_{a_i} sum_{t in r_i(C,g)} Delta_i^G(t,a_i); Lcur = sum_C max_{a_i} sum_g sum_{t in r_i(C,g)} Delta_i^G(t,a_i); J = Lfine - Lcur",
+      "not_to_be_confused_with": "A new dissonant policy-switching rule: L_cur is a counterfactual valuation benchmark."
+    },
+    {
+      "term": "deliberative leverage (value of a question)",
+      "definition": "At a dissonant record, T over the record size times the largest gross representational increment over coherent groupings, with outside option 0; zero when the active set is nonempty. It prices the incremental gross action value of making a coherent grouping actionable, on the premise that the empirical token distribution recurs.",
+      "formula": "B = (T/r)*max({0} union {J(G) : G in G_i(r_i)}) if M_hat_i(P_i,r_i) = {}, else 0; for the best grouping B = (T/r)*(Lfine - Lcur)",
+      "not_to_be_confused_with": "Value of information or uncertainty reduction (it prices action separation); a net expected payoff after switching costs; an expected value over named candidate answers."
+    },
+    {
+      "term": "pointwise transparency",
+      "definition": "In the deterministic zero-tolerance case with n_bar = 1 and w = 0, a record is pointwise transparent if every retained token pins a single mechanism. The leverage estimate is then exact and repair-invariant.",
+      "formula": "|Theta_i({t})| = 1 for every retained token t",
+      "not_to_be_confused_with": "Determinism alone, which certifies separability of conflicting tokens but does not make every grouping realizable."
+    },
+    {
+      "term": "representation-relative coherence",
+      "definition": "The probability that the initial acting belief on the refined language (the bridge prior restricted and renormalized to the repair-consistent active set) assigns to the formulated theory.",
+      "formula": "Coh_i(O_i) = mu_i^+(m') / sum_{m~ in M_hat_i^R(P_i', r_bar_i)} mu_i^+(m~)",
+      "not_to_be_confused_with": "Selection-adjusted warrant."
+    },
+    {
+      "term": "reflective assessment problem",
+      "definition": "An analyst-level pair (calT, nu): a finite set of candidate objective assignments and a full-support reflective prior. Conditioning uses the analyst record and the complete pre-production inquiry history h_i.",
+      "formula": null,
+      "not_to_be_confused_with": "The agent's own bridge prior or acting belief."
+    },
+    {
+      "term": "selection-adjusted warrant",
+      "definition": "The reflective probability, given the analyst record, the inquiry history and the realized output, that the formulated theory is objectively correct, relative to the specified assessment problem.",
+      "formula": "W(o) = nu(A_o | r_bar_i, h_i, O_i = o), A_o = {tau' in calT : tau'(s) = m_o(C_{P'}(s)) for every s}",
+      "not_to_be_confused_with": "Representation-relative coherence (the agent's confidence); retrospective fit."
+    },
+    {
+      "term": "signed warrant gap",
+      "definition": "Coherence minus warrant at a realized output; its sign is unrestricted in general.",
+      "formula": "gap = Coh - W",
+      "not_to_be_confused_with": "An error of the agent's updating."
+    },
+    {
+      "term": "self-confirming unawareness equilibrium (SCUE)",
+      "definition": "A profile of epistemic states (P_i, r_i, mu_bar_i, q_i, sigma_i, k_i) such that, under the play it induces: (i) no switch clears the hurdle; (ii) conjectures agree in the limit with induced play at on-path cells; (iii) each active set is almost surely eventually nonempty and acting-belief mass on eta-inadequate theories vanishes; (iv) no agent elects inquiry.",
+      "formula": "(i) T*(U_i(sigma_i_star|mu_i,q_i) - U_i(sigma_i|mu_i,q_i)) <= kappa_i; (iv) lambda_i^(k_i)*B_hat_i(r_i) < gamma_i",
+      "not_to_be_confused_with": "A self-confirming equilibrium of the fixed-language tradition (SCUE adds language survival and no priced question); convergence of play."
+    },
+    {
+      "term": "partial SCUE",
+      "definition": "A configuration in which the SCUE conditions hold for every non-stasis agent, with the stasis agents' constant carried-forward policies taken as fixed environment.",
+      "formula": null,
+      "not_to_be_confused_with": "A full SCUE."
+    },
+    {
+      "term": "dissonant stasis; absorbing profile",
+      "definition": "An agent is in dissonant stasis from some period on if dissonance recurs while it never both elects and succeeds: either its question is unpriced (zero leverage, an abandoned question, possibly at an irreparable record) or elected production always fails. It carries its standing policy with a standing anomaly. A population profile is absorbing if every agent is eventually either in a SCUE role (never dissonant) or in dissonant stasis.",
+      "formula": "lambda_i^(k_i)*B_hat_i(r_i) < gamma_i",
+      "not_to_be_confused_with": "SCUE, in which a represented model class survives."
+    },
+    {
+      "term": "enlightened inertia",
+      "definition": "Having acquired a refinement and an improved model, the agent carries its old policy forward because the realized horizon-T gain of the recommended switch does not clear the switching hurdle.",
+      "formula": "T*(U_i(sigma_i_star) - U_i(sigma_i)) <= kappa_i after refinement",
+      "not_to_be_confused_with": "Ignorance or dissonant stasis."
+    },
+    {
+      "term": "abandoned question; rational anomaly tolerance",
+      "definition": "An abandoned question is a repairable, positively valued defect that the agent stops pursuing because repeated failure has driven lambda_i^(k)*B_hat_i below cost. Anomaly tolerance is rational when the agent's coherent groupings carry no gross representational leverage.",
+      "formula": "lambda_i^(k)*B_hat_i < gamma_i",
+      "not_to_be_confused_with": "Indifference or a pathology of the model."
+    },
+    {
+      "term": "payoff-relevant policy error",
+      "definition": "At state s the standing action is strictly suboptimal under objective evaluation, given the rivals' induced actions.",
+      "formula": "E_{x~tau(s)(a^sigma(s))}[pi_i(x_i)] < max_{a_i~} E_{x~tau(s)(a_i~, a_-i^sigma(s))}[pi_i(x_i)]",
+      "not_to_be_confused_with": "A change in the set of optimal actions that leaves the standing action optimal."
+    },
+    {
+      "term": "diagnostic at tolerance eta; strictly punishing",
+      "definition": "Primitives are diagnostic if, for every profile satisfying SCUE conditions (i)-(ii), any payoff-relevant policy error implies the erring agent's awareness is exposed. They are strictly punishing if at every payoff-relevant policy error the on-path conditional is more than eta from every expressible prediction.",
+      "formula": "min_{m in M(P_i)} TV(p_i*(.|C_{P_i}(s), a^sigma(s)), marg_i m(C_{P_i}(s))(a^sigma(s))) > eta",
+      "not_to_be_confused_with": "Global openness of diagnosticity (only local robustness of strict margins is claimed)."
+    },
+    {
+      "term": "insight",
+      "definition": "Represented formally as the production of a distinction, a refinement of the awareness partition; the model explains when insight is demanded, what constrains it, what it is worth and what its output warrants. With the mechanism vocabulary fixed, insight means discovering which differences matter.",
+      "formula": "P_i -> P_i' with P_i' strictly refining P_i",
+      "not_to_be_confused_with": "The conscious creative or semantic act (a primitive); expansion of the mechanism vocabulary."
+    },
+    {
+      "term": "novelty (agent-relative)",
+      "definition": "Refinement makes an analyst-represented distinction available to the agent but does not create objective states or elementary mechanisms.",
+      "formula": null,
+      "not_to_be_confused_with": "Creation of the analyst's ontology or a new kind of causal mechanism."
+    },
+    {
+      "term": "row law; column world; demand parameter beta (running example)",
+      "definition": "In Example 1, the objective assignment is the row law (the row coordinate is causally relevant); the column world is the alternative assignment. Under theta^a, differentiated play gives payoff 1 to the firm offering a and 0 to its rival; pooling on a gives 1/2 each; pooling on the other architecture gives beta/2 each. Under theta^n each receives 1/2.",
+      "formula": "tau(s_rc) = theta^r; tau'(s_rc) = theta^c; pooled payoff on the wrong architecture = beta/2",
+      "not_to_be_confused_with": "General results; the numbers are example-specific."
+    }
+  ],
+  "procedure": [
+    "Fix the primitives (held constant throughout): agents N with n >= 2; a finite state set S drawn i.i.d. from full-support rho; finite actions A_i and consequences X; payoffs pi_i; the mechanism vocabulary Theta with theta: A -> Delta(X); and the objective assignment tau: S -> Theta. Each agent holds an awareness partition P_i and expressible theories M(P_i) = {m: P_i -> Theta}. It observes its cell at the start of each period and (a, x_i) at the end, and retains the deliberative record r_i. The analyst record r_bar_i adds state labels.",
+    "Choice within a fixed language: given the acting belief mu_i and the empirical conjecture q_i, compute sigma_i_star cellwise by equation (2) and the subjective value U_i by equation (3). Replace sigma_i by sigma_i_star iff T*(U_i(sigma_i_star) - U_i(sigma_i)) > kappa_i; otherwise, or when mu_i is undefined, carry sigma_i forward.",
+    "Proposition 5.1: Bayesian or judged conditioning reweights a distribution on its fixed domain M(P_i). Every element is cell-constant, so every posterior and every policy optimal against one is P_i-measurable, and no update enlarges the domain.",
+    "On a stable stretch with constant profile sigma, each state receives a(s) = (sigma_j(C_{P_j}(s)))_j. Compute agent i's on-path conditional p_i*(.|C,a) by equation (4), which mixes the mechanisms of the states in C receiving profile a.",
+    "Testing (Definition 6.1, Appendix A, Lemma D.1): for each admitted theory, run the evidence process E_i^m, a convex mixture of betting factors F = 1 + lambda*(1{x in D} - (q(D) + eta)) at each visited pair, initialized at 1. It is a supermartingale under adequacy, so Ville gives Pr(sup E >= exp(b_i)) <= E(t_0)*exp(-b_i). Under recurrent strict inadequacy a fixed positive-weight component has positive expected log-growth (g'(0) = p(D) - q(D) - eta > 0), so E diverges almost surely by the strong law. Reject m permanently when log E_i^m >= b_i. In the exact deterministic case, reject at the first zero-probability consequence. The active set is monotone and eventually constant.",
+    "Judged updating: the reference posterior updates by token likelihoods marg_i m(C)(a)(x_i); the acting belief is its restriction to the active set. Dissonance is an empty active set. Proposition 6.5: if all profile-adequate theories are active at t_0, Lemma D.1 makes the eventual active set empty almost surely exactly when every theory is eta-inadequate (exposure). For a non-exposed profile, conditional Ville bounds rejection of an active adequate theory by E_i^m(t_0)*exp(-b_i).",
+    "Repair (Section 7, Proposition D.2): for each candidate strict refinement P', recode the analyst record and apply the repair test (equation 6) at every nonempty (C',a). Because the constraints involve one cell at a time, M_hat_i^R(P', r_bar_i) is the product over cells of Theta_i^R(C'|r_bar_i), so P' is restorative iff every cell is repair-coherent. Enumerate partitions to obtain the minimally restorative set R(P_i, r_bar_i).",
+    "Theorem 7.4: couple two worlds tau != tau' that agree on joint consequence laws at all reachable pairs, using common state draws, common seeds for production, formulation, bridge-prior selection and tie-breaking, and identity-coupled consequence draws. Induct over periods: identical histories give identical partitions, policies and action profiles, hence identical records and outputs. A common output distribution cannot put probability one on two disjoint correctness sets. Proposition 7.5: sufficiency for each candidate is refinement of each P^tau', hence refinement of their join.",
+    "Economics of inquiry (Section 8): at a dissonant record, enumerate the deliberative groupings G of the tokens. For each group compute Theta_i(g) by the grouping test (counts >= n_bar) and keep the coherent groupings. For each coherent G compute the per-token robust gain Delta_i^G(t,a_i): the minimum over rival actions and over Theta_i(g(t)) of the payoff difference between a_i and the standing action. Then compute Lfine (best action per current-cell/group intersection), Lcur (best single action per current cell) and J = Lfine - Lcur, and set B_hat_i = (T/|r_i|)*max({0} union {J}).",
+    "Proposition 8.4: finiteness makes every term well defined. The sum of maxima is at least the maximum of sums, giving J >= 0. Each per-token gain is at most max pi_i - min pi_i, and the standing action gives Lcur >= 0, so 0 <= B_hat_i <= T*(max pi_i - min pi_i). The election rule is: elect iff lambda_i^(k_i)*B_hat_i >= gamma_i. B_hat_i > 0 iff some coherent G has J > 0.",
+    "Pivot (Section 9): after successful production of P_i', the formulation rule draws m' from M_hat_i^R(P_i', r_bar_i) and the agent forms a full-support bridge prior mu_i^+. Then Coh_i = mu_i^+(m') / sum over M_hat_i^R of mu_i^+. For warrant, fix an analyst assessment (calT, nu) and compute W(o) = nu(A_o | r_bar_i, h_i, O_i = o).",
+    "Theorem 9.2: with Z = (r_bar_i, h_i), truth-blindness and record-measurability make the output kernel K(.|Z) independent of the candidate. Hence Pr(tau', O in B | Z) = nu(tau'|Z)*K(B|Z), so O is independent of tau' given Z, and W(o) = nu(A_o | Z) after summing over A_o. Corollary 9.3: expressing each candidate requires sufficiency for it, hence refinement of the join of Proposition 7.5.",
+    "Dynamics (Section 10, Appendix B): Theorem 10.4(a): the total cell count sum_i |P_i| is an integer in [n, n|S|] that rises at each success and never falls, so there are at most n*(|S| - 1) refinements. (b): since B_hat_i <= T*Delta pi_i, the election condition fails once lambda_i^(k) < gamma_i/(T*Delta pi_i), at a finite k because lambda -> 0; the counter resets only at the finitely many successes. (c): after G* = max(last refinement, last election), languages are fixed and every dissonance event fails the threshold. (d): on the eventually-constant-profile event, couple to an auxiliary constant-profile process and apply Lemma D.1. A nonempty survivor set means never dissonant; an empty one means dissonant stasis.",
+    "Supporting results: Proposition D.5(i) holds by continuity of the strict no-switch slack at the limit. D.5(ii-a): in the deterministic case a 0-adequate active theory is never rejected. D.5(ii-b): Ville gives exp(-b_i) per agent and a union bound gives persistence probability >= 1 - sum_i exp(-b_i). D.6 follows from SCUE (iii) and Lemma D.1. D.7: component domination plus bounded-increment Wald reasoning gives E[tau_m] <= 2*(b_i + c_m)/d_i^m, hence O(b_i/D_i), and bounded one-period growth gives Omega(b_i). D.9: diagnosticity implies exposure, which by Lemma D.1 empties the active set, contradicting SCUE (iii). D.10: the strict-punishment inequality makes every expressible theory eta-inadequate, hence exposure and diagnosticity.",
+    "Example 1, dominance: at a cell with label beliefs p0, p1, the gain of action 0 over 1 is p0/2 - (1 - beta/2)*p1 against a rival playing 0 and (1 - beta/2)*p0 - p1/2 against a rival playing 1. So 0 is strictly dominant iff p0 > (2 - beta)*p1; at beta = 1, belief asymmetry yields differentiated constant policies.",
+    "Example 1, discovery: firm 1 plays 0 and firm 2 plays 1 at states s00 and s11 (T = 2). Firm 1 earns 1 at s00 and 0 at s11, which rejects m^0, m^1 and m^n, so each active set empties. Repairs: of the 15 partitions of 4 states, 10 separate s00 from s11 and the 4 two-cell ones are minimal (row, column, two isolating partitions), so 11 are excluded. The column world agrees on both visited states, so the worst-case success of any truth-blind rule is at most 1/2, and the join of the row and column partitions is the singleton partition.",
+    "Example 1, leverage: the winning token pins theta^0 (best gain 0); the losing token pins theta^1 (gain 1/2 against either rival action). So Lfine = 1/2. In the one-cell current language, a uniform reversal nets 1/2 - 1/2 = 0, so Lcur = 0, J = 1/2 and B = (2/2)*(1/2) = 1/2; the firm elects iff lambda^(0)/2 >= gamma. Validation stretch over all four states with T = 2 and |r| = 4 (firm 1 on the row policy, firm 2 on the column policy): firm 1 has Lfine = Lcur = J = B = 0; firm 2 has Lfine = 1, Lcur = 0, J = 1 and B = (2/4)*1 = 1/2.",
+    "Example 1, warrant: the column (or row) refinement pins a unique consistent theory, so Coh = 1. With calT = {row world, column world} and a symmetric nu, the diagonal record has equal likelihood in both worlds, so by Theorem 9.2 W = 1/2 and gap = 1 - 1/2 = 1/2.",
+    "Example 1, endings: the trap at beta = 1 has both firms on the column policy, pooling everywhere with payoff 1/2, which equals the prediction, so it is a SCUE. The knife edge at beta < 1: pooled off-diagonal play pays beta/2 != 1/2, which triggers dissonance. Persistence at beta < 1: firm 1 on the row law against firm 2 constant at c earns (1 + 1 + 1/2 + 1/2)/4 = 3/4 against (0 + 0 + 1/2 + 1/2)/4 = 1/4. Firm 2's record rejects all constant theories and its balanced record gives B_2 = (2/4)*1 = 1/2. Stasis is permanent if gamma_2 > lambda_2^(k_{2,t_0})*B_hat_2(r_{2,t}) for all later records; gamma_2 > lambda_2^(k_{2,t_0})*T*(max pi_2 - min pi_2) is sufficient."
+  ],
+  "claims": [
+    {
+      "id": "C1",
+      "kind": "contribution",
+      "main": true,
+      "text": "Existing work explains learning and action once theories, vocabularies, or awareness advantages exist; this paper supplies the pre-Bayesian passage from represented-class failure to a question, a fallible new representation, formulation, and renewed Bayesian judgment. Its distinctive economic and epistemic results are that an agent can value a finer actionable distinction before representing its answers, and that evidence generating a truth-blind representation cannot be counted again as independent validation. Embedding that passage in strategic interaction provides a mechanism by which play exposes or conceals coarse languages and establishes the existence of absorbing configurations with heterogeneous terminal languages and payoffs. The contribution is therefore upstream: question histories and rational stopping points can generate strategic heterogeneity before priors over the resulting theories are available. The paper endogenizes the strategically consequential transition into a new hypothesis space while leaving the semantic act that produces it primitive.",
+      "condition": null,
+      "pointer": "paper/paper.md#statement-of-contribution",
+      "evidence_pointer": "appendix/appendix.md#app-absorption",
+      "derivation_id": null,
+      "question": "How an actor whose causal language has failed comes to possess a new one: the step before a theory, or at least a hypothesis space, exists.",
+      "question_pointer": "paper/paper.md:L14-L15"
+    },
+    {
+      "id": "C2",
+      "kind": "result",
+      "form": "proposition",
+      "main": true,
+      "text": "Proposition 5.1 (No Bayesian emergence): Any well-defined judged or ordinary conditioning of a prior mu in Delta(M(P_i)) on an observation in the agent's observation algebra yields a posterior mu' in Delta(M(P_i)). No sequence of such updates makes a theory outside M(P_i) expressible or a distinction finer than P_i usable in a policy.",
+      "condition": [],
+      "pointer": "paper/paper.md#prop-no-emergence",
+      "evidence_pointer": "paper/paper.md#proof-prop-no-emergence",
+      "derivation_id": "D7"
+    },
+    {
+      "id": "C3",
+      "kind": "result",
+      "form": "example",
+      "main": false,
+      "text": "Example 1 (continued, Section 5): Under the coarse partition, firm i's expressible theories are the constant assignments m^0, m^1, m^n. The row law tau(s_rc) = theta^r is inexpressible: no reweighting of {m^0, m^1, m^n}, on any evidence, produces it. After successive deterministic observations eliminate the expressible theories one by one, the observation that eliminates the last theory with positive posterior mass produces a zero Bayesian normalizer, so ordinary conditioning itself is undefined. With stochastic full-support mechanisms the Bayesian normalizer remains positive and no such announcement occurs.",
+      "condition": null,
+      "pointer": "paper/paper.md#example-1-continued",
+      "evidence_pointer": "paper/paper.md#proof-prop-no-emergence",
+      "derivation_id": null
+    },
+    {
+      "id": "C4",
+      "kind": "result",
+      "form": "lemma",
+      "main": false,
+      "text": "Lemma D.1 (Test consistency), as stated in the paper: sequential testing is consistent. A theory strictly inadequate at a recurrent pair is almost surely rejected, an adequate theory is falsely rejected with conditional probability at most E_i^m(t_0)*exp(-b_i), and the active set is monotone and eventually constant.",
+      "condition": [
+        "TV(p_i*(.|C,a), marg_i m(C)(a)) != eta"
+      ],
+      "pointer": "paper/paper.md#def-test",
+      "evidence_pointer": "appendix/appendix.md#lem-test-consistency",
+      "derivation_id": "D16"
+    },
+    {
+      "id": "C5",
+      "kind": "result",
+      "form": "proposition",
+      "main": true,
+      "text": "Proposition 6.5 (Exposure and dissonance): Fix a standing profile and suppose no theory sits exactly at the adequacy boundary. If every theory that is eta-adequate under the fixed profile remains active when that profile begins at t_0, then P_i is exposed if and only if eventual dissonance occurs almost surely. If the profile is not exposed and m is an active eta-adequate theory at entry, then, conditional on the entry history, dissonance is avoided forever with probability at least 1 - E_i^m(t_0)*exp(-b_i). If some such m satisfies E_i^m(t_0) <= 1, this bound is at least 1 - exp(-b_i).",
+      "condition": [
+        "TV(p_i*(.|C,a), marg_i m(C)(a)) != eta",
+        "E_i^m(t_0) <= 1"
+      ],
+      "pointer": "paper/paper.md#prop-exposure",
+      "evidence_pointer": "appendix/appendix.md#lem-test-consistency",
+      "derivation_id": "D8"
+    },
+    {
+      "id": "C6",
+      "kind": "result",
+      "form": "example",
+      "main": false,
+      "text": "Example 1 (continued, Section 6): Let beta = 1, with heterogeneous priors (firm 1 considers theta^0 more likely than theta^1, firm 2 the reverse). Against any conjecture, offering architecture 0 is subjectively strictly dominant for firm 1, and architecture 1 for firm 2, whenever mu_i(m^a) > (2 - beta)*mu_i(m^a'); at beta = 1 this is simple belief asymmetry, so the firms adopt differentiated constant policies. With T = 2 and two periods serving s_00 and s_11 under differentiated play, firm 1 wins at s_00 (payoffs 1, 0) and loses at s_11 (payoffs 0, 1). No constant assignment is consistent with both observations (m^0 fails at s_11, m^1 at s_00, and m^n predicts 1/2 at both), so each firm's active set empties: causal dissonance in its exact deterministic form. Had the firms pooled on the same architecture at both states, each would have received 1/2 every period, consistent with all three constant theories; the pooled profile is concealing. Belief heterogeneity, by inducing differentiated play, is what made the shared language's failure visible.",
+      "condition": null,
+      "pointer": "paper/paper.md#example-1-continued-2",
+      "evidence_pointer": "appendix/appendix.md#dominance-thresholds",
+      "derivation_id": "D1"
+    },
+    {
+      "id": "C7",
+      "kind": "result",
+      "form": "proposition",
+      "main": false,
+      "text": "Proposition D.2 (Cellwise coherence), as stated in the paper: restoration factorizes cell by cell, so finding a repair is a coloring problem. For a candidate refinement P', M_hat_i^R(P', r_bar_i) = product over C' in P' of Theta_i^R(C'|r_bar_i), and P' is restorative if and only if every cell of P' is repair-coherent (Theta_i^R(C'|r_bar_i) nonempty).",
+      "condition": [],
+      "pointer": "paper/paper.md#def-restorative",
+      "evidence_pointer": "appendix/appendix.md#prop-coherence",
+      "derivation_id": "D17"
+    },
+    {
+      "id": "C8",
+      "kind": "result",
+      "form": "proposition",
+      "main": true,
+      "text": "Theorem 7.4 (Observational nonidentification): Fix common initial epistemic states, common record-measurable behavioral and tie-breaking rules, common truth-blind inquiry-and-formulation rules, and a finite horizon of H periods. Let tau != tau' be objective assignments whose joint consequence laws agree, tau(s)(a) = tau'(s)(a), at every state-profile pair reachable through H under either world. The two worlds admit a coupling under which, through H, their state draws, full consequence profiles, analyst and deliberative records, partition paths, beliefs, conjectures, standing policies, and production-and-formulation outputs coincide pathwise; if the equality holds at every pair reachable at any finite horizon, the coupling extends to the entire process. Consequently, no truth-blind inquiry-and-formulation rule can produce an objectively correct formulation with probability one in both worlds. More generally, the same conclusion holds for any success criterion whose sets of realizable outputs are disjoint across the two worlds.",
+      "condition": [
+        "tau != tau'"
+      ],
+      "pointer": "paper/paper.md#thm-nonidentification",
+      "evidence_pointer": "paper/paper.md#proof-thm-nonidentification",
+      "derivation_id": "D9"
+    },
+    {
+      "id": "C9",
+      "kind": "result",
+      "form": "proposition",
+      "main": true,
+      "text": "Proposition 7.5 (Robust sufficiency): A partition sufficient for every assignment in a candidate set calT must refine join_{tau' in calT} P^tau', the coarsest partition that refines every candidate causal-equivalence partition. A representation guaranteed to accommodate all observationally equivalent worlds is accordingly finer than any single world requires; a technology that economizes on distinctions must accept fallibility.",
+      "condition": [],
+      "pointer": "paper/paper.md#prop-robust-sufficiency",
+      "evidence_pointer": "paper/paper.md#proof-prop-robust-sufficiency",
+      "derivation_id": "D10"
+    },
+    {
+      "id": "C10",
+      "kind": "result",
+      "form": "example",
+      "main": false,
+      "text": "Example 1 (continued, Section 7): After discovery the record labels architecture 0 as preferred at s_00 and architecture 1 at s_11. Of the 15 partitions of the four states, exactly 4 are minimally restorative, each separating s_00 from s_11: the row partition {{s_00,s_01},{s_10,s_11}}, the column partition {{s_00,s_10},{s_01,s_11}}, and the two partitions isolating one labeled state. The record directs inquiry (11 partitions are excluded) without determining it (4 remain). A factor-seeking technology produces the row or the column refinement. The column world tau'(s_rc) = theta^c agrees with the row world on the full joint mechanism at both visited states, so no truth-blind rule can formulate correctly in both: a randomized rule succeeds in the worst case with probability at most 1/2. By Proposition 7.5 a partition sufficient for both worlds must be the full partition into singletons. Whichever factor refinement arrives, its unique consistent theory extrapolates the wrong prediction to the two unlabeled states in one of the two worlds.",
+      "condition": null,
+      "pointer": "paper/paper.md#example-1-continued-3",
+      "evidence_pointer": "materials/lab.py:repairs",
+      "derivation_id": null
+    },
+    {
+      "id": "C11",
+      "kind": "result",
+      "form": "proposition",
+      "main": true,
+      "text": "Proposition 8.4 (Participation): B_hat_i(r_i) is well defined, nonnegative, bounded by T*(max pi_i - min pi_i), and computable from the deliberative record, the standing policy, and the agent-known model primitives and test calibration. At a dissonant record, electing inquiry has represented value lambda_i^(k_i)*B_hat_i(r_i) - gamma_i, so agent i elects if and only if lambda_i^(k_i)*B_hat_i(r_i) >= gamma_i. Moreover, at a dissonant record, B_hat_i(r_i) > 0 if and only if J_i(G; r_i) > 0 for some G in G_i(r_i). Thus a question is priced positively only when some coherent reading of the record supports action variation within at least one current awareness cell that robustly outperforms the best action kept uniform on that cell under the same coherent reading.",
+      "condition": [],
+      "pointer": "paper/paper.md#prop-participation",
+      "evidence_pointer": "paper/paper.md#proof-prop-participation",
+      "derivation_id": "D11"
+    },
+    {
+      "id": "C12",
+      "kind": "result",
+      "form": "example",
+      "main": false,
+      "text": "Example 1 (continued, Section 8): At the discovery record (T = 2, diagonal states served), deterministic conflicting payoffs certify the two tokens as distinct states, and the best coherent grouping splits them. The fine optimal gain is 0 on the winning token and 1/2 on the losing token, so L_i^fine = 1/2, L_i^cur = 0, J_i = 1/2 and B_hat_i = (2/2)*(1/2) = 1/2 for both firms. Each elects iff lambda_i^(0)*B_hat_i >= gamma_i, i.e. lambda_i^(0)/2 >= gamma_i. After the row refinement, the post-refinement horizon gain is exactly 1/2, so the firm re-differentiates when kappa_i < 1/2 and holds its old policy (enlightened inertia) when kappa_i >= 1/2. In a later stretch serving the two off-diagonal states, firm 1 holds the row refinement and firm 2 the column refinement. Then L_1^fine = L_1^cur = J_1 = B_hat_1 = 0 (the firm holding the truth never inquires again), while L_2^fine = 1, L_2^cur = 0, J_2 = 1 and B_hat_2 = (2/4)*1 = 1/2. The winner/loser asymmetry B_hat_1 = 0 < B_hat_2 is the durable point.",
+      "condition": null,
+      "pointer": "paper/paper.md#example-1-continued-4",
+      "evidence_pointer": "appendix/appendix.md#per-token-gain-and-deliberative-leverage",
+      "derivation_id": "D2"
+    },
+    {
+      "id": "C13",
+      "kind": "result",
+      "form": "proposition",
+      "main": true,
+      "text": "Theorem 9.2 (No additional evidence beyond the generating record): Conditional on the analyst record r_bar_i and the pre-production inquiry history h_i, a record-measurable, truth-blind production, formulation, and bridge-prior-selection rule makes the complete output O_i = (P_i', m', mu_i^+) conditionally independent of the candidate objective assignment. Consequently, under the reflective joint law, for K_i(.|r_bar_i, h_i)-almost every realized output o and every tau' in calT, nu(tau' | r_bar_i, h_i, O_i = o) = nu(tau' | r_bar_i, h_i), and therefore W(o) = nu(A_o | r_bar_i, h_i). Passing the repair test adds no information beyond the record. If candidates assign equal likelihood to (r_bar_i, h_i), their posterior odds remain their reflective prior odds.",
+      "condition": [],
+      "pointer": "paper/paper.md#thm-uninformative",
+      "evidence_pointer": "paper/paper.md#proof-thm-uninformative",
+      "derivation_id": "D12"
+    },
+    {
+      "id": "C14",
+      "kind": "result",
+      "form": "proposition",
+      "main": true,
+      "text": "Corollary 9.3 (Self-audit requires sufficiency for the candidates): The assessment (calT, nu) is expressible by agent i only if its current post-refinement partition P_i' is sufficient for every tau' in calT, hence only if P_i' refines the join of Proposition 7.5. This is necessary but not sufficient for complete computation of warrant. An agent holding a minimal restoration therefore generally cannot formulate the cross-representation comparison required to determine the sign or magnitude of its signed warrant gap; a broader-awareness assessor may be able to.",
+      "condition": [],
+      "pointer": "paper/paper.md#cor-self-audit",
+      "evidence_pointer": "paper/paper.md#proof-cor-self-audit",
+      "derivation_id": "D13"
+    },
+    {
+      "id": "C15",
+      "kind": "result",
+      "form": "example",
+      "main": false,
+      "text": "Example 1 (continued, Section 9): If firm i's technology produces the column refinement, the recoded record pins the unique consistent theory (architecture 0 on the first column, 1 on the second), and representation-relative coherence assigns it probability 1. With calT = {row world, column world} and a symmetric prior, the two worlds assign the realized diagonal-only record equal probability and the technology is truth-blind. So by Theorem 9.2, W(O_i) = 1/2 and the signed warrant gap is 1 - 1/2 = +1/2. The same gap applies to a firm that acquires the row refinement (coherence 1, warrant 1/2): confidence exceeds warrant even when the formulated theory is objectively correct. By Corollary 9.3 neither firm can conduct this assessment itself. One fresh differentiated observation at an off-diagonal state resolves the row/column identification problem completely; at beta = 1, any number of pooled observations remains nondiagnostic.",
+      "condition": null,
+      "pointer": "paper/paper.md#example-1-continued-5",
+      "evidence_pointer": "paper/paper.md#proof-thm-uninformative",
+      "derivation_id": "D3"
+    },
+    {
+      "id": "C16",
+      "kind": "result",
+      "form": "proposition",
+      "main": true,
+      "text": "Theorem 10.4 (Epistemic absorption): Under Assumption 10.3, almost surely: (a) at most n*(|S| - 1) refinements occur, and every agent's awareness partition is eventually constant; (b) only finitely many inquiry elections occur, because each agent stops electing once its achievability weight has decayed enough that lambda_i^(k)*T*(max pi_i - min pi_i) < gamma_i, which happens after finitely many consecutive failures because B_hat_i is bounded and gamma_i > 0; (c) there is an almost surely finite period after which no agent's language changes and no agent pays an inquiry cost, and every agent's epistemic life thereafter is judged-Bayesian updating within a fixed language. Moreover, on the event that the standing profile is eventually constant: (d) every agent's active set is eventually constant; every retained theory is eta-adequate at every recurrent pair under terminal play; every theory eta-inadequate at a recurrent pair is eventually absent; and each agent is eventually either never dissonant or in dissonant stasis.",
+      "condition": [
+        "TV(p_i*(.|C,a), marg_i m(C)(a)) != eta",
+        "pi_underbar > 0",
+        "gamma_i > 0"
+      ],
+      "pointer": "paper/paper.md#thm-absorption",
+      "evidence_pointer": "appendix/appendix.md#app-absorption",
+      "derivation_id": "D14"
+    },
+    {
+      "id": "C17",
+      "kind": "result",
+      "form": "proposition",
+      "main": false,
+      "text": "Proposition D.5 (Rest points and persistence), as stated in the paper: converging non-stasis configurations limit to a partial SCUE. A SCUE configuration with strict optimality margins and zero leverage persists, exactly with deterministic mechanisms and with probability at least 1 - sum_i exp(-b_i) in the stochastic case, so capacity governs the robustness of a rest point.",
+      "condition": [
+        "E_i^m(t_0) <= 1"
+      ],
+      "pointer": "paper/paper.md#thm-absorption",
+      "evidence_pointer": "appendix/appendix.md#prop-rest-points",
+      "derivation_id": "D18"
+    },
+    {
+      "id": "C18",
+      "kind": "result",
+      "form": "proposition",
+      "main": false,
+      "text": "Proposition D.6 (On-path adequacy, and where error lives), as stated in the paper: in a SCUE, surviving error lives only in what play never exposes. Acting-belief mass on every eta-inadequate theory vanishes, and all retained falsity is confined to pooled mechanism assignments within tolerance at visited profiles and to counterfactual claims at unvisited profiles.",
+      "condition": [
+        "TV(p_i*(.|C,a), marg_i m(C)(a)) != eta"
+      ],
+      "pointer": "paper/paper.md#rem-anomaly",
+      "evidence_pointer": "appendix/appendix.md#prop-adequacy",
+      "derivation_id": "D19"
+    },
+    {
+      "id": "C19",
+      "kind": "result",
+      "form": "comparative_static",
+      "main": false,
+      "text": "Proposition D.7 (Capacity: detection speed and robustness), as stated in the paper: in stochastic environments capacity is a single cognitive-style dial. Expected detection time under an exposed profile is O(b_i/D_i) (and Omega(b_i)), while spurious dissonance at a non-exposed rest point has probability at most exp(-b_i). A larger b_i lowers false-alarm risk but requires more accumulated evidence to detect a broken language, and capacity plays no role in the exact deterministic case.",
+      "condition": [
+        "marg_i theta(a)(x_i) > 0",
+        "D_i > 0"
+      ],
+      "pointer": "paper/paper.md#rem-anomaly",
+      "evidence_pointer": "appendix/appendix.md#prop-capacity",
+      "derivation_id": "D20"
+    },
+    {
+      "id": "C20",
+      "kind": "result",
+      "form": "proposition",
+      "main": true,
+      "text": "Proposition 10.5 (Persistent performance differences): There exist primitives and absorbing configurations in which agents hold different terminal partitions and theories, and expected per-period payoffs differ strictly and permanently, with no disadvantaged agent closing the gap. This is because, for each, the corrective process has died economically at one of its two stages: either its question is unpriced (dissonant stasis, lambda_i^(k_i)*B_hat_i(r_i) < gamma_i from some period on), or, having asked and refined, the policy change its new model recommends is priced below the switching hurdle (enlightened inertia, T-horizon gain <= kappa_i).",
+      "condition": [],
+      "pointer": "paper/paper.md#prop-persistence",
+      "evidence_pointer": "appendix/appendix.md#persistence-payoffs",
+      "derivation_id": "D15"
+    },
+    {
+      "id": "C21",
+      "kind": "result",
+      "form": "proposition",
+      "main": false,
+      "text": "Proposition D.9 (No payoff-relevant policy error in diagnostic environments), as stated in the paper: in environments whose primitives are diagnostic (payoff-relevant policy errors always expose the erring agent's awareness under confirmed stationary play), no SCUE contains a payoff-relevant policy error.",
+      "condition": [],
+      "pointer": "paper/paper.md#rem-two-sources",
+      "evidence_pointer": "appendix/appendix.md#prop-diagnostic",
+      "derivation_id": "D21"
+    },
+    {
+      "id": "C22",
+      "kind": "result",
+      "form": "proposition",
+      "main": false,
+      "text": "Proposition D.10 (Strict punishment implies diagnosticity), as stated in the paper: strictly punishing primitives, whose on-path conditionals at every payoff-relevant policy error separate from every expressible prediction by more than eta, are diagnostic. Consequently every SCUE under strictly punishing primitives is free of payoff-relevant policy error.",
+      "condition": [
+        "min_{m in M(P_i)} TV(p_i*(.|C_{P_i}(s), a^sigma(s)), marg_i m(C_{P_i}(s))(a^sigma(s))) > eta"
+      ],
+      "pointer": "paper/paper.md#concealment-is-necessary-not-sufficient",
+      "evidence_pointer": "appendix/appendix.md#prop-punishing",
+      "derivation_id": "D22"
+    },
+    {
+      "id": "C23",
+      "kind": "result",
+      "form": "example",
+      "main": false,
+      "text": "Example 1 (continued, Section 10). The trap: at beta = 1, if both firms acquired the column refinement and became certain of the false column assignment, they pool at every state and every payoff is 1/2, exactly what the column theory predicts. The configuration is a SCUE with payoff-relevant error, and the positive signed warrant gap is permanent: each firm remains exactly half-warranted. The knife edge: for beta < 1, the first period serving an off-diagonal state pays beta/2 where the theory predicts 1/2, so dissonance returns, B_hat turns positive and the reflective posterior becomes degenerate; payoff-relevant self-confirmation is a knife-edge property of perfectly forgiving demand. Persistence: at beta < 1, firm 1 holds the row refinement and the true assignment while firm 2 stays coarse and is dissonant from t_0. If gamma_2 > lambda_2^(k_{2,t_0})*B_hat_2(r_{2,t}) for every subsequent record (for which gamma_2 > lambda_2^(k_{2,t_0})*T*(max pi_2 - min pi_2) suffices), firm 2 never elects and is in dissonant stasis. Its balanced four-token record with T = 2 gives L_2^fine = 1, L_2^cur = 0, J_2 = 1 and B_hat_2 = 1/2, and under uniform rho the firms earn 3/4 and 1/4 per period, permanently. At beta = 1 the continuation is either a one-switch path into renewed dissonance or a stable policy-inertia path, not an indefinite oscillation.",
+      "condition": null,
+      "pointer": "paper/paper.md#example-1-continued-6",
+      "evidence_pointer": "appendix/appendix.md#app-example",
+      "derivation_id": "D6"
+    }
+  ],
+  "anchors": [
+    {
+      "id": "A1",
+      "kind": "numeric",
+      "procedure": {
+        "language": "python",
+        "source": "materials/lab.py:minimal_repairs"
+      },
+      "params": {},
+      "expected": 4,
+      "tolerance": {
+        "abs": 1e-09
+      },
+      "pointer": "paper/paper.md#example-1-continued-3",
+      "claim_id": "C10",
+      "derivation_id": null
+    },
+    {
+      "id": "A2",
+      "kind": "numeric",
+      "procedure": {
+        "language": "python",
+        "source": "materials/lab.py:discovery_leverage"
+      },
+      "params": {
+        "T": 2,
+        "firm": 1
+      },
+      "expected": 0.5,
+      "tolerance": {
+        "abs": 1e-09
+      },
+      "pointer": "paper/paper.md#example-1-continued-4",
+      "claim_id": "C12",
+      "derivation_id": "D2"
+    },
+    {
+      "id": "A3",
+      "kind": "numeric",
+      "procedure": {
+        "language": "python",
+        "source": "materials/lab.py:validation_leverage"
+      },
+      "params": {
+        "firm": 1,
+        "T": 2
+      },
+      "expected": 0,
+      "tolerance": {
+        "abs": 1e-09
+      },
+      "pointer": "paper/paper.md#example-1-continued-4",
+      "claim_id": "C12",
+      "derivation_id": "D2"
+    },
+    {
+      "id": "A4",
+      "kind": "numeric",
+      "procedure": {
+        "language": "python",
+        "source": "materials/lab.py:warrant_gap"
+      },
+      "params": {
+        "coherence": 1,
+        "warrant": 0.5
+      },
+      "expected": 0.5,
+      "tolerance": {
+        "abs": 1e-09
+      },
+      "pointer": "paper/paper.md#example-1-continued-5",
+      "claim_id": "C15",
+      "derivation_id": "D3"
+    },
+    {
+      "id": "A5",
+      "kind": "numeric",
+      "procedure": {
+        "language": "python",
+        "source": "materials/lab.py:persistence_payoff"
+      },
+      "params": {
+        "firm": 2,
+        "beta": 0.5,
+        "c": 0
+      },
+      "expected": 0.25,
+      "tolerance": {
+        "abs": 1e-09
+      },
+      "pointer": "paper/paper.md#example-1-continued-6",
+      "claim_id": "C23",
+      "derivation_id": "D6"
+    }
+  ]
+}

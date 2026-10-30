@@ -1,0 +1,29 @@
+title: Reproduction anchors (ai-appendix/anchors.yaml), AI appendix part 5
+$defs:
+  anchor:
+    type: object
+    required: [id, kind, procedure, expected, pointer]
+    additionalProperties: false
+    properties:
+      id: {type: string, pattern: "^A[0-9]+$"}
+      kind: {enum: [numeric, sign, identity]}
+      procedure:
+        type: object
+        required: [language, source]
+        properties:
+          language: {enum: [python, sympy_expr]}
+          source: {type: string}
+      params: {type: object, additionalProperties: {type: number}}
+      expected: {type: [number, string]}
+      tolerance:
+        type: object
+        properties:
+          abs: {type: number}
+          rel: {type: number}
+      pointer: {type: string}
+      claim_id: {type: [string, "null"]}
+      derivation_id: {type: [string, "null"]}
+type: object
+required: [anchors]
+properties:
+  anchors: {type: array, minItems: 1, items: {$ref: "#/$defs/anchor"}}

@@ -1,0 +1,15 @@
+paper_id: questions-before-priors
+title: "Questions Before Priors: Causal Dissonance, Insight, and the Origin of Strategic Theories"
+authors:
+  - Michael D. Ryall
+modality: formal
+protocol_version: formal-0.2
+materials_tier: public
+parts:
+  paper: paper/
+  appendix: appendix/
+  ai_appendix: ai-appendix/
+  materials: materials/
+  provenance: provenance/
+  declarations: declarations.yaml
+working_history: null

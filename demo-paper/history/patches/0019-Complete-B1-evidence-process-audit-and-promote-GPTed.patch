@@ -1,0 +1,225 @@
+From ebb306c4d22dd0da23f6047c0786347723d62b48 Mon Sep 17 00:00:00 2001
+From: MDR Git <mdr@mikeryall.com>
+Date: Wed, 12 Aug 2026 15:40:36 -0400
+Subject: [PATCH 19/27] Complete B1 evidence-process audit and promote
+ GPTedit-02
+
+---
+ ..._GPTedit-01.tex => tbv_mdr_GPTedit-02.tex} | 108 ++++++++++++------
+ 1 file changed, 72 insertions(+), 36 deletions(-)
+ rename paper/{tbv_mdr_GPTedit-01.tex => tbv_mdr_GPTedit-02.tex} (91%)
+
+diff --git a/paper/tbv_mdr_GPTedit-01.tex b/paper/tbv_mdr_GPTedit-02.tex
+similarity index 91%
+rename from paper/tbv_mdr_GPTedit-01.tex
+rename to paper/tbv_mdr_GPTedit-02.tex
+index 43b2319..1094a47 100644
+--- a/paper/tbv_mdr_GPTedit-01.tex
++++ b/paper/tbv_mdr_GPTedit-02.tex
+@@ -1,4 +1,4 @@
+-% TRUTH VERSION: tbv_mdr_GPTedit-01.tex
++% TRUTH VERSION: tbv_mdr_GPTedit-02.tex
+ % FILE ROLE: AUTHORITATIVE SOURCE
+ % DOCUMENT: Scholarly Paper TBV
+ 
+@@ -429,11 +429,12 @@ With stochastic mechanisms, no announcement would occur at all.
+ Fix an adequacy tolerance $\eta\ge0$.
+ Theory $m$ is \emph{adequate} at a visited pair $(C,a)$ when $\TV\!\left(p_i^{*}(\cdot\mid C,a),\marg{i}m(C)(a)\right)\le\eta$, where $\TV$ is total-variation distance; under a standing profile call $m$ \emph{$\eta$-adequate} if it is adequate at every visited pair and \emph{$\eta$-inadequate} if it is inadequate at some visited pair.
+ The agent monitors adequacy \emph{sequentially}, period by period.
+-For each expressible theory $m$ it maintains a nonnegative \emph{evidence process} $E_i^{m}$, equal to $1$ before any play and multiplied each period by a nonnegative factor for the observed token; the factor is built so that $E_i^{m}$ is a supermartingale as long as $m$ is adequate---its evidence against $m$ does not grow in expectation---while at any pair where $m$ is inadequate $\log E_i^{m}$ grows in expectation at a strictly positive rate (the pair's optimal betting exponent; \cref{app:eprocess}).
+-(\Cref{app:eprocess} gives an explicit mixture construction; in the exact deterministic case $\eta=0$ the factor is the likelihood ratio, so $E_i^{m}$ becomes $+\infty$ the first period $m$ assigns probability zero to a realized consequence.)
++For each expressible theory $m$ it maintains a nonnegative \emph{evidence process} $E_i^{m}$, equal to $1$ before any play; under adequacy, $E_i^{m}$ is a nonnegative supermartingale, while at a recurrent pair where $m$ is strictly inadequate the construction in \cref{app:eprocess} contains a fixed betting component with strictly positive expected log-growth.
++Because the total evidence process assigns that component positive weight, $E_i^{m}$ diverges almost surely under recurrent strict inadequacy.
++(The exact deterministic case $\eta=0$ instead uses the separate zero-likelihood detector of \cref{app:eprocess}: a theory is rejected at the first realized consequence to which it assigns probability zero.)
+ Agent $i$ carries a \emph{dissonance capacity} $b_i>0$ and \emph{rejects} $m$, permanently, at the first period in which $\log E_i^{m}\ge b_i$.
+ The \emph{active set} $\widehat M_i(\mathcal P_i,r_i)$ collects the not-yet-rejected theories.
+-Capacity is the agent's evidence threshold for abandoning a theory: by Ville's inequality the probability that an $\eta$-adequate theory is ever rejected is at most $e^{-b_i}$, so a high-capacity agent tolerates apparent misfit and rarely rejects on noise, while a low-capacity agent rejects on slight evidence and suffers more false alarms.
++Capacity is the agent's evidence threshold for abandoning a theory: for a theory adequate from initialization, Ville's inequality gives $\Pr(\sup_t E_i^m(t)\ge e^{b_i})\le e^{-b_i}$, so a high-capacity agent tolerates apparent misfit and rarely rejects on noise, while a low-capacity agent rejects on slight evidence and suffers more false alarms.
+ Retrospective fits to a \emph{fixed} record score a candidate against evidence already in hand rather than a stream, using the record's counts $n_i(C,a)$ and empirical conditionals $\hat p_i(\cdot\mid C,a)$ and a nonnegative, nonincreasing slack $w(\cdot)\to0$: theory $m$ \emph{fits} at a pair $(C,a)$ when
+ \begin{equation}
+ \TV\bigl(\hat p_i(\cdot\mid C,a),\,\marg{i}m(C)(a)\bigr)
+@@ -447,25 +448,32 @@ The repair test of \cref{sec:inquiry} imposes this at every pair with $n_i(C,a)>
+ \begin{lemma}[Test consistency]
+ \label{lem:test-consistency}
+ Fix a partition $\mathcal P_i$ and a standing profile, and suppose every theory is either $\eta$-adequate or strictly inadequate at each visited pair (none sits exactly at the adequacy boundary).
+-Consider a record consisting of a finite prefix together with observations generated under that profile from some period on.
++Let $t_0$ denote the beginning of the stable standing-profile regime after a finite prefix, and let $E_i^m(t_0)$ be the inherited evidence value of a theory $m$ active at $t_0$.
+ Because rejection is permanent and the theories are finite, the active set is monotone and eventually constant; and almost surely:
+ \begin{enumerate}[label=(\alph*)]
+-  \item every theory that is $\eta$-inadequate at a recurrent pair, and every theory carried past $b_i$ by the frozen prefix alone, is eventually rejected; and
+-  \item every remaining theory---$\eta$-adequate at every recurrent pair and below $b_i$ on frozen evidence---survives forever, except for a false rejection of probability at most $e^{-b_i}$.
++  \item every theory already rejected by $t_0$, and every theory strictly inadequate at a recurrent post-$t_0$ pair, is eventually absent from the active set; and
++  \item a theory active at $t_0$ and $\eta$-adequate at every recurrent post-$t_0$ pair has conditional probability of future false rejection at most $E_i^m(t_0)e^{-b_i}$.
+ \end{enumerate}
+-Consequently dissonance arises almost surely when every expressible theory falls under~(a); when some theory qualifies under~(b), dissonance is avoided with probability at least $1-e^{-b_i}$.
++Active status implies $E_i^m(t_0)<e^{b_i}$, so every theory in~(b) has strictly positive conditional probability of surviving forever.
++Consequently, if every expressible theory falls under~(a), eventual dissonance occurs almost surely; if at least one recurrently adequate theory remains active at $t_0$, eventual dissonance is not an almost-sure consequence; and if one such theory satisfies $E_i^m(t_0)\le1$, dissonance is avoided with probability at least $1-e^{-b_i}$.
+ \end{lemma}
+ 
+ \begin{proof}
+-A recurrent pair is visited each period with a fixed positive probability under the i.i.d.\ full-support draw, hence infinitely often; a frozen pair is visited only in the finite prefix and adds at most a fixed constant to $\log E_i^{m}$.
+-If $m$ is inadequate at a recurrent pair, that pair's betting factor has strictly positive expected log-growth (the pair's betting exponent) while every adequate pair's factor has nonnegative expected log-growth under the construction, so by the strong law $\log E_i^{m}\to+\infty$ almost surely and $m$ is rejected; likewise if the frozen constant alone reaches $b_i$.
+-If $m$ is $\eta$-adequate at every recurrent pair and its frozen evidence is below $b_i$, then $E_i^{m}$ is a nonnegative supermartingale, so Ville's inequality gives $\Pr(\sup_t\log E_i^{m}\ge b_i)\le e^{-b_i}$, and off that event $m$ is never rejected.
++A recurrent pair is visited each period with a fixed positive probability under the i.i.d.\ full-support draw, hence infinitely often; a frozen pair is visited only in the finite prefix and affects the inherited value $E_i^m(t_0)$.
++If $m$ is strictly inadequate at a recurrent pair $j^{*}$, \cref{app:eprocess} supplies a fixed betting component $W^{*}$ for that pair with strictly positive expected log-growth.
++The pair mixture gives $W^{*}$ positive weight $\pi^{*}$ and the global evidence process gives the pair positive weight $v_{j^{*}}$, so pathwise $E_i^m(t)\ge v_{j^{*}}\pi^{*}W^{*}(t)$.
++The strong law gives $W^{*}(t)\to\infty$ almost surely, hence $E_i^m(t)\to\infty$ almost surely and $m$ eventually crosses every finite threshold $b_i$.
++If $m$ is active at $t_0$ and $\eta$-adequate at every recurrent post-$t_0$ pair, then $(E_i^m(t))_{t\ge t_0}$ is a nonnegative supermartingale and conditional Ville's inequality gives
++\[
++\Pr\!\left(\sup_{t\ge t_0}E_i^m(t)\ge e^{b_i}\,\middle|\,\mathcal F_{t_0}\right)
++\le E_i^m(t_0)e^{-b_i}.
++\]
+ Permanence of rejection and finiteness of $M(\mathcal P_i)$ make the active set monotone and eventually constant; collecting the two cases gives the dissonance dichotomy.
+ \end{proof}
+ 
+-The frozen-evidence clause matters: a theory adequate under the current profile can be carried past $b_i$ by legacy evidence from an earlier regime, so the active set tracks the whole retained record, not the current play alone.
+-The deterministic case is the exact instance $\eta=0$: an inadequate theory assigns probability zero to some consequence that occurs with positive on-path probability, so $E_i^{m}$ becomes infinite the first time that consequence is realized---rejection is immediate and certain---while an adequate theory predicts every realized consequence with positive probability and is never rejected.
+-Capacity plays no role here (any $b_i$ gives the same verdicts) and the false-alarm probability $e^{-b_i}$ is irrelevant, recovering the exact test.
++The inherited-value term matters: a theory adequate under the current profile may carry evidence from an earlier regime, so the active set and its future false-rejection bound track the whole retained process, not current play alone.
++The deterministic case uses the separate exact detector of \cref{app:eprocess}: when $\eta=0$, an inadequate theory is rejected at the first diagnostic consequence to which it assigns probability zero, while an adequate theory is never falsely rejected.
++Capacity $b_i$ plays no role in this detector and false alarms are zero.
+ 
+ \begin{assumption}[Full-support marginals, stochastic case]
+ \label{ass:full-support}
+@@ -507,17 +515,17 @@ A standing profile is \emph{concealing} for agent $i$ if some expressible theory
+ \begin{proposition}[Exposure and dissonance]
+ \label{prop:exposure}
+ Fix a standing profile and suppose no theory sits exactly at the adequacy boundary (\cref{lem:test-consistency}).
+-If the record carries no frozen evidence that already rejects an $\eta$-adequate theory, then $\mathcal P_i$ is exposed if and only if agent $i$ is dissonant from some period onward almost surely; when $\mathcal P_i$ is not exposed, dissonance is avoided with probability at least $1-e^{-b_i}$.
+-Absent that proviso, frozen legacy evidence can force dissonance even under a non-exposed profile.
++If every theory that is $\eta$-adequate under the fixed profile remains active when that profile begins at $t_0$, then $\mathcal P_i$ is exposed if and only if eventual dissonance occurs almost surely.
++If the profile is not exposed and $m$ is an active $\eta$-adequate theory at entry, then, conditional on the entry history, dissonance is avoided forever with probability at least $1-E_i^m(t_0)e^{-b_i}$; if some such $m$ satisfies $E_i^m(t_0)\le1$, this bound is at least $1-e^{-b_i}$.
+ \end{proposition}
+ 
+ \begin{proof}
+-By \cref{lem:test-consistency} the eventual active set consists of the theories $\eta$-adequate at every recurrent pair that lie below $b_i$ on frozen evidence and escape false rejection.
+-Under the no-legacy proviso frozen evidence rejects no $\eta$-adequate theory, so this set is empty almost surely iff no theory is $\eta$-adequate at every recurrent pair---exposure---while if such a theory exists it survives with probability at least $1-e^{-b_i}$.
+-If instead frozen evidence rejects every $\eta$-adequate theory, the active set is empty although the profile is not exposed.
++By \cref{lem:test-consistency}, every theory strictly inadequate at a recurrent pair is eventually rejected almost surely.
++If all profile-adequate theories are active at $t_0$, the eventual active set is therefore empty almost surely exactly when there is no $\eta$-adequate theory---that is, exactly when the profile is exposed.
++For a non-exposed profile, conditional Ville's inequality bounds the future rejection probability of any entry-active adequate theory $m$ by $E_i^m(t_0)e^{-b_i}$, so the stated survival and no-dissonance bounds follow.
+ \end{proof}
+ 
+-The proviso is not cosmetic: the dynamics of \cref{sec:dynamics} generate records whose early periods were played under coarser partitions and different profiles, so the frozen evidence is real, and the characterization of the corrective forces below is stated for the terminal regime where the proviso holds by construction (\cref{thm:absorption}(d)).
++The activity proviso is not cosmetic: the dynamics of \cref{sec:dynamics} generate records whose early periods were played under coarser partitions and different profiles, so a terminally adequate theory may already have been rejected and an active one may inherit an evidence value above one.
+ 
+ Exposure has two sources, and the distinction organizes much of what follows.
+ Heterogeneity inside a cell surfaces either because \emph{other agents play differently across the pooled states}---strategic differentiation inside one's categories, which changes the visited profiles and the induced mixtures---or because \emph{the environment punishes uniform play across causally different states in an observable way}.
+@@ -1051,7 +1059,7 @@ Under \cref{ass:regularity}, almost surely:
+ \end{enumerate}
+ Moreover, on the event that the standing profile is eventually constant,
+ \begin{enumerate}[label=(\alph*),start=4]
+-  \item every agent's active set is eventually constant, equal to the theories $\eta$-adequate under the terminal play at every recurrent pair and below $b_i$ on frozen evidence, and each agent is eventually either never dissonant---it lives in a Bayesian world---or in dissonant stasis (\cref{def:stasis}).
++  \item every agent's active set is eventually constant; every theory retained in that eventual active set is $\eta$-adequate at every recurrent pair under terminal play, every theory $\eta$-inadequate at a recurrent pair under terminal play is eventually absent, and each agent is eventually either never dissonant---it lives in a Bayesian world---or in dissonant stasis (\cref{def:stasis}).
+ \end{enumerate}
+ The proof is in \cref{app:absorption}.
+ \end{theorem}
+@@ -1068,7 +1076,7 @@ The proof is in \cref{app:absorption}.
+     \item With deterministic mechanisms, the configuration persists: dissonance, elections, and policy changes never occur, and the SCUE conditions continue to hold, with conjectures converging empirically to induced play.
+     \item With stochastic mechanisms, suppose in addition that, at the entry configuration, every agent's active set is nonempty, every theory it contains is $\eta$-adequate under the configuration's play and carries no accumulated evidence against it ($E_i^{m}\le1$, automatic when the configuration is entered on a freshly refined language), and the standing action is strictly optimal under every conjecture and every $\eta$-adequate theory.
+     Then, conditional on the entry history, with probability at least $1-\sum_i e^{-b_i}$, no agent is ever dissonant, no switch or election occurs, and the SCUE conditions hold in every subsequent period, with conjectures converging empirically to induced play.
+-    The residual $\sum_i e^{-b_i}$ is the sequential test's false-alarm floor: it shrinks as dissonance capacities rise, and vanishes in the deterministic case---so \emph{capacity governs the robustness of a rest point}.
++    The residual $\sum_i e^{-b_i}$ is the sequential test's false-alarm bound: it shrinks as dissonance capacities rise, and vanishes in the deterministic case---so in stochastic environments \emph{capacity governs the robustness of a rest point}.
+   \end{enumerate}
+ \end{enumerate}
+ The proof is in \cref{app:absorption}.
+@@ -1109,16 +1117,25 @@ The residual clause is the complement of the on-path constraints.
+ 
+ \begin{proposition}[Capacity: detection speed and robustness]
+ \label{prop:capacity}
+-Fix a standing profile and agent $i$ with dissonance capacity $b_i$.
++Fix agent $i$ and stochastic mechanisms satisfying \cref{ass:full-support}.
+ \begin{enumerate}[label=(\roman*)]
+-  \item \emph{Detection.} Suppose the profile is exposed, and let its \emph{detectability} be $D_i>0$: the smallest across expressible theories of the per-period growth rate of $\log E_i^{m}$ (for each theory, the visit rate times the betting exponent at its most-detectable inadequate pair; positive because each theory is inadequate at a recurrent pair). Then the expected number of periods until agent $i$'s dissonance is $O(b_i/D_i)$---linear in capacity, inverse in detectability---and at least of order $b_i$.
+-  \item \emph{Robustness.} If instead the profile is not exposed and is entered adequately, agent $i$ spuriously becomes dissonant with probability at most $e^{-b_i}$ (\cref{prop:rest-points}(ii-b)).
++  \item \emph{Detection.} Fix an exposed standing profile and suppose the evidence processes are freshly initialized when that profile begins.
++  For each theory $m$, let $d_i^m$ be the supremum of the positive per-period expected log-growth rates available from the fixed betting components associated with its recurrent inadequate pairs in \cref{app:eprocess}, and define $D_i=\min_m d_i^m>0$.
++  The expected number of periods until agent $i$'s dissonance satisfies $\mathbb E[\tau_{\mathrm{dissonance}}]=O(b_i/D_i)$ and $\mathbb E[\tau_{\mathrm{dissonance}}]=\Omega(b_i)$.
++  \item \emph{Robustness.} At a non-exposed stochastic profile entered under the hypotheses of \cref{prop:rest-points}(ii-b), agent $i$ spuriously becomes dissonant with probability at most $e^{-b_i}$.
+ \end{enumerate}
+-Capacity is thus a single cognitive-style dial: raising $b_i$ lengthens stable stretches and hardens rest points against false alarms, at the cost of slower detection of a genuinely broken language.
++In stochastic environments, $b_i$ creates a detection--robustness tradeoff: a larger $b_i$ lowers false-alarm risk but requires more accumulated evidence to detect a broken language.
++Under deterministic $\eta=0$ mechanisms, a recurrently inadequate theory is instead rejected at its first diagnostic impossible consequence, so detection speed is governed by the occurrence probability of diagnostic evidence rather than by $b_i$; adequate theories have zero false-alarm probability, and capacity affects neither detection nor robustness in the exact deterministic model.
+ \end{proposition}
+ 
+ \begin{proof}
+-(i) By \cref{app:eprocess}, $E_i^{m}\ge v_{j^{*}}M_i^{m,j^{*}}$ at an inadequate recurrent pair $j^{*}$, and $M_i^{m,j^{*}}$ in turn dominates a single fixed-fraction bet $W$ whose $\log$ has i.i.d.\ per-period increments of positive mean $\bar d_i^{m}\ge D_i$ (the visit rate times the pair's betting exponent). The rejection time $\tau_m$ is no later than the crossing time of $\log W$ above $b_i-\log(v_{j^{*}}\pi^{*})$, where $\pi^{*}>0$ is the prior mass the mixture places near the optimal bet, so Wald's identity gives $\mathbb E[\tau_m]\le(b_i+c)/D_i$ with $c$ absorbing those constants and the bounded overshoot. Dissonance is $\max_m\tau_m\le\sum_m\tau_m$, so its expected time is at most $\lvert M(\mathcal P_i)\rvert(b_i+c)/D_i$; and since per-period increments of $\log E_i^{m}$ are bounded by some $R$, crossing $b_i$ needs at least $b_i/R$ periods. (ii) is the per-agent bound of \cref{prop:rest-points}(ii-b).
++(i) Exposure makes $d_i^m>0$ for every expressible theory and finiteness makes $D_i>0$.
++Because the countable betting support need not attain the supremum, choose for each $m$ a recurrent inadequate pair $j_m$ and a positive-weight component $W_m$ at that pair whose per-period expected log-growth is at least $d_i^m/2$, and let $\pi_m$ be its within-pair mixture weight.
++Component domination gives $E_i^m(t)\ge v_{j_m}\pi_m W_m(t)$ for fixed positive weights $v_{j_m}\pi_m$, so the rejection time $\tau_m$ is no later than the crossing time of $\log W_m$ above $b_i-\log(v_{j_m}\pi_m)$.
++The stochastic construction has bounded log-increments; standard bounded-increment stopping-time and Wald reasoning therefore gives $\mathbb E[\tau_m]\le 2(b_i+c_m)/d_i^m$, where $c_m$ is independent of $b_i$.
++Since $\tau_{\mathrm{dissonance}}=\max_m\tau_m\le\sum_m\tau_m$ and the theory set is finite, $\mathbb E[\tau_{\mathrm{dissonance}}]=O(b_i/D_i)$ with constants independent of $b_i$.
++Conversely, bounded one-period growth of each freshly initialized stochastic evidence process implies that no process can cross $e^{b_i}$ before a number of periods proportional to $b_i$, yielding $\mathbb E[\tau_{\mathrm{dissonance}}]=\Omega(b_i)$.
++Part (ii) is the per-agent bound of \cref{prop:rest-points}(ii-b); neither rate argument applies to the separate exact deterministic detector.
+ \end{proof}
+ 
+ \begin{proposition}[Persistent performance differences]
+@@ -1134,7 +1151,7 @@ Terminal heterogeneity in awareness is path dependence in the strong sense---age
+ \label{rem:two-sources}
+ Terminal heterogeneity has two independent origins here.
+ Agents identical in preferences, competence, capacity, and cost can still end at different languages and payoffs, because their histories posed different questions and their truth-blind technologies produced different repairs---path dependence that begins before probability.
+-Agents identical in \emph{everything} but their dissonance capacity $b_i$ and switching hurdle $\kappa_i$ also diverge: capacity sets the expected length of stable stretches and the robustness of rest points (\cref{prop:capacity}), and the hurdle sets the propensity to enlightened inertia (\cref{rem:stickiness}).
++Agents identical in \emph{everything} but their dissonance capacity $b_i$ and switching hurdle $\kappa_i$ also diverge: in stochastic environments capacity affects detection speed and the robustness of rest points (\cref{prop:capacity}), while the hurdle sets the propensity to enlightened inertia (\cref{rem:stickiness}); the capacity channel disappears under exact deterministic contradiction.
+ The first is the awareness-path microfoundation; the second a parametric cognitive-style one---and neither is available in the fixed-language tradition.
+ \end{remark}
+ 
+@@ -1258,21 +1275,39 @@ Strategy's oldest question---why do similar firms perform differently?---here re
+ \label{app:eprocess}
+ 
+ Fix agent $i$ and theory $m$.
+-At a visited pair $(C,a)$ write $q=\marg{i}m(C)(a)$ for $m$'s prediction; adequacy at $(C,a)$ is $\TV(p_i^{*}(\cdot\mid C,a),q)\le\eta$, equivalently $\lvert p_i^{*}(D)-q(D)\rvert\le\eta$ for every $D\subseteq X_i$.
+-For each such $D$, each sign, and each betting fraction $\lambda\in[0,\lambda_{\max}]$ with $\lambda_{\max}\le1/(1+\eta)$ (so the factor stays nonnegative), the process that multiplies by $1+\lambda\bigl(\mathbf 1\{x\in D\}-(q(D)+\eta)\bigr)$ at each visit to $(C,a)$, and by $1$ otherwise, is nonnegative and, under adequacy, a supermartingale: its conditional expectation multiplies by $1+\lambda\bigl(p_i^{*}(D)-q(D)-\eta\bigr)\le1$.
+-Let $M_i^{m,(C,a)}$ average these betting processes over $D$, sign, and a prior on $\lambda$---a \emph{mixture} e-value, so no bet need be fixed in advance---and set
++At a visited pair $(C,a)$ write $p=p_i^{*}(\cdot\mid C,a)$ and $q=\marg{i}m(C)(a)$; adequacy at $(C,a)$ is $\TV(p,q)\le\eta$, equivalently $\lvert p(D)-q(D)\rvert\le\eta$ for every $D\subseteq X_i$.
++For each such $D$ and each betting fraction $\lambda$, retain the one-sided factor
++\[
++F_{\lambda,D}(x)=1+\lambda\bigl(\mathbf 1\{x\in D\}-(q(D)+\eta)\bigr).
++\]
++Fix $0<\lambda_{\max}\le1/(1+\eta)$, choose a countable dense set $\Lambda\subset(0,\lambda_{\max})$, and assign every $\lambda\in\Lambda$ a strictly positive atomic weight, with the weights summing to one.
++Assign every $D\subseteq X_i$ strictly positive weight as well, and let $M_i^{m,(C,a)}$ be the resulting convex mixture of the fixed processes that multiply by $F_{\lambda,D}(x)$ at each visit to $(C,a)$ and by $1$ otherwise.
++Because $D$ ranges over all subsets of $X_i$, a negative discrepancy on $D$ is a positive discrepancy on $D^c$, so no separate sign mixture is needed.
++Under adequacy, $p(D)\le q(D)+\eta$ and hence $\mathbb E_p[F_{\lambda,D}]\le1$, so every fixed component is a nonnegative supermartingale and their convex mixture remains one.
++Assign every visited-pair component a strictly positive weight and set
+ \[
+ E_i^{m}=\sum_{(C,a)}v_{(C,a)}\,M_i^{m,(C,a)},
+ \qquad
+ \textstyle\sum_{(C,a)}v_{(C,a)}=1,\ v_{(C,a)}>0.
+ \]
+ As a convex combination of nonnegative supermartingales, $E_i^{m}$ is a nonnegative supermartingale under the null that $m$ is adequate at every pair, with $E_i^{m}=1$ before play; Ville's inequality then gives $\Pr(\sup_t E_i^{m}\ge e^{b_i})\le e^{-b_i}$, the false-alarm bound of \cref{def:test}.
+-If instead $m$ is inadequate at a recurrent pair $j^{*}=(C,a)$---some $D$ has $p_i^{*}(D)>q(D)+\eta$---the corresponding betting process has strictly positive expected log-growth, so
++If instead $m$ is strictly inadequate at a recurrent pair $j^{*}=(C,a)$, some $D$ satisfies $p(D)>q(D)+\eta$.
++For that event define
+ \[
+-E_i^{m}\ \ge\ v_{j^{*}}\,M_i^{m,j^{*}}\ \longrightarrow\ \infty\quad\text{a.s.},
++g(\lambda)=\mathbb E_p\log\!\left(1+\lambda[\mathbf 1_D-(q(D)+\eta)]\right).
+ \]
+-at a rate equal to that pair's optimal betting exponent (a Chernoff information divergence); this is the dominating-component property used in \cref{lem:test-consistency,prop:capacity}.
+-In the exact deterministic case $\eta=0$ with degenerate predictions, the $D=\{x\}$ bet---where $q(D)+\eta=0$ permits $\lambda_{\max}\to\infty$---reduces to the likelihood ratio, and $E_i^{m}$ becomes $+\infty$ at the first consequence $m$ deems impossible.
++Then $g(0)=0$ and $g'(0)=p(D)-q(D)-\eta>0$, so every sufficiently small positive $\lambda$ has $g(\lambda)>0$.
++Density of $\Lambda$ supplies a positive-weight atom $\lambda^{*}$ with strictly positive expected log-growth; if $W^{*}$ is its fixed component and $\pi^{*}>0$ its weight within the pair mixture, the strong law under recurrent visitation gives $W^{*}(t)\to\infty$ almost surely.
++Because the global process assigns the pair fixed weight $v_{j^{*}}>0$, pathwise
++\[
++E_i^{m}(t)\ge v_{j^{*}}\pi^{*}W^{*}(t)\longrightarrow\infty\quad\text{a.s.}
++\]
++The positive per-period log-growth rate of such a component is its \emph{betting exponent} (and the supremum across available components is the optimal log-growth exponent); this is the dominating-component property used in \cref{lem:test-consistency,prop:capacity}.
++
++The exact deterministic case $\eta=0$ uses a separate zero-likelihood detector rather than the stochastic mixture above.
++Conceptually, $E_i^m(t)=1$ until the first observed consequence to which theory $m$ assigns probability zero, at which point $E_i^m(t)=+\infty$ and remains there.
++A $0$-adequate deterministic theory never encounters such an event and is never falsely rejected, whereas a $0$-inadequate theory at a recurrent pair encounters a diagnostic impossible consequence almost surely and is rejected at its first occurrence.
++Thus $b_i$ has no effect in the deterministic case.
+ 
+ \section{Proofs of Theorem~\ref{thm:absorption} and
+ Proposition~\ref{prop:rest-points}}
+@@ -1315,7 +1350,8 @@ On $E_{G_2,\sigma^{*}}$ the actual and auxiliary observations coincide from $G_2
+ For the auxiliary process, call a pair $(C,a)$ \emph{recurrent} if $S_{\sigma^{*}}(C,a)\neq\emptysetset$ and \emph{frozen} otherwise.
+ A frozen pair is visited only in the finite pre-$G_2$ prefix, so its count and constraint are constant.
+ A recurrent pair is visited each period with fixed probability $\rho(S_{\sigma^{*}}(C,a))>0$ independently, so its count diverges and, by the strong law on the finite space $X_i$, its cumulative empirical conditional converges to $p_i^{*}(\cdot\mid C,a)$; the finite prefix contributes a vanishing fraction.
+-By \cref{ass:regularity}(i), \cref{lem:test-consistency} applies to the auxiliary process: the active set is eventually constant, equal to $A_i^{*}$---the theories $\eta$-adequate under $\sigma^{*}$ at every recurrent pair and below $b_i$ on frozen evidence, less at most a set false-rejected with probability $\le e^{-b_i}$ each---whose retained members are $\eta$-adequate under $\sigma^{*}$ at every recurrent pair.
++By \cref{ass:regularity}(i), \cref{lem:test-consistency} applies to the auxiliary process: every theory strictly inadequate under $\sigma^{*}$ at a recurrent pair is eventually rejected, and the active set eventually becomes a survivor subset $A_i^{*}$ whose retained members are $\eta$-adequate under $\sigma^{*}$ at every recurrent pair.
++Recurrently adequate theories may nevertheless be absent from $A_i^{*}$ because they were rejected before $G_2$ or are stochastically false-rejected afterward.
+ If $A_i^{*}\neq\emptysetset$, agent $i$ is eventually never dissonant.
+ If $A_i^{*}=\emptysetset$, it is eventually always dissonant; since no election occurs after $G^{*}$, the mechanical rule gives $\lambda_i^{(k_i)}\widehat B_i<\gamma_i$ at every such period, so agent $i$ is in dissonant stasis (\cref{def:stasis})---including the zero-leverage, abandoned-question, and irreparable cases.
+ Taking the union over the countably many $(G_2,\sigma^{*})$ gives the claim on all of $E$.
+-- 
+2.43.0
+

@@ -1,0 +1,29 @@
+{\rtf1\ansi\ansicpg1252\deff0{\fonttbl{\f0\froman\fcharset0 Times New Roman;}{\f1\fmodern\fcharset0 Courier New;}}\f0\fs24
+{\pard\sb360\sa120\keepn\b Draft01-GPTReview (text extracted from the PDF of the same name)\par}
+{\pard\sa160 Worked for 8m 57s\par}
+{\pard\sa160 A. Verification verdict REVISE\par}
+{\pard\sa160 B. Brief justification The architecture is coherent: definitions are sensibly ordered, notation is largely consistent, the timing logic is recoverable, and the deterministic running example works. No circular definitions or undefined internal references were found.\par}
+{\pard\sa160 However, the general stochastic system is not yet closed on every reachable history. Several central transitions can become undefined. These are repairable without changing the model\u8217?s architecture, so the appropriate verdict is REVISE rather than FAIL.\par}
+{\pard\sa160 C. Issues required to justify the verdict\par}
+{\pard\li360\fi-360\sa60 1.\tab A restorative refinement need not exist. The paper asserts that the singleton partition always restores coherence. With stochastic mechanisms, however, repeated observations of the same state and action can produce an empirical conditional outside the test tolerance of every mechanism. No partition of S can separate observations generated at the same state. Consequently,\par}
+{\pard\f1\fs20\sa0                                     R(Pi , ri ) = \u8709?\par}
+{\pard\f1\fs20\sa0                                          \u8203?   \u8203?\par}
+{\pard\f1\fs20\sa0 can occur. This conflicts with both the technology\u8217?s successful-output\par}
+{\pard\f1\fs20\sa0 definition and the assumption that every elected inquiry succeeds with\par}
+{\pard\f1\fs20\sa0 probability at least \u960? > 0.\par}
+{\pard\f1\fs20\sa0                          \u8203?\par}
+{\pard\sa160\par}
+{\pard\li360\fi-360\sa60 2.\tab The inquiry-value statistic is not yet a fully defined mathematical object. \u8220?Pinned distinctions\u8221? do not formally generate a partition or information algebra, so measurability with respect to them is undefined. Likewise, Bi (ri ) lacks an explicit optimization formula specifying: \u8203?    \u8203?\par}
+{\pard\f1\fs20\sa0          how robustness across rival behaviors is evaluated;\par}
+{\pard\f1\fs20\sa0          whether uncertainty over mechanisms is also included;\par}
+{\pard\f1\fs20\sa0          how payoffs are normalized when the retained record grows while a\par}
+{\pard\f1\fs20\sa0          generation remains T episodes; and\par}
+{\pard\f1\fs20\sa0          how counterfactual payoffs are computed absent the transparency\par}
+{\pard\f1\fs20\sa0          condition, presently stated only in a remark.\par}
+{\pard\sa160\par}
+{\pard\sa160 Therefore the participation rule \u955?i Bi \u8805? \u947?i cannot yet be evaluated for the \u8203?       \u8203?   \u8203?\par}
+{\pard\sa160 general model.\par}
+{\pard\li360\fi-360\sa60 3.\tab The dynamic state and belief transition are not closed. SCUE is defined using (Pi , \u956?i , qi , \u963?i ), but its active-set and inquiry conditions \u8203?   \u8203?   \u8203?       \u8203?\par}
+{\pard\sa160 depend on ri . Different frozen records can therefore give the same listed \u8203?\par}
+{\pard\sa160 profile different SCUE status. In addition, if a fluctuating stochastic test empties an active set and later refills it with theories receiving zero mass under the last restricted belief, the prescribed renormalization is undefined. The state must include the record\u8212?or a sufficient statistic for it\u8212?and the refill rule must guarantee a well-defined belief or explicitly continue the carry-forward policy.\par}
+}

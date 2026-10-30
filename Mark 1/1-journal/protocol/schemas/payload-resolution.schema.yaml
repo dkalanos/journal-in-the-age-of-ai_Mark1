@@ -1,0 +1,14 @@
+title: Level 2 (b) resolution payload
+type: object
+required: [verdicts]
+additionalProperties: false
+properties:
+  verdicts:
+    type: array
+    items:
+      type: object
+      required: [claim_id, resolves, reason]
+      properties:
+        claim_id: {type: string}
+        resolves: {enum: [full, partial, none]}
+        reason: {type: string}

@@ -1,0 +1,23 @@
+title: Finding (appendix D.5, plus rationale, prompt_id, agreement, absent_from_author)
+type: object
+required: [id, level, check, check_version, record_pointer, standard_pointer, statement, class, main, model, model_version, run_id]
+properties:
+  id: {type: string}
+  level: {enum: [1, 2, 3]}
+  check: {type: string}
+  check_version: {type: string}
+  standard_version: {type: [string, "null"]}
+  record_pointer: {type: string, minLength: 1}
+  standard_pointer: {type: string, minLength: 1}
+  statement: {type: string, minLength: 1}
+  class:
+    enum: [nonconformance, claim_unresolved, pointer_missing, evidence_partial, anchor_failed,
+           warrant_gap, standard_departure, established_by_prior, uncovered, injection]
+  main: {type: boolean}
+  rationale: {type: string}
+  model: {type: string}
+  model_version: {type: string}
+  prompt_id: {type: [string, "null"]}
+  agreement: {type: [string, "null"]}
+  run_id: {type: string}
+  absent_from_author: {type: boolean}

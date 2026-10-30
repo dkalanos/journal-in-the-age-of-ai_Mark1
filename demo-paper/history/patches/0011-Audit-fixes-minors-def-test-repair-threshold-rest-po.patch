@@ -1,0 +1,152 @@
+From b28f3c91efc6f781a22aae873f78fca1924941e8 Mon Sep 17 00:00:00 2001
+From: MDR Git <mdr@mikeryall.com>
+Date: Sat, 25 Jul 2026 09:49:20 -0400
+Subject: [PATCH 11/27] Audit fixes: minors + def:test repair-threshold +
+ rest-points(i) kappa=0 clause
+
+From the three-way stress-test (all non-statement-changing except the two noted):
+- def:test: define \hat p_i / n_i at first use; state the repair test as the n>0
+  variant and the grouping test as the \bar n variant (they genuinely differ) [#3, m4].
+- lem:test-consistency proof: phrase the divergence step as a domination argument [m3].
+- rest-points(i): add the \kappa_i=0 companion clause (strict-argmax no-switch) so the
+  hypothesis is satisfiable in the case def:scue(i) foregrounds [#2].
+- Rename nonidentification horizon G -> H (de-collide with grouping G) [m5].
+- Stale lexis (commit->adopt, "committed one"->carried-forward); appendix (d) prefix
+  wording; state F_{t-1} timing convention; note T is common across agents [m6/4/5/7].
+
+Compiles, 41pp. Still open (need author sign-off): rest-points(ii-b) recast [#1] and
+prop:persistence scope [#4].
+
+Co-Authored-By: Claude Opus 4.8 <noreply@anthropic.com>
+---
+ paper/tbv_mdr_Paper01-v04.tex | 34 ++++++++++++++++------------------
+ 1 file changed, 16 insertions(+), 18 deletions(-)
+
+diff --git a/paper/tbv_mdr_Paper01-v04.tex b/paper/tbv_mdr_Paper01-v04.tex
+index 078174d..03f80bd 100644
+--- a/paper/tbv_mdr_Paper01-v04.tex
++++ b/paper/tbv_mdr_Paper01-v04.tex
+@@ -318,7 +318,7 @@ U_i(\sigma\mid\mu_i,q_i)=\sum_{C\in\mathcal P_i}\rho(C)\sum_{m\in M(\mathcal P_i
+ \label{eq:subjective-value}
+ \end{equation}
+ where $\rho(C)=\sum_{s\in C}\rho(s)$.
+-Agent $i$ values a lumpy, one-time cost against the gain it produces over a fixed \emph{valuation horizon} of $T$ periods, without discounting.
++Agent $i$ values a lumpy, one-time cost against the gain it produces over a fixed \emph{valuation horizon} of $T$ periods, common across agents, without discounting.
+ Revising the standing policy is costly: agent $i$ replaces $\sigma_i$ by $\sigma_i^{\star}$ if and only if the horizon-$T$ gain clears a one-time \emph{switching hurdle} $\kappa_i\ge0$,
+ \[
+ T\bigl(U_i(\sigma_i^{\star}\mid\mu_i,q_i)-U_i(\sigma_i\mid\mu_i,q_i)\bigr)>\kappa_i,
+@@ -420,16 +420,14 @@ For each expressible theory $m$ it maintains a nonnegative \emph{evidence proces
+ Agent $i$ carries a \emph{dissonance capacity} $b_i>0$ and \emph{rejects} $m$, permanently, at the first period in which $\log E_i^{m}\ge b_i$.
+ The \emph{active set} $\widehat M_i(\mathcal P_i,r_i)$ collects the not-yet-rejected theories.
+ Capacity is the agent's evidence threshold for abandoning a theory: by Ville's inequality the probability that an $\eta$-adequate theory is ever rejected is at most $e^{-b_i}$, so a high-capacity agent tolerates apparent misfit and rarely rejects on noise, while a low-capacity agent rejects on slight evidence and suffers more false alarms.
+-Retrospective fits to a \emph{fixed} record---the repair test of \cref{sec:inquiry} and the grouping test of \cref{sec:economics}, which score a candidate against evidence already in hand rather than a stream---instead use the fixed-sample criterion
++Retrospective fits to a \emph{fixed} record score a candidate against evidence already in hand rather than a stream, using the record's counts $n_i(C,a)$ and empirical conditionals $\hat p_i(\cdot\mid C,a)$ and a nonnegative, nonincreasing slack $w(\cdot)\to0$: theory $m$ \emph{fits} at a pair $(C,a)$ when
+ \begin{equation}
+ \TV\bigl(\hat p_i(\cdot\mid C,a),\,\marg{i}m(C)(a)\bigr)
+ \le
+-\eta+w\bigl(n_i(C,a)\bigr)
+-\qquad
+-\text{for every }(C,a)\text{ with }n_i(C,a)\ge\bar n,
++\eta+w\bigl(n_i(C,a)\bigr).
+ \label{eq:test}
+ \end{equation}
+-for a nonnegative, nonincreasing slack $w(\cdot)\to0$ and minimum count $\bar n\ge1$.
++The repair test of \cref{sec:inquiry} imposes this at every pair with $n_i(C,a)>0$; the grouping test of \cref{sec:economics} imposes it wherever $n_i(C,a)\ge\bar n$, a minimum count $\bar n\ge1$.
+ \end{definition}
+ 
+ \begin{lemma}[Test consistency]
+@@ -446,7 +444,7 @@ Consequently dissonance arises almost surely when every expressible theory falls
+ 
+ \begin{proof}
+ A recurrent pair is visited each period with a fixed positive probability under the i.i.d.\ full-support draw, hence infinitely often; a frozen pair is visited only in the finite prefix and adds at most a fixed constant to $\log E_i^{m}$.
+-If $m$ is inadequate at a recurrent pair, the evidence factor there has strictly positive expected log-growth (the information divergence), so by the strong law $\log E_i^{m}\to+\infty$ almost surely and $m$ is rejected; likewise if the frozen constant alone reaches $b_i$.
++If $m$ is inadequate at a recurrent pair, that pair's betting factor has strictly positive expected log-growth (the information divergence) while every adequate pair's factor has nonnegative expected log-growth under the construction, so by the strong law $\log E_i^{m}\to+\infty$ almost surely and $m$ is rejected; likewise if the frozen constant alone reaches $b_i$.
+ If $m$ is $\eta$-adequate at every recurrent pair and its frozen evidence is below $b_i$, then $E_i^{m}$ is a nonnegative supermartingale, so Ville's inequality gives $\Pr(\sup_t\log E_i^{m}\ge b_i)\le e^{-b_i}$, and off that event $m$ is never rejected.
+ Permanence of rejection and finiteness of $M(\mathcal P_i)$ make the active set monotone and eventually constant; collecting the two cases gives the dissonance dichotomy.
+ \end{proof}
+@@ -514,7 +512,7 @@ Both reappear as the corrective forces in \cref{sec:dynamics}.
+ \begin{excont}
+ Let $\beta=1$ and suppose the firms' priors over the constant theories are heterogeneous: firm~1 considers $\theta^0$ more likely than $\theta^1$, and firm~2 the reverse.
+ A direct computation shows that, against any conjecture about the rival, offering architecture $0$ is subjectively strictly dominant for firm~1 and architecture $1$ for firm~2 whenever $\mu_i(m^a)>(2-\beta)\,\mu_i(m^{a'})$; at $\beta=1$ this is simple belief asymmetry.
+-The firms therefore commit to differentiated constant policies.
++The firms therefore adopt differentiated constant policies.
+ Take the valuation horizon $T=2$ and condition on two periods that serve the diagonal states $s_{00}$ and $s_{11}$ under differentiated play---a positive-probability event under uniform $\rho$; the appendix records how the leverage below scales with the realized composition.
+ With differentiated actions, the winner-take-all payoffs reveal the objectively preferred architecture at each state: firm~1 wins at $s_{00}$ (payoffs $1,0$) and loses at $s_{11}$ (payoffs $0,1$).
+ No constant assignment is consistent with both observations---$m^0$ fails at $s_{11}$, $m^1$ at $s_{00}$, and $m^n$ predicts one-half at both---so each firm's active set empties: causal dissonance, in its exact deterministic form.
+@@ -664,14 +662,14 @@ The output, and even the set of possible outputs, is not a pre-insight subjectiv
+ 
+ \begin{theorem}[Observational nonidentification]
+ \label{thm:nonidentification}
+-Fix common initial epistemic states, common record-measurable behavioral and tie-breaking rules, common truth-blind inquiry-and-formulation rules, and a finite horizon of $G$ periods.
+-Let $\tau\neq\tau'$ be objective assignments whose \emph{joint} consequence laws agree at every state--profile pair reachable through $G$ under either world from those initial conditions:
++Fix common initial epistemic states, common record-measurable behavioral and tie-breaking rules, common truth-blind inquiry-and-formulation rules, and a finite horizon of $H$ periods.
++Let $\tau\neq\tau'$ be objective assignments whose \emph{joint} consequence laws agree at every state--profile pair reachable through $H$ under either world from those initial conditions:
+ \[
+ \tau(s)(a)=\tau'(s)(a)\in\Delta(X)
+ \qquad
+ \text{at every such $(s,a)$.}
+ \]
+-The two worlds admit a coupling under which, through $G$, their state draws, full consequence profiles, analyst and deliberative records, partition paths, beliefs, conjectures, standing policies, and production-and-formulation outputs coincide pathwise.
++The two worlds admit a coupling under which, through $H$, their state draws, full consequence profiles, analyst and deliberative records, partition paths, beliefs, conjectures, standing policies, and production-and-formulation outputs coincide pathwise.
+ If the equality holds at every pair reachable at any finite horizon, the coupling extends to the entire process.
+ 
+ Consequently, no truth-blind inquiry-and-formulation rule can produce an objectively correct formulation with probability one in both worlds.
+@@ -684,7 +682,7 @@ Proceed by induction over periods.
+ Identical histories imply identical current partitions and standing policies, hence the same action profile at the common state.
+ The pair is reachable, so the two objective assignments give it the same joint consequence distribution and the coupled consequence profiles coincide.
+ Both analyst and deliberative records therefore remain identical.
+-Record-measurability and truth-blindness then give identical belief updates, conjectures, policies, refinements, and formulations, closing the induction through $G$; the all-horizons claim follows by countability.
++Record-measurability and truth-blindness then give identical belief updates, conjectures, policies, refinements, and formulations, closing the induction through $H$; the all-horizons claim follows by countability.
+ 
+ Thus every truth-blind rule has the same output distribution in the two worlds.
+ Because $\tau\neq\tau'$, their sets of objectively correct formulations are disjoint, so that common distribution cannot assign probability one to both sets.
+@@ -1048,7 +1046,7 @@ The proof is in \cref{app:absorption}.
+ \label{prop:rest-points}
+ \leavevmode
+ \begin{enumerate}[label=(\roman*)]
+-  \item Suppose awareness partitions and standing policies are eventually constant almost surely, conjectures and reference posteriors converge, and each non-stasis agent's standing policy sits strictly inside the inaction band of \cref{ass:commitment} at the limit---its switching gain is bounded strictly below $\kappa_i$.
++  \item Suppose awareness partitions and standing policies are eventually constant almost surely, conjectures and reference posteriors converge, and each non-stasis agent's standing policy is a strict no-switch point at the limit---either its switching gain is bounded strictly below $\kappa_i$, or, when $\kappa_i=0$, the standing action is the unique $U_i$-maximizer so the gain is exactly zero.
+   Then the limiting configuration is a \emph{partial SCUE}: the SCUE conditions hold for every non-stasis agent, taking the stasis agents' constant carried-forward policies as fixed environment.
+   (Belief coordinates need not literally freeze; the strict slack transfers the no-switch condition to the limit by continuity of the finite-dimensional payoff comparison.)
+   \item Conversely, consider a configuration whose epistemic states satisfy the SCUE conditions, whose play generates only records with $\widehat B_i=0$, and in which each agent's standing action at each cell is strictly optimal under every conjecture and every theory in its active set.
+@@ -1223,7 +1221,7 @@ Proposition~\ref{prop:rest-points}}
+ \paragraph{Probability framework.}
+ All randomness is carried by three mutually independent i.i.d.\ families on a common probability space: state draws $\{s_t\}$ over periods $t=1,2,\dots$, with law $\rho$; consequence randomizers $\{U_t\}$, uniform on $[0,1]$, from which $x_t$ is generated through a fixed measurable representation of the kernel $\tau(s_t)(a_t)$; and production randomizers $\{V_{i,t}\}$, uniform on $[0,1]$, drawn when agent $i$ elects inquiry (\cref{ass:regularity}(ii)).
+ Let $\mathcal F_t$ denote the $\sigma$-algebra generated by all randomness through period $t$.
+-Each agent's standing policy and election indicator in period $t$ are $\mathcal F_{t-1}$-measurable, since they are functions of records, beliefs, and conjectures formed from earlier periods.
++Each agent's standing policy and election indicator in period $t$ are $\mathcal F_{t-1}$-measurable, since they are functions of records, beliefs, and conjectures formed from earlier periods; dissonance and the election in period $t$ are thus decided on the record through period $t-1$.
+ Conditional on $\mathcal F_{t-1}$ and on an election by agent $i$ at a repairable record, production succeeds with probability at least $\underline\pi$; at an irreparable record it fails surely.
+ 
+ \paragraph{Part (a).}
+@@ -1251,7 +1249,7 @@ All other epistemic activity after $G^{*}$ is judged-Bayesian updating within th
+ The event $E=\{$standing profile eventually constant$\}$ is future-dependent, so we handle the conditioning by coupling rather than by conditioning on $E$ directly.
+ Decompose $E=\bigcup_{G_2,\sigma^{*}}E_{G_2,\sigma^{*}}$ over the countable set of (period, deterministic profile) pairs, where $E_{G_2,\sigma^{*}}$ is the event that the standing profile equals $\sigma^{*}$ from period $G_2$ on and $G_2>G^{*}$.
+ Fix $(G_2,\sigma^{*})$ and an agent $i$.
+-Define an \emph{auxiliary} process that plays $\sigma^{*}$ in every period from $G_2$ on, driven by the same i.i.d.\ draws $(s_t,U_t)$; its observations are a function of those draws alone, so unconditional almost-sure statements about it carry no conditioning bias.
++Define an \emph{auxiliary} process that plays $\sigma^{*}$ in every period from $G_2$ on, driven by the same i.i.d.\ draws $(s_t,U_t)$; its post-$G_2$ draws are independent of $\mathcal F_{G_2}$, so almost-sure statements about it hold conditional on the (arbitrary) $\mathcal F_{G_2}$-measurable prefix and carry no conditioning bias.
+ On $E_{G_2,\sigma^{*}}$ the actual and auxiliary observations coincide from $G_2$ on, so any almost-sure property of the auxiliary process holds almost surely on $E_{G_2,\sigma^{*}}$.
+ 
+ For the auxiliary process, call a pair $(C,a)$ \emph{recurrent} if $S_{\sigma^{*}}(C,a)\neq\emptysetset$ and \emph{frozen} otherwise.
+@@ -1264,8 +1262,8 @@ Taking the union over the countably many $(G_2,\sigma^{*})$ gives the claim on a
+ \hfill$\square$
+ 
+ \paragraph{Proof of Proposition~\ref{prop:rest-points}(i).}
+-Suppose awareness and standing policies are eventually constant almost surely, conjectures and reference posteriors converge, and each non-stasis agent's standing policy sits strictly inside its inaction band at the limit, with the stasis agents' carried-forward policies fixed.
+-Condition (i) of \cref{def:scue} holds at the limit: by the strict slack and continuity of the finite-dimensional payoff comparison in $(\mu_i,q_i)$, the switching gain stays below $\kappa_i$ near the limit, so no switch is triggered and the eventually constant standing policy is stationary under the switching rule.
++Suppose awareness and standing policies are eventually constant almost surely, conjectures and reference posteriors converge, and each non-stasis agent's standing policy is a strict no-switch point at the limit (strict slack below $\kappa_i$, or the strict $U_i$-argmax when $\kappa_i=0$), with the stasis agents' carried-forward policies fixed.
++Condition (i) of \cref{def:scue} holds at the limit: by continuity of the finite-dimensional payoff comparison in $(\mu_i,q_i)$, the strict slack persists near the limit---or, when $\kappa_i=0$, the strict argmax keeps $\sigma_i^{\star}=\sigma_i$ so the gain stays zero---and no switch is triggered, so the eventually constant standing policy is stationary under the switching rule.
+ For condition (ii), empirical conjectures converge to the frequencies induced by the eventually constant profile, giving limit agreement.
+ For condition (iii), a non-stasis agent is eventually never dissonant by \cref{thm:absorption}(d), and judged updating keeps the acting belief supported on the eventual active set $A_i^{*}$, whose members are $\eta$-adequate at every recurrent pair, so the mass on any $\eta$-inadequate theory is eventually zero.
+ For condition (iv), elections cease by \cref{thm:absorption}(b).
+@@ -1373,7 +1371,7 @@ At $\beta=1$ the threshold is simple belief asymmetry, which is what differentia
+ Consider a retained token whose coherent group pins mechanism $\theta^{a^{*}}$ while the carried-forward policy plays $a\neq a^{*}$ at the token's cell, at $\beta=1$.
+ Proposing $a^{*}$: if the rival plays $a^{*}$, the standing action yields $0$ (differentiated loss) and $a^{*}$ yields $\tfrac12$ (pool); if the rival plays $a$, the standing action yields $\tfrac12$ (pool) and $a^{*}$ yields $1$ (differentiated win).
+ The per-token robust gain is $\tfrac12$ in both cases---transparency makes $\Theta_i(g)$ a singleton, so the mechanism minimum is degenerate.
+-A token whose group's optimal action equals the committed one contributes $0$.
++A token whose group's optimal action equals the carried-forward one contributes $0$.
+ Discovery record: two tokens, gains $\{\tfrac12,0\}$, average $\tfrac14$, so $\widehat B_i=(T/\lvert r_i\rvert)\sum_t\Delta=(2/2)\tfrac12=\tfrac12$.
+ After the validation stretch of \cref{sec:economics} (serving the two off-diagonal states, valuation horizon $T=2$), firm~1's four-token cumulative record has no group favoring a switch, so $\widehat B_1=0$; firm~2's four tokens split into two $\theta^0$-groups and two $\theta^1$-groups, of which two disagree with its column policy (gain $\tfrac12$ each) and two agree (gain $0$), average $\tfrac14$, giving $\widehat B_2=(2/4)\cdot 1=\tfrac12$.
+ The durable content is the asymmetry $\widehat B_1=0<\widehat B_2$, not the coincidence that $\widehat B_2$ equals the discovery value.
+-- 
+2.43.0
+

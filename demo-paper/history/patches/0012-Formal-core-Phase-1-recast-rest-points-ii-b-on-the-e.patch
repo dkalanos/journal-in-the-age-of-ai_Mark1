@@ -1,0 +1,159 @@
+From 93e3a5843512be484c4825dd5de4f6079faafea7 Mon Sep 17 00:00:00 2001
+From: MDR Git <mdr@mikeryall.com>
+Date: Sat, 25 Jul 2026 10:05:11 -0400
+Subject: [PATCH 12/27] Formal-core Phase 1: recast rest-points(ii-b) on the
+ e-process; broaden persistence
+
+- rest-points(ii-b) [#1]: replace the retired fixed-sample/Hoeffding proof with the
+  correct sequential-detector argument. Ville on each entry-active eta-adequate
+  theory's evidence process => an agent goes dissonant w.p. <= e^{-b_i}; union =>
+  persistence w.p. >= 1 - sum_i e^{-b_i}. Drops the N(delta)/eps/eta' apparatus and
+  yields a result: CAPACITY GOVERNS REST-POINT ROBUSTNESS (deterministic case: sure).
+- prop:persistence [#4]: broaden to two channels -- dissonant stasis (unpriced
+  question) OR enlightened inertia (learned, but the recommended switch is priced
+  below kappa_i); proof prose attributes the stasis channel to the instance and the
+  inertia channel to rem:stickiness.
+- Add notes/formal-core-plan.md (5-phase plan; capacity = modest-core per author).
+
+Compiles, 41pp.
+
+Co-Authored-By: Claude Opus 4.8 <noreply@anthropic.com>
+---
+ paper/tbv_mdr_Paper01-v04.tex | 103 ++++++----------------------------
+ 1 file changed, 16 insertions(+), 87 deletions(-)
+
+diff --git a/paper/tbv_mdr_Paper01-v04.tex b/paper/tbv_mdr_Paper01-v04.tex
+index 03f80bd..52a80a0 100644
+--- a/paper/tbv_mdr_Paper01-v04.tex
++++ b/paper/tbv_mdr_Paper01-v04.tex
+@@ -1052,20 +1052,9 @@ The proof is in \cref{app:absorption}.
+   \item Conversely, consider a configuration whose epistemic states satisfy the SCUE conditions, whose play generates only records with $\widehat B_i=0$, and in which each agent's standing action at each cell is strictly optimal under every conjecture and every theory in its active set.
+   \begin{enumerate}[label=(\alph*)]
+     \item With deterministic mechanisms, the configuration persists: dissonance, elections, and policy changes never occur, and the SCUE conditions continue to hold, with conjectures converging empirically to induced play.
+-    \item With stochastic mechanisms, suppose in addition that, at the entry configuration, every agent's active set is nonempty and every theory it contains is $\eta'$-adequate under the configuration's play for some $\eta'<\eta$.
+-    Suppose also that the strict optimality extends to every $(\eta+\varepsilon)$-adequate theory for some $\varepsilon\in(0,\,2(\eta-\eta')]$.
+-    Then for every $\delta>0$ there is a count threshold $N(\delta)$ such that the following holds.
+-    If the configuration is entered at some period and, at every recurrent pair $(C,a)$,
+-    \[
+-    n_i(C,a)\geq N(\delta)
+-    \qquad\text{and}\qquad
+-    \TV\!\left(
+-      \hat p_i(\cdot\mid C,a),
+-      p_i^{*}(\cdot\mid C,a)
+-    \right)
+-    \leq \frac{\varepsilon}{4},
+-    \]
+-    then, conditional on the entry history, with probability at least $1-\delta$ play never changes, dissonance and elections never occur, and the SCUE conditions hold in every subsequent period, with conjectures converging empirically to induced play.
++    \item With stochastic mechanisms, suppose in addition that, at the entry configuration, every agent's active set is nonempty, every theory it contains is $\eta$-adequate under the configuration's play and carries no accumulated evidence against it ($E_i^{m}\le1$, automatic when the configuration is entered on a freshly refined language), and the standing action is strictly optimal under every conjecture and every $\eta$-adequate theory.
++    Then, conditional on the entry history, with probability at least $1-\sum_i e^{-b_i}$, no agent is ever dissonant, no switch or election occurs, and the SCUE conditions hold in every subsequent period, with conjectures converging empirically to induced play.
++    The residual $\sum_i e^{-b_i}$ is the sequential test's false-alarm floor: it shrinks as dissonance capacities rise, and vanishes in the deterministic case---so \emph{capacity governs the robustness of a rest point}.
+   \end{enumerate}
+ \end{enumerate}
+ The proof is in \cref{app:absorption}.
+@@ -1106,10 +1095,10 @@ The residual clause is the complement of the on-path constraints.
+ 
+ \begin{proposition}[Persistent performance differences]
+ \label{prop:persistence}
+-There exist primitives and absorbing configurations in which agents hold different terminal partitions and theories, expected per-period payoffs differ strictly and permanently, and no disadvantaged agent has a priced repair: each such agent is in dissonant stasis, with $\lambda_i^{(k_i)}\widehat B_i(r_i)<\gamma_i$ from some period on.
++There exist primitives and absorbing configurations in which agents hold different terminal partitions and theories, and expected per-period payoffs differ strictly and permanently, with no disadvantaged agent closing the gap---because for each the corrective process has died economically at one of its two stages: either its question is unpriced (\emph{dissonant stasis}, $\lambda_i^{(k_i)}\widehat B_i(r_i)<\gamma_i$ from some period on), or, having asked and refined, the policy change its new model recommends is priced below the switching hurdle (\emph{enlightened inertia}, $T$-horizon gain $\le\kappa_i$, \cref{rem:stickiness}).
+ \end{proposition}
+ 
+-The proof is by the instance below, and the mechanism deserves emphasis.
++The stasis channel is established by the instance below; the enlightened-inertia channel is the deterministic possibility of \cref{rem:stickiness} (a firm that acquires the true distinction yet, facing $\kappa_i$ above the gain, forgoes the improvement its rival captures). The mechanism deserves emphasis.
+ Performance differences persist not because an equilibrium concept freezes them but because the process that would erase them has died economically: the disadvantaged agent's question is priced below the cost of asking---through zero leverage, an eroded achievability weight, or an irreparable record---or, having asked and learned, it finds the switch its new model recommends priced below the hurdle and holds its old policy (\cref{rem:stickiness}).
+ Terminal heterogeneity in awareness is path dependence in the strong sense---agents with identical preferences and identical Bayesian competence, facing the same objective system, end at different languages and different payoffs because their histories posed different questions.
+ 
+@@ -1282,79 +1271,19 @@ The SCUE conditions therefore continue to hold.
+ \hfill$\square$
+ 
+ \paragraph{Proof of Proposition~\ref{prop:rest-points}(ii-b).}
+-Let $t_0$ be the entry period and condition on the history $\mathcal F_{t_0}$.
+-Couple the actual process to an auxiliary process that holds the configuration's standing profile fixed after $t_0$.
+-At each recurrent pair, the auxiliary process's future consequences are i.i.d.\ with conditional law $p_i^{*}(\cdot\mid C,a)$.
+-
+-Fix one recurrent pair, write $n_0$ for its entry count, and let $\hat p_{n_0+m}$ denote its cumulative empirical conditional after $m$ additional visits.
+-Because the consequence space is finite,
+-\[
+-\TV(q,p)=\max_{D\subseteq X_i}\lvert q(D)-p(D)\rvert.
+-\]
+-For a fixed $D\subseteq X_i$, let $S_m(D)$ be the sum of the first $m$ post-entry centered indicators $\mathbf 1\{x_i\in D\}-p_i^{*}(D\mid C,a)$.
+-The entry-margin condition implies that
+-\[
+-\sup_{m\geq0}
+-\TV\!\left(\hat p_{n_0+m},p_i^{*}\right)
+->
+-\frac{\varepsilon}{2}
+-\]
+-can occur only if, for some $D$ and some $m\geq0$,
++Condition on the entry history $\mathcal F_{t_0}$ and couple the actual process to the auxiliary process that holds the configuration's standing profile fixed after $t_0$; on the persistence event below the two coincide.
++Fix an agent $i$ and an entry-active theory $m$: by hypothesis it is $\eta$-adequate under the fixed profile and has $E_i^{m}\le1$ at entry.
++Adequacy makes $(E_i^{m})_{t\ge t_0}$ a nonnegative supermartingale, so Ville's inequality gives
+ \[
+-\lvert S_m(D)\rvert
+->
+-\frac{\varepsilon n_0}{4}
+-+
+-\frac{\varepsilon m}{2}.
+-\]
+-For either sign, $\exp\{\pm4\varepsilon S_m(D)-2\varepsilon^2m\}$ is a nonnegative Hoeffding supermartingale.
+-Crossing the displayed boundary makes this supermartingale at least $\exp\{n_0\varepsilon^2\}$.
+-Ville's inequality, followed by a union bound over signs and subsets of $X_i$, therefore gives
+-\[
+-\Pr\!\left(
+-  \sup_{m\geq0}
+-  \TV\!\left(\hat p_{n_0+m},p_i^{*}\right)
+-  >
+-  \frac{\varepsilon}{2}
+-  \,\middle|\,\mathcal F_{t_0}
+-\right)
+-\leq
+-2^{\lvert X_i\rvert+1}
+-\exp\!\left(-n_0\varepsilon^2\right).
+-\]
+-Let $P$ be the number of recurrent pairs across agents and $d=\max_i\lvert X_i\rvert$.
+-Choose $N(\delta)$ large enough that
+-\[
+-w(n)\leq\frac{\varepsilon}{2}
+-\quad\text{for all }n\geq N(\delta),
+-\qquad\text{and}\qquad
+-P\,2^{d+1}
+-\exp\!\left(-N(\delta)\varepsilon^2\right)
+-\leq\delta.
+-\]
+-A union bound then implies that, with conditional probability at least $1-\delta$, every recurrent empirical conditional remains within $\varepsilon/2$ of its on-path conditional forever.
+-
+-On this event, every theory active at entry continues to pass at every recurrent pair, because
+-\[
+-\TV(\hat p_i,\text{prediction})
+-\leq
+-\frac{\varepsilon}{2}+\eta'
+-\leq\eta.
+-\]
+-Its frozen constraints are unchanged, so every active set remains nonempty and dissonance never occurs.
+-Conversely, every theory admitted at a later date is $(\eta+\varepsilon)$-adequate, since
+-\[
+-\TV(\text{prediction},p_i^{*})
+-\leq
+-\eta+w(n)+\frac{\varepsilon}{2}
+-\leq
+-\eta+\varepsilon.
++\Pr\!\left(\sup_{t\ge t_0}E_i^{m}\ge e^{b_i}\,\middle|\,\mathcal F_{t_0}\right)
++\le E_i^{m}(t_0)\,e^{-b_i}\le e^{-b_i},
+ \]
+-The extended strict-optimality hypothesis therefore fixes each standing action for every conjecture and every acting belief that judged updating can produce.
+-Induction under the coupling shows that actual play coincides with the auxiliary fixed play.
+-Hence no dissonance, election, or refinement occurs.
+-Empirical conjectures converge to induced play, and \cref{lem:test-consistency} implies that acting-belief mass on every $\eta$-inadequate theory vanishes.
+-Thus the SCUE conditions continue to hold.
++so $m$ is never rejected off an event of probability at most $e^{-b_i}$.
++Agent $i$ becomes dissonant only if \emph{every} entry-active theory is rejected---an event contained in ``$m$ is rejected'' for any single $m$---so that too has probability at most $e^{-b_i}$; a union bound over agents leaves probability at least $1-\sum_i e^{-b_i}$ that no agent is ever dissonant.
++On that event each active set stays nonempty and, by permanence of rejection, remains contained in the entry set and hence supported on $\eta$-adequate theories.
++The strict-optimality hypothesis then fixes each standing action under every conjecture and every acting belief judged updating can produce, so $\sigma_i^{\star}=\sigma_i$ and no switch fires; a nonempty active set makes $\widehat B_i=0$, so no election fires.
++Play therefore never changes, empirical conjectures converge to the induced play, and the SCUE conditions hold in every period.
++In the deterministic case $\eta=0$ every false-alarm probability is zero and the conclusion holds surely.
+ \hfill$\square$
+ 
+ \section{Supporting computations for the running example}
+-- 
+2.43.0
+

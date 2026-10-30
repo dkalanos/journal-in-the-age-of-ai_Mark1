@@ -1,0 +1,1492 @@
+{
+  "0003-0554": {
+    "id": "S176007004",
+    "name": "American Political Science Review",
+    "type": "journal"
+  },
+  "0002-9602": {
+    "id": "S122471516",
+    "name": "American Journal of Sociology",
+    "type": "journal"
+  },
+  "0013-0133": {
+    "id": "S45992627",
+    "name": "The Economic Journal",
+    "type": "journal"
+  },
+  "0022-3808": {
+    "id": "S95323914",
+    "name": "Journal of Political Economy",
+    "type": "journal"
+  },
+  "0013-0117": {
+    "id": "S165492527",
+    "name": "The Economic History Review",
+    "type": "journal"
+  },
+  "0003-1224": {
+    "id": "S157620343",
+    "name": "American Sociological Review",
+    "type": "journal"
+  },
+  "0022-1082": {
+    "id": "S5353659",
+    "name": "The Journal of Finance",
+    "type": "journal"
+  },
+  "0022-3816": {
+    "id": "S95650557",
+    "name": "The Journal of Politics",
+    "type": "journal"
+  },
+  "0022-3514": {
+    "id": "S29984966",
+    "name": "Journal of Personality and Social Psychology",
+    "type": "journal"
+  },
+  "0022-2429": {
+    "id": "S142990027",
+    "name": "Journal of Marketing",
+    "type": "journal"
+  },
+  "0001-4826": {
+    "id": "S160506855",
+    "name": "The Accounting Review",
+    "type": "journal"
+  },
+  "0021-9010": {
+    "id": "S166002381",
+    "name": "Journal of Applied Psychology",
+    "type": "journal"
+  },
+  "0007-6805": {
+    "id": "S88020226",
+    "name": "The Business History Review",
+    "type": "journal"
+  },
+  "0002-8282": {
+    "id": "S23254222",
+    "name": "American Economic Review",
+    "type": "journal"
+  },
+  "0006-3444": {
+    "id": "S172180718",
+    "name": "Biometrika",
+    "type": "journal"
+  },
+  "0013-0095": {
+    "id": "S38825547",
+    "name": "Economic Geography",
+    "type": "journal"
+  },
+  "0024-6301": {
+    "id": "S9435936",
+    "name": "Long Range Planning",
+    "type": "journal"
+  },
+  "0012-9682": {
+    "id": "S95464858",
+    "name": "Econometrica",
+    "type": "journal"
+  },
+  "0010-0277": {
+    "id": "S88198767",
+    "name": "Cognition",
+    "type": "journal"
+  },
+  "0022-0531": {
+    "id": "S149131268",
+    "name": "Journal of Economic Theory",
+    "type": "journal"
+  },
+  "0022-2437": {
+    "id": "S119950638",
+    "name": "Journal of Marketing Research",
+    "type": "journal"
+  },
+  "0007-6791": {
+    "id": "S942037226",
+    "name": "Business History",
+    "type": "journal"
+  },
+  "0018-7267": {
+    "id": "S61446109",
+    "name": "Human Relations",
+    "type": "journal"
+  },
+  "0001-4273": {
+    "id": "S117778295",
+    "name": "Academy of Management Journal",
+    "type": "journal"
+  },
+  "0022-1031": {
+    "id": "S12410666",
+    "name": "Journal of Experimental Social Psychology",
+    "type": "journal"
+  },
+  "0020-8183": {
+    "id": "S160686149",
+    "name": "International Organization",
+    "type": "journal"
+  },
+  "0022-2879": {
+    "id": "S2058785",
+    "name": "Journal of money credit and banking",
+    "type": "journal"
+  },
+  "0001-8392": {
+    "id": "S143668711",
+    "name": "Administrative Science Quarterly",
+    "type": "journal"
+  },
+  "0022-1996": {
+    "id": "S198098467",
+    "name": "Journal of International Economics",
+    "type": "journal"
+  },
+  "0022-1090": {
+    "id": "S193228710",
+    "name": "Journal of Financial and Quantitative Analysis",
+    "type": "journal"
+  },
+  "0001-8791": {
+    "id": "S25746158",
+    "name": "Journal of Vocational Behavior",
+    "type": "journal"
+  },
+  "0022-2380": {
+    "id": "S151705444",
+    "name": "Journal of Management Studies",
+    "type": "journal"
+  },
+  "0020-6598": {
+    "id": "S179979277",
+    "name": "International Economic Review",
+    "type": "journal"
+  },
+  "0007-1080": {
+    "id": "S61595665",
+    "name": "British Journal of Industrial Relations",
+    "type": "journal"
+  },
+  "0017-8012": {
+    "id": "S41416626",
+    "name": "Harvard business review",
+    "type": "journal"
+  },
+  "0020-8833": {
+    "id": "S91639875",
+    "name": "International Studies Quarterly",
+    "type": "journal"
+  },
+  "0021-8456": {
+    "id": "S111116695",
+    "name": "Journal of Accounting Research",
+    "type": "journal"
+  },
+  "0022-0515": {
+    "id": "S127708089",
+    "name": "Journal of Economic Literature",
+    "type": "journal"
+  },
+  "0019-8676": {
+    "id": "S174105208",
+    "name": "Industrial Relations A Journal of Economy and Society",
+    "type": "journal"
+  },
+  "0022-4359": {
+    "id": "S159120381",
+    "name": "Journal of Retailing",
+    "type": "journal"
+  },
+  "0162-1459": {
+    "id": "S4394736638",
+    "name": "Journal of the American Statistical Association",
+    "type": "journal"
+  },
+  "0140-525X": {
+    "id": "S59628311",
+    "name": "Behavioral and Brain Sciences",
+    "type": "journal"
+  },
+  "0025-1909": {
+    "id": "S33323087",
+    "name": "Management Science",
+    "type": "journal"
+  },
+  "0167-4544": {
+    "id": "S76633192",
+    "name": "Journal of Business Ethics",
+    "type": "journal"
+  },
+  "0033-2909": {
+    "id": "S75627607",
+    "name": "Psychological Bulletin",
+    "type": "journal"
+  },
+  "0033-3352": {
+    "id": "S76877748",
+    "name": "Public Administration Review",
+    "type": "journal"
+  },
+  "0030-364X": {
+    "id": "S125775545",
+    "name": "Operations Research",
+    "type": "journal"
+  },
+  "0034-6535": {
+    "id": "S180061323",
+    "name": "The Review of Economics and Statistics",
+    "type": "journal"
+  },
+  "0038-0385": {
+    "id": "S79135273",
+    "name": "Sociology",
+    "type": "journal"
+  },
+  "0047-2875": {
+    "id": "S157485431",
+    "name": "Journal of Travel Research",
+    "type": "journal"
+  },
+  "0033-5533": {
+    "id": "S203860005",
+    "name": "The Quarterly Journal of Economics",
+    "type": "journal"
+  },
+  "0033-295X": {
+    "id": "S35223124",
+    "name": "Psychological Review",
+    "type": "journal"
+  },
+  "0160-7383": {
+    "id": "S51885707",
+    "name": "Annals of Tourism Research",
+    "type": "journal"
+  },
+  "0261-5177": {
+    "id": "S6814119",
+    "name": "Tourism Management",
+    "type": "journal"
+  },
+  "0090-5364": {
+    "id": "S119757635",
+    "name": "The Annals of Statistics",
+    "type": "journal"
+  },
+  "0025-5610": {
+    "id": "S193920097",
+    "name": "Mathematical Programming",
+    "type": "journal"
+  },
+  "0146-1672": {
+    "id": "S187348256",
+    "name": "Personality and Social Psychology Bulletin",
+    "type": "journal"
+  },
+  "0034-3404": {
+    "id": "S175672440",
+    "name": "Regional Studies",
+    "type": "journal"
+  },
+  "0033-3298": {
+    "id": "S201221823",
+    "name": "Public Administration",
+    "type": "journal"
+  },
+  "0048-7333": {
+    "id": "S9731383",
+    "name": "Research Policy",
+    "type": "journal"
+  },
+  "0096-3445": {
+    "id": "S62013203",
+    "name": "Journal of Experimental Psychology General",
+    "type": "journal"
+  },
+  "0143-2095": {
+    "id": "S102949365",
+    "name": "Strategic Management Journal",
+    "type": "journal"
+  },
+  "0034-6527": {
+    "id": "S88935262",
+    "name": "The Review of Economic Studies",
+    "type": "journal"
+  },
+  "0170-8406": {
+    "id": "S28882882",
+    "name": "Organization Studies",
+    "type": "journal"
+  },
+  "0191-2615": {
+    "id": "S96305778",
+    "name": "Transportation Research Part B Methodological",
+    "type": "journal"
+  },
+  "0031-5826": {
+    "id": "S84664706",
+    "name": "Personnel Psychology",
+    "type": "journal"
+  },
+  "0090-4848": {
+    "id": "S134094273",
+    "name": "Human Resource Management",
+    "type": "journal"
+  },
+  "0093-5301": {
+    "id": "S145429826",
+    "name": "Journal of Consumer Research",
+    "type": "journal"
+  },
+  "0047-2506": {
+    "id": "S38024979",
+    "name": "Journal of International Business Studies",
+    "type": "journal"
+  },
+  "0092-5853": {
+    "id": "S90314269",
+    "name": "American Journal of Political Science",
+    "type": "journal"
+  },
+  "0092-0703": {
+    "id": "S92522684",
+    "name": "Journal of the Academy of Marketing Science",
+    "type": "journal"
+  },
+  "0149-2063": {
+    "id": "S122767448",
+    "name": "Journal of Management",
+    "type": "journal"
+  },
+  "0144-3577": {
+    "id": "S164321952",
+    "name": "International Journal of Operations & Production Management",
+    "type": "journal"
+  },
+  "0266-4666": {
+    "id": "S49389958",
+    "name": "Econometric Theory",
+    "type": "journal"
+  },
+  "0263-7758": {
+    "id": "S4210219814",
+    "name": "Environment and Planning D Society and Space",
+    "type": "journal"
+  },
+  "0167-8116": {
+    "id": "S11810700",
+    "name": "International Journal of Research in Marketing",
+    "type": "journal"
+  },
+  "0165-4101": {
+    "id": "S62142384",
+    "name": "Journal of Accounting and Economics",
+    "type": "journal"
+  },
+  "0066-4308": {
+    "id": "S90670110",
+    "name": "Annual Review of Psychology",
+    "type": "journal"
+  },
+  "0268-3962": {
+    "id": "S135086714",
+    "name": "Journal of Information Technology",
+    "type": "journal"
+  },
+  "0267-8373": {
+    "id": "S141527467",
+    "name": "Work & Stress",
+    "type": "journal"
+  },
+  "0377-2217": {
+    "id": "S103321696",
+    "name": "European Journal of Operational Research",
+    "type": "journal"
+  },
+  "0277-9536": {
+    "id": "S106822843",
+    "name": "Social Science & Medicine",
+    "type": "journal"
+  },
+  "0272-4332": {
+    "id": "S161248890",
+    "name": "Risk Analysis",
+    "type": "journal"
+  },
+  "0304-4076": {
+    "id": "S127742747",
+    "name": "Journal of Econometrics",
+    "type": "journal"
+  },
+  "0956-7976": {
+    "id": "S58854535",
+    "name": "Psychological Science",
+    "type": "journal"
+  },
+  "0304-405X": {
+    "id": "S149240962",
+    "name": "Journal of Financial Economics",
+    "type": "journal"
+  },
+  "0363-7425": {
+    "id": "S46763546",
+    "name": "Academy of Management Review",
+    "type": "journal"
+  },
+  "0304-3932": {
+    "id": "S6711363",
+    "name": "Journal of Monetary Economics",
+    "type": "journal"
+  },
+  "0950-0170": {
+    "id": "S60510972",
+    "name": "Work Employment and Society",
+    "type": "journal"
+  },
+  "0737-6782": {
+    "id": "S93630570",
+    "name": "Journal of Product Innovation Management",
+    "type": "journal"
+  },
+  "0894-3796": {
+    "id": "S160573970",
+    "name": "Journal of Organizational Behavior",
+    "type": "journal"
+  },
+  "0893-9454": {
+    "id": "S170137484",
+    "name": "Review of Financial Studies",
+    "type": "journal"
+  },
+  "0735-0015": {
+    "id": "S18095783",
+    "name": "Journal of Business and Economic Statistics",
+    "type": "journal"
+  },
+  "0929-1199": {
+    "id": "S152282257",
+    "name": "Journal of Corporate Finance",
+    "type": "journal"
+  },
+  "1047-7039": {
+    "id": "S206124708",
+    "name": "Organization Science",
+    "type": "journal"
+  },
+  "0899-1499": {
+    "id": "S165318533",
+    "name": "INFORMS journal on computing",
+    "type": "journal"
+  },
+  "0276-7783": {
+    "id": "S57293258",
+    "name": "MIS Quarterly",
+    "type": "journal"
+  },
+  "0749-5978": {
+    "id": "S64744539",
+    "name": "Organizational Behavior and Human Decision Processes",
+    "type": "journal"
+  },
+  "0732-2399": {
+    "id": "S163534328",
+    "name": "Marketing Science",
+    "type": "journal"
+  },
+  "0823-9150": {
+    "id": "S65924262",
+    "name": "Contemporary Accounting Research",
+    "type": "journal"
+  },
+  "0272-6963": {
+    "id": "S142306484",
+    "name": "Journal of Operations Management",
+    "type": "journal"
+  },
+  "0895-3309": {
+    "id": "S72880728",
+    "name": "The Journal of Economic Perspectives",
+    "type": "journal"
+  },
+  "0963-7214": {
+    "id": "S114020440",
+    "name": "Current Directions in Psychological Science",
+    "type": "journal"
+  },
+  "0361-3682": {
+    "id": "S198892436",
+    "name": "Accounting Organizations and Society",
+    "type": "journal"
+  },
+  "0952-1895": {
+    "id": "S62375027",
+    "name": "Governance",
+    "type": "journal"
+  },
+  "1045-3172": {
+    "id": "S184126201",
+    "name": "British Journal of Management",
+    "type": "journal"
+  },
+  "1048-9843": {
+    "id": "S152304618",
+    "name": "The Leadership Quarterly",
+    "type": "journal"
+  },
+  "1047-7047": {
+    "id": "S202812398",
+    "name": "Information Systems Research",
+    "type": "journal"
+  },
+  "0734-306X": {
+    "id": "S8557221",
+    "name": "Journal of Labor Economics",
+    "type": "journal"
+  },
+  "1042-2587": {
+    "id": "S187626162",
+    "name": "Entrepreneurship Theory and Practice",
+    "type": "journal"
+  },
+  "0742-1222": {
+    "id": "S9954729",
+    "name": "Journal of Management Information Systems",
+    "type": "journal"
+  },
+  "0741-6261": {
+    "id": "S34139249",
+    "name": "The RAND Journal of Economics",
+    "type": "journal"
+  },
+  "0883-9026": {
+    "id": "S66201313",
+    "name": "Journal of Business Venturing",
+    "type": "journal"
+  },
+  "1053-1858": {
+    "id": "S169433491",
+    "name": "Journal of Public Administration Research and Theory",
+    "type": "journal"
+  },
+  "0963-1798": {
+    "id": "S87328381",
+    "name": "Journal of Occupational and Organizational Psychology",
+    "type": "journal"
+  },
+  "0960-085X": {
+    "id": "S116712389",
+    "name": "European Journal of Information Systems",
+    "type": "journal"
+  },
+  "0954-5395": {
+    "id": "S113497174",
+    "name": "Human Resource Management Journal",
+    "type": "journal"
+  },
+  "0360-0572": {
+    "id": "S61274580",
+    "name": "Annual Review of Sociology",
+    "type": "journal"
+  },
+  "0963-8687": {
+    "id": "S6144335",
+    "name": "The Journal of Strategic Information Systems",
+    "type": "journal"
+  },
+  "1042-9573": {
+    "id": "S5984737",
+    "name": "Journal of Financial Intermediation",
+    "type": "journal"
+  },
+  "1468-0297": {
+    "id": "S45992627",
+    "name": "The Economic Journal",
+    "type": "journal"
+  },
+  "1468-0289": {
+    "id": "S165492527",
+    "name": "The Economic History Review",
+    "type": "journal"
+  },
+  "1464-3510": {
+    "id": "S172180718",
+    "name": "Biometrika",
+    "type": "journal"
+  },
+  "1468-0262": {
+    "id": "S95464858",
+    "name": "Econometrica",
+    "type": "journal"
+  },
+  "1095-7235": {
+    "id": "S149131268",
+    "name": "Journal of Economic Theory",
+    "type": "journal"
+  },
+  "1467-9280": {
+    "id": "S58854535",
+    "name": "Psychological Science",
+    "type": "journal"
+  },
+  "1436-4646": {
+    "id": "S193920097",
+    "name": "Mathematical Programming",
+    "type": "journal"
+  },
+  "1360-0591": {
+    "id": "S175672440",
+    "name": "Regional Studies",
+    "type": "journal"
+  },
+  "1467-9299": {
+    "id": "S201221823",
+    "name": "Public Administration",
+    "type": "journal"
+  },
+  "1096-0465": {
+    "id": "S12410666",
+    "name": "Journal of Experimental Social Psychology",
+    "type": "journal"
+  },
+  "1097-0266": {
+    "id": "S102949365",
+    "name": "Strategic Management Journal",
+    "type": "journal"
+  },
+  "1467-937X": {
+    "id": "S88935262",
+    "name": "The Review of Economic Studies",
+    "type": "journal"
+  },
+  "1369-7412": {
+    "id": "S145009937",
+    "name": "Journal of the Royal Statistical Society Series B (Statistical Methodology)",
+    "type": "journal"
+  },
+  "1467-9868": {
+    "id": "S145009937",
+    "name": "Journal of the Royal Statistical Society Series B (Statistical Methodology)",
+    "type": "journal"
+  },
+  "1095-9084": {
+    "id": "S25746158",
+    "name": "Journal of Vocational Behavior",
+    "type": "journal"
+  },
+  "1059-1478": {
+    "id": "S149070780",
+    "name": "Production and Operations Management",
+    "type": "journal"
+  },
+  "1467-6486": {
+    "id": "S151705444",
+    "name": "Journal of Management Studies",
+    "type": "journal"
+  },
+  "1099-050X": {
+    "id": "S134094273",
+    "name": "Human Resource Management",
+    "type": "journal"
+  },
+  "1099-1379": {
+    "id": "S160573970",
+    "name": "Journal of Organizational Behavior",
+    "type": "journal"
+  },
+  "1089-778X": {
+    "id": "S93787993",
+    "name": "IEEE Transactions on Evolutionary Computation",
+    "type": "journal"
+  },
+  "1465-7368": {
+    "id": "S170137484",
+    "name": "Review of Financial Studies",
+    "type": "journal"
+  },
+  "1467-8543": {
+    "id": "S61595665",
+    "name": "British Journal of Industrial Relations",
+    "type": "journal"
+  },
+  "1091-9856": {
+    "id": "S165318533",
+    "name": "INFORMS journal on computing",
+    "type": "journal"
+  },
+  "1095-9920": {
+    "id": "S64744539",
+    "name": "Organizational Behavior and Human Decision Processes",
+    "type": "journal"
+  },
+  "1468-232X": {
+    "id": "S174105208",
+    "name": "Industrial Relations A Journal of Economy and Society",
+    "type": "journal"
+  },
+  "1467-8721": {
+    "id": "S114020440",
+    "name": "Current Directions in Psychological Science",
+    "type": "journal"
+  },
+  "1468-0491": {
+    "id": "S62375027",
+    "name": "Governance",
+    "type": "journal"
+  },
+  "1467-8551": {
+    "id": "S184126201",
+    "name": "British Journal of Management",
+    "type": "journal"
+  },
+  "1057-7408": {
+    "id": "S163545350",
+    "name": "Journal of Consumer Psychology",
+    "type": "journal"
+  },
+  "1090-9516": {
+    "id": "S143995394",
+    "name": "Journal of World Business",
+    "type": "journal"
+  },
+  "1466-4437": {
+    "id": "S135086714",
+    "name": "Journal of Information Technology",
+    "type": "journal"
+  },
+  "1350-1917": {
+    "id": "S92260147",
+    "name": "Information Systems Journal",
+    "type": "journal"
+  },
+  "1365-2575": {
+    "id": "S92260147",
+    "name": "Information Systems Journal",
+    "type": "journal"
+  },
+  "1076-898X": {
+    "id": "S79587319",
+    "name": "Journal of Experimental Psychology Applied",
+    "type": "journal"
+  },
+  "1464-5335": {
+    "id": "S141527467",
+    "name": "Work & Stress",
+    "type": "journal"
+  },
+  "1076-8998": {
+    "id": "S3481703",
+    "name": "Journal of Occupational Health Psychology",
+    "type": "journal"
+  },
+  "1380-6653": {
+    "id": "S11853582",
+    "name": "Review of Accounting Studies",
+    "type": "journal"
+  },
+  "1096-0473": {
+    "id": "S5984737",
+    "name": "Journal of Financial Intermediation",
+    "type": "journal"
+  },
+  "1094-6705": {
+    "id": "S125608309",
+    "name": "Journal of Service Research",
+    "type": "journal"
+  },
+  "1094-4281": {
+    "id": "S133599136",
+    "name": "Organizational Research Methods",
+    "type": "journal"
+  },
+  "1536-9323": {
+    "id": "S30879505",
+    "name": "Journal of the Association for Information Systems",
+    "type": "journal"
+  },
+  "1537-274X": {
+    "id": "S4394736638",
+    "name": "Journal of the American Statistical Association",
+    "type": "journal"
+  },
+  "1469-1825": {
+    "id": "S59628311",
+    "name": "Behavioral and Brain Sciences",
+    "type": "journal"
+  },
+  "1537-534X": {
+    "id": "S95323914",
+    "name": "Journal of Political Economy",
+    "type": "journal"
+  },
+  "1526-5501": {
+    "id": "S33323087",
+    "name": "Management Science",
+    "type": "journal"
+  },
+  "1468-2508": {
+    "id": "S95650557",
+    "name": "The Journal of Politics",
+    "type": "journal"
+  },
+  "1526-5463": {
+    "id": "S125775545",
+    "name": "Operations Research",
+    "type": "journal"
+  },
+  "1530-9142": {
+    "id": "S180061323",
+    "name": "The Review of Economics and Statistics",
+    "type": "journal"
+  },
+  "1469-8684": {
+    "id": "S79135273",
+    "name": "Sociology",
+    "type": "journal"
+  },
+  "1531-4650": {
+    "id": "S203860005",
+    "name": "The Quarterly Journal of Economics",
+    "type": "journal"
+  },
+  "1531-5088": {
+    "id": "S160686149",
+    "name": "International Organization",
+    "type": "journal"
+  },
+  "1469-8722": {
+    "id": "S60510972",
+    "name": "Work Employment and Society",
+    "type": "journal"
+  },
+  "1468-2354": {
+    "id": "S179979277",
+    "name": "International Economic Review",
+    "type": "journal"
+  },
+  "1537-5277": {
+    "id": "S145429826",
+    "name": "Journal of Consumer Research",
+    "type": "journal"
+  },
+  "1478-6990": {
+    "id": "S38024979",
+    "name": "Journal of International Business Studies",
+    "type": "journal"
+  },
+  "1537-2707": {
+    "id": "S18095783",
+    "name": "Journal of Business and Economic Statistics",
+    "type": "journal"
+  },
+  "1468-2478": {
+    "id": "S91639875",
+    "name": "International Studies Quarterly",
+    "type": "journal"
+  },
+  "1475-679X": {
+    "id": "S111116695",
+    "name": "Journal of Accounting Research",
+    "type": "journal"
+  },
+  "1526-5455": {
+    "id": "S206124708",
+    "name": "Organization Science",
+    "type": "journal"
+  },
+  "1526-5528": {
+    "id": "S165318533",
+    "name": "INFORMS journal on computing",
+    "type": "journal"
+  },
+  "1469-4360": {
+    "id": "S49389958",
+    "name": "Econometric Theory",
+    "type": "journal"
+  },
+  "1526-548X": {
+    "id": "S163534328",
+    "name": "Marketing Science",
+    "type": "journal"
+  },
+  "1472-3433": {
+    "id": "S4210219814",
+    "name": "Environment and Planning D Society and Space",
+    "type": "journal"
+  },
+  "1471-9037": {
+    "id": "S37623806",
+    "name": "Public Management Review",
+    "type": "journal"
+  },
+  "1471-9045": {
+    "id": "S37623806",
+    "name": "Public Management Review",
+    "type": "journal"
+  },
+  "1526-5536": {
+    "id": "S202812398",
+    "name": "Information Systems Research",
+    "type": "journal"
+  },
+  "1537-5307": {
+    "id": "S8557221",
+    "name": "Journal of Labor Economics",
+    "type": "journal"
+  },
+  "1532-7663": {
+    "id": "S163545350",
+    "name": "Journal of Consumer Psychology",
+    "type": "journal"
+  },
+  "1523-4614": {
+    "id": "S81410195",
+    "name": "Manufacturing & Service Operations Management",
+    "type": "journal"
+  },
+  "1526-5498": {
+    "id": "S81410195",
+    "name": "Manufacturing & Service Operations Management",
+    "type": "journal"
+  },
+  "1477-9803": {
+    "id": "S169433491",
+    "name": "Journal of Public Administration Research and Theory",
+    "type": "journal"
+  },
+  "1476-9344": {
+    "id": "S116712389",
+    "name": "European Journal of Information Systems",
+    "type": "journal"
+  },
+  "1537-260X": {
+    "id": "S45682993",
+    "name": "Academy of Management Learning and Education",
+    "type": "journal"
+  },
+  "1468-2702": {
+    "id": "S46039370",
+    "name": "Journal of Economic Geography",
+    "type": "journal"
+  },
+  "1468-2710": {
+    "id": "S46039370",
+    "name": "Journal of Economic Geography",
+    "type": "journal"
+  },
+  "1475-1461": {
+    "id": "S147547362",
+    "name": "Socio-Economic Review",
+    "type": "journal"
+  },
+  "1475-147X": {
+    "id": "S147547362",
+    "name": "Socio-Economic Review",
+    "type": "journal"
+  },
+  "1523-2409": {
+    "id": "S97320426",
+    "name": "Journal of Supply Chain Management",
+    "type": "journal"
+  },
+  "1532-8937": {
+    "id": "S196034224",
+    "name": "MIT Sloan Management Review",
+    "type": "journal"
+  },
+  "1532-9194": {
+    "id": "S196034224",
+    "name": "MIT Sloan Management Review",
+    "type": "journal"
+  },
+  "1537-5943": {
+    "id": "S176007004",
+    "name": "American Political Science Review",
+    "type": "journal"
+  },
+  "1537-5390": {
+    "id": "S122471516",
+    "name": "American Journal of Sociology",
+    "type": "journal"
+  },
+  "1540-6261": {
+    "id": "S5353659",
+    "name": "The Journal of Finance",
+    "type": "journal"
+  },
+  "1547-7185": {
+    "id": "S142990027",
+    "name": "Journal of Marketing",
+    "type": "journal"
+  },
+  "1558-7967": {
+    "id": "S160506855",
+    "name": "The Accounting Review",
+    "type": "journal"
+  },
+  "1573-0697": {
+    "id": "S76633192",
+    "name": "Journal of Business Ethics",
+    "type": "journal"
+  },
+  "1540-6210": {
+    "id": "S76877748",
+    "name": "Public Administration Review",
+    "type": "journal"
+  },
+  "1552-6763": {
+    "id": "S157485431",
+    "name": "Journal of Travel Research",
+    "type": "journal"
+  },
+  "1539-6924": {
+    "id": "S161248890",
+    "name": "Risk Analysis",
+    "type": "journal"
+  },
+  "1547-7193": {
+    "id": "S119950638",
+    "name": "Journal of Marketing Research",
+    "type": "journal"
+  },
+  "1552-7433": {
+    "id": "S187348256",
+    "name": "Personality and Social Psychology Bulletin",
+    "type": "journal"
+  },
+  "1743-7938": {
+    "id": "S942037226",
+    "name": "Business History",
+    "type": "journal"
+  },
+  "1741-282X": {
+    "id": "S61446109",
+    "name": "Human Relations",
+    "type": "journal"
+  },
+  "1538-4616": {
+    "id": "S2058785",
+    "name": "Journal of money credit and banking",
+    "type": "journal"
+  },
+  "1741-3044": {
+    "id": "S28882882",
+    "name": "Organization Studies",
+    "type": "journal"
+  },
+  "1744-6570": {
+    "id": "S84664706",
+    "name": "Personnel Psychology",
+    "type": "journal"
+  },
+  "1756-6916": {
+    "id": "S193228710",
+    "name": "Journal of Financial and Quantitative Analysis",
+    "type": "journal"
+  },
+  "1540-5885": {
+    "id": "S93630570",
+    "name": "Journal of Product Innovation Management",
+    "type": "journal"
+  },
+  "1540-5907": {
+    "id": "S90314269",
+    "name": "American Journal of Political Science",
+    "type": "journal"
+  },
+  "1552-7824": {
+    "id": "S92522684",
+    "name": "Journal of the Academy of Marketing Science",
+    "type": "journal"
+  },
+  "1557-1211": {
+    "id": "S122767448",
+    "name": "Journal of Management",
+    "type": "journal"
+  },
+  "1758-6593": {
+    "id": "S164321952",
+    "name": "International Journal of Operations & Production Management",
+    "type": "journal"
+  },
+  "1558-9080": {
+    "id": "S33741590",
+    "name": "Academy of Management Perspectives",
+    "type": "journal"
+  },
+  "1545-2085": {
+    "id": "S90670110",
+    "name": "Annual Review of Psychology",
+    "type": "journal"
+  },
+  "1540-6520": {
+    "id": "S187626162",
+    "name": "Entrepreneurship Theory and Practice",
+    "type": "journal"
+  },
+  "1557-928X": {
+    "id": "S9954729",
+    "name": "Journal of Management Information Systems",
+    "type": "journal"
+  },
+  "1756-2171": {
+    "id": "S34139249",
+    "name": "The RAND Journal of Economics",
+    "type": "journal"
+  },
+  "1542-4766": {
+    "id": "S165087003",
+    "name": "Journal of the European Economic Association",
+    "type": "journal"
+  },
+  "1542-4774": {
+    "id": "S165087003",
+    "name": "Journal of the European Economic Association",
+    "type": "journal"
+  },
+  "1748-8583": {
+    "id": "S113497174",
+    "name": "Human Resource Management Journal",
+    "type": "journal"
+  },
+  "1545-2115": {
+    "id": "S61274580",
+    "name": "Annual Review of Sociology",
+    "type": "journal"
+  },
+  "1573-7136": {
+    "id": "S11853582",
+    "name": "Review of Accounting Studies",
+    "type": "journal"
+  },
+  "1745-493X": {
+    "id": "S97320426",
+    "name": "Journal of Supply Chain Management",
+    "type": "journal"
+  },
+  "1573-692X": {
+    "id": "S49857371",
+    "name": "European Finance Review",
+    "type": "journal"
+  },
+  "1552-7379": {
+    "id": "S125608309",
+    "name": "Journal of Service Research",
+    "type": "journal"
+  },
+  "1552-7425": {
+    "id": "S133599136",
+    "name": "Organizational Research Methods",
+    "type": "journal"
+  },
+  "1555-7561": {
+    "id": "S10997704",
+    "name": "Theoretical Economics",
+    "type": "journal"
+  },
+  "1759-7323": {
+    "id": "S156003414",
+    "name": "Quantitative Economics",
+    "type": "journal"
+  },
+  "1759-7331": {
+    "id": "S156003414",
+    "name": "Quantitative Economics",
+    "type": "journal"
+  },
+  "1572-3097": {
+    "id": "S131117787",
+    "name": "Review of Finance",
+    "type": "journal"
+  },
+  "1872-6860": {
+    "id": "S103321696",
+    "name": "European Journal of Operational Research",
+    "type": "journal"
+  },
+  "1873-5347": {
+    "id": "S106822843",
+    "name": "Social Science & Medicine",
+    "type": "journal"
+  },
+  "1939-8271": {
+    "id": "S157620343",
+    "name": "American Sociological Review",
+    "type": "journal"
+  },
+  "1939-1315": {
+    "id": "S29984966",
+    "name": "Journal of Personality and Social Psychology",
+    "type": "journal"
+  },
+  "1939-1854": {
+    "id": "S166002381",
+    "name": "Journal of Applied Psychology",
+    "type": "journal"
+  },
+  "1939-1455": {
+    "id": "S75627607",
+    "name": "Psychological Bulletin",
+    "type": "journal"
+  },
+  "1873-1872": {
+    "id": "S9435936",
+    "name": "Long Range Planning",
+    "type": "journal"
+  },
+  "1939-1471": {
+    "id": "S35223124",
+    "name": "Psychological Review",
+    "type": "journal"
+  },
+  "1873-7838": {
+    "id": "S88198767",
+    "name": "Cognition",
+    "type": "journal"
+  },
+  "1873-7722": {
+    "id": "S51885707",
+    "name": "Annals of Tourism Research",
+    "type": "journal"
+  },
+  "1879-3193": {
+    "id": "S6814119",
+    "name": "Tourism Management",
+    "type": "journal"
+  },
+  "1872-6895": {
+    "id": "S127742747",
+    "name": "Journal of Econometrics",
+    "type": "journal"
+  },
+  "1873-7625": {
+    "id": "S9731383",
+    "name": "Research Policy",
+    "type": "journal"
+  },
+  "1879-2774": {
+    "id": "S149240962",
+    "name": "Journal of Financial Economics",
+    "type": "journal"
+  },
+  "1939-2222": {
+    "id": "S62013203",
+    "name": "Journal of Experimental Psychology General",
+    "type": "journal"
+  },
+  "1930-3807": {
+    "id": "S46763546",
+    "name": "Academy of Management Review",
+    "type": "journal"
+  },
+  "1930-3815": {
+    "id": "S143668711",
+    "name": "Administrative Science Quarterly",
+    "type": "journal"
+  },
+  "1873-0353": {
+    "id": "S198098467",
+    "name": "Journal of International Economics",
+    "type": "journal"
+  },
+  "1879-2367": {
+    "id": "S96305778",
+    "name": "Transportation Research Part B Methodological",
+    "type": "journal"
+  },
+  "1873-1295": {
+    "id": "S6711363",
+    "name": "Journal of Monetary Economics",
+    "type": "journal"
+  },
+  "1937-5956": {
+    "id": "S149070780",
+    "name": "Production and Operations Management",
+    "type": "journal"
+  },
+  "1941-0026": {
+    "id": "S93787993",
+    "name": "IEEE Transactions on Evolutionary Computation",
+    "type": "journal"
+  },
+  "1872-6313": {
+    "id": "S152282257",
+    "name": "Journal of Corporate Finance",
+    "type": "journal"
+  },
+  "1911-3846": {
+    "id": "S65924262",
+    "name": "Contemporary Accounting Research",
+    "type": "journal"
+  },
+  "1873-1317": {
+    "id": "S142306484",
+    "name": "Journal of Operations Management",
+    "type": "journal"
+  },
+  "1943-4529": {
+    "id": "S33741590",
+    "name": "Academy of Management Perspectives",
+    "type": "journal"
+  },
+  "1873-6289": {
+    "id": "S198892436",
+    "name": "Accounting Organizations and Society",
+    "type": "journal"
+  },
+  "1873-3409": {
+    "id": "S152304618",
+    "name": "The Leadership Quarterly",
+    "type": "journal"
+  },
+  "1873-8001": {
+    "id": "S11810700",
+    "name": "International Journal of Research in Marketing",
+    "type": "journal"
+  },
+  "1879-1980": {
+    "id": "S62142384",
+    "name": "Journal of Accounting and Economics",
+    "type": "journal"
+  },
+  "1873-2003": {
+    "id": "S66201313",
+    "name": "Journal of Business Venturing",
+    "type": "journal"
+  },
+  "1873-3271": {
+    "id": "S159120381",
+    "name": "Journal of Retailing",
+    "type": "journal"
+  },
+  "1939-2192": {
+    "id": "S79587319",
+    "name": "Journal of Experimental Psychology Applied",
+    "type": "journal"
+  },
+  "1939-1307": {
+    "id": "S3481703",
+    "name": "Journal of Occupational Health Psychology",
+    "type": "journal"
+  },
+  "1873-1198": {
+    "id": "S6144335",
+    "name": "The Journal of Strategic Information Systems",
+    "type": "journal"
+  },
+  "1933-6837": {
+    "id": "S10997704",
+    "name": "Theoretical Economics",
+    "type": "journal"
+  },
+  "1932-4391": {
+    "id": "S31690342",
+    "name": "Strategic Entrepreneurship Journal",
+    "type": "journal"
+  },
+  "1932-443X": {
+    "id": "S31690342",
+    "name": "Strategic Entrepreneurship Journal",
+    "type": "journal"
+  },
+  "1941-6067": {
+    "id": "S27614628",
+    "name": "Academy of Management Annals",
+    "type": "journal"
+  },
+  "1941-6520": {
+    "id": "S27614628",
+    "name": "Academy of Management Annals",
+    "type": "journal"
+  },
+  "2044-768X": {
+    "id": "S88020226",
+    "name": "The Business History Review",
+    "type": "journal"
+  },
+  "1944-7981": {
+    "id": "S23254222",
+    "name": "American Economic Review",
+    "type": "journal"
+  },
+  "1944-8287": {
+    "id": "S38825547",
+    "name": "Economic Geography",
+    "type": "journal"
+  },
+  "2168-8966": {
+    "id": "S119757635",
+    "name": "The Annals of Statistics",
+    "type": "journal"
+  },
+  "1948-0989": {
+    "id": "S117778295",
+    "name": "Academy of Management Journal",
+    "type": "journal"
+  },
+  "2326-3245": {
+    "id": "S165318533",
+    "name": "INFORMS journal on computing",
+    "type": "journal"
+  },
+  "2162-9730": {
+    "id": "S57293258",
+    "name": "MIS Quarterly",
+    "type": "journal"
+  },
+  "2328-8175": {
+    "id": "S127708089",
+    "name": "Journal of Economic Literature",
+    "type": "journal"
+  },
+  "2397-3374": {
+    "id": "S2764866340",
+    "name": "Nature Human Behaviour",
+    "type": "journal"
+  },
+  "1944-7965": {
+    "id": "S72880728",
+    "name": "The Journal of Economic Perspectives",
+    "type": "journal"
+  },
+  "2044-8325": {
+    "id": "S87328381",
+    "name": "Journal of Occupational and Organizational Psychology",
+    "type": "journal"
+  },
+  "1944-9585": {
+    "id": "S45682993",
+    "name": "Academy of Management Learning and Education",
+    "type": "journal"
+  },
+  "1945-7782": {
+    "id": "S42893225",
+    "name": "American Economic Journal Applied Economics",
+    "type": "journal"
+  },
+  "1945-7790": {
+    "id": "S42893225",
+    "name": "American Economic Journal Applied Economics",
+    "type": "journal"
+  },
+  "1945-7707": {
+    "id": "S170166683",
+    "name": "American Economic Journal Macroeconomics",
+    "type": "journal"
+  },
+  "1945-7715": {
+    "id": "S170166683",
+    "name": "American Economic Journal Macroeconomics",
+    "type": "journal"
+  },
+  "2042-5791": {
+    "id": "S2765008422",
+    "name": "Global Strategy Journal",
+    "type": "journal"
+  },
+  "2042-5805": {
+    "id": "S2765008422",
+    "name": "Global Strategy Journal",
+    "type": "journal"
+  }
+}

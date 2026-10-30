@@ -1,0 +1,29 @@
+From cef4415961f612e6a38c1ae060e050417e573702 Mon Sep 17 00:00:00 2001
+From: MDR Git <mdr@mikeryall.com>
+Date: Sat, 25 Jul 2026 10:23:17 -0400
+Subject: [PATCH 14/27] Formal-core Phase 2: interpret the valuation horizon T
+
+T = the planning horizon over which a one-time cost is amortized, a
+bounded-rationality stand-in for discounting.
+
+Co-Authored-By: Claude Opus 4.8 <noreply@anthropic.com>
+---
+ paper/tbv_mdr_Paper01-v04.tex | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/paper/tbv_mdr_Paper01-v04.tex b/paper/tbv_mdr_Paper01-v04.tex
+index 7f4f37c..a873339 100644
+--- a/paper/tbv_mdr_Paper01-v04.tex
++++ b/paper/tbv_mdr_Paper01-v04.tex
+@@ -318,7 +318,7 @@ U_i(\sigma\mid\mu_i,q_i)=\sum_{C\in\mathcal P_i}\rho(C)\sum_{m\in M(\mathcal P_i
+ \label{eq:subjective-value}
+ \end{equation}
+ where $\rho(C)=\sum_{s\in C}\rho(s)$.
+-Agent $i$ values a lumpy, one-time cost against the gain it produces over a fixed \emph{valuation horizon} of $T$ periods, common across agents, without discounting.
++Agent $i$ values a lumpy, one-time cost against the gain it produces over a fixed \emph{valuation horizon} of $T$ periods, common across agents, without discounting---the planning horizon over which a one-time cost is amortized, a bounded-rationality stand-in for discounting.
+ Revising the standing policy is costly: agent $i$ replaces $\sigma_i$ by $\sigma_i^{\star}$ if and only if the horizon-$T$ gain clears a one-time \emph{switching hurdle} $\kappa_i\ge0$,
+ \[
+ T\bigl(U_i(\sigma_i^{\star}\mid\mu_i,q_i)-U_i(\sigma_i\mid\mu_i,q_i)\bigr)>\kappa_i,
+-- 
+2.43.0
+

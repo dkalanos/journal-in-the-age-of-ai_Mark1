@@ -1,0 +1,48 @@
+From b070314948075c5b60680b88f0d7979a474659b3 Mon Sep 17 00:00:00 2001
+From: MDR Git <mdr@mikeryall.com>
+Date: Sat, 25 Jul 2026 10:35:26 -0400
+Subject: [PATCH 16/27] Formal-core Phase 3: strengthen prop:diagnostic with a
+ genericity result
+
+Add prop:punishing: since the consequence carries the realized payoff, a
+payoff-relevantly false theory is exposed the moment its prescribed (objectively
+suboptimal) action is played, unless the realized consequence exactly matches the
+prediction. "Strictly punishing" primitives (an OPEN condition on Theta,tau,pi) are
+diagnostic => every SCUE free of payoff-relevant error; diagnosticity is generic,
+concealment the knife-edge (beta=1 in the example). Turns the near-tautological
+diagnostic result into a substantive primitive-condition/genericity statement.
+
+Compiles, 42pp.
+
+Co-Authored-By: Claude Opus 4.8 <noreply@anthropic.com>
+---
+ paper/tbv_mdr_Paper01-v04.tex | 13 +++++++++++++
+ 1 file changed, 13 insertions(+)
+
+diff --git a/paper/tbv_mdr_Paper01-v04.tex b/paper/tbv_mdr_Paper01-v04.tex
+index 8efadae..37709e8 100644
+--- a/paper/tbv_mdr_Paper01-v04.tex
++++ b/paper/tbv_mdr_Paper01-v04.tex
+@@ -1141,6 +1141,19 @@ By \cref{def:scue}(iii), theories surviving in a SCUE are not $\eta$-inadequate;
+ The second claim restates \cref{def:exposure}: a false theory survives only under concealing profiles, and, under its no-legacy proviso, \cref{prop:exposure} makes concealment necessary for survival and sufficient for avoiding eventual dissonance.
+ \end{proof}
+ 
++\begin{proposition}[Diagnosticity is generic]
++\label{prop:punishing}
++Because an agent's consequence $x_i$ carries its realized payoff, a theory that makes an objectively suboptimal action look best is exposed the moment that action is played---unless the action's realized consequence happens to match what the theory predicts.
++Call the primitives \emph{strictly punishing} if, under every SCUE-sustainable profile, each objectively suboptimal action an expressible theory can prescribe yields a realized consequence lying more than $\eta$ in total variation from that theory's prediction.
++Strictly punishing primitives are diagnostic, so by \cref{prop:diagnostic} their every SCUE is free of payoff-relevant error.
++Strict punishment is an open condition on $(\Theta,\tau,\pi)$: diagnosticity is therefore generic, and concealment is the knife-edge on which a wrong action's realized consequence exactly matches the prediction that made it look best---in the running example, exactly $\beta=1$.
++\end{proposition}
++
++\begin{proof}
++A payoff-relevantly false theory prescribes an objectively suboptimal action at some visited state; under strict punishment its realized consequence there lies more than $\eta$ in total variation from the theory's prediction, so the theory is $\eta$-inadequate and cannot survive a SCUE (\cref{def:scue}(iii))---the environment is diagnostic.
++The defining inequality is strict, hence open in $(\Theta,\tau,\pi)$; its boundary, where the realized consequence matches the prediction exactly, is the concealing knife-edge, $\beta=1$ in the running example.
++\end{proof}
++
+ \begin{excont}
+ \emph{The trap.}
+ Set $\beta=1$ and suppose both firms acquired the column refinement after discovery and became certain of the false column assignment.
+-- 
+2.43.0
+

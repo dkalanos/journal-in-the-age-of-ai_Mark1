@@ -1,0 +1,65 @@
+From 1e15cbf3866caa954a7504cde267d1756fa7ba63 Mon Sep 17 00:00:00 2001
+From: MDR Git <mdr@mikeryall.com>
+Date: Sat, 25 Jul 2026 10:21:50 -0400
+Subject: [PATCH 13/27] Formal-core Phase 3 (modest-core capacity):
+ prop:capacity + rem:two-sources
+
+- prop:capacity: capacity as a single cognitive-style dial. (i) Detection: under an
+  exposed profile, expected periods to dissonance = O(b_i/D_i) (linear in capacity,
+  inverse in detectability), via Wald on the dominating evidence component. (ii)
+  Robustness: false-alarm <= e^{-b_i} (from rest-points ii-b). Higher b_i => longer
+  stable stretches + harder rest points, slower detection of genuine breakage.
+- rem:two-sources: separates the two heterogeneity origins -- awareness-path
+  (identical agents, different experiences) vs cognitive-style (different b_i/kappa_i)
+  -- resolving the "identical agents" tension inside the formalism.
+
+Compiles, 41pp.
+
+Co-Authored-By: Claude Opus 4.8 <noreply@anthropic.com>
+---
+ paper/tbv_mdr_Paper01-v04.tex | 22 ++++++++++++++++++++++
+ 1 file changed, 22 insertions(+)
+
+diff --git a/paper/tbv_mdr_Paper01-v04.tex b/paper/tbv_mdr_Paper01-v04.tex
+index 52a80a0..7f4f37c 100644
+--- a/paper/tbv_mdr_Paper01-v04.tex
++++ b/paper/tbv_mdr_Paper01-v04.tex
+@@ -1093,6 +1093,20 @@ Under strict adequacy, or under the lemma's exact deterministic argument, \cref{
+ The residual clause is the complement of the on-path constraints.
+ \end{proof}
+ 
++\begin{proposition}[Capacity: detection speed and robustness]
++\label{prop:capacity}
++Fix a standing profile and agent $i$ with dissonance capacity $b_i$.
++\begin{enumerate}[label=(\roman*)]
++  \item \emph{Detection.} Suppose the profile is exposed, and let its \emph{detectability} be $D_i>0$: the smallest across expressible theories of the per-period growth rate of $\log E_i^{m}$ (for each theory, the visit rate times the information divergence at its most-detectable inadequate pair; positive because each theory is inadequate at a recurrent pair). Then the expected number of periods until agent $i$'s dissonance is $O(b_i/D_i)$---linear in capacity, inverse in detectability---and at least of order $b_i$.
++  \item \emph{Robustness.} If instead the profile is not exposed and is entered adequately, agent $i$ spuriously becomes dissonant with probability at most $e^{-b_i}$ (\cref{prop:rest-points}(ii-b)).
++\end{enumerate}
++Capacity is thus a single cognitive-style dial: raising $b_i$ lengthens stable stretches and hardens rest points against false alarms, at the cost of slower detection of a genuinely broken language.
++\end{proposition}
++
++\begin{proof}
++(i) By the mixture construction of \cref{def:test}, $E_i^{m}$ dominates a nonnegative martingale $w_{j^{*}}M_i^{m,j^{*}}$ betting against $m$ at an inadequate recurrent pair $j^{*}$, and $\log M_i^{m,j^{*}}$ has i.i.d.\ increments of positive mean $\bar d_i^{m}\ge D_i$. The rejection time $\tau_m$ is no later than the crossing time of $\log M_i^{m,j^{*}}$ above $b_i-\log w_{j^{*}}$, so Wald's identity gives $\mathbb E[\tau_m]\le(b_i+c)/D_i$ with $c$ absorbing the constant $-\log w_{j^{*}}$ and the bounded overshoot. Dissonance is $\max_m\tau_m\le\sum_m\tau_m$, so its expected time is at most $\lvert M(\mathcal P_i)\rvert(b_i+c)/D_i$; and since per-period increments of $\log E_i^{m}$ are bounded by some $R$, crossing $b_i$ needs at least $b_i/R$ periods. (ii) is the per-agent bound of \cref{prop:rest-points}(ii-b).
++\end{proof}
++
+ \begin{proposition}[Persistent performance differences]
+ \label{prop:persistence}
+ There exist primitives and absorbing configurations in which agents hold different terminal partitions and theories, and expected per-period payoffs differ strictly and permanently, with no disadvantaged agent closing the gap---because for each the corrective process has died economically at one of its two stages: either its question is unpriced (\emph{dissonant stasis}, $\lambda_i^{(k_i)}\widehat B_i(r_i)<\gamma_i$ from some period on), or, having asked and refined, the policy change its new model recommends is priced below the switching hurdle (\emph{enlightened inertia}, $T$-horizon gain $\le\kappa_i$, \cref{rem:stickiness}).
+@@ -1102,6 +1116,14 @@ The stasis channel is established by the instance below; the enlightened-inertia
+ Performance differences persist not because an equilibrium concept freezes them but because the process that would erase them has died economically: the disadvantaged agent's question is priced below the cost of asking---through zero leverage, an eroded achievability weight, or an irreparable record---or, having asked and learned, it finds the switch its new model recommends priced below the hurdle and holds its old policy (\cref{rem:stickiness}).
+ Terminal heterogeneity in awareness is path dependence in the strong sense---agents with identical preferences and identical Bayesian competence, facing the same objective system, end at different languages and different payoffs because their histories posed different questions.
+ 
++\begin{remark}[Two sources of heterogeneity]
++\label{rem:two-sources}
++Terminal heterogeneity has two independent origins here.
++Agents identical in preferences, competence, capacity, and cost can still end at different languages and payoffs, because their histories posed different questions and their truth-blind technologies produced different repairs---path dependence that begins before probability.
++Agents identical in \emph{everything} but their dissonance capacity $b_i$ and switching hurdle $\kappa_i$ also diverge: capacity sets the expected length of stable stretches and the robustness of rest points (\cref{prop:capacity}), and the hurdle sets the propensity to enlightened inertia (\cref{rem:stickiness}).
++The first is the awareness-path microfoundation; the second a parametric cognitive-style one---and neither is available in the fixed-language tradition.
++\end{remark}
++
+ \begin{definition}[Diagnostic environments]
+ \label{def:diagnostic}
+ An expressible theory is \emph{payoff-relevantly false} for agent $i$ under a profile if the truth would render $i$'s standing action suboptimal at some visited state---not merely shrink the set of optimal actions.
+-- 
+2.43.0
+

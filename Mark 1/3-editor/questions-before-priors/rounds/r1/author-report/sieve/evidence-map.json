@@ -1,0 +1,135 @@
+{
+  "paper_id": "questions-before-priors",
+  "run_id": "20261028-232034-author-047023d",
+  "corpus": {
+    "version": "1709b72c5d1206fe21663325b3a79716a071e7009089956b3a1e12d801b27574",
+    "items": 45,
+    "procedure": "keyword search of the venues switched on in venues.yaml, through OpenAlex, then the works most cited among the hits and among what the paper cites, kept when they are in those venues"
+  },
+  "claims": [
+    {
+      "claim_id": "C1",
+      "text": "Existing models show how theories guide learning, how Bayesian agents discriminate among represented causal structures, and how play can reveal previously unavailable actions. This paper models a different transition: an agent's causal language pools objectively different situations; strategic experience endogenously reveals an action-relevant failure of that pooling and thereby creates a localized open question; costly inquiry activates a fallible technology whose output is not measurable in the agent's prior awareness; only after that output is formulated does the agent construct a prior and undertake Bayesian judgment, under an explicit account of how much confidence the generating experience licenses. Because actions depend on theories, play can either create the contrasts that generate questions or suppress them, so the model also delivers the population-level answer: when theory heterogeneity and performance differences persist, and when the market erases them.",
+      "newness_kind": "answer",
+      "nearest": [
+        {
+          "corpus_id": "W2062762321",
+          "establishes": "A verbal theory of the origins of novel entrepreneurial beliefs and strategies, in which theorizing triggered by fragments of experience and observation, imagination and reasoning, together with social interaction and self-selection, produce heterogeneous beliefs that go beyond what experience alone permits.",
+          "relation": "overlaps",
+          "basis": "introduction",
+          "poses_question": true,
+          "states_claim": false,
+          "poses_question_votes": "3/3 yes",
+          "states_claim_votes": "0/3 yes",
+          "citation": "Felin & Zenger (2009). Entrepreneurs as theorists: on the origins of collective beliefs and novel strategies",
+          "doi": "10.1002/sej.67",
+          "venue": "Strategic Entrepreneurship Journal",
+          "year": 2009,
+          "retrieved_by": [
+            "cited by 8 of the retrieved works"
+          ],
+          "found_by": "3/3"
+        },
+        {
+          "corpus_id": "W2145868584",
+          "establishes": "An axiomatic choice-based model of growing awareness in which, as the state space expands with newly discovered acts, consequences or links, beliefs are revised by proportional 'reverse Bayesian' reallocation of probability mass, against the background that standard Bayesian conditioning cannot expand the state space.",
+          "relation": "overlaps",
+          "basis": "introduction",
+          "poses_question": true,
+          "states_claim": false,
+          "poses_question_votes": "3/3 yes",
+          "states_claim_votes": "0/3 yes",
+          "citation": "Karni & Vierø (2013). “Reverse Bayesianism”: A Choice-Based Theory of Growing Awareness",
+          "doi": "10.1257/aer.103.7.2790",
+          "venue": "American Economic Review",
+          "year": 2013,
+          "retrieved_by": [
+            "cited by 6 of the retrieved works"
+          ],
+          "found_by": "3/3"
+        },
+        {
+          "corpus_id": "W2115460181",
+          "establishes": "A choice-based model of awareness of unawareness in which actions may reveal consequences previously indescribable for lack of language, with a 'utility of the unknown' parameter and rules for how beliefs about residual ignorance evolve after discoveries, nesting reverse Bayesian updating as a special case.",
+          "relation": "overlaps",
+          "basis": "introduction",
+          "poses_question": false,
+          "states_claim": false,
+          "poses_question_votes": "1/3 yes",
+          "states_claim_votes": "0/3 yes",
+          "citation": "Karni & Vierø (2017). Awareness of unawareness: A theory of decision making in the face of ignorance",
+          "doi": "10.1016/j.jet.2016.12.011",
+          "venue": "Journal of Economic Theory",
+          "year": 2017,
+          "retrieved_by": [
+            "cited by 5 of the retrieved works"
+          ],
+          "found_by": "3/3"
+        },
+        {
+          "corpus_id": "W4206921982",
+          "establishes": "A formal framework of theory-based learning in which strategists' incomplete and possibly wrong theories are improved by deriving consequences, raising objections and running critical experiments, allowing them to identify overlooked critical contingencies and revise beliefs.",
+          "relation": "overlaps",
+          "basis": "introduction",
+          "poses_question": true,
+          "states_claim": false,
+          "poses_question_votes": "2/3 yes",
+          "states_claim_votes": "0/3 yes",
+          "citation": "Ehrig & Schmidt (2022). Theory‐based learning and experimentation: How strategists can systematically generate knowledge at the edge between the known and the unknown",
+          "doi": "10.1002/smj.3381",
+          "venue": "Strategic Management Journal",
+          "year": 2022,
+          "retrieved_by": [
+            "cited by 7 of the retrieved works"
+          ],
+          "found_by": "3/3"
+        },
+        {
+          "corpus_id": "W2113812196",
+          "establishes": "A simulation showing that crude low-dimensional cognitive representations of a higher-dimensional landscape guide initial search and constrain experiential search, and that changing the representation is a mode of adaptation that can cost accumulated tacit knowledge.",
+          "relation": "background",
+          "basis": "introduction",
+          "poses_question": false,
+          "states_claim": false,
+          "poses_question_votes": "0/3 yes",
+          "states_claim_votes": "0/3 yes",
+          "citation": "Gavetti & Levinthal (2000). Looking Forward and Looking Backward: Cognitive and Experiential Search",
+          "doi": "10.2307/2666981",
+          "venue": "Administrative Science Quarterly",
+          "year": 2000,
+          "retrieved_by": [
+            "cited by 5 of the retrieved works"
+          ],
+          "found_by": "3/3"
+        }
+      ],
+      "rationale": "Felin & Zenger (W2062762321) pose the question of where novel theories and heterogeneous beliefs come from, and Karni & Viero (W2145868584, W2115460181) and Ehrig & Schmidt (W4206921982) pose how awareness grows or overlooked contingencies are found and how beliefs are then revised; none states the claim's mechanism (experience exposing a pooling failure, a localized question, a fallible truth-blind inquiry technology, prior construction only after formulation, and the population-level persistence result). Gavetti & Levinthal (W2113812196) treat representation change as exogenous and pose a different question. A new answer to a question already posed: answer.",
+      "agreement": "3/3"
+    }
+  ],
+  "coverage": {
+    "items": 45,
+    "without_abstract": 5,
+    "with_introduction": 19,
+    "statement": "Venues searched: utd24, ft50, cabs4star, cabs4 (150 journals, 150 resolved in OpenAlex). 4 queries from the contribution claim and the title returned 25 hits; 20 works were added as the most cited among them (15 such works lay outside the venues and were dropped). Candidates shown to the model: 45, of which 5 have no abstract and were seen by title, venue and year only. 19 were also read from their introduction (10 from the journal's licensed copies, 9 from open-access copies); the rest have no copy the journal holds or could fetch. Not covered: work outside the venues searched, books, work without an abstract, beyond its title, non-English work, grey literature.",
+    "cited_but_not_retrieved": [
+      "10.1007/s00199-021-01408-y",
+      "10.1016/j.jet.2021.105235",
+      "10.1016/j.jet.2021.105351",
+      "10.1016/j.jet.2021.105365",
+      "10.1287/mnsc.1080.0938",
+      "10.1287/mnsc.49.7.936.16383",
+      "10.1287/stsc.2017.0048",
+      "10.1287/stsc.2021.0126",
+      "10.1287/stsc.2024.0166",
+      "10.1287/stsc.2024.0173",
+      "10.1287/stsc.2024.0177",
+      "10.1287/stsc.2024.0178",
+      "10.1287/stsc.2024.0179",
+      "10.1287/stsc.2024.0189",
+      "10.1287/stsc.2024.intro.v9.n4",
+      "10.5465/amr.2020.0503"
+    ],
+    "unresolved": []
+  }
+}
